@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1698189596 source:/home/mikicrep/Desktop/prjt/sdlgaem/main.cpp
+	"SDL2/SDL.h"
+	<stdio.h>
+	"objects.h"
+	"colors.h"
+
+1698186317 source:/home/mikicrep/Desktop/prjt/sdlgaem/colors.cpp
+
+1698188859 source:/home/mikicrep/Desktop/prjt/sdlgaem/objects.cpp
+
+1698188783 /home/mikicrep/Desktop/prjt/sdlgaem/objects.h
+
+1698186220 /home/mikicrep/Desktop/prjt/sdlgaem/colors.h
+
