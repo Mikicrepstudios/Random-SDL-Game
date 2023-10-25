@@ -1,7 +1,7 @@
 #include "SDL2/SDL.h"
 
 namespace player {
-    void playermovement(SDL_Event event, int worldmap[500][500], int playerspeed, int &playerx, int &playery) {
+    void playermovement(SDL_Event event, int worldmap[250][250], int playerspeed, int &playerx, int &playery) {
         if(event.key.keysym.sym == SDLK_w) {
             if (worldmap[playerx][playery - playerspeed] == 0) {
                 worldmap[playerx][playery] = 0;

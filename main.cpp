@@ -1,25 +1,21 @@
-#include "SDL2/SDL.h"
 #include <iostream>
 #include <stdio.h>
+#include "SDL2/SDL.h"
 
-#include "player.h"
-#include "objects.h"
+#include "game.h"
 #include "graphics.h"
+#include "objects.h"
+#include "overlay.h"
+#include "player.h"
 
 int main() {
-    const char* windowtitle = "Mikicrep | Build 5";
+    const char* windowtitle = "Mikicrep | Build 6";
     // SDL variables
     int width = 800;
     int height = 600;
     int fps = 60;
     int mousex = 0;
     int mousey = 0;
-
-    // Graphics
-    int colorid = 0;
-    int colorr = 0;
-    int colorg = 0;
-    int colorb = 0;
 
     // Game
     bool inventory = false;
@@ -28,9 +24,9 @@ int main() {
     int curhovery = 0;
 
     // Game world
-    int mapwidth = width / 50;
-    int mapheight = height / 50;
-    int worldmap[500][500];
+    int mapwidth = 250 - 1;
+    int mapheight = 250 - 1;
+    int worldmap[250][250];
 
     // Player
     int playerx = width / 2 / 50;
@@ -38,19 +34,14 @@ int main() {
     int playerspeed = 1;
     // 16x12
 
-    bool running = true;
-
+    // Prepare game
 	SDL_Window *window;
 	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_OPENGL);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
 	SDL_Init(SDL_INIT_VIDEO);
-
-	for (int x = 0; x < mapwidth; x++) {
-        for (int y = 0; y < mapheight; y++) {
-            worldmap[x][y] = 0;
-        }
-    }
+	gamemap::clearmap(worldmap, mapwidth, mapheight);
+    bool running = true;
 
 	while(running) {
         // Main
@@ -74,53 +65,20 @@ int main() {
                         inventory = !inventory;
                     }
                 }
-                // PLAYER MOVEMENT
+                // Player movement
                 player::playermovement(event, worldmap, playerspeed, playerx, playery);
-
-                if(event.key.keysym.sym == SDLK_e) {
-                    inventory = !inventory;
-                }
-                else if(event.key.keysym.sym == SDLK_c) {
-                    for (int x = 0; x < mapwidth; x++) {
-                        for (int y = 0; y < mapheight; y++) {
-                            worldmap[x][y] = 0;
-                        }
-                    }
-                }
                 // Inventory
-                else if (inventory) {
-                    if (event.key.keysym.sym == SDLK_LEFT) {
-                        if (curblock == 10) {
-                            curblock = 25;
-                        }
-                        else {
-                            curblock -= 1;
-                        }
-                    }
-                    else if (event.key.keysym.sym == SDLK_RIGHT) {
-                        if (curblock == 25) {
-                            curblock = 10;
-                        }
-                        else {
-                            curblock += 1;
-                        }
-                    }
+                player::inventoryevent(event, inventory, curblock);
+
+                // Clear map
+                if(event.key.keysym.sym == SDLK_c) {
+                    gamemap::clearmap(worldmap, mapwidth, mapheight);
                 }
+
             }
 
             // Place/Break
-            else if (event.type == SDL_MOUSEBUTTONDOWN) {
-                if (event.button.button == SDL_BUTTON_LEFT) {
-                    if (worldmap[curhoverx][curhovery] != 1) {
-                        worldmap[curhoverx][curhovery] = curblock;
-                    }
-                }
-                else if (event.button.button == SDL_BUTTON_RIGHT) {
-                    if (worldmap[curhoverx][curhovery] != 1) {
-                        worldmap[curhoverx][curhovery] = 0;
-                    }
-                }
-            }
+            player::mouseevent(event, worldmap, curhoverx, curhovery, curblock);
         }
 
         // Prepare for drawing next frame
@@ -131,41 +89,11 @@ int main() {
         worldmap[playerx][playery] = 1;
 
         // Draw map
-        for(int x = 0; x <= mapwidth; x++) {
-            for(int y = 0; y <= mapheight; y++) {
-                // Get current block ID
-                int objectid = worldmap[x][y];
+        game::rendermap(renderer, worldmap, mapwidth, mapheight);
 
-                objects::objectColor(objectid, colorid);
-                graphics::getColor(colorid, colorr, colorg, colorb);
-
-                // Do rendering
-                SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-                SDL_Rect tmprect = {x * 50, y * 50, 50, 50};
-                SDL_RenderFillRect(renderer, &tmprect);
-            }
-        }
-
-        // Menus
-        // Inventory
-        if (inventory) {
-            graphics::getColor(8, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_Rect bgrect = {25, 25, width - 50, height - 50};
-            SDL_RenderFillRect(renderer, &bgrect);
-
-            graphics::getColor(curblock - 10, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_Rect curblockrect = {50, 50, 50, 50};
-            SDL_RenderFillRect(renderer, &curblockrect);
-        }
-
-        // Overlay
-        if (worldmap[curhoverx][curhovery] != 1) {
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255 );
-            SDL_Rect mouserect = {curhoverx * 50, curhovery * 50, 50, 50};
-            SDL_RenderFillRect(renderer, &mouserect);
-        }
+        // Overlays
+        overlay::inventory(renderer, width, height, inventory, curblock);
+        overlay::mouse(renderer, worldmap, curhoverx, curhovery);
 
         // Show results
         SDL_RenderPresent(renderer);

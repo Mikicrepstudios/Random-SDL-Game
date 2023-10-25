@@ -27,10 +27,17 @@
 			<Add option="`sdl2-config --libs`" />
 		</Linker>
 		<Unit filename="colors.cpp" />
-		<Unit filename="colors.h" />
+		<Unit filename="game.h" />
+		<Unit filename="graphics.h" />
+		<Unit filename="inventory.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="map.cpp" />
 		<Unit filename="objects.cpp" />
 		<Unit filename="objects.h" />
+		<Unit filename="player.h" />
+		<Unit filename="playercontrols.cpp" />
+		<Unit filename="playermovement.cpp" />
+		<Unit filename="rendermap.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
