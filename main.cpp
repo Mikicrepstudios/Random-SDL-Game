@@ -1,4 +1,5 @@
 #include "SDL2/SDL.h"
+#include <iostream>
 #include <stdio.h>
 
 #include "player.h"
@@ -6,6 +7,7 @@
 #include "graphics.h"
 
 int main() {
+    const char* windowtitle = "Mikicrep | Build 5";
     // SDL variables
     int width = 800;
     int height = 600;
@@ -28,7 +30,7 @@ int main() {
     // Game world
     int mapwidth = width / 50;
     int mapheight = height / 50;
-    int worldmap[10000][10000];
+    int worldmap[500][500];
 
     // Player
     int playerx = width / 2 / 50;
@@ -39,7 +41,7 @@ int main() {
     bool running = true;
 
 	SDL_Window *window;
-	window = SDL_CreateWindow("Mikicrep ;) | Build 4", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_OPENGL);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
 	SDL_Init(SDL_INIT_VIDEO);
@@ -75,7 +77,7 @@ int main() {
                 // PLAYER MOVEMENT
                 player::playermovement(event, worldmap, playerspeed, playerx, playery);
 
-                else if(event.key.keysym.sym == SDLK_e) {
+                if(event.key.keysym.sym == SDLK_e) {
                     inventory = !inventory;
                 }
                 else if(event.key.keysym.sym == SDLK_c) {
@@ -85,9 +87,8 @@ int main() {
                         }
                     }
                 }
-            }
                 // Inventory
-                if (inventory) {
+                else if (inventory) {
                     if (event.key.keysym.sym == SDLK_LEFT) {
                         if (curblock == 10) {
                             curblock = 25;
@@ -106,6 +107,7 @@ int main() {
                     }
                 }
             }
+
             // Place/Break
             else if (event.type == SDL_MOUSEBUTTONDOWN) {
                 if (event.button.button == SDL_BUTTON_LEFT) {
