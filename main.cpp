@@ -1,8 +1,9 @@
 #include "SDL2/SDL.h"
 #include <stdio.h>
 
+#include "player.h"
 #include "objects.h"
-#include "colors.h"
+#include "graphics.h"
 
 int main() {
     // SDL variables
@@ -27,7 +28,7 @@ int main() {
     // Game world
     int mapwidth = width / 50;
     int mapheight = height / 50;
-    int worldmap[mapwidth][mapheight];
+    int worldmap[10000][10000];
 
     // Player
     int playerx = width / 2 / 50;
@@ -72,30 +73,8 @@ int main() {
                     }
                 }
                 // PLAYER MOVEMENT
-                else if(event.key.keysym.sym == SDLK_w) {
-                    if (worldmap[playerx][playery - playerspeed] == 0) {
-                        worldmap[playerx][playery] = 0;
-                        playery -= playerspeed;
-                    }
-                }
-                else if(event.key.keysym.sym == SDLK_a) {
-                    if (worldmap[playerx - playerspeed][playery] == 0) {
-                        worldmap[playerx][playery] = 0;
-                        playerx -= playerspeed;
-                    }
-                }
-                else if(event.key.keysym.sym == SDLK_s) {
-                    if (worldmap[playerx][playery + playerspeed] == 0) {
-                        worldmap[playerx][playery] = 0;
-                        playery += playerspeed;
-                    }
-                }
-                else if(event.key.keysym.sym == SDLK_d) {
-                    if (worldmap[playerx + playerspeed][playery] == 0) {
-                        worldmap[playerx][playery] = 0;
-                        playerx += playerspeed;
-                    }
-                }
+                player::playermovement(event, worldmap, playerspeed, playerx, playery);
+
                 else if(event.key.keysym.sym == SDLK_e) {
                     inventory = !inventory;
                 }
@@ -106,6 +85,7 @@ int main() {
                         }
                     }
                 }
+            }
                 // Inventory
                 if (inventory) {
                     if (event.key.keysym.sym == SDLK_LEFT) {
