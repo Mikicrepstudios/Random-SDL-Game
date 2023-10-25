@@ -13,7 +13,7 @@
 
 1698186220 /home/mikicrep/Desktop/prjt/sdlgaem/colors.h
 
-1698239500 source:/home/mikicrep/Desktop/Random-SDL-Game/colors.cpp
+1698240612 source:/home/mikicrep/Desktop/Random-SDL-Game/colors.cpp
 
 1698237242 source:/home/mikicrep/Desktop/Random-SDL-Game/main.cpp
 	"SDL2/SDL.h"
@@ -25,5 +25,8 @@
 
 1698190040 /home/mikicrep/Desktop/Random-SDL-Game/colors.h
 
-1698237607 source:/home/mikicrep/Desktop/Random-SDL-Game/objects.cpp
+1698240699 source:/home/mikicrep/Desktop/Random-SDL-Game/objects.cpp
+
+1698255840 source:/home/mikicrep/Desktop/Random-SDL-Game/playermovement.cpp
+	"SDL2/SDL.h"
 
