@@ -38,7 +38,7 @@ int main() {
     bool running = true;
 
 	SDL_Window *window;
-	window = SDL_CreateWindow("Mikicrep ;) | Build 2", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow("Mikicrep ;) | Build 3", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_OPENGL);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
 	SDL_Init(SDL_INIT_VIDEO);
@@ -109,15 +109,15 @@ int main() {
                 // Inventory
                 if (inventory) {
                     if (event.key.keysym.sym == SDLK_LEFT) {
-                        if (curblock == 9) {
-                            curblock = 26;
+                        if (curblock == 10) {
+                            curblock = 25;
                         }
                         else {
                             curblock -= 1;
                         }
                     }
                     else if (event.key.keysym.sym == SDLK_RIGHT) {
-                        if (curblock == 27) {
+                        if (curblock == 25) {
                             curblock = 10;
                         }
                         else {
