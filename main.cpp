@@ -155,7 +155,7 @@ int main() {
                 int objectid = worldmap[x][y];
 
                 objectColor(objectid, colorid);
-                getColor(colorid, colorr, colorg, colorb);
+                graphics::getColor(colorid, colorr, colorg, colorb);
 
                 // Do rendering
                 SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
@@ -167,12 +167,12 @@ int main() {
         // Menus
         // Inventory
         if (inventory) {
-            getColor(8, colorr, colorg, colorb);
+            graphics::getColor(8, colorr, colorg, colorb);
             SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
             SDL_Rect bgrect = {25, 25, width - 50, height - 50};
             SDL_RenderFillRect(renderer, &bgrect);
 
-            getColor(curblock - 10, colorr, colorg, colorb);
+            graphics::getColor(curblock - 10, colorr, colorg, colorb);
             SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
             SDL_Rect curblockrect = {50, 50, 50, 50};
             SDL_RenderFillRect(renderer, &curblockrect);

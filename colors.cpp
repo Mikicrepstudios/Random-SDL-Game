@@ -1,3 +1,4 @@
+namespace graphics {
 void getColor(int colorid, int &colorr, int &colorg, int &colorb) {
     switch(colorid) {
     case 0:
@@ -81,4 +82,5 @@ void getColor(int colorid, int &colorr, int &colorg, int &colorb) {
         colorb = 255;
         break;
     }
+}
 }
