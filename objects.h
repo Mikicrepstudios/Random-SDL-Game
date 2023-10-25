@@ -1,3 +1,5 @@
 #pragma once
 
-extern void objectColor(int objectid, int &colorid);
+namespace objects {
+    extern void objectColor(int objectid, int &colorid);
+}
