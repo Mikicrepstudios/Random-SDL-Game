@@ -38,7 +38,7 @@ int main() {
     bool running = true;
 
 	SDL_Window *window;
-	window = SDL_CreateWindow("Mikicrep ;) | Build 3", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow("Mikicrep ;) | Build 4", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_OPENGL);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
 	SDL_Init(SDL_INIT_VIDEO);
@@ -154,7 +154,7 @@ int main() {
                 // Get current block ID
                 int objectid = worldmap[x][y];
 
-                objectColor(objectid, colorid);
+                objects::objectColor(objectid, colorid);
                 graphics::getColor(colorid, colorr, colorg, colorb);
 
                 // Do rendering
