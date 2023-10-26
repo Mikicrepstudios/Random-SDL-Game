@@ -10,20 +10,23 @@
 
 int main() {
     // SDL variables
-    const char* windowtitle = "Mikicrep | Build 7";
+    const char* windowtitle = "Mikicrep | Build 8";
     int width = 800;
     int height = 600;
     int fps = 60;
     int mousex = 0;
     int mousey = 0;
 
+    // Cam
+    int camscale = 50;
+    int camoffsetx = 0;
+    int camoffsety = 0;
+
     // Game
     bool inventory = false;
     int curblock = 17;
     int curhoverx = 0;
     int curhovery = 0;
-    int camoffsetx = 0;
-    int camoffsety = 0;
 
     // Game world
     int mapwidth = 250 - 1;
@@ -48,8 +51,8 @@ int main() {
 	while(running) {
         // Main
         SDL_GetMouseState(&mousex, &mousey);
-        curhoverx = mousex / 50;
-        curhovery = mousey / 50;
+        curhoverx = mousex / camscale;
+        curhovery = mousey / camscale;
         SDL_Event event;
 
         // Event loop
@@ -78,11 +81,11 @@ int main() {
                 }
 
                 // Camera
-                events::camera(event, inventory, camoffsetx, camoffsety);
+                events::camera(event, inventory, camoffsetx, camoffsety, camscale);
             }
 
             // Place/Break
-            player::mouseevent(event, worldmap, curhoverx, curhovery, curblock, camoffsetx, camoffsety);
+            player::mouseevent(event, worldmap, mapwidth, mapheight, curhoverx, curhovery, curblock, camoffsetx, camoffsety);
         }
 
         // Prepare for drawing next frame
@@ -93,11 +96,11 @@ int main() {
         worldmap[playerx][playery] = 1;
 
         // Draw map
-        game::rendermap(renderer, worldmap, mapwidth, mapheight, camoffsetx, camoffsety);
+        game::rendermap(renderer, worldmap, mapwidth, mapheight, camoffsetx, camoffsety, camscale);
 
         // Overlays
         overlay::inventory(renderer, width, height, inventory, curblock);
-        overlay::mouse(renderer, worldmap, curhoverx, curhovery, camoffsetx, camoffsety);
+        overlay::mouse(renderer, worldmap, mapwidth, mapheight, curhoverx, curhovery, camoffsetx, camoffsety, camscale);
 
         // Show results
         SDL_RenderPresent(renderer);

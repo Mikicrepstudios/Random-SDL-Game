@@ -26,6 +26,7 @@
 		<Linker>
 			<Add option="`sdl2-config --libs`" />
 		</Linker>
+		<Unit filename="camera.cpp" />
 		<Unit filename="colors.cpp" />
 		<Unit filename="game.h" />
 		<Unit filename="graphics.h" />
