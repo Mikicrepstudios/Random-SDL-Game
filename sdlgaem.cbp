@@ -28,6 +28,8 @@
 		</Linker>
 		<Unit filename="camera.cpp" />
 		<Unit filename="colors.cpp" />
+		<Unit filename="files.cpp" />
+		<Unit filename="files.h" />
 		<Unit filename="game.h" />
 		<Unit filename="graphics.h" />
 		<Unit filename="inventory.cpp" />
