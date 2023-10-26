@@ -17,7 +17,7 @@ namespace events {
             }
         }
         if(event.key.keysym.sym == SDLK_o) {
-            if (camscale != 1) {
+            if (camscale != 3) {
                 camscale -= 1;
             }
         }

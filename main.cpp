@@ -1,7 +1,9 @@
 #include <iostream>
+#include <fstream>
 #include <stdio.h>
 #include "SDL2/SDL.h"
 
+#include "files.h"
 #include "game.h"
 #include "graphics.h"
 #include "objects.h"
@@ -10,9 +12,9 @@
 
 int main() {
     // SDL variables
-    const char* windowtitle = "Mikicrep | Build 8";
-    int width = 800;
-    int height = 600;
+    const char* windowtitle = "Mikicrep | Build 9";
+    int width = 1280;
+    int height = 800;
     int fps = 60;
     int mousex = 0;
     int mousey = 0;
@@ -34,10 +36,9 @@ int main() {
     int worldmap[250][250];
 
     // Player
-    int playerx = width / 2 / 50;
-    int playery = height / 2 / 50;
+    int playerx = 0;
+    int playery = 0;
     int playerspeed = 1;
-    // 16x12
 
     // Prepare game
 	SDL_Window *window;
@@ -82,6 +83,10 @@ int main() {
 
                 // Camera
                 events::camera(event, inventory, camoffsetx, camoffsety, camscale);
+
+                // Save load
+                files::savemapevent(event, worldmap, mapwidth, mapheight);
+                files::loadmapevent(event, worldmap, mapwidth, mapheight);
             }
 
             // Place/Break
