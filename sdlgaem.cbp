@@ -34,6 +34,7 @@
 		<Unit filename="map.cpp" />
 		<Unit filename="objects.cpp" />
 		<Unit filename="objects.h" />
+		<Unit filename="overlay.h" />
 		<Unit filename="player.h" />
 		<Unit filename="playercontrols.cpp" />
 		<Unit filename="playermovement.cpp" />

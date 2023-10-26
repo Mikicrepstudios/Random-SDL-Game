@@ -9,8 +9,8 @@
 #include "player.h"
 
 int main() {
-    const char* windowtitle = "Mikicrep | Build 6";
     // SDL variables
+    const char* windowtitle = "Mikicrep | Build 7";
     int width = 800;
     int height = 600;
     int fps = 60;
@@ -22,6 +22,8 @@ int main() {
     int curblock = 17;
     int curhoverx = 0;
     int curhovery = 0;
+    int camoffsetx = 0;
+    int camoffsety = 0;
 
     // Game world
     int mapwidth = 250 - 1;
@@ -75,10 +77,12 @@ int main() {
                     gamemap::clearmap(worldmap, mapwidth, mapheight);
                 }
 
+                // Camera
+                events::camera(event, inventory, camoffsetx, camoffsety);
             }
 
             // Place/Break
-            player::mouseevent(event, worldmap, curhoverx, curhovery, curblock);
+            player::mouseevent(event, worldmap, curhoverx, curhovery, curblock, camoffsetx, camoffsety);
         }
 
         // Prepare for drawing next frame
@@ -89,11 +93,11 @@ int main() {
         worldmap[playerx][playery] = 1;
 
         // Draw map
-        game::rendermap(renderer, worldmap, mapwidth, mapheight);
+        game::rendermap(renderer, worldmap, mapwidth, mapheight, camoffsetx, camoffsety);
 
         // Overlays
         overlay::inventory(renderer, width, height, inventory, curblock);
-        overlay::mouse(renderer, worldmap, curhoverx, curhovery);
+        overlay::mouse(renderer, worldmap, curhoverx, curhovery, camoffsetx, camoffsety);
 
         // Show results
         SDL_RenderPresent(renderer);
