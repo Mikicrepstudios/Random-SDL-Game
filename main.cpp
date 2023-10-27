@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <stdio.h>
 #include "SDL2/SDL.h"
 
@@ -12,7 +11,7 @@
 
 int main() {
     // SDL variables
-    const char* windowtitle = "Mikicrep | Build 9";
+    const char* windowtitle = "Mikicrep | Build 10";
     int width = 1280;
     int height = 800;
     int fps = 60;
@@ -72,7 +71,7 @@ int main() {
                     }
                 }
                 // Player movement
-                player::playermovement(event, worldmap, playerspeed, playerx, playery);
+                player::playermovement(event, worldmap, mapwidth, mapheight, playerspeed, playerx, playery);
                 // Inventory
                 player::inventoryevent(event, inventory, curblock);
 
