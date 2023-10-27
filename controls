@@ -1,0 +1,13 @@
+# In game
+wasd - movement
+arrow keys - camera movement
+
+o - cam zoom out
+p - cam zoom in
+
+k - save
+l - load
+
+# Inv
+left arrow - -1 color index
+right arrow +1 color index
