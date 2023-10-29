@@ -11,7 +11,7 @@
 
 int main() {
     // SDL variables
-    const char* windowtitle = "Mikicrep | Build 10";
+    const char* windowtitle = "Mikicrep | Build 11";
     int width = 1280;
     int height = 800;
     int fps = 60;
