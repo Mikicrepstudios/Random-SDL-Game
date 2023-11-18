@@ -16,13 +16,15 @@ namespace game {
                 int colorb = 0;
 
                 // Get color data
-                objects::objectColor(objectid, colorid);
-                graphics::getColor(colorid, colorr, colorg, colorb);
+                if (objectid != 0) {
+                    objects::objectColor(objectid, colorid);
+                    graphics::getColor(colorid, colorr, colorg, colorb);
 
-                // Do rendering
-                SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-                SDL_Rect currect = {(camoffsetx * camscale) + (x * camscale), (camoffsety * camscale) + (y * camscale), camscale, camscale};
-                SDL_RenderFillRect(renderer, &currect);
+                    // Do rendering
+                    SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
+                    SDL_Rect currect = {(camoffsetx * camscale) + (x * camscale), (camoffsety * camscale) + (y * camscale), camscale, camscale};
+                    SDL_RenderFillRect(renderer, &currect);
+                }
             }
         }
     }

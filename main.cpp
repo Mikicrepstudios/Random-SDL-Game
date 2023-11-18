@@ -11,12 +11,16 @@
 
 int main() {
     // SDL variables
-    const char* windowtitle = "Mikicrep | Build 11";
+    const char* windowtitle = "Mikicrep | Build 11E";
     int width = 1280;
     int height = 800;
     int fps = 60;
+    int bgcolor = 0;
     int mousex = 0;
     int mousey = 0;
+    int colorr = 0;
+    int colorg = 0;
+    int colorb = 0;
 
     // Cam
     int camscale = 50;
@@ -92,8 +96,9 @@ int main() {
             player::mouseevent(event, worldmap, mapwidth, mapheight, curhoverx, curhovery, curblock, camoffsetx, camoffsety);
         }
 
-        // Prepare for drawing next frame
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        // Set BG color to new color
+        graphics::getColor(bgcolor, colorr, colorg, colorb);
+        SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
         SDL_RenderClear(renderer);
 
         // Pre logic
