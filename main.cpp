@@ -11,7 +11,7 @@
 
 int main() {
     // SDL variables
-    const char* windowtitle = "Mikicrep | Build 12";
+    const char* windowtitle = "Mikicrep | Build 13";
     int width = 1280;
     int height = 800;
     int fps = 60;
@@ -94,7 +94,7 @@ int main() {
 
             // Place/Break
             player::mouseevent(event, inventory, worldmap, mapwidth, mapheight, curhoverx, curhovery, curblock, camoffsetx, camoffsety);
-            player::mouseinvchooser(event, inventory, curblock, mousex, mousey);
+            player::mouseinvchooser(event, inventory, curblock, bgcolor, mousex, mousey);
         }
 
         // Set BG color to new color
@@ -109,7 +109,7 @@ int main() {
         game::rendermap(renderer, worldmap, mapwidth, mapheight, camoffsetx, camoffsety, camscale);
 
         // Overlays
-        overlay::inventory(renderer, width, height, inventory, curblock);
+        overlay::inventory(renderer, width, height, inventory, curblock, bgcolor);
         overlay::mouse(renderer, inventory, worldmap, mapwidth, mapheight, curhoverx, curhovery, camoffsetx, camoffsety, camscale);
 
         // Show results
