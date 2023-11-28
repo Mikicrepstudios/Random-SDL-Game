@@ -11,27 +11,22 @@
 
 int main() {
     // SDL variables
-    const char* windowtitle = "Mikicrep | Build 14";
+    const char* windowtitle = "Mikicrep | Build 15";
     int width = 1280;
     int height = 800;
     int fps = 60;
     int bgcolor = 0;
-    int mousex = 0;
-    int mousey = 0;
-    int colorr = 0;
-    int colorg = 0;
-    int colorb = 0;
+    int mousex, mousey = 0;
+    int colorr, colorg, colorb = 0;
 
     // Cam
     int camscale = 50;
-    int camoffsetx = 0;
-    int camoffsety = 0;
+    int camoffsetx, camoffsety = 0;
 
     // Game
     bool inventory = false;
     int curblock = 17;
-    int curhoverx = 0;
-    int curhovery = 0;
+    int curhoverx,curhovery = 0;
 
     // Game world
     int mapwidth = 250 - 1;
@@ -39,8 +34,7 @@ int main() {
     int worldmap[250][250];
 
     // Player
-    int playerx = 0;
-    int playery = 0;
+    int playerx, playery = 0;
     int playerspeed = 1;
 
     // Prepare game
@@ -62,17 +56,14 @@ int main() {
         // Event loop
         while(SDL_PollEvent(&event) != 0) {
             // Window
-            if(event.type == SDL_QUIT) {
+            if(event.type == SDL_QUIT)
                 running = false;
-            }
             if(event.type == SDL_KEYDOWN) {
                 if(event.key.keysym.sym == SDLK_ESCAPE) {
-                    if (!inventory) {
+                    if (!inventory)
                         running = false;
-                    }
-                    else {
+                    else
                         inventory = !inventory;
-                    }
                 }
                 // Player movement
                 player::playermovement(event, worldmap, mapwidth, mapheight, playerspeed, playerx, playery);
@@ -80,9 +71,8 @@ int main() {
                 player::inventoryevent(event, inventory);
 
                 // Clear map
-                if(event.key.keysym.sym == SDLK_c) {
+                if(event.key.keysym.sym == SDLK_c)
                     gamemap::clearmap(worldmap, mapwidth, mapheight);
-                }
 
                 // Camera
                 events::camera(event, inventory, camoffsetx, camoffsety, camscale);

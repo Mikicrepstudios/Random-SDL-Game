@@ -1,8 +1,8 @@
+autoload - priority
 save & load in inv - priority
-shorten vars declaration - soon
-make one if instead of nested ifs - soon
-move bg stuff in inv to right - soon
+move bg stuff in inv to right - priority
 bg image - soon
+block textures - soon
 font - ?
 no collision block - ?
 power ups - ?
