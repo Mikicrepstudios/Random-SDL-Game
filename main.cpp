@@ -11,7 +11,7 @@
 
 int main() {
     // SDL variables
-    const char* windowtitle = "Mikicrep | Build 13";
+    const char* windowtitle = "Mikicrep | Build 14";
     int width = 1280;
     int height = 800;
     int fps = 60;
@@ -109,7 +109,7 @@ int main() {
         game::rendermap(renderer, worldmap, mapwidth, mapheight, camoffsetx, camoffsety, camscale);
 
         // Overlays
-        overlay::inventory(renderer, width, height, inventory, curblock, bgcolor);
+        overlay::inventory(renderer, width, height, inventory, curblock, bgcolor, mousex, mousey);
         overlay::mouse(renderer, inventory, worldmap, mapwidth, mapheight, curhoverx, curhovery, camoffsetx, camoffsety, camscale);
 
         // Show results

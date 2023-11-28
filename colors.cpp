@@ -17,7 +17,7 @@ namespace graphics {
             colorb = 0;
             break;
         case 3:
-            colorr = 68;
+            colorr = 208;
             colorg = 255;
             colorb = 0;
             break;
