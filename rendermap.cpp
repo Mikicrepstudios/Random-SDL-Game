@@ -10,10 +10,7 @@ namespace game {
                 // Get current block id and define variables
                 int objectid = worldmap[x][y];
                 int colorid = 0;
-
-                int colorr = 0;
-                int colorg = 0;
-                int colorb = 0;
+                int colorr, colorg, colorb = 0;
 
                 // Get color data
                 if (objectid != 0) {
