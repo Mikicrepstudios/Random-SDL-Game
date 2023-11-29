@@ -9,12 +9,14 @@
 #include "overlay.h"
 #include "player.h"
 
+const char* windowtitle = "Mikicrep | Build 15";
+
+int fps = 60;
+int width = 1280;
+int height = 800;
+
 int main() {
     // SDL variables
-    const char* windowtitle = "Mikicrep | Build 15";
-    int width = 1280;
-    int height = 800;
-    int fps = 60;
     int bgcolor = 0;
     int mousex, mousey = 0;
     int colorr, colorg, colorb = 0;
@@ -41,9 +43,11 @@ int main() {
 	SDL_Window *window;
 	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_OPENGL);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
+    SDL_Event event;
 
 	SDL_Init(SDL_INIT_VIDEO);
 	gamemap::clearmap(worldmap, mapwidth, mapheight);
+	files::loadmapevent(event, worldmap, mapwidth, mapheight);
     bool running = true;
 
 	while(running) {
@@ -51,7 +55,6 @@ int main() {
         SDL_GetMouseState(&mousex, &mousey);
         curhoverx = mousex / camscale;
         curhovery = mousey / camscale;
-        SDL_Event event;
 
         // Event loop
         while(SDL_PollEvent(&event) != 0) {
@@ -76,15 +79,11 @@ int main() {
 
                 // Camera
                 events::camera(event, inventory, camoffsetx, camoffsety, camscale);
-
-                // Save load
-                files::savemapevent(event, worldmap, mapwidth, mapheight);
-                files::loadmapevent(event, worldmap, mapwidth, mapheight);
             }
 
             // Place/Break
             player::mouseevent(event, inventory, worldmap, mapwidth, mapheight, curhoverx, curhovery, curblock, camoffsetx, camoffsety);
-            player::mouseinvchooser(event, inventory, curblock, bgcolor, mousex, mousey);
+            player::mouseinvchooser(event, inventory, worldmap, mapwidth, mapheight, curblock, bgcolor, mousex, mousey);
         }
 
         // Set BG color to new color
