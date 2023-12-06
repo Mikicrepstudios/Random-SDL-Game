@@ -9,7 +9,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 15";
+const char* windowtitle = "Mikicrep | Build 17";
 
 int fps = 60;
 int width = 1280;
@@ -83,7 +83,7 @@ int main() {
 
             // Place/Break
             player::mouseevent(event, inventory, worldmap, mapwidth, mapheight, curhoverx, curhovery, curblock, camoffsetx, camoffsety);
-            player::mouseinvchooser(event, inventory, worldmap, mapwidth, mapheight, curblock, bgcolor, mousex, mousey);
+            player::mouseinvchooser(event, inventory, running, worldmap, mapwidth, mapheight, curblock, bgcolor, mousex, mousey);
         }
 
         // Set BG color to new color
