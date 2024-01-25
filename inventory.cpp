@@ -1,4 +1,5 @@
 #include "SDL2/SDL.h"
+#include <SDL_ttf.h>
 
 #include "files.h"
 #include "graphics.h"
@@ -66,9 +67,10 @@ namespace player {
 }
 
 namespace overlay {
-    void inventory(SDL_Renderer* renderer, int width, int height, bool inventory, int curblock, int bgcolor, int mousex, int mousey) {
+    void inventory(SDL_Renderer* renderer, TTF_Font* font, int width, int height, bool inventory, int curblock, int bgcolor, int mousex, int mousey) {
         // Define variables
         int colorr, colorg, colorb = 0;
+        SDL_Color textcolor = {255, 255, 255};
 
         if (inventory) {
             // Rects
@@ -138,6 +140,10 @@ namespace overlay {
                 graphics::getColor(2, colorr, colorg, colorb);
             SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
             SDL_RenderFillRect(renderer, &saverect);
+
+            SDL_Surface* savesurface = TTF_RenderText_Solid(font, "save", textcolor);
+            SDL_Texture* savetexture = SDL_CreateTextureFromSurface(renderer, savesurface);
+            SDL_RenderCopy(renderer, savetexture, NULL, &saverect);
             // Load button
             if (mousex >= loadrect.x && mousex <= loadrect.x + loadrect.w &&
                 mousey >= loadrect.y && mousey <= loadrect.y + loadrect.h)
@@ -146,6 +152,10 @@ namespace overlay {
                 graphics::getColor(9, colorr, colorg, colorb);
             SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
             SDL_RenderFillRect(renderer, &loadrect);
+
+            SDL_Surface* loadsurface = TTF_RenderText_Solid(font, "load", textcolor);
+            SDL_Texture* loadtexture = SDL_CreateTextureFromSurface(renderer, loadsurface);
+            SDL_RenderCopy(renderer, loadtexture, NULL, &loadrect);
             // Exit button
             if (mousex >= exitrect.x && mousex <= exitrect.x + exitrect.w &&
                 mousey >= exitrect.y && mousey <= exitrect.y + exitrect.h)
@@ -154,6 +164,10 @@ namespace overlay {
                 graphics::getColor(9, colorr, colorg, colorb);
             SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
             SDL_RenderFillRect(renderer, &exitrect);
+
+            SDL_Surface* exitsurface = TTF_RenderText_Solid(font, "exit", textcolor);
+            SDL_Texture* exittexture = SDL_CreateTextureFromSurface(renderer, exitsurface);
+            SDL_RenderCopy(renderer, exittexture, NULL, &exitrect);
         }
     }
 }

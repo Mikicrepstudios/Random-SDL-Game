@@ -1,6 +1,8 @@
 #include <iostream>
 #include <stdio.h>
 #include "SDL2/SDL.h"
+#include <SDL_ttf.h>
+#include <SDL_image.h>
 
 #include "files.h"
 #include "game.h"
@@ -9,7 +11,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 17";
+const char* windowtitle = "Mikicrep | Build 18";
 
 int fps = 60;
 int width = 1280;
@@ -46,6 +48,9 @@ int main() {
     SDL_Event event;
 
 	SDL_Init(SDL_INIT_VIDEO);
+	TTF_Init();
+	IMG_Init(IMG_INIT_PNG);
+	TTF_Font* font = TTF_OpenFont("font.ttf", 24);
 	gamemap::clearmap(worldmap, mapwidth, mapheight);
 	files::loadmapevent(event, worldmap, mapwidth, mapheight);
     bool running = true;
@@ -90,6 +95,11 @@ int main() {
         graphics::getColor(bgcolor, colorr, colorg, colorb);
         SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
         SDL_RenderClear(renderer);
+        // ... or if there is custom bg
+        SDL_Surface* backgroundsurface = IMG_Load("background.png");
+        SDL_Texture* backgroundtexture = SDL_CreateTextureFromSurface(renderer, backgroundsurface);
+        SDL_Rect backgroundrect = {0, 0, width, height};
+        SDL_RenderCopy(renderer, backgroundtexture, NULL, &backgroundrect);
 
         // Pre logic
         worldmap[playerx][playery] = 1;
@@ -98,7 +108,7 @@ int main() {
         game::rendermap(renderer, worldmap, mapwidth, mapheight, camoffsetx, camoffsety, camscale);
 
         // Overlays
-        overlay::inventory(renderer, width, height, inventory, curblock, bgcolor, mousex, mousey);
+        overlay::inventory(renderer, font, width, height, inventory, curblock, bgcolor, mousex, mousey);
         overlay::mouse(renderer, inventory, worldmap, mapwidth, mapheight, curhoverx, curhovery, camoffsetx, camoffsety, camscale);
 
         // Show results
@@ -108,8 +118,12 @@ int main() {
         SDL_Delay(1000 / fps);
 	}
 
+	IMG_Quit();
+	TTF_CloseFont(font);
+    TTF_Quit();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
+	SDL_Quit();
 	return 0;
 }
 
