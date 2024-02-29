@@ -6,8 +6,13 @@
 
 SDL_Rect selclrect = {50, 50, 20, 80};
 SDL_Rect selcrrect = {170, 50, 20, 80};
+SDL_Rect colorrect = {80, 50, 80, 80};
+SDL_Rect colortextrect = {80, 140, 80, 40};
+
 SDL_Rect selbclrect = {1280 - 190, 50, 20, 80};
 SDL_Rect selbcrrect = {1280 - 70, 50, 20, 80};
+SDL_Rect bgcolorrect = {1280 - 160, 50, 80, 80};
+SDL_Rect bgcolortextrect = {1280 - 160, 140, 80, 40};
 
 SDL_Rect saverect = {50, 800 - 160, 200, 50};
 SDL_Rect loadrect = {50, 800 - 100, 200, 50};
@@ -74,8 +79,7 @@ namespace overlay {
 
         if (inventory) {
             // Rects
-            SDL_Rect colorrect = {80, 50, 80, 80};
-            SDL_Rect bgcolorrect = {1280 - 160, 50, 80, 80};
+
             SDL_Rect previewrect = {width / 2 - 50, 50, 100, 100};
 
             // Render bg
@@ -105,6 +109,10 @@ namespace overlay {
             graphics::getColor(curblock - 10, colorr, colorg, colorb);
             SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
             SDL_RenderFillRect(renderer, &colorrect);
+            // Color text
+            SDL_Surface* colorsurface = TTF_RenderText_Solid(font, "Block", textcolor);
+            SDL_Texture* colortexture = SDL_CreateTextureFromSurface(renderer, colorsurface);
+            SDL_RenderCopy(renderer, colortexture, NULL, &colortextrect);
 
             // BG Color left
             if (mousex >= selbclrect.x && mousex <= selbclrect.x + selbclrect.w &&
@@ -126,6 +134,10 @@ namespace overlay {
             graphics::getColor(bgcolor, colorr, colorg, colorb);
             SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
             SDL_RenderFillRect(renderer, &bgcolorrect);
+            // BG Color text
+            SDL_Surface* bgcolorsurface = TTF_RenderText_Solid(font, "BG", textcolor);
+            SDL_Texture* bgcolortexture = SDL_CreateTextureFromSurface(renderer, bgcolorsurface);
+            SDL_RenderCopy(renderer, bgcolortexture, NULL, &bgcolortextrect);
 
             // Current block preview
             graphics::getColor(curblock - 10, colorr, colorg, colorb);

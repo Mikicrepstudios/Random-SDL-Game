@@ -20,11 +20,13 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="`sdl2-config --cflags`" />
 			<Add option="-Wall" />
+			<Add option="`sdl2-config --cflags`" />
 		</Compiler>
 		<Linker>
 			<Add option="`sdl2-config --libs`" />
+			<Add library="/usr/lib/libSDL2_ttf.so" />
+			<Add library="/usr/lib/libSDL2_image.so" />
 		</Linker>
 		<Unit filename="camera.cpp" />
 		<Unit filename="colors.cpp" />
@@ -42,6 +44,8 @@
 		<Unit filename="playercontrols.cpp" />
 		<Unit filename="playermovement.cpp" />
 		<Unit filename="rendermap.cpp" />
+		<Unit filename="todo" />
+		<Unit filename="update" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
