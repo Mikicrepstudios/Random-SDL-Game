@@ -15,7 +15,7 @@
 
 1701193439 source:/home/mikicrep/Desktop/Random-SDL-Game/colors.cpp
 
-1706225364 source:/home/mikicrep/Desktop/Random-SDL-Game/main.cpp
+1709245023 source:/home/mikicrep/Desktop/Random-SDL-Game/main.cpp
 	<iostream>
 	<stdio.h>
 	"SDL2/SDL.h"
@@ -466,7 +466,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1704911539 /usr/include/SDL2/SDL_image.h
+1708733545 /usr/include/SDL2/SDL_image.h
 	"SDL.h"
 	"SDL_version.h"
 	"begin_code.h"

@@ -14,6 +14,9 @@ SDL_Rect selbcrrect = {1280 - 70, 50, 20, 80};
 SDL_Rect bgcolorrect = {1280 - 160, 50, 80, 80};
 SDL_Rect bgcolortextrect = {1280 - 160, 140, 80, 40};
 
+SDL_Rect previewrect = {1280 / 2 - 50, 50, 100, 100};
+SDL_Rect previewtextrect = {1280 / 2 - 50, 160, 100, 40};
+
 SDL_Rect saverect = {50, 800 - 160, 200, 50};
 SDL_Rect loadrect = {50, 800 - 100, 200, 50};
 SDL_Rect exitrect = {1280 - 250, 800 - 100, 200, 50};
@@ -80,7 +83,7 @@ namespace overlay {
         if (inventory) {
             // Rects
 
-            SDL_Rect previewrect = {width / 2 - 50, 50, 100, 100};
+
 
             // Render bg
             graphics::getColor(8, colorr, colorg, colorb);
@@ -143,6 +146,10 @@ namespace overlay {
             graphics::getColor(curblock - 10, colorr, colorg, colorb);
             SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
             SDL_RenderFillRect(renderer, &previewrect);
+            // Preview text
+            SDL_Surface* previewsurface = TTF_RenderText_Solid(font, "Preview", textcolor);
+            SDL_Texture* previewtexture = SDL_CreateTextureFromSurface(renderer, previewsurface);
+            SDL_RenderCopy(renderer, previewtexture, NULL, &previewtextrect);
 
             // Save button
             if (mousex >= saverect.x && mousex <= saverect.x + saverect.w &&
