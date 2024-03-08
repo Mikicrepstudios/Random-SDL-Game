@@ -3,23 +3,31 @@
 
 #include "files.h"
 #include "graphics.h"
+#include "addional.h"
 
+const int width = 1280;
+const int height = 800;
+
+// Color
 SDL_Rect selclrect = {50, 50, 20, 80};
 SDL_Rect selcrrect = {170, 50, 20, 80};
 SDL_Rect colorrect = {80, 50, 80, 80};
 SDL_Rect colortextrect = {80, 140, 80, 40};
 
-SDL_Rect selbclrect = {1280 - 190, 50, 20, 80};
-SDL_Rect selbcrrect = {1280 - 70, 50, 20, 80};
-SDL_Rect bgcolorrect = {1280 - 160, 50, 80, 80};
-SDL_Rect bgcolortextrect = {1280 - 160, 140, 80, 40};
+// Background color
+SDL_Rect selbclrect = {width - 190, 50, 20, 80};
+SDL_Rect selbcrrect = {width - 70, 50, 20, 80};
+SDL_Rect bgcolorrect = {width - 160, 50, 80, 80};
+SDL_Rect bgcolortextrect = {width - 160, 140, 80, 40};
 
-SDL_Rect previewrect = {1280 / 2 - 50, 50, 100, 100};
-SDL_Rect previewtextrect = {1280 / 2 - 50, 160, 100, 40};
+// Preview
+SDL_Rect previewrect = {width / 2 - 50, 50, 100, 100};
+SDL_Rect previewtextrect = {width / 2 - 50, 160, 100, 40};
 
-SDL_Rect saverect = {50, 800 - 160, 200, 50};
-SDL_Rect loadrect = {50, 800 - 100, 200, 50};
-SDL_Rect exitrect = {1280 - 250, 800 - 100, 200, 50};
+// Buttons
+SDL_Rect saverect = {50, height - 160, 200, 50};
+SDL_Rect loadrect = {50, height - 100, 200, 50};
+SDL_Rect exitrect = {width - 250, height - 100, 200, 50};
 
 namespace player {
     void inventoryevent(SDL_Event event, bool &inventory) {
@@ -75,118 +83,45 @@ namespace player {
 }
 
 namespace overlay {
-    void inventory(SDL_Renderer* renderer, TTF_Font* font, int width, int height, bool inventory, int curblock, int bgcolor, int mousex, int mousey) {
+    void inventory(SDL_Renderer* renderer, TTF_Font* font, bool inventory, int curblock, int bgcolor, int mousex, int mousey) {
         // Define variables
         int colorr, colorg, colorb = 0;
         SDL_Color textcolor = {255, 255, 255};
 
         if (inventory) {
-            // Rects
-
-
-
             // Render bg
             graphics::getColor(8, colorr, colorg, colorb);
             SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
             SDL_Rect bgrect = {25, 25, width - 50, height - 50};
             SDL_RenderFillRect(renderer, &bgrect);
 
-            // Selector arrows
-            // Color left
-            if (mousex >= selclrect.x && mousex <= selclrect.x + selclrect.w &&
-                mousey >= selclrect.y && mousey <= selclrect.y + selclrect.h)
-                graphics::getColor(7, colorr, colorg, colorb);
-            else
-                graphics::getColor(15, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_RenderFillRect(renderer, &selclrect);
-            // Color right
-            if (mousex >= selcrrect.x && mousex <= selcrrect.x + selcrrect.w &&
-                mousey >= selcrrect.y && mousey <= selcrrect.y + selcrrect.h)
-                graphics::getColor(7, colorr, colorg, colorb);
-            else
-                graphics::getColor(15, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_RenderFillRect(renderer, &selcrrect);
-            // Color preview
-            graphics::getColor(curblock - 10, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_RenderFillRect(renderer, &colorrect);
-            // Color text
-            SDL_Surface* colorsurface = TTF_RenderText_Solid(font, "Block", textcolor);
-            SDL_Texture* colortexture = SDL_CreateTextureFromSurface(renderer, colorsurface);
-            SDL_RenderCopy(renderer, colortexture, NULL, &colortextrect);
+            // Color
+            draw::drawButton(renderer, selclrect, 15, 7, mousex, mousey);
+            draw::drawButton(renderer, selcrrect, 15, 7, mousex, mousey);
+            draw::drawPreview(renderer, colorrect, curblock - 10);
+            draw::drawText(renderer, font, colortextrect, "Block", textcolor);
 
-            // BG Color left
-            if (mousex >= selbclrect.x && mousex <= selbclrect.x + selbclrect.w &&
-                mousey >= selbclrect.y && mousey <= selbclrect.y + selbclrect.h)
-                graphics::getColor(7, colorr, colorg, colorb);
-            else
-                graphics::getColor(15, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_RenderFillRect(renderer, &selbclrect);
-            // BG Color right
-            if (mousex >= selbcrrect.x && mousex <= selbcrrect.x + selbcrrect.w &&
-                mousey >= selbcrrect.y && mousey <= selbcrrect.y + selbcrrect.h)
-                graphics::getColor(7, colorr, colorg, colorb);
-            else
-                graphics::getColor(15, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_RenderFillRect(renderer, &selbcrrect);
-            // BG Color preview
-            graphics::getColor(bgcolor, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_RenderFillRect(renderer, &bgcolorrect);
-            // BG Color text
-            SDL_Surface* bgcolorsurface = TTF_RenderText_Solid(font, "BG", textcolor);
-            SDL_Texture* bgcolortexture = SDL_CreateTextureFromSurface(renderer, bgcolorsurface);
-            SDL_RenderCopy(renderer, bgcolortexture, NULL, &bgcolortextrect);
+            // BG Color
+            draw::drawButton(renderer, selbclrect, 15, 7, mousex, mousey);
+            draw::drawButton(renderer, selbcrrect, 15, 7, mousex, mousey);
+            draw::drawPreview(renderer, bgcolorrect, bgcolor);
+            draw::drawText(renderer, font, bgcolortextrect, "BG", textcolor);
 
-            // Current block preview
-            graphics::getColor(curblock - 10, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_RenderFillRect(renderer, &previewrect);
-            // Preview text
-            SDL_Surface* previewsurface = TTF_RenderText_Solid(font, "Preview", textcolor);
-            SDL_Texture* previewtexture = SDL_CreateTextureFromSurface(renderer, previewsurface);
-            SDL_RenderCopy(renderer, previewtexture, NULL, &previewtextrect);
+            // Preview
+            draw::drawPreview(renderer, previewrect, curblock - 10);
+            draw::drawText(renderer, font, previewtextrect, "Preview", textcolor);
 
             // Save button
-            if (mousex >= saverect.x && mousex <= saverect.x + saverect.w &&
-                mousey >= saverect.y && mousey <= saverect.y + saverect.h)
-                graphics::getColor(3, colorr, colorg, colorb);
-            else
-                graphics::getColor(2, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_RenderFillRect(renderer, &saverect);
+            draw::drawButton(renderer, saverect, 2, 3, mousex, mousey);
+            draw::drawText(renderer, font, saverect, "save", textcolor);
 
-            SDL_Surface* savesurface = TTF_RenderText_Solid(font, "save", textcolor);
-            SDL_Texture* savetexture = SDL_CreateTextureFromSurface(renderer, savesurface);
-            SDL_RenderCopy(renderer, savetexture, NULL, &saverect);
             // Load button
-            if (mousex >= loadrect.x && mousex <= loadrect.x + loadrect.w &&
-                mousey >= loadrect.y && mousey <= loadrect.y + loadrect.h)
-                graphics::getColor(1, colorr, colorg, colorb);
-            else
-                graphics::getColor(9, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_RenderFillRect(renderer, &loadrect);
+            draw::drawButton(renderer, loadrect, 9, 1, mousex, mousey);
+            draw::drawText(renderer, font, loadrect, "load", textcolor);
 
-            SDL_Surface* loadsurface = TTF_RenderText_Solid(font, "load", textcolor);
-            SDL_Texture* loadtexture = SDL_CreateTextureFromSurface(renderer, loadsurface);
-            SDL_RenderCopy(renderer, loadtexture, NULL, &loadrect);
             // Exit button
-            if (mousex >= exitrect.x && mousex <= exitrect.x + exitrect.w &&
-                mousey >= exitrect.y && mousey <= exitrect.y + exitrect.h)
-                graphics::getColor(1, colorr, colorg, colorb);
-            else
-                graphics::getColor(9, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_RenderFillRect(renderer, &exitrect);
-
-            SDL_Surface* exitsurface = TTF_RenderText_Solid(font, "exit", textcolor);
-            SDL_Texture* exittexture = SDL_CreateTextureFromSurface(renderer, exitsurface);
-            SDL_RenderCopy(renderer, exittexture, NULL, &exitrect);
+            draw::drawButton(renderer, exitrect, 9, 1, mousex, mousey);
+            draw::drawText(renderer, font, exitrect, "exit", textcolor);
         }
     }
 }

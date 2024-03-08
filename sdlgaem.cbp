@@ -28,8 +28,10 @@
 			<Add library="/usr/lib/libSDL2_ttf.so" />
 			<Add library="/usr/lib/libSDL2_image.so" />
 		</Linker>
+		<Unit filename="addional.h" />
 		<Unit filename="camera.cpp" />
 		<Unit filename="colors.cpp" />
+		<Unit filename="draw.cpp" />
 		<Unit filename="files.cpp" />
 		<Unit filename="files.h" />
 		<Unit filename="game.h" />
