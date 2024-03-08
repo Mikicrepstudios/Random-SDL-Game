@@ -11,7 +11,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 20";
+const char* windowtitle = "Mikicrep | Build 21";
 
 int fps = 60;
 int width = 1280;
@@ -108,7 +108,7 @@ int main() {
         game::rendermap(renderer, worldmap, mapwidth, mapheight, camoffsetx, camoffsety, camscale);
 
         // Overlays
-        overlay::inventory(renderer, font, width, height, inventory, curblock, bgcolor, mousex, mousey);
+        overlay::inventory(renderer, font, inventory, curblock, bgcolor, mousex, mousey);
         overlay::mouse(renderer, inventory, worldmap, mapwidth, mapheight, curhoverx, curhovery, camoffsetx, camoffsety, camscale);
 
         // Show results
