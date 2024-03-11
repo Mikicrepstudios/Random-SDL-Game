@@ -1,8 +1,8 @@
 #pragma once
 
 namespace player {
-    extern void playermovement(SDL_Event event, int worldmap[250][250], int mapwidth, int mapheight, int playerspeed, int &playerx, int &playery);
-    extern void mouseevent(SDL_Event event, bool inventory, int worldmap[250][250], int mapwidth, int mapheight, int curhoverx, int curhovery, int &curblock, int camoffsetx, int camoffsety);
-    extern void inventoryevent(SDL_Event event, bool &inventory);
-    extern void mouseinvchooser(SDL_Event event, bool inventory, bool &running, int worldmap[250][250], int mapwidth, int mapheight, int &curblock, int &bgcolor, int mousex, int mousey);
+    extern void PlayerMovement(SDL_Event event, int worldMap[250][250], int mapWidth, int mapHeight, int playerSpeed, int &playerX, int &playerY);
+    extern void MouseEvent(SDL_Event event, bool inventory, int worldMap[250][250], int mapWidth, int mapHeight, int curHoverX, int curHoverY, int &curBlock, int camOffSetX, int camOffSetY);
+    extern void InventoryEvent(SDL_Event event, bool &inventory);
+    extern void MouseInvChooser(SDL_Event event, bool inventory, bool &running, int worldMap[250][250], int mapWidth, int mapHeight, int &curBlock, int &bgColor, int mouseX, int mouseY);
 }

@@ -4,23 +4,23 @@
 #include "graphics.h"
 
 namespace game {
-    void rendermap(SDL_Renderer* renderer, int worldmap[250][250], int mapwidth, int mapheight, int camoffsetx, int camoffsety, int camscale) {
-        for(int x = 0; x <= mapwidth; x++) {
-            for(int y = 0; y <= mapheight; y++) {
+    void RenderMap(SDL_Renderer* renderer, int worldMap[250][250], int mapWidth, int mapHeight, int camOffSetX, int camOffSetY, int camScale) {
+        for(int x = 0; x <= mapWidth; x++) {
+            for(int y = 0; y <= mapHeight; y++) {
                 // Get current block id and define variables
-                int objectid = worldmap[x][y];
-                int colorid = 0;
-                int colorr, colorg, colorb = 0;
+                int objectId = worldMap[x][y];
+                int colorId = 0;
+                int colorR, colorG, colorB = 0;
 
                 // Get color data
-                if (objectid != 0) {
-                    objects::objectColor(objectid, colorid);
-                    graphics::getColor(colorid, colorr, colorg, colorb);
+                if (objectId != 0) {
+                    objects::ObjectColor(objectId, colorId);
+                    graphics::GetColor(colorId, colorR, colorG, colorB);
 
                     // Do rendering
-                    SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-                    SDL_Rect currect = {(camoffsetx * camscale) + (x * camscale), (camoffsety * camscale) + (y * camscale), camscale, camscale};
-                    SDL_RenderFillRect(renderer, &currect);
+                    SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
+                    SDL_Rect curRect = {(camOffSetX * camScale) + (x * camScale), (camOffSetY * camScale) + (y * camScale), camScale, camScale};
+                    SDL_RenderFillRect(renderer, &curRect);
                 }
             }
         }

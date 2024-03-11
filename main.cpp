@@ -11,7 +11,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 21";
+const char* windowtitle = "Mikicrep | Build 22";
 
 int fps = 60;
 int width = 1280;
@@ -19,27 +19,27 @@ int height = 800;
 
 int main() {
     // SDL variables
-    int bgcolor = 0;
-    int mousex, mousey = 0;
-    int colorr, colorg, colorb = 0;
+    int bgColor = 0;
+    int mouseX, mouseY = 0;
+    int colorR, colorG, colorB = 0;
 
     // Cam
-    int camscale = 50;
-    int camoffsetx, camoffsety = 0;
+    int camScale = 50;
+    int camOffSetX, camOffSetY = 0;
 
     // Game
     bool inventory = false;
-    int curblock = 17;
-    int curhoverx,curhovery = 0;
+    int curBlock = 17;
+    int curHoverX, curHoverY = 0;
 
     // Game world
-    int mapwidth = 250 - 1;
-    int mapheight = 250 - 1;
-    int worldmap[250][250];
+    int mapWidth = 250 - 1;
+    int mapHeight = 250 - 1;
+    int worldMap[250][250];
 
     // Player
-    int playerx, playery = 0;
-    int playerspeed = 1;
+    int playerX, playerY = 0;
+    int playerSpeed = 1;
 
     // Prepare game
 	SDL_Window *window;
@@ -51,15 +51,15 @@ int main() {
 	TTF_Init();
 	IMG_Init(IMG_INIT_PNG);
 	TTF_Font* font = TTF_OpenFont("font.ttf", 24);
-	gamemap::clearmap(worldmap, mapwidth, mapheight);
-	files::loadmapevent(event, worldmap, mapwidth, mapheight);
+	gamemap::ClearMap(worldMap, mapWidth, mapHeight);
+	files::LoadMap(event, worldMap, mapWidth, mapHeight);
     bool running = true;
 
 	while(running) {
         // Main
-        SDL_GetMouseState(&mousex, &mousey);
-        curhoverx = mousex / camscale;
-        curhovery = mousey / camscale;
+        SDL_GetMouseState(&mouseX, &mouseY);
+        curHoverX = mouseX / camScale;
+        curHoverY = mouseY / camScale;
 
         // Event loop
         while(SDL_PollEvent(&event) != 0) {
@@ -74,42 +74,42 @@ int main() {
                         inventory = !inventory;
                 }
                 // Player movement
-                player::playermovement(event, worldmap, mapwidth, mapheight, playerspeed, playerx, playery);
+                player::PlayerMovement(event, worldMap, mapWidth, mapHeight, playerSpeed, playerX, playerY);
                 // Inventory
-                player::inventoryevent(event, inventory);
+                player::InventoryEvent(event, inventory);
 
                 // Clear map
                 if(event.key.keysym.sym == SDLK_c)
-                    gamemap::clearmap(worldmap, mapwidth, mapheight);
+                    gamemap::ClearMap(worldMap, mapWidth, mapHeight);
 
                 // Camera
-                events::camera(event, inventory, camoffsetx, camoffsety, camscale);
+                events::Camera(event, inventory, camOffSetX, camOffSetY, camScale);
             }
 
             // Place/Break
-            player::mouseevent(event, inventory, worldmap, mapwidth, mapheight, curhoverx, curhovery, curblock, camoffsetx, camoffsety);
-            player::mouseinvchooser(event, inventory, running, worldmap, mapwidth, mapheight, curblock, bgcolor, mousex, mousey);
+            player::MouseEvent(event, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, curBlock, camOffSetX, camOffSetY);
+            player::MouseInvChooser(event, inventory, running, worldMap, mapWidth, mapHeight, curBlock, bgColor, mouseX, mouseY);
         }
 
         // Set BG color to new color
-        graphics::getColor(bgcolor, colorr, colorg, colorb);
-        SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
+        graphics::GetColor(bgColor, colorR, colorG, colorB);
+        SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
         SDL_RenderClear(renderer);
         // ... or if there is custom bg
-        SDL_Surface* backgroundsurface = IMG_Load("background.png");
-        SDL_Texture* backgroundtexture = SDL_CreateTextureFromSurface(renderer, backgroundsurface);
-        SDL_Rect backgroundrect = {0, 0, width, height};
-        SDL_RenderCopy(renderer, backgroundtexture, NULL, &backgroundrect);
+        SDL_Surface* backgroundSurface = IMG_Load("background.png");
+        SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
+        SDL_Rect backgroundRect = {0, 0, width, height};
+        SDL_RenderCopy(renderer, backgroundTexture, NULL, &backgroundRect);
 
         // Pre logic
-        worldmap[playerx][playery] = 1;
+        worldMap[playerX][playerY] = 1;
 
         // Draw map
-        game::rendermap(renderer, worldmap, mapwidth, mapheight, camoffsetx, camoffsety, camscale);
+        game::RenderMap(renderer, worldMap, mapWidth, mapHeight, camOffSetX, camOffSetY, camScale);
 
         // Overlays
-        overlay::inventory(renderer, font, inventory, curblock, bgcolor, mousex, mousey);
-        overlay::mouse(renderer, inventory, worldmap, mapwidth, mapheight, curhoverx, curhovery, camoffsetx, camoffsety, camscale);
+        overlay::Inventory(renderer, font, inventory, curBlock, bgColor, mouseX, mouseY);
+        overlay::Mouse(renderer, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, camOffSetX, camOffSetY, camScale);
 
         // Show results
         SDL_RenderPresent(renderer);
@@ -126,12 +126,3 @@ int main() {
 	SDL_Quit();
 	return 0;
 }
-
-// 0 Black     8 Gray
-// 1 Brown     9 Red
-// 2 Green     10 Light green
-// 3 Olive     11 Yellow
-// 4 Dark blue 12 Royal blue
-// 5 Purple    13 Light purple
-// 6 Cyan      14 Aqua
-// 7 Silver    15 White
