@@ -3,26 +3,26 @@
 
 #include "graphics.h"
 
-int colorr, colorg, colorb = 0;
+int colorR, colorG, colorB = 0;
 
 namespace draw {
-    void drawButton(SDL_Renderer* renderer, SDL_Rect rect, int color, int colorhover, int mousex, int mousey) {
-        if (mousex >= rect.x && mousex <= rect.x + rect.w &&
-            mousey >= rect.y && mousey <= rect.y + rect.h)
-            graphics::getColor(colorhover, colorr, colorg, colorb);
+    void DrawButton(SDL_Renderer* renderer, SDL_Rect rect, int color, int colorHover, int mouseX, int mouseY) {
+        if (mouseX >= rect.x && mouseX <= rect.x + rect.w &&
+            mouseY >= rect.y && mouseY <= rect.y + rect.h)
+            graphics::GetColor(colorHover, colorR, colorG, colorB);
         else
-            graphics::getColor(color, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
+            graphics::GetColor(color, colorR, colorG, colorB);
+            SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
             SDL_RenderFillRect(renderer, &rect);
     }
-    void drawPreview(SDL_Renderer* renderer, SDL_Rect rect, int color) {
-        graphics::getColor(color, colorr, colorg, colorb);
-        SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
+    void DrawPreview(SDL_Renderer* renderer, SDL_Rect rect, int color) {
+        graphics::GetColor(color, colorR, colorG, colorB);
+        SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
         SDL_RenderFillRect(renderer, &rect);
     }
-    void drawText(SDL_Renderer* renderer, TTF_Font* font, SDL_Rect rect, const char* text, SDL_Color color) {
-        SDL_Surface* textsurface = TTF_RenderText_Solid(font, text, color);
-        SDL_Texture* texttexture = SDL_CreateTextureFromSurface(renderer, textsurface);
-        SDL_RenderCopy(renderer, texttexture, NULL, &rect);
+    void DrawText(SDL_Renderer* renderer, TTF_Font* font, SDL_Rect rect, const char* text, SDL_Color color) {
+        SDL_Surface* textSurface = TTF_RenderText_Solid(font, text, color);
+        SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+        SDL_RenderCopy(renderer, textTexture, NULL, &rect);
     }
 }

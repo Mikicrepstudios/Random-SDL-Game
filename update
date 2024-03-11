@@ -1,10 +1,9 @@
 # Added
-- Draw functions (draw.cpp)
 
 # Removed
 
 # Changed
-- Raah raah even less useless lines of code (i broke smth probably :D)
-- Aaa cleaner code... ...again
-
-(help me its 2 am)
+- More human readable function names  \
+                                       AAA WHY DID I DO THIS
+- More human readable variables       /
+- Moved color cheatsheet to notes file

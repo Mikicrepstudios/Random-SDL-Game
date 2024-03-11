@@ -9,119 +9,119 @@ const int width = 1280;
 const int height = 800;
 
 // Color
-SDL_Rect selclrect = {50, 50, 20, 80};
-SDL_Rect selcrrect = {170, 50, 20, 80};
-SDL_Rect colorrect = {80, 50, 80, 80};
-SDL_Rect colortextrect = {80, 140, 80, 40};
+SDL_Rect selCLRect = {50, 50, 20, 80};
+SDL_Rect selCRRect = {170, 50, 20, 80};
+SDL_Rect colorRect = {80, 50, 80, 80};
+SDL_Rect colorTextRect = {80, 140, 80, 40};
 
 // Background color
-SDL_Rect selbclrect = {width - 190, 50, 20, 80};
-SDL_Rect selbcrrect = {width - 70, 50, 20, 80};
-SDL_Rect bgcolorrect = {width - 160, 50, 80, 80};
-SDL_Rect bgcolortextrect = {width - 160, 140, 80, 40};
+SDL_Rect selBCLRect = {width - 190, 50, 20, 80};
+SDL_Rect selBCRRect = {width - 70, 50, 20, 80};
+SDL_Rect bgColorRect = {width - 160, 50, 80, 80};
+SDL_Rect bgColorTextRect = {width - 160, 140, 80, 40};
 
 // Preview
-SDL_Rect previewrect = {width / 2 - 50, 50, 100, 100};
-SDL_Rect previewtextrect = {width / 2 - 50, 160, 100, 40};
+SDL_Rect previewRect = {width / 2 - 50, 50, 100, 100};
+SDL_Rect previewTextRect = {width / 2 - 50, 160, 100, 40};
 
 // Buttons
-SDL_Rect saverect = {50, height - 160, 200, 50};
-SDL_Rect loadrect = {50, height - 100, 200, 50};
-SDL_Rect exitrect = {width - 250, height - 100, 200, 50};
+SDL_Rect saveRect = {50, height - 160, 200, 50};
+SDL_Rect loadRect = {50, height - 100, 200, 50};
+SDL_Rect exitRect = {width - 250, height - 100, 200, 50};
 
 namespace player {
-    void inventoryevent(SDL_Event event, bool &inventory) {
+    void InventoryEvent(SDL_Event event, bool &inventory) {
         if(event.key.keysym.sym == SDLK_e)
             inventory = !inventory;
     }
-    void mouseinvchooser(SDL_Event event, bool inventory, bool &running, int worldmap[250][250], int mapwidth, int mapheight, int &curblock, int &bgcolor, int mousex, int mousey) {
+    void MouseInvChooser(SDL_Event event, bool inventory, bool &running, int worldMap[250][250], int mapWidth, int mapHeight, int &curBlock, int &bgColor, int mouseX, int mouseY) {
         if (event.type == SDL_MOUSEBUTTONDOWN && inventory) {
             // Color
-            if (mousex >= selclrect.x && mousex <= selclrect.x + selclrect.w &&
-                mousey >= selclrect.y && mousey <= selclrect.y + selclrect.h) {
-                if (curblock == 10)
-                    curblock = 25;
+            if (mouseX >= selCLRect.x && mouseX <= selCLRect.x + selCLRect.w &&
+                mouseY >= selCLRect.y && mouseY <= selCLRect.y + selCLRect.h) {
+                if (curBlock == 10)
+                    curBlock = 25;
                 else
-                    curblock -= 1;
+                    curBlock -= 1;
             }
-            else if (mousex >= selcrrect.x && mousex <= selcrrect.x + selcrrect.w &&
-                mousey >= selcrrect.y && mousey <= selcrrect.y + selcrrect.h) {
-                if (curblock == 25)
-                    curblock = 10;
+            else if (mouseX >= selCRRect.x && mouseX <= selCRRect.x + selCRRect.w &&
+                     mouseY >= selCRRect.y && mouseY <= selCRRect.y + selCRRect.h) {
+                if (curBlock == 25)
+                    curBlock = 10;
                 else
-                    curblock += 1;
+                    curBlock += 1;
             }
 
             // BG Color
-            if (mousex >= selbclrect.x && mousex <= selbclrect.x + selbclrect.w &&
-                mousey >= selbclrect.y && mousey <= selbclrect.y + selbclrect.h) {
-                if (bgcolor == 0)
-                    bgcolor = 15;
+            if (mouseX >= selBCLRect.x && mouseX <= selBCLRect.x + selBCLRect.w &&
+                mouseY >= selBCLRect.y && mouseY <= selBCLRect.y + selBCLRect.h) {
+                if (bgColor == 0)
+                    bgColor = 15;
                 else
-                    bgcolor -= 1;
+                    bgColor -= 1;
             }
-            else if (mousex >= selbcrrect.x && mousex <= selbcrrect.x + selbcrrect.w &&
-                mousey >= selbcrrect.y && mousey <= selbcrrect.y + selbcrrect.h) {
-                if (bgcolor == 15)
-                    bgcolor = 0;
+            else if (mouseX >= selBCRRect.x && mouseX <= selBCRRect.x + selBCRRect.w &&
+                     mouseY >= selBCRRect.y && mouseY <= selBCRRect.y + selBCRRect.h) {
+                if (bgColor == 15)
+                    bgColor = 0;
                 else
-                    bgcolor += 1;
+                    bgColor += 1;
             }
 
             // Bottom bar
-            if (mousex >= saverect.x && mousex <= saverect.x + saverect.w &&
-                mousey >= saverect.y && mousey <= saverect.y + saverect.h)
-                files::savemapevent(event, worldmap, mapwidth, mapheight);
-            else if (mousex >= loadrect.x && mousex <= loadrect.x + loadrect.w &&
-                mousey >= loadrect.y && mousey <= loadrect.y + loadrect.h)
-                files::loadmapevent(event, worldmap, mapwidth, mapheight);
-            else if (mousex >= exitrect.x && mousex <= exitrect.x + exitrect.w &&
-                mousey >= exitrect.y && mousey <= exitrect.y + exitrect.h)
+            if (mouseX >= saveRect.x && mouseX <= saveRect.x + saveRect.w &&
+                mouseY >= saveRect.y && mouseY <= saveRect.y + saveRect.h)
+                files::SaveMap(event, worldMap, mapWidth, mapHeight);
+            else if (mouseX >= loadRect.x && mouseX <= loadRect.x + loadRect.w &&
+                mouseY >= loadRect.y && mouseY <= loadRect.y + loadRect.h)
+                files::LoadMap(event, worldMap, mapWidth, mapHeight);
+            else if (mouseX >= exitRect.x && mouseX <= exitRect.x + exitRect.w &&
+                mouseY >= exitRect.y && mouseY <= exitRect.y + exitRect.h)
                 running = false;
         }
     }
 }
 
 namespace overlay {
-    void inventory(SDL_Renderer* renderer, TTF_Font* font, bool inventory, int curblock, int bgcolor, int mousex, int mousey) {
+    void Inventory(SDL_Renderer* renderer, TTF_Font* font, bool inventory, int curBlock, int bgColor, int mouseX, int mouseY) {
         // Define variables
-        int colorr, colorg, colorb = 0;
-        SDL_Color textcolor = {255, 255, 255};
+        int colorR, colorG, colorB = 0;
+        SDL_Color textColor = {255, 255, 255};
 
         if (inventory) {
             // Render bg
-            graphics::getColor(8, colorr, colorg, colorb);
-            SDL_SetRenderDrawColor(renderer, colorr, colorg, colorb, 255);
-            SDL_Rect bgrect = {25, 25, width - 50, height - 50};
-            SDL_RenderFillRect(renderer, &bgrect);
+            graphics::GetColor(8, colorR, colorG, colorB);
+            SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
+            SDL_Rect bgRect = {25, 25, width - 50, height - 50};
+            SDL_RenderFillRect(renderer, &bgRect);
 
             // Color
-            draw::drawButton(renderer, selclrect, 15, 7, mousex, mousey);
-            draw::drawButton(renderer, selcrrect, 15, 7, mousex, mousey);
-            draw::drawPreview(renderer, colorrect, curblock - 10);
-            draw::drawText(renderer, font, colortextrect, "Block", textcolor);
+            draw::DrawButton(renderer, selCLRect, 15, 7, mouseX, mouseY);
+            draw::DrawButton(renderer, selCRRect, 15, 7, mouseX, mouseY);
+            draw::DrawPreview(renderer, colorRect, curBlock - 10);
+            draw::DrawText(renderer, font, colorTextRect, "Block", textColor);
 
             // BG Color
-            draw::drawButton(renderer, selbclrect, 15, 7, mousex, mousey);
-            draw::drawButton(renderer, selbcrrect, 15, 7, mousex, mousey);
-            draw::drawPreview(renderer, bgcolorrect, bgcolor);
-            draw::drawText(renderer, font, bgcolortextrect, "BG", textcolor);
+            draw::DrawButton(renderer, selBCLRect, 15, 7, mouseX, mouseY);
+            draw::DrawButton(renderer, selBCRRect, 15, 7, mouseX, mouseY);
+            draw::DrawPreview(renderer, bgColorRect, bgColor);
+            draw::DrawText(renderer, font, bgColorTextRect, "BG", textColor);
 
             // Preview
-            draw::drawPreview(renderer, previewrect, curblock - 10);
-            draw::drawText(renderer, font, previewtextrect, "Preview", textcolor);
+            draw::DrawPreview(renderer, previewRect, curBlock - 10);
+            draw::DrawText(renderer, font, previewTextRect, "Preview", textColor);
 
             // Save button
-            draw::drawButton(renderer, saverect, 2, 3, mousex, mousey);
-            draw::drawText(renderer, font, saverect, "save", textcolor);
+            draw::DrawButton(renderer, saveRect, 2, 3, mouseX, mouseY);
+            draw::DrawText(renderer, font, saveRect, "save", textColor);
 
             // Load button
-            draw::drawButton(renderer, loadrect, 9, 1, mousex, mousey);
-            draw::drawText(renderer, font, loadrect, "load", textcolor);
+            draw::DrawButton(renderer, loadRect, 9, 1, mouseX, mouseY);
+            draw::DrawText(renderer, font, loadRect, "load", textColor);
 
             // Exit button
-            draw::drawButton(renderer, exitrect, 9, 1, mousex, mousey);
-            draw::drawText(renderer, font, exitrect, "exit", textcolor);
+            draw::DrawButton(renderer, exitRect, 9, 1, mouseX, mouseY);
+            draw::DrawText(renderer, font, exitRect, "exit", textColor);
         }
     }
 }

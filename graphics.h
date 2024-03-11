@@ -1,5 +1,5 @@
 #pragma once
 
 namespace graphics {
-    extern void getColor(int colorid, int &colorr, int &colorg, int &colorb);
+    extern void GetColor(int colorId, int &colorR, int &colorG, int &colorB);
 }

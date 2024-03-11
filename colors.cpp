@@ -1,85 +1,85 @@
 namespace graphics {
-    void getColor(int colorid, int &colorr, int &colorg, int &colorb) {
-        switch(colorid) {
+    void GetColor(int colorId, int &colorR, int &colorG, int &colorB) {
+        switch(colorId) {
         case 0:
-            colorr = 0;
-            colorg = 0;
-            colorb = 0;
+            colorR = 0;
+            colorG = 0;
+            colorB = 0;
             break;
         case 1:
-            colorr = 82;
-            colorg = 5;
-            colorb = 0;
+            colorR = 82;
+            colorG = 5;
+            colorB = 0;
             break;
         case 2:
-            colorr = 0;
-            colorg = 255;
-            colorb = 0;
+            colorR = 0;
+            colorG = 255;
+            colorB = 0;
             break;
         case 3:
-            colorr = 208;
-            colorg = 255;
-            colorb = 0;
+            colorR = 208;
+            colorG = 255;
+            colorB = 0;
             break;
         case 4:
-            colorr = 0;
-            colorg = 0;
-            colorb = 255;
+            colorR = 0;
+            colorG = 0;
+            colorB = 255;
             break;
         case 5:
-            colorr = 153;
-            colorg = 0;
-            colorb = 209;
+            colorR = 153;
+            colorG = 0;
+            colorB = 209;
             break;
         case 6:
-            colorr = 157;
-            colorg = 0;
-            colorb = 255;
+            colorR = 157;
+            colorG = 0;
+            colorB = 255;
             break;
         case 7:
-            colorr = 135;
-            colorg = 135;
-            colorb = 135;
+            colorR = 135;
+            colorG = 135;
+            colorB = 135;
             break;
         case 8:
-            colorr = 50;
-            colorg = 50;
-            colorb = 50;
+            colorR = 50;
+            colorG = 50;
+            colorB = 50;
             break;
         case 9:
-            colorr = 255;
-            colorg = 0;
-            colorb = 0;
+            colorR = 255;
+            colorG = 0;
+            colorB = 0;
             break;
         case 10:
-            colorr = 50;
-            colorg = 255;
-            colorb = 50;
+            colorR = 50;
+            colorG = 255;
+            colorB = 50;
             break;
         case 11:
-            colorr = 255;
-            colorg = 255;
-            colorb = 0;
+            colorR = 255;
+            colorG = 255;
+            colorB = 0;
             break;
         case 12:
-            colorr = 65;
-            colorg = 105;
-            colorb = 225;
+            colorR = 65;
+            colorG = 105;
+            colorB = 225;
             break;
         case 13:
-            colorr = 255;
-            colorg = 0;
-            colorb = 255;
+            colorR = 255;
+            colorG = 0;
+            colorB = 255;
             break;
         case 14:
-            colorr = 0;
-            colorg = 100;
-            colorb = 255;
+            colorR = 0;
+            colorG = 100;
+            colorB = 255;
             break;
         case 15:
-            colorr = 255;
-            colorg = 255;
-            colorb = 255;
+            colorR = 255;
+            colorG = 255;
+            colorB = 255;
             break;
         }
     }
