@@ -1,8 +1,10 @@
+#include "block.h"
+
 namespace gamemap {
-    void ClearMap(int worldMap[250][250], int mapWidth, int mapHeight) {
+    void ClearMap(Block worldMap[250][250], int mapWidth, int mapHeight) {
         for (int x = 0; x < mapWidth; x++) {
             for (int y = 0; y < mapHeight; y++) {
-                worldMap[x][y] = 0;
+                worldMap[x][y] = Block(0, 0);
             }
         }
     }

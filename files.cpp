@@ -1,39 +1,68 @@
 #include <fstream>
 #include "SDL2/SDL.h"
 
-namespace files {
-    void SaveMap(SDL_Event event, int worldMap[250][250], int mapWidth, int mapHeight) {
-        // Open file
-        std::ofstream mapFile("map.msave");
+#include "block.h"
 
-        // Save
-        if (mapFile.is_open()) {
+namespace files {
+    void SaveMap(SDL_Event event, Block worldMap[250][250], int mapWidth, int mapHeight) {
+        // Open file
+        std::ofstream blocktypesFile("map1.msave");
+        std::ofstream blockcolorsFile("map2.msave");
+
+        // Save blocktype
+        if (blocktypesFile.is_open()) {
             for (int x = 0; x <= mapWidth; x++) {
                 for (int y = 0; y <= mapHeight; y++) {
-                    if (worldMap[x][y] != 1) {
-                        mapFile << worldMap[x][y] << " "; // Write blocks
+                    if (worldMap[x][y].type != 1) {
+                        blocktypesFile << worldMap[x][y].type << " "; // Write blocks
                     }
                     else {
-                        mapFile << 0 << " "; // Do not write if player
+                        blocktypesFile << 0 << " "; // Do not write if player
                     }
                 }
-                mapFile << "\n"; // Start a new line for the next row
+                blocktypesFile << "\n"; // Start a new line for the next row
             }
-            mapFile.close();
+            blocktypesFile.close();
+        }
+        // Save colors
+        if (blockcolorsFile.is_open()) {
+            for (int x = 0; x <= mapWidth; x++) {
+                for (int y = 0; y <= mapHeight; y++) {
+                    if (worldMap[x][y].type != 1) {
+                        blockcolorsFile << worldMap[x][y].color << " "; // Write blocks
+                    }
+                    else {
+                        blockcolorsFile << 0 << " "; // Do not write if player
+                    }
+                }
+                blockcolorsFile << "\n"; // Start a new line for the next row
+            }
+            blockcolorsFile.close();
         }
     }
 
-    void LoadMap(SDL_Event event, int worldMap[250][250], int mapWidth, int mapHeight) {
+    void LoadMap(SDL_Event event, Block worldMap[250][250], int mapWidth, int mapHeight) {
         // Open file
-        std::ifstream mapFile("map.msave");
+        std::ifstream blocktypesFile("map1.msave");
+        std::ifstream blockcolorsFile("map2.msave");
 
-        if (mapFile.is_open()) {
+        // Load blocktypes
+        if (blocktypesFile.is_open()) {
             for (int x = 0; x <= mapWidth; x++) {
                 for (int y = 0; y <= mapHeight; y++) {
-                    mapFile >> worldMap[x][y];
+                    blocktypesFile >> worldMap[x][y].type;
                 }
             }
-            mapFile.close();
+            blocktypesFile.close();
+        }
+        // Load colors
+        if (blockcolorsFile.is_open()) {
+            for (int x = 0; x <= mapWidth; x++) {
+                for (int y = 0; y <= mapHeight; y++) {
+                    blockcolorsFile >> worldMap[x][y].color;
+                }
+            }
+            blockcolorsFile.close();
         }
     }
 }

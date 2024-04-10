@@ -29,6 +29,7 @@
 			<Add library="/usr/lib/libSDL2_image.so" />
 		</Linker>
 		<Unit filename="addional.h" />
+		<Unit filename="block.h" />
 		<Unit filename="camera.cpp" />
 		<Unit filename="colors.cpp" />
 		<Unit filename="draw.cpp" />
@@ -40,8 +41,6 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="map.cpp" />
 		<Unit filename="notes" />
-		<Unit filename="objects.cpp" />
-		<Unit filename="objects.h" />
 		<Unit filename="overlay.h" />
 		<Unit filename="player.h" />
 		<Unit filename="playercontrols.cpp" />

@@ -1,9 +1,13 @@
 # Added
+- Better system for block properties
+- 16 more colors
 
 # Removed
+- objects.cpp
+- objects.h
 
 # Changed
-- More human readable function names  \
-                                       AAA WHY DID I DO THIS
-- More human readable variables       /
-- Moved color cheatsheet to notes file
+- Split saves in multiple files (each file for each block attribute)
+- Different color palette
+
+# Notes
