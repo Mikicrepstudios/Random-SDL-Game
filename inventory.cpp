@@ -1,6 +1,7 @@
 #include "SDL2/SDL.h"
 #include <SDL_ttf.h>
 
+#include "block.h"
 #include "files.h"
 #include "graphics.h"
 #include "addional.h"
@@ -34,20 +35,20 @@ namespace player {
         if(event.key.keysym.sym == SDLK_e)
             inventory = !inventory;
     }
-    void MouseInvChooser(SDL_Event event, bool inventory, bool &running, int worldMap[250][250], int mapWidth, int mapHeight, int &curBlock, int &bgColor, int mouseX, int mouseY) {
+    void MouseInvChooser(SDL_Event event, bool inventory, bool &running, Block worldMap[250][250], int mapWidth, int mapHeight, int &curBlock, int &bgColor, int mouseX, int mouseY) {
         if (event.type == SDL_MOUSEBUTTONDOWN && inventory) {
             // Color
             if (mouseX >= selCLRect.x && mouseX <= selCLRect.x + selCLRect.w &&
                 mouseY >= selCLRect.y && mouseY <= selCLRect.y + selCLRect.h) {
-                if (curBlock == 10)
-                    curBlock = 25;
+                if (curBlock == 1)
+                    curBlock = 32;
                 else
                     curBlock -= 1;
             }
             else if (mouseX >= selCRRect.x && mouseX <= selCRRect.x + selCRRect.w &&
                      mouseY >= selCRRect.y && mouseY <= selCRRect.y + selCRRect.h) {
-                if (curBlock == 25)
-                    curBlock = 10;
+                if (curBlock == 32)
+                    curBlock = 1;
                 else
                     curBlock += 1;
             }
@@ -90,37 +91,37 @@ namespace overlay {
 
         if (inventory) {
             // Render bg
-            graphics::GetColor(8, colorR, colorG, colorB);
+            graphics::GetColor(3, colorR, colorG, colorB);
             SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
             SDL_Rect bgRect = {25, 25, width - 50, height - 50};
             SDL_RenderFillRect(renderer, &bgRect);
 
             // Color
-            draw::DrawButton(renderer, selCLRect, 15, 7, mouseX, mouseY);
-            draw::DrawButton(renderer, selCRRect, 15, 7, mouseX, mouseY);
-            draw::DrawPreview(renderer, colorRect, curBlock - 10);
+            draw::DrawButton(renderer, selCLRect, 2, 1, mouseX, mouseY);
+            draw::DrawButton(renderer, selCRRect, 2, 1, mouseX, mouseY);
+            draw::DrawPreview(renderer, colorRect, curBlock);
             draw::DrawText(renderer, font, colorTextRect, "Block", textColor);
 
             // BG Color
-            draw::DrawButton(renderer, selBCLRect, 15, 7, mouseX, mouseY);
-            draw::DrawButton(renderer, selBCRRect, 15, 7, mouseX, mouseY);
+            draw::DrawButton(renderer, selBCLRect, 2, 1, mouseX, mouseY);
+            draw::DrawButton(renderer, selBCRRect, 2, 1, mouseX, mouseY);
             draw::DrawPreview(renderer, bgColorRect, bgColor);
             draw::DrawText(renderer, font, bgColorTextRect, "BG", textColor);
 
             // Preview
-            draw::DrawPreview(renderer, previewRect, curBlock - 10);
+            draw::DrawPreview(renderer, previewRect, curBlock);
             draw::DrawText(renderer, font, previewTextRect, "Preview", textColor);
 
             // Save button
-            draw::DrawButton(renderer, saveRect, 2, 3, mouseX, mouseY);
+            draw::DrawButton(renderer, saveRect, 13, 12, mouseX, mouseY);
             draw::DrawText(renderer, font, saveRect, "save", textColor);
 
             // Load button
-            draw::DrawButton(renderer, loadRect, 9, 1, mouseX, mouseY);
+            draw::DrawButton(renderer, loadRect, 27, 26, mouseX, mouseY);
             draw::DrawText(renderer, font, loadRect, "load", textColor);
 
             // Exit button
-            draw::DrawButton(renderer, exitRect, 9, 1, mouseX, mouseY);
+            draw::DrawButton(renderer, exitRect, 27, 26, mouseX, mouseY);
             draw::DrawText(renderer, font, exitRect, "exit", textColor);
         }
     }

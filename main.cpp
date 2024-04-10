@@ -4,14 +4,14 @@
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 
+#include "block.h"
 #include "files.h"
 #include "game.h"
 #include "graphics.h"
-#include "objects.h"
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 22";
+const char* windowtitle = "Mikicrep | Build 23";
 
 int fps = 60;
 int width = 1280;
@@ -29,13 +29,13 @@ int main() {
 
     // Game
     bool inventory = false;
-    int curBlock = 17;
+    int curBlock = 7;
     int curHoverX, curHoverY = 0;
 
     // Game world
     int mapWidth = 250 - 1;
     int mapHeight = 250 - 1;
-    int worldMap[250][250];
+    Block worldMap[250][250] = {};
 
     // Player
     int playerX, playerY = 0;
@@ -102,7 +102,7 @@ int main() {
         SDL_RenderCopy(renderer, backgroundTexture, NULL, &backgroundRect);
 
         // Pre logic
-        worldMap[playerX][playerY] = 1;
+        worldMap[playerX][playerY] = Block(1, 6);
 
         // Draw map
         game::RenderMap(renderer, worldMap, mapWidth, mapHeight, camOffSetX, camOffSetY, camScale);
