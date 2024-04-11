@@ -11,7 +11,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 23";
+const char* windowtitle = "Mikicrep | Build 24";
 
 int fps = 60;
 int width = 1280;
@@ -19,7 +19,7 @@ int height = 800;
 
 int main() {
     // SDL variables
-    int bgColor = 0;
+    int bgColor = 1;
     int mouseX, mouseY = 0;
     int colorR, colorG, colorB = 0;
 
@@ -29,7 +29,9 @@ int main() {
 
     // Game
     bool inventory = false;
-    int curBlock = 7;
+    bool colorPick = false;
+    bool bgcolorPick = false;
+    int curBlock = 2;
     int curHoverX, curHoverY = 0;
 
     // Game world
@@ -76,7 +78,7 @@ int main() {
                 // Player movement
                 player::PlayerMovement(event, worldMap, mapWidth, mapHeight, playerSpeed, playerX, playerY);
                 // Inventory
-                player::InventoryEvent(event, inventory);
+                player::InventoryEvent(event, inventory, colorPick, bgcolorPick);
 
                 // Clear map
                 if(event.key.keysym.sym == SDLK_c)
@@ -88,7 +90,7 @@ int main() {
 
             // Place/Break
             player::MouseEvent(event, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, curBlock, camOffSetX, camOffSetY);
-            player::MouseInvChooser(event, inventory, running, worldMap, mapWidth, mapHeight, curBlock, bgColor, mouseX, mouseY);
+            player::MouseInvChooser(renderer, event, inventory, running, colorPick, bgcolorPick, worldMap, mapWidth, mapHeight, curBlock, bgColor, mouseX, mouseY, width, height);
         }
 
         // Set BG color to new color
@@ -108,7 +110,7 @@ int main() {
         game::RenderMap(renderer, worldMap, mapWidth, mapHeight, camOffSetX, camOffSetY, camScale);
 
         // Overlays
-        overlay::Inventory(renderer, font, inventory, curBlock, bgColor, mouseX, mouseY);
+        overlay::Inventory(renderer, font, inventory, colorPick, bgcolorPick, curBlock, bgColor, mouseX, mouseY);
         overlay::Mouse(renderer, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, camOffSetX, camOffSetY, camScale);
 
         // Show results
@@ -126,3 +128,5 @@ int main() {
 	SDL_Quit();
 	return 0;
 }
+
+// 800x400
