@@ -34,14 +34,13 @@ SDL_Rect exitRect = {width - 250, height - 100, 200, 50};
 
 namespace player {
     void InventoryEvent(SDL_Event event, bool &inventory, bool &colorPick, bool &bgColorPick) {
-        if(event.key.keysym.sym == SDLK_e)
+        if(event.key.keysym.sym == SDLK_e) {
             // Before stopping inv exit every sub UI
-            if (colorPick)
-                colorPick = !colorPick;
-            if (bgColorPick)
-                bgColorPick = !bgColorPick;
+            colorPick = false;
+            bgColorPick = false;
 
             inventory = !inventory;
+        }
     }
     void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, bool inventory, bool &running, bool &colorPick, bool &bgColorPick, Block worldMap[250][250], int mapWidth, int mapHeight, int &curBlock, int &bgColor, int mouseX, int mouseY, int width, int height) {
         if (event.type == SDL_MOUSEBUTTONDOWN && inventory) {
@@ -62,18 +61,15 @@ namespace player {
             if (mouseX >= colorRect.x && mouseX <= colorRect.x + colorRect.w &&
                 mouseY >= colorRect.y && mouseY <= colorRect.y + colorRect.h && !bgColorPick)
                 colorPick = !colorPick;
+            else if (colorPick)
+                player::ColorPickerEvent(colorPick, mouseX, mouseY, width, height, curBlock);
 
             // BG Color
             if (mouseX >= bgColorRect.x && mouseX <= bgColorRect.x + bgColorRect.w &&
                 mouseY >= bgColorRect.y && mouseY <= bgColorRect.y + bgColorRect.h && !colorPick)
                 bgColorPick = !bgColorPick;
-
-            if (colorPick) {
-                player::colorPickerEvent(mouseX, mouseY, width, height, curBlock);
-            }
-            else if (bgColorPick) {
-                player::colorPickerEvent(mouseX, mouseY, width, height, bgColor);
-            }
+            else if (bgColorPick)
+                player::ColorPickerEvent(bgColorPick, mouseX, mouseY, width, height, bgColor);
         }
     }
 }
@@ -121,7 +117,7 @@ namespace overlay {
 
             // Color pickers
             if(colorPick | bgcolorPick)
-                overlay::colorPicker(renderer, width, height);
+                overlay::ColorPicker(renderer, width, height);
         }
     }
 }

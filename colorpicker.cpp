@@ -3,7 +3,7 @@
 #include "graphics.h"
 
 namespace player {
-    void colorPickerEvent(int mouseX, int mouseY, int width, int height, int &color) {
+    void ColorPickerEvent(bool &picker, int mouseX, int mouseY, int width, int height, int &color) {
         int startposw = width / 2 - 500;
         int startposh = height / 2 - 300;
         int curColor = 1;
@@ -15,6 +15,7 @@ namespace player {
                 if (mouseX >= curRect.x && mouseX <= curRect.x + curRect.w &&
                     mouseY >= curRect.y && mouseY <= curRect.y + curRect.h)
                     color = curColor;
+                    picker = false;
 
                 curColor++;
             }
@@ -23,7 +24,7 @@ namespace player {
 }
 
 namespace overlay {
-    void colorPicker(SDL_Renderer* renderer, int width, int height) {
+    void ColorPicker(SDL_Renderer* renderer, int width, int height) {
         int colorR, colorG, colorB = 0;
         int curColor = 1;
 
