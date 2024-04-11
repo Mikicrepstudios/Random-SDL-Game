@@ -1,13 +1,12 @@
 # Added
-- Better system for block properties
-- 16 more colors
+- Actual darker button effect instead of using 2nd color
+- Color picker
 
 # Removed
-- objects.cpp
-- objects.h
 
-# Changed
-- Split saves in multiple files (each file for each block attribute)
-- Different color palette
+# Changed/Fixed
+- Fixed BG colors (now 32 colors available)
+- Fixed non existent BG color
+- Disabled selector arrows
 
 # Notes

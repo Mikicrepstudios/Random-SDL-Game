@@ -31,6 +31,7 @@
 		<Unit filename="addional.h" />
 		<Unit filename="block.h" />
 		<Unit filename="camera.cpp" />
+		<Unit filename="colorpicker.cpp" />
 		<Unit filename="colors.cpp" />
 		<Unit filename="draw.cpp" />
 		<Unit filename="files.cpp" />

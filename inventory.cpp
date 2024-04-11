@@ -1,10 +1,12 @@
 #include "SDL2/SDL.h"
 #include <SDL_ttf.h>
 
+#include "addional.h"
 #include "block.h"
 #include "files.h"
 #include "graphics.h"
-#include "addional.h"
+#include "overlay.h"
+#include "player.h"
 
 const int width = 1280;
 const int height = 800;
@@ -31,60 +33,53 @@ SDL_Rect loadRect = {50, height - 100, 200, 50};
 SDL_Rect exitRect = {width - 250, height - 100, 200, 50};
 
 namespace player {
-    void InventoryEvent(SDL_Event event, bool &inventory) {
+    void InventoryEvent(SDL_Event event, bool &inventory, bool &colorPick, bool &bgColorPick) {
         if(event.key.keysym.sym == SDLK_e)
+            // Before stopping inv exit every sub UI
+            if (colorPick)
+                colorPick = !colorPick;
+            if (bgColorPick)
+                bgColorPick = !bgColorPick;
+
             inventory = !inventory;
     }
-    void MouseInvChooser(SDL_Event event, bool inventory, bool &running, Block worldMap[250][250], int mapWidth, int mapHeight, int &curBlock, int &bgColor, int mouseX, int mouseY) {
+    void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, bool inventory, bool &running, bool &colorPick, bool &bgColorPick, Block worldMap[250][250], int mapWidth, int mapHeight, int &curBlock, int &bgColor, int mouseX, int mouseY, int width, int height) {
         if (event.type == SDL_MOUSEBUTTONDOWN && inventory) {
+            if (!colorPick && !bgColorPick) {
+                // Bottom bar
+                if (mouseX >= saveRect.x && mouseX <= saveRect.x + saveRect.w &&
+                    mouseY >= saveRect.y && mouseY <= saveRect.y + saveRect.h)
+                    files::SaveMap(event, worldMap, mapWidth, mapHeight);
+                else if (mouseX >= loadRect.x && mouseX <= loadRect.x + loadRect.w &&
+                    mouseY >= loadRect.y && mouseY <= loadRect.y + loadRect.h)
+                    files::LoadMap(event, worldMap, mapWidth, mapHeight);
+                else if (mouseX >= exitRect.x && mouseX <= exitRect.x + exitRect.w &&
+                    mouseY >= exitRect.y && mouseY <= exitRect.y + exitRect.h)
+                    running = false;
+            }
+
             // Color
-            if (mouseX >= selCLRect.x && mouseX <= selCLRect.x + selCLRect.w &&
-                mouseY >= selCLRect.y && mouseY <= selCLRect.y + selCLRect.h) {
-                if (curBlock == 1)
-                    curBlock = 32;
-                else
-                    curBlock -= 1;
-            }
-            else if (mouseX >= selCRRect.x && mouseX <= selCRRect.x + selCRRect.w &&
-                     mouseY >= selCRRect.y && mouseY <= selCRRect.y + selCRRect.h) {
-                if (curBlock == 32)
-                    curBlock = 1;
-                else
-                    curBlock += 1;
-            }
+            if (mouseX >= colorRect.x && mouseX <= colorRect.x + colorRect.w &&
+                mouseY >= colorRect.y && mouseY <= colorRect.y + colorRect.h && !bgColorPick)
+                colorPick = !colorPick;
 
             // BG Color
-            if (mouseX >= selBCLRect.x && mouseX <= selBCLRect.x + selBCLRect.w &&
-                mouseY >= selBCLRect.y && mouseY <= selBCLRect.y + selBCLRect.h) {
-                if (bgColor == 0)
-                    bgColor = 15;
-                else
-                    bgColor -= 1;
-            }
-            else if (mouseX >= selBCRRect.x && mouseX <= selBCRRect.x + selBCRRect.w &&
-                     mouseY >= selBCRRect.y && mouseY <= selBCRRect.y + selBCRRect.h) {
-                if (bgColor == 15)
-                    bgColor = 0;
-                else
-                    bgColor += 1;
-            }
+            if (mouseX >= bgColorRect.x && mouseX <= bgColorRect.x + bgColorRect.w &&
+                mouseY >= bgColorRect.y && mouseY <= bgColorRect.y + bgColorRect.h && !colorPick)
+                bgColorPick = !bgColorPick;
 
-            // Bottom bar
-            if (mouseX >= saveRect.x && mouseX <= saveRect.x + saveRect.w &&
-                mouseY >= saveRect.y && mouseY <= saveRect.y + saveRect.h)
-                files::SaveMap(event, worldMap, mapWidth, mapHeight);
-            else if (mouseX >= loadRect.x && mouseX <= loadRect.x + loadRect.w &&
-                mouseY >= loadRect.y && mouseY <= loadRect.y + loadRect.h)
-                files::LoadMap(event, worldMap, mapWidth, mapHeight);
-            else if (mouseX >= exitRect.x && mouseX <= exitRect.x + exitRect.w &&
-                mouseY >= exitRect.y && mouseY <= exitRect.y + exitRect.h)
-                running = false;
+            if (colorPick) {
+                player::colorPickerEvent(mouseX, mouseY, width, height, curBlock);
+            }
+            else if (bgColorPick) {
+                player::colorPickerEvent(mouseX, mouseY, width, height, bgColor);
+            }
         }
     }
 }
 
 namespace overlay {
-    void Inventory(SDL_Renderer* renderer, TTF_Font* font, bool inventory, int curBlock, int bgColor, int mouseX, int mouseY) {
+    void Inventory(SDL_Renderer* renderer, TTF_Font* font, bool inventory, bool colorPick, bool bgcolorPick, int curBlock, int &bgColor, int mouseX, int mouseY) {
         // Define variables
         int colorR, colorG, colorB = 0;
         SDL_Color textColor = {255, 255, 255};
@@ -123,6 +118,10 @@ namespace overlay {
             // Exit button
             draw::DrawButton(renderer, exitRect, 27, 26, mouseX, mouseY);
             draw::DrawText(renderer, font, exitRect, "exit", textColor);
+
+            // Color pickers
+            if(colorPick | bgcolorPick)
+                overlay::colorPicker(renderer, width, height);
         }
     }
 }

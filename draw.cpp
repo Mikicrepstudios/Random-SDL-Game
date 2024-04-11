@@ -7,11 +7,16 @@ int colorR, colorG, colorB = 0;
 
 namespace draw {
     void DrawButton(SDL_Renderer* renderer, SDL_Rect rect, int color, int colorHover, int mouseX, int mouseY) {
+        graphics::GetColor(color, colorR, colorG, colorB);
         if (mouseX >= rect.x && mouseX <= rect.x + rect.w &&
-            mouseY >= rect.y && mouseY <= rect.y + rect.h)
-            graphics::GetColor(colorHover, colorR, colorG, colorB);
+            mouseY >= rect.y && mouseY <= rect.y + rect.h) {
+            colorR -= colorR * .25;
+            colorG -= colorG * .25;
+            colorB -= colorB * .25;
+            SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
+            SDL_RenderFillRect(renderer, &rect);
+        }
         else
-            graphics::GetColor(color, colorR, colorG, colorB);
             SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
             SDL_RenderFillRect(renderer, &rect);
     }

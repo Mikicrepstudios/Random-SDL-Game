@@ -15,7 +15,7 @@
 
 1712752980 source:/home/mikicrep/Desktop/Random-SDL-Game/colors.cpp
 
-1712753517 source:/home/mikicrep/Desktop/Random-SDL-Game/main.cpp
+1712871487 source:/home/mikicrep/Desktop/Random-SDL-Game/main.cpp
 	<iostream>
 	<stdio.h>
 	"SDL2/SDL.h"
@@ -38,7 +38,7 @@
 	"SDL2/SDL.h"
 	"block.h"
 
-1712692851 /home/mikicrep/Desktop/Random-SDL-Game/player.h
+1712871469 /home/mikicrep/Desktop/Random-SDL-Game/player.h
 
 1710113293 /home/mikicrep/Desktop/Random-SDL-Game/graphics.h
 
@@ -46,13 +46,14 @@
 	"SDL2/SDL.h"
 	"block.h"
 
-1712753318 source:/home/mikicrep/Desktop/Random-SDL-Game/inventory.cpp
+1712778095 source:/home/mikicrep/Desktop/Random-SDL-Game/inventory.cpp
 	"SDL2/SDL.h"
 	<SDL_ttf.h>
+	"addional.h"
 	"block.h"
 	"files.h"
 	"graphics.h"
-	"addional.h"
+	"overlay.h"
 
 1712729795 source:/home/mikicrep/Desktop/Random-SDL-Game/map.cpp
 	"block.h"
@@ -64,7 +65,7 @@
 
 1712692765 /home/mikicrep/Desktop/Random-SDL-Game/game.h
 
-1712692836 /home/mikicrep/Desktop/Random-SDL-Game/overlay.h
+1712871807 /home/mikicrep/Desktop/Random-SDL-Game/overlay.h
 
 1710113452 source:/home/mikicrep/Desktop/Random-SDL-Game/camera.cpp
 	"SDL2/SDL.h"
@@ -481,10 +482,14 @@
 
 1710113171 /home/mikicrep/Desktop/Random-SDL-Game/addional.h
 
-1712753393 source:/home/mikicrep/Desktop/Random-SDL-Game/draw.cpp
+1712767403 source:/home/mikicrep/Desktop/Random-SDL-Game/draw.cpp
 	"SDL2/SDL.h"
 	<SDL_ttf.h>
 	"graphics.h"
 
 1712692713 /home/mikicrep/Desktop/Random-SDL-Game/block.h
+
+1712871809 source:/home/mikicrep/Desktop/Random-SDL-Game/colorpicker.cpp
+	"SDL2/SDL.h"
+	"graphics.h"
 
