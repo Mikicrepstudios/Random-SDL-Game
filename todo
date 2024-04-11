@@ -1,13 +1,36 @@
-bg behind preview - very soon
-color picker title bar - planned
-clean old files - very soon
-rename curblock to color - very soon
-block data - planned
-player colors - planned
-camerapos cheat - planned
-playerpos cheat - planned
-undo/redo - planned
-block textures - planned
-particles - thinking
-no collision block - thinking
-power ups - thinking
+/*--- TODO List ---*/
+## Very soon:
+- bg behind preview - very soon
+(this will fix not showing colors which are same as thier background)
+- rename curblock to color - very soon
+(refactor variable)
+
+## Planned:
+- color picker title bar - planned
+(show player what color picker menu is currently open)
+- player colors - planned
+(give player ability to change colors)
+- camerapos cheat - planned
+(click key, enable mode where u click anywhere and that sets cameras position)
+- playerpos cheat - planned
+(same for camerapos cheat but for player)
+- undo/redo - planned
+(temponary memory to revert accidental clicks/missclicks, got idea for last placed block undo/redo, thinking abt bigger limit)
+- block textures - planned
+(overlay on block to make it seem like it got texture)
+- no collision block - planned
+(block where player got ability to go thru it)
+
+## Thinking:
+- particles - thinking
+(on destroyed block???)
+- power ups - thinking
+(player pickupable objects put on surface layer???)
+
+### Format:
+- feature - rank
+(description/s if any)
+### Explanations:
+- Very soon - priority, most likely coming next few updates
+- Planned   - will probably add it to this
+- Thinking  - 50/50, has chance to come to game

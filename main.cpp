@@ -11,7 +11,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 24";
+const char* windowtitle = "Mikicrep | Build 25";
 
 int fps = 60;
 int width = 1280;
@@ -73,6 +73,9 @@ int main() {
                     if (!inventory)
                         running = false;
                     else
+                        colorPick = false;
+                        bgColorPick = false;
+
                         inventory = !inventory;
                 }
                 // Player movement

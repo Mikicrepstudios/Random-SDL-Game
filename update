@@ -1,12 +1,14 @@
-# Added
-- Actual darker button effect instead of using 2nd color
-- Color picker
+# Added:
+- Color picker closes when u select color
 
-# Removed
+# Removed:
+- Notes file - got no use for now, maybe gonna get readded Someday in the future?
+- Useless if gates
 
-# Changed/Fixed
-- Fixed BG colors (now 32 colors available)
-- Fixed non existent BG color
-- Disabled selector arrows
+# Changed/Fixed:
+- Fixed function names to be "organized"
+- todo file - better formatted
+- Fixed opening inventory on every block moved
 
-# Notes
+# Notes:
+Ayy build 25 in 6/7 months :D
