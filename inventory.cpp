@@ -15,16 +15,19 @@ const int height = 800;
 SDL_Rect selCLRect = {50, 50, 20, 80};
 SDL_Rect selCRRect = {170, 50, 20, 80};
 SDL_Rect colorRect = {80, 50, 80, 80};
+SDL_Rect colorRectb = {75, 45, 90, 90};
 SDL_Rect colorTextRect = {80, 140, 80, 40};
 
 // Background color
 SDL_Rect selBCLRect = {width - 190, 50, 20, 80};
 SDL_Rect selBCRRect = {width - 70, 50, 20, 80};
 SDL_Rect bgColorRect = {width - 160, 50, 80, 80};
+SDL_Rect bgColorRectb = {width - 165, 45, 90, 90};
 SDL_Rect bgColorTextRect = {width - 160, 140, 80, 40};
 
 // Preview
 SDL_Rect previewRect = {width / 2 - 50, 50, 100, 100};
+SDL_Rect previewRectb = {width / 2 - 55, 45, 110, 110};
 SDL_Rect previewTextRect = {width / 2 - 50, 160, 100, 40};
 
 // Buttons
@@ -58,15 +61,15 @@ namespace player {
             }
 
             // Color
-            if (mouseX >= colorRect.x && mouseX <= colorRect.x + colorRect.w &&
-                mouseY >= colorRect.y && mouseY <= colorRect.y + colorRect.h && !bgColorPick)
+            if (mouseX >= colorRectb.x && mouseX <= colorRectb.x + colorRectb.w &&
+                mouseY >= colorRectb.y && mouseY <= colorRectb.y + colorRectb.h && !bgColorPick)
                 colorPick = !colorPick;
             else if (colorPick)
                 player::ColorPickerEvent(colorPick, mouseX, mouseY, width, height, curBlock);
 
             // BG Color
-            if (mouseX >= bgColorRect.x && mouseX <= bgColorRect.x + bgColorRect.w &&
-                mouseY >= bgColorRect.y && mouseY <= bgColorRect.y + bgColorRect.h && !colorPick)
+            if (mouseX >= bgColorRectb.x && mouseX <= bgColorRectb.x + bgColorRectb.w &&
+                mouseY >= bgColorRectb.y && mouseY <= bgColorRectb.y + bgColorRectb.h && !colorPick)
                 bgColorPick = !bgColorPick;
             else if (bgColorPick)
                 player::ColorPickerEvent(bgColorPick, mouseX, mouseY, width, height, bgColor);
@@ -90,16 +93,19 @@ namespace overlay {
             // Color
             draw::DrawButton(renderer, selCLRect, 2, 1, mouseX, mouseY);
             draw::DrawButton(renderer, selCRRect, 2, 1, mouseX, mouseY);
+            draw::DrawPreview(renderer, colorRectb, 2);
             draw::DrawPreview(renderer, colorRect, curBlock);
             draw::DrawText(renderer, font, colorTextRect, "Block", textColor);
 
             // BG Color
             draw::DrawButton(renderer, selBCLRect, 2, 1, mouseX, mouseY);
             draw::DrawButton(renderer, selBCRRect, 2, 1, mouseX, mouseY);
+            draw::DrawPreview(renderer, bgColorRectb, 2);
             draw::DrawPreview(renderer, bgColorRect, bgColor);
             draw::DrawText(renderer, font, bgColorTextRect, "BG", textColor);
 
             // Preview
+            draw::DrawPreview(renderer, previewRectb, 2);
             draw::DrawPreview(renderer, previewRect, curBlock);
             draw::DrawText(renderer, font, previewTextRect, "Preview", textColor);
 

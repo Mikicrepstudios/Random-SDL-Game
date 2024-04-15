@@ -11,7 +11,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 25";
+const char* windowtitle = "Mikicrep | Build 26";
 
 int fps = 60;
 int width = 1280;
@@ -74,7 +74,7 @@ int main() {
                         running = false;
                     else
                         colorPick = false;
-                        bgColorPick = false;
+                        bgcolorPick = false;
 
                         inventory = !inventory;
                 }

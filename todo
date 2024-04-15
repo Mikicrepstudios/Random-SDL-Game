@@ -1,8 +1,8 @@
 /*--- TODO List ---*/
 ## Very soon:
-- bg behind preview - very soon
-(this will fix not showing colors which are same as thier background)
 - rename curblock to color - very soon
+(refactor variable)
+- rename bgcolor to bgColor - very soon
 (refactor variable)
 
 ## Planned:
@@ -20,6 +20,8 @@
 (overlay on block to make it seem like it got texture)
 - no collision block - planned
 (block where player got ability to go thru it)
+- color pickup tool
+(mode where u click any block and it selects that block color)
 
 ## Thinking:
 - particles - thinking
