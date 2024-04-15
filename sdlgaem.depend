@@ -15,7 +15,7 @@
 
 1712752980 source:/home/mikicrep/Desktop/Random-SDL-Game/colors.cpp
 
-1712872724 source:/home/mikicrep/Desktop/Random-SDL-Game/main.cpp
+1713161671 source:/home/mikicrep/Desktop/Random-SDL-Game/main.cpp
 	<iostream>
 	<stdio.h>
 	"SDL2/SDL.h"
@@ -46,7 +46,7 @@
 	"SDL2/SDL.h"
 	"block.h"
 
-1712876372 source:/home/mikicrep/Desktop/Random-SDL-Game/inventory.cpp
+1713161619 source:/home/mikicrep/Desktop/Random-SDL-Game/inventory.cpp
 	"SDL2/SDL.h"
 	<SDL_ttf.h>
 	"addional.h"

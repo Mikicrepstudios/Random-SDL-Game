@@ -1,14 +1,10 @@
 # Added:
-- Color picker closes when u select color
+- BG behind previews
 
 # Removed:
-- Notes file - got no use for now, maybe gonna get readded Someday in the future?
-- Useless if gates
+- Removed notes from codeblocks project (i forgot to do it last time)
 
 # Changed/Fixed:
-- Fixed function names to be "organized"
-- todo file - better formatted
-- Fixed opening inventory on every block moved
+- Updated controls file
 
 # Notes:
-Ayy build 25 in 6/7 months :D

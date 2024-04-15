@@ -33,6 +33,7 @@
 		<Unit filename="camera.cpp" />
 		<Unit filename="colorpicker.cpp" />
 		<Unit filename="colors.cpp" />
+		<Unit filename="controls" />
 		<Unit filename="draw.cpp" />
 		<Unit filename="files.cpp" />
 		<Unit filename="files.h" />
@@ -41,7 +42,6 @@
 		<Unit filename="inventory.cpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="map.cpp" />
-		<Unit filename="notes" />
 		<Unit filename="overlay.h" />
 		<Unit filename="player.h" />
 		<Unit filename="playercontrols.cpp" />
