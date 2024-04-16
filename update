@@ -1,10 +1,13 @@
 # Added:
-- BG behind previews
+- Color picker title bar
+- Player color pick
 
 # Removed:
-- Removed notes from codeblocks project (i forgot to do it last time)
 
 # Changed/Fixed:
-- Updated controls file
+- Refactored every bgcolorPick to bgColorPick
+- Refactored every curBlock to blockColor
+- Font now looks WAY better
+- Fixed inventory opening before exiting on ESC
 
 # Notes:

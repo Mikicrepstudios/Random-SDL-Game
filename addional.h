@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SDL_ttf.h>
+
 namespace draw {
     extern void DrawButton(SDL_Renderer* renderer, SDL_Rect rect, int color, int colorHover, int mouseX, int mouseY);
     extern void DrawPreview(SDL_Renderer* renderer, SDL_Rect selRect, int color);

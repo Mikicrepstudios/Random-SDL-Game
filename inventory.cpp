@@ -25,6 +25,11 @@ SDL_Rect bgColorRect = {width - 160, 50, 80, 80};
 SDL_Rect bgColorRectb = {width - 165, 45, 90, 90};
 SDL_Rect bgColorTextRect = {width - 160, 140, 80, 40};
 
+// Player color
+SDL_Rect playerColorRect = {80, 200, 80, 80};
+SDL_Rect playerColorRectb = {75, 195, 90, 90};
+SDL_Rect playerColorTextRect = {80, 290, 80, 40};
+
 // Preview
 SDL_Rect previewRect = {width / 2 - 50, 50, 100, 100};
 SDL_Rect previewRectb = {width / 2 - 55, 45, 110, 110};
@@ -45,7 +50,7 @@ namespace player {
             inventory = !inventory;
         }
     }
-    void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, bool inventory, bool &running, bool &colorPick, bool &bgColorPick, Block worldMap[250][250], int mapWidth, int mapHeight, int &curBlock, int &bgColor, int mouseX, int mouseY, int width, int height) {
+    void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, bool inventory, bool &running, bool &colorPick, bool &bgColorPick, bool &playerColorPick, Block worldMap[250][250], int mapWidth, int mapHeight, int &blockColor, int &bgColor, int &playerColor, int mouseX, int mouseY, int width, int height) {
         if (event.type == SDL_MOUSEBUTTONDOWN && inventory) {
             if (!colorPick && !bgColorPick) {
                 // Bottom bar
@@ -62,23 +67,30 @@ namespace player {
 
             // Color
             if (mouseX >= colorRectb.x && mouseX <= colorRectb.x + colorRectb.w &&
-                mouseY >= colorRectb.y && mouseY <= colorRectb.y + colorRectb.h && !bgColorPick)
+                mouseY >= colorRectb.y && mouseY <= colorRectb.y + colorRectb.h && !bgColorPick && !playerColorPick)
                 colorPick = !colorPick;
             else if (colorPick)
-                player::ColorPickerEvent(colorPick, mouseX, mouseY, width, height, curBlock);
+                player::ColorPickerEvent(colorPick, mouseX, mouseY, width, height, blockColor);
 
             // BG Color
             if (mouseX >= bgColorRectb.x && mouseX <= bgColorRectb.x + bgColorRectb.w &&
-                mouseY >= bgColorRectb.y && mouseY <= bgColorRectb.y + bgColorRectb.h && !colorPick)
+                mouseY >= bgColorRectb.y && mouseY <= bgColorRectb.y + bgColorRectb.h && !colorPick && !playerColorPick)
                 bgColorPick = !bgColorPick;
             else if (bgColorPick)
                 player::ColorPickerEvent(bgColorPick, mouseX, mouseY, width, height, bgColor);
+
+            // Player Color
+            if (mouseX >= playerColorRectb.x && mouseX <= playerColorRectb.x + playerColorRectb.w &&
+                mouseY >= playerColorRectb.y && mouseY <= playerColorRectb.y + playerColorRectb.h && !colorPick && !bgColorPick)
+                playerColorPick = !playerColorPick;
+            else if (playerColorPick)
+                player::ColorPickerEvent(playerColorPick, mouseX, mouseY, width, height, playerColor);
         }
     }
 }
 
 namespace overlay {
-    void Inventory(SDL_Renderer* renderer, TTF_Font* font, bool inventory, bool colorPick, bool bgcolorPick, int curBlock, int &bgColor, int mouseX, int mouseY) {
+    void Inventory(SDL_Renderer* renderer, TTF_Font* font, bool inventory, bool colorPick, bool bgcolorPick, bool playerColorPick, int blockColor, int bgColor, int playerColor, int mouseX, int mouseY) {
         // Define variables
         int colorR, colorG, colorB = 0;
         SDL_Color textColor = {255, 255, 255};
@@ -94,7 +106,7 @@ namespace overlay {
             draw::DrawButton(renderer, selCLRect, 2, 1, mouseX, mouseY);
             draw::DrawButton(renderer, selCRRect, 2, 1, mouseX, mouseY);
             draw::DrawPreview(renderer, colorRectb, 2);
-            draw::DrawPreview(renderer, colorRect, curBlock);
+            draw::DrawPreview(renderer, colorRect, blockColor);
             draw::DrawText(renderer, font, colorTextRect, "Block", textColor);
 
             // BG Color
@@ -104,9 +116,14 @@ namespace overlay {
             draw::DrawPreview(renderer, bgColorRect, bgColor);
             draw::DrawText(renderer, font, bgColorTextRect, "BG", textColor);
 
+            // Player Color
+            draw::DrawPreview(renderer, playerColorRectb, 2);
+            draw::DrawPreview(renderer, playerColorRect, playerColor);
+            draw::DrawText(renderer, font, playerColorTextRect, "Player", textColor);
+
             // Preview
             draw::DrawPreview(renderer, previewRectb, 2);
-            draw::DrawPreview(renderer, previewRect, curBlock);
+            draw::DrawPreview(renderer, previewRect, blockColor);
             draw::DrawText(renderer, font, previewTextRect, "Preview", textColor);
 
             // Save button
@@ -122,8 +139,12 @@ namespace overlay {
             draw::DrawText(renderer, font, exitRect, "exit", textColor);
 
             // Color pickers
-            if(colorPick | bgcolorPick)
-                overlay::ColorPicker(renderer, width, height);
+            if(colorPick)
+                overlay::ColorPicker(renderer, font, "Block Color", width, height);
+            else if(bgcolorPick)
+                overlay::ColorPicker(renderer, font, "BG Color", width, height);
+            else if(playerColorPick)
+                overlay::ColorPicker(renderer, font, "Player Color", width, height);
         }
     }
 }
