@@ -4,6 +4,7 @@
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 
+#include "addional.h"
 #include "block.h"
 #include "files.h"
 #include "game.h"
@@ -11,7 +12,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 26";
+const char* windowtitle = "Mikicrep | Build 27";
 
 int fps = 60;
 int width = 1280;
@@ -28,10 +29,8 @@ int main() {
     int camOffSetX, camOffSetY = 0;
 
     // Game
-    bool inventory = false;
-    bool colorPick = false;
-    bool bgcolorPick = false;
-    int curBlock = 2;
+    bool inventory, colorPick, bgColorPick, playerColorPick = false;
+    int blockColor = 2;
     int curHoverX, curHoverY = 0;
 
     // Game world
@@ -41,6 +40,7 @@ int main() {
 
     // Player
     int playerX, playerY = 0;
+    int playerColor = 6;
     int playerSpeed = 1;
 
     // Prepare game
@@ -51,8 +51,8 @@ int main() {
 
 	SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();
+	TTF_Font* font = TTF_OpenFont("font.ttf", 48);
 	IMG_Init(IMG_INIT_PNG);
-	TTF_Font* font = TTF_OpenFont("font.ttf", 24);
 	gamemap::ClearMap(worldMap, mapWidth, mapHeight);
 	files::LoadMap(event, worldMap, mapWidth, mapHeight);
     bool running = true;
@@ -74,14 +74,14 @@ int main() {
                         running = false;
                     else
                         colorPick = false;
-                        bgcolorPick = false;
+                        bgColorPick = false;
 
-                        inventory = !inventory;
+                        inventory = false;
                 }
                 // Player movement
                 player::PlayerMovement(event, worldMap, mapWidth, mapHeight, playerSpeed, playerX, playerY);
                 // Inventory
-                player::InventoryEvent(event, inventory, colorPick, bgcolorPick);
+                player::InventoryEvent(event, inventory, colorPick, bgColorPick);
 
                 // Clear map
                 if(event.key.keysym.sym == SDLK_c)
@@ -92,8 +92,8 @@ int main() {
             }
 
             // Place/Break
-            player::MouseEvent(event, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, curBlock, camOffSetX, camOffSetY);
-            player::MouseInvChooser(renderer, event, inventory, running, colorPick, bgcolorPick, worldMap, mapWidth, mapHeight, curBlock, bgColor, mouseX, mouseY, width, height);
+            player::MouseEvent(event, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, blockColor, camOffSetX, camOffSetY);
+            player::MouseInvChooser(renderer, event, inventory, running, colorPick, bgColorPick, playerColorPick, worldMap, mapWidth, mapHeight, blockColor, bgColor, playerColor, mouseX, mouseY, width, height);
         }
 
         // Set BG color to new color
@@ -107,13 +107,13 @@ int main() {
         SDL_RenderCopy(renderer, backgroundTexture, NULL, &backgroundRect);
 
         // Pre logic
-        worldMap[playerX][playerY] = Block(1, 6);
+        worldMap[playerX][playerY] = Block(1, playerColor);
 
         // Draw map
         game::RenderMap(renderer, worldMap, mapWidth, mapHeight, camOffSetX, camOffSetY, camScale);
 
         // Overlays
-        overlay::Inventory(renderer, font, inventory, colorPick, bgcolorPick, curBlock, bgColor, mouseX, mouseY);
+        overlay::Inventory(renderer, font, inventory, colorPick, bgColorPick, playerColorPick, blockColor, bgColor, playerColor, mouseX, mouseY);
         overlay::Mouse(renderer, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, camOffSetX, camOffSetY, camScale);
 
         // Show results
@@ -124,7 +124,6 @@ int main() {
 	}
 
 	IMG_Quit();
-	TTF_CloseFont(font);
     TTF_Quit();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
@@ -132,4 +131,3 @@ int main() {
 	return 0;
 }
 
-// 800x400
