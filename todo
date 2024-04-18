@@ -1,11 +1,5 @@
 /*--- TODO List ---*/
 ## Very soon:
-- camerapos cheat
-(click key, enable mode where u click anywhere and that sets cameras position)
-- playerpos cheat
-(same for camerapos cheat but for player)
-- color pickup tool
-(mode where u click any block and it selects that block color)
 
 ## Planned:
 - undo/redo
@@ -14,13 +8,19 @@
 (overlay on block to make it seem like it got texture)
 - no collision block
 (block where player got ability to go thru it)
+- mouse overlay behind game info
+- save colors
 - cleanup unused includes (if theres any)
+- split functions
+- organize function arguments
+- organize variable definitions
 
 ## Thinking:
 - particles
 (on destroyed block???)
 - power ups
 (player pickupable objects put on surface layer???)
+-  shadows
 
 ### Format:
 - feature - rank

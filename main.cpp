@@ -4,15 +4,15 @@
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 
-#include "addional.h"
 #include "block.h"
+#include "cheats.h"
 #include "files.h"
 #include "game.h"
 #include "graphics.h"
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 27";
+const char* windowtitle = "Mikicrep | Build 29";
 
 int fps = 60;
 int width = 1280;
@@ -24,12 +24,19 @@ int main() {
     int mouseX, mouseY = 0;
     int colorR, colorG, colorB = 0;
 
+    // Some colors
+    SDL_Color textColor = {255, 255, 255};
+    SDL_Color altTextColor = {0, 0, 0};
+
     // Cam
     int camScale = 50;
     int camOffSetX, camOffSetY = 0;
 
     // Game
+    bool highlight = false;
+    bool colorPickerTool, playerTp, camTp = false;
     bool inventory, colorPick, bgColorPick, playerColorPick = false;
+    bool gameInfo = false;
     int blockColor = 2;
     int curHoverX, curHoverY = 0;
 
@@ -77,11 +84,17 @@ int main() {
                         bgColorPick = false;
 
                         inventory = false;
+                        fps = 60;
                 }
+                if(event.key.keysym.sym == SDLK_q) {
+                    colorPickerTool = !colorPickerTool;
+                    highlight = !highlight;
+                }
+
                 // Player movement
                 player::PlayerMovement(event, worldMap, mapWidth, mapHeight, playerSpeed, playerX, playerY);
                 // Inventory
-                player::InventoryEvent(event, inventory, colorPick, bgColorPick);
+                player::InventoryEvent(event, inventory, colorPick, bgColorPick, fps);
 
                 // Clear map
                 if(event.key.keysym.sym == SDLK_c)
@@ -91,9 +104,15 @@ int main() {
                 events::Camera(event, inventory, camOffSetX, camOffSetY, camScale);
             }
 
+            // Cheats
+            if(camTp)
+                cheats::camTp(event, camTp, highlight, camOffSetX - curHoverX, camOffSetY - curHoverY, camOffSetX, camOffSetY);
+            else if(playerTp)
+                cheats::playerTp(event, worldMap, playerTp, highlight, -camOffSetX + curHoverX, -camOffSetY + curHoverY, playerX, playerY);
+
             // Place/Break
-            player::MouseEvent(event, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, blockColor, camOffSetX, camOffSetY);
-            player::MouseInvChooser(renderer, event, inventory, running, colorPick, bgColorPick, playerColorPick, worldMap, mapWidth, mapHeight, blockColor, bgColor, playerColor, mouseX, mouseY, width, height);
+            player::MouseEvent(event, colorPickerTool, highlight, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, blockColor, camOffSetX, camOffSetY);
+            player::MouseInvChooser(renderer, event, inventory, running, highlight, camTp, playerTp, colorPick, bgColorPick, playerColorPick, gameInfo, worldMap, mapWidth, mapHeight, blockColor, bgColor, playerColor, mouseX, mouseY, width, height);
         }
 
         // Set BG color to new color
@@ -113,8 +132,16 @@ int main() {
         game::RenderMap(renderer, worldMap, mapWidth, mapHeight, camOffSetX, camOffSetY, camScale);
 
         // Overlays
-        overlay::Inventory(renderer, font, inventory, colorPick, bgColorPick, playerColorPick, blockColor, bgColor, playerColor, mouseX, mouseY);
-        overlay::Mouse(renderer, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, camOffSetX, camOffSetY, camScale);
+        overlay::Inventory(renderer, font, inventory, colorPick, bgColorPick, playerColorPick, gameInfo, blockColor, bgColor, playerColor, mouseX, mouseY);
+        overlay::Mouse(renderer, highlight, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, camOffSetX, camOffSetY, camScale, bgColor);
+
+        // Game info
+        if (gameInfo) {
+            if (bgColor == 32)
+                player::gameInfo(renderer, font, altTextColor, camScale, camOffSetX, camOffSetY, playerX, playerY);
+            else
+                player::gameInfo(renderer, font, textColor, camScale, camOffSetX, camOffSetY, playerX, playerY);
+        }
 
         // Show results
         SDL_RenderPresent(renderer);
