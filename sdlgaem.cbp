@@ -31,6 +31,8 @@
 		<Unit filename="addional.h" />
 		<Unit filename="block.h" />
 		<Unit filename="camera.cpp" />
+		<Unit filename="cheats.cpp" />
+		<Unit filename="cheats.h" />
 		<Unit filename="colorpicker.cpp" />
 		<Unit filename="colors.cpp" />
 		<Unit filename="controls" />
@@ -39,6 +41,7 @@
 		<Unit filename="files.h" />
 		<Unit filename="game.h" />
 		<Unit filename="graphics.h" />
+		<Unit filename="hud.cpp" />
 		<Unit filename="inventory.cpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="map.cpp" />

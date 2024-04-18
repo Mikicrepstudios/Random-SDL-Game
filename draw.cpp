@@ -6,7 +6,7 @@
 int colorR, colorG, colorB = 0;
 
 namespace draw {
-    void DrawButton(SDL_Renderer* renderer, SDL_Rect rect, int color, int colorHover, int mouseX, int mouseY) {
+    void DrawButton(SDL_Renderer* renderer, SDL_Rect rect, int color, int mouseX, int mouseY) {
         graphics::GetColor(color, colorR, colorG, colorB);
         if (mouseX >= rect.x && mouseX <= rect.x + rect.w &&
             mouseY >= rect.y && mouseY <= rect.y + rect.h) {
