@@ -12,7 +12,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 29";
+const char* windowtitle = "Mikicrep | Build 30";
 
 int fps = 60;
 int width = 1280;
@@ -129,7 +129,7 @@ int main() {
         worldMap[playerX][playerY] = Block(1, playerColor);
 
         // Draw map
-        game::RenderMap(renderer, worldMap, mapWidth, mapHeight, camOffSetX, camOffSetY, camScale);
+        game::RenderMap(renderer, worldMap, width, height, mapWidth, mapHeight, camOffSetX, camOffSetY, camScale);
 
         // Overlays
         overlay::Inventory(renderer, font, inventory, colorPick, bgColorPick, playerColorPick, gameInfo, blockColor, bgColor, playerColor, mouseX, mouseY);

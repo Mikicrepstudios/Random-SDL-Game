@@ -5,7 +5,7 @@ namespace events {
 }
 
 namespace game {
-    extern void RenderMap(SDL_Renderer* renderer, Block worldMap[250][250], int mapWidth, int mapHeight, int camOffSetX, int camOffSetY, int camScale);
+    extern void RenderMap(SDL_Renderer* renderer, Block worldMap[250][250], int width, int height, int mapWidth, int mapHeight, int camOffSetX, int camOffSetY, int camScale);
 }
 
 namespace gamemap {
