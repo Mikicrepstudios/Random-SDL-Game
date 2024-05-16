@@ -44,145 +44,145 @@ SDL_Rect gameInfoRect = {width - 250, height - 160, 200, 50};
 SDL_Rect exitRect = {width - 250, height - 100, 200, 50};
 
 namespace player {
-    void InventoryEvent(SDL_Event event, bool &inventory, bool &colorPick, bool &bgColorPick, int &fps) {
-        if(event.key.keysym.sym == SDLK_e) {
-            if (!inventory) {
-                inventory = true;
-                fps = 15; // Reduce CPU usage
-            }
-            else {
-                // Before stopping inv exit every sub UI
-                colorPick = false;
-                bgColorPick = false;
+	void InventoryEvent(SDL_Event event, bool &inventory, bool &colorPick, bool &bgColorPick, int &fps) {
+		if(event.key.keysym.sym == SDLK_e) {
+			if (!inventory) {
+				inventory = true;
+				fps = 15; // Reduce CPU usage
+			}
+			else {
+				// Before stopping inv exit every sub UI
+				colorPick = false;
+				bgColorPick = false;
 
-                inventory = false;
-                fps = 60;
-            }
-        }
-    }
-    void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, bool &inventory, bool &running, bool &highlight, bool &camTp, bool &playerTp, bool &colorPick, bool &bgColorPick, bool &playerColorPick, bool &gameInfo, Block worldMap[250][250], int mapWidth, int mapHeight, int &blockColor, int &bgColor, int &playerColor, int mouseX, int mouseY, int width, int height) {
-        if (event.type == SDL_MOUSEBUTTONDOWN && inventory) {
-            if (!colorPick && !bgColorPick) {
-                // Gameplay
-                if (mouseX >= camTpRect.x && mouseX <= camTpRect.x + camTpRect.w &&
-                    mouseY >= camTpRect.y && mouseY <= camTpRect.y + camTpRect.h) {
-                    camTp = !camTp;
-                    highlight = !highlight;
-                    inventory = false;
-                }
-                else if (mouseX >= playerTpRect.x && mouseX <= playerTpRect.x + playerTpRect.w &&
-                    mouseY >= playerTpRect.y && mouseY <= playerTpRect.y + playerTpRect.h) {
-                    playerTp = !playerTp;
-                    highlight = !highlight;
-                    inventory = false;
-                }
-                // Game
-                if (mouseX >= saveRect.x && mouseX <= saveRect.x + saveRect.w &&
-                    mouseY >= saveRect.y && mouseY <= saveRect.y + saveRect.h)
-                    files::SaveMap(event, worldMap, mapWidth, mapHeight);
-                else if (mouseX >= loadRect.x && mouseX <= loadRect.x + loadRect.w &&
-                    mouseY >= loadRect.y && mouseY <= loadRect.y + loadRect.h)
-                    files::LoadMap(event, worldMap, mapWidth, mapHeight);
-                else if (mouseX >= gameInfoRect.x && mouseX <= gameInfoRect.x + gameInfoRect.w &&
-                    mouseY >= gameInfoRect.y && mouseY <= gameInfoRect.y + gameInfoRect.h && !colorPick && !bgColorPick)
-                    gameInfo = !gameInfo;
-                else if (mouseX >= exitRect.x && mouseX <= exitRect.x + exitRect.w &&
-                    mouseY >= exitRect.y && mouseY <= exitRect.y + exitRect.h)
-                    running = false;
-            }
+				inventory = false;
+				fps = 60;
+			}
+		}
+	}
+	void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, bool &inventory, bool &running, bool &highlight, bool &camTp, bool &playerTp, bool &colorPick, bool &bgColorPick, bool &playerColorPick, bool &gameInfo, Block worldMap[250][250], int mapWidth, int mapHeight, int &blockColor, int &bgColor, int &playerColor, int mouseX, int mouseY, int width, int height) {
+		if (event.type == SDL_MOUSEBUTTONDOWN && inventory) {
+			if (!colorPick && !bgColorPick) {
+				// Gameplay
+				if (mouseX >= camTpRect.x && mouseX <= camTpRect.x + camTpRect.w &&
+					mouseY >= camTpRect.y && mouseY <= camTpRect.y + camTpRect.h) {
+					camTp = !camTp;
+					highlight = !highlight;
+					inventory = false;
+				}
+				else if (mouseX >= playerTpRect.x && mouseX <= playerTpRect.x + playerTpRect.w &&
+					mouseY >= playerTpRect.y && mouseY <= playerTpRect.y + playerTpRect.h) {
+					playerTp = !playerTp;
+					highlight = !highlight;
+					inventory = false;
+				}
+				// Game
+				if (mouseX >= saveRect.x && mouseX <= saveRect.x + saveRect.w &&
+				mouseY >= saveRect.y && mouseY <= saveRect.y + saveRect.h)
+					files::SaveMap(event, worldMap, mapWidth, mapHeight);
+				else if (mouseX >= loadRect.x && mouseX <= loadRect.x + loadRect.w &&
+				mouseY >= loadRect.y && mouseY <= loadRect.y + loadRect.h)
+					files::LoadMap(event, worldMap, mapWidth, mapHeight);
+				else if (mouseX >= gameInfoRect.x && mouseX <= gameInfoRect.x + gameInfoRect.w &&
+				mouseY >= gameInfoRect.y && mouseY <= gameInfoRect.y + gameInfoRect.h && !colorPick && !bgColorPick)
+					gameInfo = !gameInfo;
+				else if (mouseX >= exitRect.x && mouseX <= exitRect.x + exitRect.w &&
+				mouseY >= exitRect.y && mouseY <= exitRect.y + exitRect.h)
+					running = false;
+			}
 
-            // Color
-            if (mouseX >= colorRectb.x && mouseX <= colorRectb.x + colorRectb.w &&
-                mouseY >= colorRectb.y && mouseY <= colorRectb.y + colorRectb.h && !bgColorPick && !playerColorPick)
-                colorPick = !colorPick;
-            else if (colorPick)
-                player::ColorPickerEvent(colorPick, mouseX, mouseY, width, height, blockColor);
+			// Color
+			if (mouseX >= colorRectb.x && mouseX <= colorRectb.x + colorRectb.w &&
+			mouseY >= colorRectb.y && mouseY <= colorRectb.y + colorRectb.h && !bgColorPick && !playerColorPick)
+				colorPick = !colorPick;
+			else if (colorPick)
+				player::ColorPickerEvent(colorPick, mouseX, mouseY, width, height, blockColor);
 
-            // BG Color
-            if (mouseX >= bgColorRectb.x && mouseX <= bgColorRectb.x + bgColorRectb.w &&
-                mouseY >= bgColorRectb.y && mouseY <= bgColorRectb.y + bgColorRectb.h && !colorPick && !playerColorPick)
-                bgColorPick = !bgColorPick;
-            else if (bgColorPick)
-                player::ColorPickerEvent(bgColorPick, mouseX, mouseY, width, height, bgColor);
+			// BG Color
+			if (mouseX >= bgColorRectb.x && mouseX <= bgColorRectb.x + bgColorRectb.w &&
+			mouseY >= bgColorRectb.y && mouseY <= bgColorRectb.y + bgColorRectb.h && !colorPick && !playerColorPick)
+				bgColorPick = !bgColorPick;
+			else if (bgColorPick)
+				player::ColorPickerEvent(bgColorPick, mouseX, mouseY, width, height, bgColor);
 
-            // Player Color
-            if (mouseX >= playerColorRectb.x && mouseX <= playerColorRectb.x + playerColorRectb.w &&
-                mouseY >= playerColorRectb.y && mouseY <= playerColorRectb.y + playerColorRectb.h && !colorPick && !bgColorPick)
-                playerColorPick = !playerColorPick;
-            else if (playerColorPick)
-                player::ColorPickerEvent(playerColorPick, mouseX, mouseY, width, height, playerColor);
-        }
-    }
+			// Player Color
+			if (mouseX >= playerColorRectb.x && mouseX <= playerColorRectb.x + playerColorRectb.w &&
+			mouseY >= playerColorRectb.y && mouseY <= playerColorRectb.y + playerColorRectb.h && !colorPick && !bgColorPick)
+				playerColorPick = !playerColorPick;
+			else if (playerColorPick)
+				player::ColorPickerEvent(playerColorPick, mouseX, mouseY, width, height, playerColor);
+		}
+	}
 }
 
 namespace overlay {
-    void Inventory(SDL_Renderer* renderer, TTF_Font* font, bool inventory, bool colorPick, bool bgcolorPick, bool playerColorPick, bool gameInfo, int blockColor, int bgColor, int playerColor, int mouseX, int mouseY) {
-        // Define variables
-        int colorR, colorG, colorB = 0;
-        SDL_Color textColor = {255, 255, 255};
+	void Inventory(SDL_Renderer* renderer, TTF_Font* font, bool inventory, bool colorPick, bool bgcolorPick, bool playerColorPick, bool gameInfo, int blockColor, int bgColor, int playerColor, int mouseX, int mouseY) {
+		// Define variables
+		int colorR, colorG, colorB = 0;
+		SDL_Color textColor = {255, 255, 255};
 
-        if (inventory) {
-            // Render bg
-            graphics::GetColor(3, colorR, colorG, colorB);
-            SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
-            SDL_Rect bgRect = {25, 25, width - 50, height - 50};
-            SDL_RenderFillRect(renderer, &bgRect);
+		if (inventory) {
+			// Render bg
+			graphics::GetColor(3, colorR, colorG, colorB);
+			SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
+			SDL_Rect bgRect = {25, 25, width - 50, height - 50};
+			SDL_RenderFillRect(renderer, &bgRect);
 
-            // Color
-            draw::DrawPreview(renderer, colorRectb, 2);
-            draw::DrawPreview(renderer, colorRect, blockColor);
-            draw::DrawText(renderer, font, colorTextRect, "Block", textColor);
+			// Color
+			draw::DrawPreview(renderer, colorRectb, 2);
+			draw::DrawPreview(renderer, colorRect, blockColor);
+			draw::DrawText(renderer, font, colorTextRect, "Block", textColor);
 
-            // BG Color
-            draw::DrawPreview(renderer, bgColorRectb, 2);
-            draw::DrawPreview(renderer, bgColorRect, bgColor);
-            draw::DrawText(renderer, font, bgColorTextRect, "BG", textColor);
+			// BG Color
+			draw::DrawPreview(renderer, bgColorRectb, 2);
+			draw::DrawPreview(renderer, bgColorRect, bgColor);
+			draw::DrawText(renderer, font, bgColorTextRect, "BG", textColor);
 
-            // Player Color
-            draw::DrawPreview(renderer, playerColorRectb, 2);
-            draw::DrawPreview(renderer, playerColorRect, playerColor);
-            draw::DrawText(renderer, font, playerColorTextRect, "Player", textColor);
+			// Player Color
+			draw::DrawPreview(renderer, playerColorRectb, 2);
+			draw::DrawPreview(renderer, playerColorRect, playerColor);
+			draw::DrawText(renderer, font, playerColorTextRect, "Player", textColor);
 
-            // Preview
-            draw::DrawPreview(renderer, previewRectb, 2);
-            draw::DrawPreview(renderer, previewRect, blockColor);
-            draw::DrawText(renderer, font, previewTextRect, "Preview", textColor);
+			// Preview
+			draw::DrawPreview(renderer, previewRectb, 2);
+			draw::DrawPreview(renderer, previewRect, blockColor);
+			draw::DrawText(renderer, font, previewTextRect, "Preview", textColor);
 
-            // Titles
-            draw::DrawText(renderer, font, gameplayTextRect, "Gameplay", textColor);
-            draw::DrawText(renderer, font, gameTextRect, "Game", textColor);
+			// Titles
+			draw::DrawText(renderer, font, gameplayTextRect, "Gameplay", textColor);
+			draw::DrawText(renderer, font, gameTextRect, "Game", textColor);
 
-            // Camtp button
-            draw::DrawButton(renderer, camTpRect, 7, mouseX, mouseY);
-            draw::DrawText(renderer, font, camTpRect, "Cam TP", textColor);
+			// Camtp button
+			draw::DrawButton(renderer, camTpRect, 7, mouseX, mouseY);
+			draw::DrawText(renderer, font, camTpRect, "Cam TP", textColor);
 
-            // Playertp button
-            draw::DrawButton(renderer, playerTpRect, 7, mouseX, mouseY);
-            draw::DrawText(renderer, font, playerTpRect, "Player TP", textColor);
+			// Playertp button
+			draw::DrawButton(renderer, playerTpRect, 7, mouseX, mouseY);
+			draw::DrawText(renderer, font, playerTpRect, "Player TP", textColor);
 
-            // Save button
-            draw::DrawButton(renderer, saveRect, 13, mouseX, mouseY);
-            draw::DrawText(renderer, font, saveRect, "Save", textColor);
+			// Save button
+			draw::DrawButton(renderer, saveRect, 13, mouseX, mouseY);
+			draw::DrawText(renderer, font, saveRect, "Save", textColor);
 
-            // Gameinfo button
-            draw::DrawButton(renderer, gameInfoRect, 2, mouseX, mouseY);
-            draw::DrawText(renderer, font, gameInfoRect, "Game Info", textColor);
+			// Gameinfo button
+			draw::DrawButton(renderer, gameInfoRect, 2, mouseX, mouseY);
+			draw::DrawText(renderer, font, gameInfoRect, "Game Info", textColor);
 
-            // Load button
-            draw::DrawButton(renderer, loadRect, 6, mouseX, mouseY);
-            draw::DrawText(renderer, font, loadRect, "Load", textColor);
+			// Load button
+			draw::DrawButton(renderer, loadRect, 6, mouseX, mouseY);
+			draw::DrawText(renderer, font, loadRect, "Load", textColor);
 
-            // Exit button
-            draw::DrawButton(renderer, exitRect, 27, mouseX, mouseY);
-            draw::DrawText(renderer, font, exitRect, "Exit", textColor);
+			// Exit button
+			draw::DrawButton(renderer, exitRect, 27, mouseX, mouseY);
+			draw::DrawText(renderer, font, exitRect, "Exit", textColor);
 
-            // Color pickers
-            if(colorPick)
-                overlay::ColorPicker(renderer, font, "Block Color", width, height);
-            else if(bgcolorPick)
-                overlay::ColorPicker(renderer, font, "BG Color", width, height);
-            else if(playerColorPick)
-                overlay::ColorPicker(renderer, font, "Player Color", width, height);
-        }
-    }
+			// Color pickers
+			if(colorPick)
+				overlay::ColorPicker(renderer, font, "Block Color", width, height);
+			else if(bgcolorPick)
+				overlay::ColorPicker(renderer, font, "BG Color", width, height);
+			else if(playerColorPick)
+				overlay::ColorPicker(renderer, font, "Player Color", width, height);
+		}
+	}
 }

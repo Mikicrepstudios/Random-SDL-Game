@@ -9,13 +9,13 @@
 */
 
 struct Block {
-    int type;
-    int color;
+	int type;
+	int color;
 
-    Block() : type(0), color(0) {}
+	Block() : type(0), color(0) {}
 
-    Block(int _type, int _color)
-        : type(_type), color(_color) {}
+	Block(int _type, int _color)
+	: type(_type), color(_color) {}
 };
 
 #endif
