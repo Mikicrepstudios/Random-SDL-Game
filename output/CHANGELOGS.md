@@ -1,9 +1,9 @@
-# Added:
+## Added:
 
-# Removed:
+## Removed:
 
-# Changed/Fixed:
+## Changed/Fixed:
 - Way more optimized rendering
 
-# Notes:
+## Notes:
 - Im aware of bug where block gets placed in place of camtp, will prob be resolved next update

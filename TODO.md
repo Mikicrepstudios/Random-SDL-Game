@@ -1,5 +1,10 @@
 /*--- TODO List ---*/
 ## Very soon:
+- save colors
+- cleanup unused includes (if theres any)
+- split functions
+- organize function arguments
+- organize variable definitions
 
 ## Planned:
 - undo/redo
@@ -9,11 +14,6 @@
 - no collision block
 (block where player got ability to go thru it)
 - mouse overlay behind game info
-- save colors
-- cleanup unused includes (if theres any)
-- split functions
-- organize function arguments
-- organize variable definitions
 
 ## Thinking:
 - particles
