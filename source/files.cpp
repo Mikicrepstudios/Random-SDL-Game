@@ -1,10 +1,9 @@
 #include <fstream>
-#include "SDL2/SDL.h"
 
 #include "block.h"
 
 namespace files {
-	void SaveMap(SDL_Event event, Block worldMap[250][250], int mapWidth, int mapHeight) {
+	void SaveMap(Block worldMap[250][250], int mapWidth, int mapHeight) {
 		// Open file
 		std::ofstream blocktypesFile("map1.msave");
 		std::ofstream blockcolorsFile("map2.msave");
@@ -41,7 +40,7 @@ namespace files {
 		}
 	}
 
-	void LoadMap(SDL_Event event, Block worldMap[250][250], int mapWidth, int mapHeight) {
+	void LoadMap(Block worldMap[250][250], int mapWidth, int mapHeight) {
 		// Open file
 		std::ifstream blocktypesFile("map1.msave");
 		std::ifstream blockcolorsFile("map2.msave");

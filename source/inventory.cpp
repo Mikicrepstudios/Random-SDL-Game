@@ -60,7 +60,7 @@ namespace player {
 			}
 		}
 	}
-	void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, bool &inventory, bool &running, bool &highlight, bool &camTp, bool &playerTp, bool &colorPick, bool &bgColorPick, bool &playerColorPick, bool &gameInfo, Block worldMap[250][250], int mapWidth, int mapHeight, int &blockColor, int &bgColor, int &playerColor, int mouseX, int mouseY, int width, int height) {
+	void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, bool &inventory, bool &running, bool &highlight, bool &camTp, bool &playerTp, bool &colorPick, bool &bgColorPick, bool &playerColorPick, bool &gameInfo, Block worldMap[250][250], int mapWidth, int mapHeight, int &blockColor, int &bgColor, int &playerColor, int mouseX, int mouseY, int width, int height, int &playerX, int &playerY, int &camOffSetX, int &camOffSetY) {
 		if (event.type == SDL_MOUSEBUTTONDOWN && inventory) {
 			if (!colorPick && !bgColorPick) {
 				// Gameplay
@@ -78,11 +78,15 @@ namespace player {
 				}
 				// Game
 				if (mouseX >= saveRect.x && mouseX <= saveRect.x + saveRect.w &&
-				mouseY >= saveRect.y && mouseY <= saveRect.y + saveRect.h)
-					files::SaveMap(event, worldMap, mapWidth, mapHeight);
+				mouseY >= saveRect.y && mouseY <= saveRect.y + saveRect.h) {
+					files::SaveMap(worldMap, mapWidth, mapHeight);
+					files::SaveSettings(playerX, playerY, camOffSetX, camOffSetY, playerColor, blockColor, bgColor);
+				}
 				else if (mouseX >= loadRect.x && mouseX <= loadRect.x + loadRect.w &&
-				mouseY >= loadRect.y && mouseY <= loadRect.y + loadRect.h)
-					files::LoadMap(event, worldMap, mapWidth, mapHeight);
+				mouseY >= loadRect.y && mouseY <= loadRect.y + loadRect.h) {
+					files::LoadMap(worldMap, mapWidth, mapHeight);
+					files::LoadSettings(playerX, playerY, camOffSetX, camOffSetY, playerColor, blockColor, bgColor);
+				}
 				else if (mouseX >= gameInfoRect.x && mouseX <= gameInfoRect.x + gameInfoRect.w &&
 				mouseY >= gameInfoRect.y && mouseY <= gameInfoRect.y + gameInfoRect.h && !colorPick && !bgColorPick)
 					gameInfo = !gameInfo;

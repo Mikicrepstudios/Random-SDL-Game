@@ -1,6 +1,6 @@
 /*--- TODO List ---*/
 ## Very soon:
-- save colors
+- save in folder
 - cleanup unused includes (if theres any)
 - split functions
 - organize function arguments
