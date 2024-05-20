@@ -12,7 +12,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 30";
+const char* windowtitle = "Mikicrep | Build 31";
 
 int fps = 60;
 int width = 1280;
@@ -61,7 +61,8 @@ int main() {
 	TTF_Font* font = TTF_OpenFont("font.ttf", 48);
 	IMG_Init(IMG_INIT_PNG);
 	gamemap::ClearMap(worldMap, mapWidth, mapHeight);
-	files::LoadMap(event, worldMap, mapWidth, mapHeight);
+	files::LoadMap(worldMap, mapWidth, mapHeight);
+	files::LoadSettings(playerX, playerY, camOffSetX, camOffSetY, playerColor, blockColor, bgColor);
 	bool running = true;
 
 	while(running) {
@@ -112,7 +113,7 @@ int main() {
 
 			// Place/Break
 			player::MouseEvent(event, colorPickerTool, highlight, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, blockColor, camOffSetX, camOffSetY);
-			player::MouseInvChooser(renderer, event, inventory, running, highlight, camTp, playerTp, colorPick, bgColorPick, playerColorPick, gameInfo, worldMap, mapWidth, mapHeight, blockColor, bgColor, playerColor, mouseX, mouseY, width, height);
+			player::MouseInvChooser(renderer, event, inventory, running, highlight, camTp, playerTp, colorPick, bgColorPick, playerColorPick, gameInfo, worldMap, mapWidth, mapHeight, blockColor, bgColor, playerColor, mouseX, mouseY, width, height, playerX, playerY, camOffSetX, camOffSetY);
 		}
 
 		// Set BG color to new color
