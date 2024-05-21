@@ -12,7 +12,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 31";
+const char* windowtitle = "Mikicrep | Build 32";
 
 int fps = 60;
 int width = 1280;
@@ -62,7 +62,7 @@ int main() {
 	IMG_Init(IMG_INIT_PNG);
 	gamemap::ClearMap(worldMap, mapWidth, mapHeight);
 	files::LoadMap(worldMap, mapWidth, mapHeight);
-	files::LoadSettings(playerX, playerY, camOffSetX, camOffSetY, playerColor, blockColor, bgColor);
+	files::LoadSettings(playerX, playerY, camOffSetX, camOffSetY, camScale, playerColor, blockColor, bgColor);
 	bool running = true;
 
 	while(running) {
@@ -113,7 +113,7 @@ int main() {
 
 			// Place/Break
 			player::MouseEvent(event, colorPickerTool, highlight, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, blockColor, camOffSetX, camOffSetY);
-			player::MouseInvChooser(renderer, event, inventory, running, highlight, camTp, playerTp, colorPick, bgColorPick, playerColorPick, gameInfo, worldMap, mapWidth, mapHeight, blockColor, bgColor, playerColor, mouseX, mouseY, width, height, playerX, playerY, camOffSetX, camOffSetY);
+			player::MouseInvChooser(renderer, event, inventory, running, highlight, camTp, playerTp, colorPick, bgColorPick, playerColorPick, gameInfo, worldMap, mapWidth, mapHeight, blockColor, bgColor, playerColor, mouseX, mouseY, width, height, playerX, playerY, camOffSetX, camOffSetY, camScale);
 		}
 
 		// Set BG color to new color

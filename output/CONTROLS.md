@@ -5,8 +5,9 @@ c - clear map
 
 ### Camera
 arrow keys - camera movement
+i - zoom in
 o - zoom out
-p - zoom in
+p - zoom reset
 
 ### Inventory
 *You can click preview above text to change its value

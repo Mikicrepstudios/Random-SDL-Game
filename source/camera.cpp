@@ -16,11 +16,17 @@ namespace events {
 				camOffSetX -= 1;
 			}
 		}
-		if(event.key.keysym.sym == SDLK_o && camScale != 3) {
+		// Cam zoom out
+		if(event.key.keysym.sym == SDLK_o && camScale != 10) {
 			camScale -= 1;
 		}
-		else if(event.key.keysym.sym == SDLK_p) {
+		// Cam zoom in
+		else if(event.key.keysym.sym == SDLK_i) {
 			camScale += 1;
+		}
+		// Reset zoom
+		else if(event.key.keysym.sym == SDLK_p) {
+			camScale = 50;
 		}
     }
 }
