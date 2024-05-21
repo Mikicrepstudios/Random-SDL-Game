@@ -5,8 +5,8 @@
 namespace files {
 	void SaveMap(Block worldMap[250][250], int mapWidth, int mapHeight) {
 		// Open file
-		std::ofstream blocktypesFile("map1.msave");
-		std::ofstream blockcolorsFile("map2.msave");
+		std::ofstream blocktypesFile("save/map1.msave");
+		std::ofstream blockcolorsFile("save/map2.msave");
 
 		// Save blocktype
 		if (blocktypesFile.is_open()) {
@@ -42,8 +42,8 @@ namespace files {
 
 	void LoadMap(Block worldMap[250][250], int mapWidth, int mapHeight) {
 		// Open file
-		std::ifstream blocktypesFile("map1.msave");
-		std::ifstream blockcolorsFile("map2.msave");
+		std::ifstream blocktypesFile("save/map1.msave");
+		std::ifstream blockcolorsFile("save/map2.msave");
 
 		// Load blocktypes
 		if (blocktypesFile.is_open()) {

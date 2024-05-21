@@ -2,8 +2,8 @@
 #include <iostream>
 
 namespace files {
-	void SaveSettings(int playerX, int playerY, int camOffSetX, int camOffSetY, int playerColor, int blockColor, int bgColor) {
-		std::ofstream settingsFile("settings.msave"); // Open file
+	void SaveSettings(int playerX, int playerY, int camOffSetX, int camOffSetY, int camScale, int playerColor, int blockColor, int bgColor) {
+		std::ofstream settingsFile("save/settings.msave"); // Open file
 
 		// Save settings
 		if(settingsFile.is_open()) {
@@ -11,6 +11,7 @@ namespace files {
 				<< playerY << " "
 				<< camOffSetX << " "
 				<< camOffSetY << " "
+				<< camScale << " "
 				<< playerColor << " "
 				<< blockColor << " "
 				<< bgColor << " ";
@@ -18,8 +19,8 @@ namespace files {
 		}
 	}
 
-	void LoadSettings(int &playerX, int &playerY, int &camOffSetX, int &camOffSetY, int &playerColor, int &blockColor, int &bgColor) {
-		std::ifstream settingsFile("settings.msave"); // Open file
+	void LoadSettings(int &playerX, int &playerY, int &camOffSetX, int &camOffSetY, int &camScale, int &playerColor, int &blockColor, int &bgColor) {
+		std::ifstream settingsFile("save/settings.msave"); // Open file
 
 		// Load settings
 		if(settingsFile.is_open()) {
@@ -27,6 +28,7 @@ namespace files {
 					playerY >>
 					camOffSetX >>
 					camOffSetY >>
+					camScale >>
 					playerColor >>
 					blockColor >>
 					bgColor;
