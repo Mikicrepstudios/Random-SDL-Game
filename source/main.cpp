@@ -12,7 +12,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 32";
+const char* windowtitle = "Mikicrep | Build 33";
 
 int fps = 60;
 int width = 1280;
@@ -58,7 +58,7 @@ int main() {
 
 	SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();
-	TTF_Font* font = TTF_OpenFont("font.ttf", 48);
+	TTF_Font* font = TTF_OpenFont("customize/font.ttf", 48);
 	IMG_Init(IMG_INIT_PNG);
 	gamemap::ClearMap(worldMap, mapWidth, mapHeight);
 	files::LoadMap(worldMap, mapWidth, mapHeight);
@@ -121,7 +121,7 @@ int main() {
 		SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
 		SDL_RenderClear(renderer);
 		// ... or if there is custom bg
-		SDL_Surface* backgroundSurface = IMG_Load("background.png");
+		SDL_Surface* backgroundSurface = IMG_Load("customize/background.png");
 		SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
 		SDL_Rect backgroundRect = {0, 0, width, height};
 		SDL_RenderCopy(renderer, backgroundTexture, NULL, &backgroundRect);
