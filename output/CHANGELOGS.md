@@ -1,13 +1,9 @@
 ## Added:
-- ;)
-- Camscale is now saved
 
 ## Removed:
 
 ## Changed/Fixed:
-- Saving is now done inside of folder
-- Camera zoom in is now letter I instead of P
-- Reduced max cam out to prevent crashes
+- Now all customization (fonts, background image) goes to customize folder
 
 ## Notes:
 - Im aware of bug where block gets placed in place of camtp, will prob be resolved next update
