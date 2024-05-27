@@ -8,5 +8,5 @@ Most random game/game engine I made where I just put most random features. You c
 
 This command only works on arch based linux distros, for other ones you gotta find coresponding packages
 
-### Another goal of this thing is to be able to run on potato.
+### Runs on potato.
 
