@@ -1,9 +1,10 @@
 ## Added:
+- Background in sections
 
 ## Removed:
 
 ## Changed/Fixed:
-- Now all customization (fonts, background image) goes to customize folder
+- Changed color of Game Info button
 
 ## Notes:
 - Im aware of bug where block gets placed in place of camtp, will prob be resolved next update
