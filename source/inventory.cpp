@@ -32,11 +32,13 @@ SDL_Rect previewRectb = {width / 2 - 55, 45, 110, 110};
 SDL_Rect previewTextRect = {width / 2 - 50, 160, 100, 40};
 
 // Gameplay related buttons
+SDL_Rect bgGameplay = {45, height - 215, 420, 170};
 SDL_Rect gameplayTextRect = {150, height - 210, 200, 50};
 SDL_Rect camTpRect = {50, height - 160, 200, 50};
 SDL_Rect playerTpRect = {50, height - 100, 200, 50};
 
 // Game related buttons
+SDL_Rect bgGame = {width - 465, height - 215, 420, 170};
 SDL_Rect gameTextRect = {width - 360, height - 210, 200, 50};
 SDL_Rect saveRect = {width - 460, height - 160, 200, 50};
 SDL_Rect loadRect = {width - 460, height - 100, 200, 50};
@@ -151,6 +153,11 @@ namespace overlay {
 			draw::DrawPreview(renderer, previewRectb, 2);
 			draw::DrawPreview(renderer, previewRect, blockColor);
 			draw::DrawText(renderer, font, previewTextRect, "Preview", textColor);
+			
+			// Backgrounds
+			graphics::GetColor(2, colorR, colorG, colorB);
+			SDL_RenderFillRect(renderer, &bgGameplay);
+			SDL_RenderFillRect(renderer, &bgGame);
 
 			// Titles
 			draw::DrawText(renderer, font, gameplayTextRect, "Gameplay", textColor);
@@ -169,7 +176,7 @@ namespace overlay {
 			draw::DrawText(renderer, font, saveRect, "Save", textColor);
 
 			// Gameinfo button
-			draw::DrawButton(renderer, gameInfoRect, 2, mouseX, mouseY);
+			draw::DrawButton(renderer, gameInfoRect, 3, mouseX, mouseY);
 			draw::DrawText(renderer, font, gameInfoRect, "Game Info", textColor);
 
 			// Load button
