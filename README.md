@@ -8,5 +8,11 @@ Most random game/game engine I made where I just put most random features. You c
 
 This command only works on arch based linux distros, for other ones you gotta find coresponding packages
 
+## Compiling and running
+1. Clone this repo
+2. Open terminal and run `make`
+3. You can move `output` folder out of repo folder and delete repo folder
+- You can delete .md files too but do not touch anything else
+
 ### Runs on potato.
 
