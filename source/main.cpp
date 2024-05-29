@@ -12,7 +12,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 34";
+const char* windowtitle = "Mikicrep | Build 35";
 
 int fps = 60;
 int width = 1280;
@@ -110,9 +110,10 @@ int main() {
 				cheats::camTp(event, camTp, highlight, camOffSetX - curHoverX, camOffSetY - curHoverY, camOffSetX, camOffSetY);
 			else if(playerTp)
 				cheats::playerTp(event, worldMap, playerTp, highlight, -camOffSetX + curHoverX, -camOffSetY + curHoverY, playerX, playerY);
+			else
+				player::MouseEvent(event, colorPickerTool, highlight, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, blockColor, camOffSetX, camOffSetY);
 
 			// Place/Break
-			player::MouseEvent(event, colorPickerTool, highlight, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, blockColor, camOffSetX, camOffSetY);
 			player::MouseInvChooser(renderer, event, inventory, running, highlight, camTp, playerTp, colorPick, bgColorPick, playerColorPick, gameInfo, worldMap, mapWidth, mapHeight, blockColor, bgColor, playerColor, mouseX, mouseY, width, height, playerX, playerY, camOffSetX, camOffSetY, camScale);
 		}
 
