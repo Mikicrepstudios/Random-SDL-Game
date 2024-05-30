@@ -12,7 +12,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 35";
+const char* windowtitle = "Mikicrep | Build 36";
 
 int fps = 60;
 int width = 1280;
@@ -91,6 +91,8 @@ int main() {
 					colorPickerTool = !colorPickerTool;
 					highlight = !highlight;
 				}
+				if(event.key.keysym.sym == SDLK_F3)
+					gameInfo = !gameInfo;
 
 			// Player movement
 			player::PlayerMovement(event, worldMap, mapWidth, mapHeight, playerSpeed, playerX, playerY);
