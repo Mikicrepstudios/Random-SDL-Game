@@ -1,8 +1,8 @@
 ## Added:
+- F3 shortcut for gameinfo
 
 ## Removed:
 
 ## Changed/Fixed:
-- Finnaly fixed placing block when using cheats
 
 ## Notes:
