@@ -2,7 +2,7 @@
 
 namespace player {
 	// Hud
-	extern void gameInfo(SDL_Renderer* renderer, TTF_Font* font, SDL_Color color, int camScale, int camOffSetX, int camOffSetY, int playerX, int playerY);
+	extern void gameInfo(SDL_Renderer* renderer, TTF_Font* font, SDL_Color color, int fps, int camScale, int camOffSetX, int camOffSetY, int playerX, int playerY);
 
 	// Events
 	extern void PlayerMovement(SDL_Event event, Block worldMap[250][250], int mapWidth, int mapHeight, int playerSpeed, int &playerX, int &playerY);

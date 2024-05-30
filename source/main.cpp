@@ -12,7 +12,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 36";
+const char* windowtitle = "Mikicrep | Build 37";
 
 int fps = 60;
 int width = 1280;
@@ -142,9 +142,9 @@ int main() {
 		// Game info
 		if (gameInfo) {
 			if (bgColor == 32)
-				player::gameInfo(renderer, font, altTextColor, camScale, camOffSetX, camOffSetY, playerX, playerY);
+				player::gameInfo(renderer, font, altTextColor, fps, camScale, camOffSetX, camOffSetY, playerX, playerY);
 			else
-				player::gameInfo(renderer, font, textColor, camScale, camOffSetX, camOffSetY, playerX, playerY);
+				player::gameInfo(renderer, font, textColor, fps, camScale, camOffSetX, camOffSetY, playerX, playerY);
 		}
 
 		// Show results
