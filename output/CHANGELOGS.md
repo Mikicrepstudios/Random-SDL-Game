@@ -1,5 +1,5 @@
 ## Added:
-- F3 shortcut for gameinfo
+- Fps in gameinfo
 
 ## Removed:
 
