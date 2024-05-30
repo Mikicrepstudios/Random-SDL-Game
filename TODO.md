@@ -15,8 +15,6 @@
 - mouse overlay behind game info
 
 ## Thinking:
-- particles
-(on destroyed block???)
 - power ups
 (player pickupable objects put on surface layer???)
 -  shadows
