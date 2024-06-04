@@ -12,7 +12,6 @@
 (overlay on block to make it seem like it got texture)
 - no collision block
 (block where player got ability to go thru it)
-- mouse overlay behind game info
 
 ## Thinking:
 - power ups

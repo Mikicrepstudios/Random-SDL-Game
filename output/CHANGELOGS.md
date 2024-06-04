@@ -1,8 +1,8 @@
 ## Added:
-- Fps in gameinfo
 
 ## Removed:
 
 ## Changed/Fixed:
+- Spacing between categories in gameinfo
 
 ## Notes:
