@@ -11,7 +11,7 @@ This command only works on arch based linux distros, for other ones you gotta fi
 ## Compiling and running
 1. Clone this repo
 2. Open terminal and run `make`
-3. You can move `output` folder out of repo folder and delete repo folder
+- You can move `output` folder out of repo folder and delete repo folder
 - You can delete .md files too but do not delete anything else
 
 ### Runs on potato.
