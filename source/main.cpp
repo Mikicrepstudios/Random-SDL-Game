@@ -12,7 +12,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 38";
+const char* windowtitle = "Mikicrep | Build 39";
 
 int fps = 60;
 int width = 1280;

@@ -1,9 +1,6 @@
 /*--- TODO List ---*/
 ## Very soon:
-- cleanup unused includes (if theres any)
-- split functions
-- organize function arguments
-- organize variable definitions
+- Rename draw::DrawPreview to draw::DrawRect
 
 ## Planned:
 - undo/redo
