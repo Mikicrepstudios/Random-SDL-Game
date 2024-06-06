@@ -1,5 +1,6 @@
 #include "SDL2/SDL.h"
 #include <SDL_ttf.h>
+#include <string>
 
 #include "addional.h"
 #include "block.h"
@@ -47,6 +48,7 @@ SDL_Rect exitRect = {width - 250, height - 100, 200, 50};
 
 // Presets related buttons
 SDL_Rect presetRect = {width / 2 - 85, height - 215, 170, 170};
+SDL_Rect presetTextRect = {width / 2 - 40, height - 215, 80, 170};
 SDL_Rect selCLPresetRect = {width / 2 - 115, height - 215, 20, 170};
 SDL_Rect selCRPresetRect = {width / 2 + 95, height - 215, 20, 170};
 
@@ -127,7 +129,7 @@ namespace player {
 }
 
 namespace overlay {
-	void Inventory(SDL_Renderer* renderer, TTF_Font* font, bool inventory, bool colorPick, bool bgcolorPick, bool playerColorPick, bool gameInfo, int blockColor, int bgColor, int playerColor, int mouseX, int mouseY) {
+	void Inventory(SDL_Renderer* renderer, TTF_Font* font, bool inventory, bool colorPick, bool bgcolorPick, bool playerColorPick, bool gameInfo, int blockColor, int bgColor, int playerColor, int mouseX, int mouseY, int preset) {
 		// Define variables
 		int colorR, colorG, colorB = 0;
 		SDL_Color textColor = {255, 255, 255};
@@ -159,10 +161,11 @@ namespace overlay {
 			draw::DrawPreview(renderer, previewRect, blockColor);
 			draw::DrawText(renderer, font, previewTextRect, "Preview", textColor);
 			
-			// Palletes
+			// Presets
 			draw::DrawPreview(renderer, presetRect, 2);
 			draw::DrawButton(renderer, selCLPresetRect, 2, mouseX, mouseY);
 			draw::DrawButton(renderer, selCRPresetRect, 2, mouseX, mouseY);
+			draw::DrawText(renderer, font, presetTextRect, std::to_string(preset).c_str(), textColor);
 
 			// Backgrounds
 			draw::DrawPreview(renderer, bgGameplay, 2);

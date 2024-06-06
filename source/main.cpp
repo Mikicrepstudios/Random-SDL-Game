@@ -12,7 +12,7 @@
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 39";
+const char* windowtitle = "Mikicrep | Build 40";
 
 int fps = 60;
 int width = 1280;
@@ -38,6 +38,7 @@ int main() {
 	bool inventory, colorPick, bgColorPick, playerColorPick = false;
 	bool gameInfo = false;
 	int blockColor = 2;
+	int preset = 1;
 	int curHoverX, curHoverY = 0;
 
 	// Game world
@@ -115,7 +116,6 @@ int main() {
 			else
 				player::MouseEvent(event, colorPickerTool, highlight, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, blockColor, camOffSetX, camOffSetY);
 
-			// Place/Break
 			player::MouseInvChooser(renderer, event, inventory, running, highlight, camTp, playerTp, colorPick, bgColorPick, playerColorPick, gameInfo, worldMap, mapWidth, mapHeight, blockColor, bgColor, playerColor, mouseX, mouseY, width, height, playerX, playerY, camOffSetX, camOffSetY, camScale);
 		}
 
@@ -136,7 +136,7 @@ int main() {
 		game::RenderMap(renderer, worldMap, width, height, mapWidth, mapHeight, camOffSetX, camOffSetY, camScale);
 
 		// Overlays
-		overlay::Inventory(renderer, font, inventory, colorPick, bgColorPick, playerColorPick, gameInfo, blockColor, bgColor, playerColor, mouseX, mouseY);
+		overlay::Inventory(renderer, font, inventory, colorPick, bgColorPick, playerColorPick, gameInfo, blockColor, bgColor, playerColor, mouseX, mouseY, preset);
 		overlay::Mouse(renderer, highlight, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, camOffSetX, camOffSetY, camScale, bgColor);
 
 		// Game info
