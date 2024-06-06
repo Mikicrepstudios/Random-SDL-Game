@@ -45,6 +45,11 @@ SDL_Rect loadRect = {width - 460, height - 100, 200, 50};
 SDL_Rect gameInfoRect = {width - 250, height - 160, 200, 50};
 SDL_Rect exitRect = {width - 250, height - 100, 200, 50};
 
+// Presets related buttons
+SDL_Rect presetRect = {width / 2 - 85, height - 215, 170, 170};
+SDL_Rect selCLPresetRect = {width / 2 - 115, height - 215, 20, 170};
+SDL_Rect selCRPresetRect = {width / 2 + 95, height - 215, 20, 170};
+
 namespace player {
 	void InventoryEvent(SDL_Event event, bool &inventory, bool &colorPick, bool &bgColorPick, int &fps) {
 		if(event.key.keysym.sym == SDLK_e) {
@@ -154,10 +159,14 @@ namespace overlay {
 			draw::DrawPreview(renderer, previewRect, blockColor);
 			draw::DrawText(renderer, font, previewTextRect, "Preview", textColor);
 			
+			// Palletes
+			draw::DrawPreview(renderer, presetRect, 2);
+			draw::DrawButton(renderer, selCLPresetRect, 2, mouseX, mouseY);
+			draw::DrawButton(renderer, selCRPresetRect, 2, mouseX, mouseY);
+
 			// Backgrounds
-			graphics::GetColor(2, colorR, colorG, colorB);
-			SDL_RenderFillRect(renderer, &bgGameplay);
-			SDL_RenderFillRect(renderer, &bgGame);
+			draw::DrawPreview(renderer, bgGameplay, 2);
+			draw::DrawPreview(renderer, bgGame, 2);
 
 			// Titles
 			draw::DrawText(renderer, font, gameplayTextRect, "Gameplay", textColor);
@@ -194,6 +203,7 @@ namespace overlay {
 				overlay::ColorPicker(renderer, font, "BG Color", width, height);
 			else if(playerColorPick)
 				overlay::ColorPicker(renderer, font, "Player Color", width, height);
-		}
+
+			}
 	}
 }
