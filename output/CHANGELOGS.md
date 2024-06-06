@@ -1,5 +1,5 @@
 ## Added:
-- Added presets selector
+- Added current preset number
 
 ## Removed:
 
