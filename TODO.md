@@ -11,8 +11,6 @@
 (block where player got ability to go thru it)
 
 ## Thinking:
-- power ups
-(player pickupable objects put on surface layer???)
 -  shadows
 
 ### Format:
