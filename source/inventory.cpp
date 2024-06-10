@@ -47,10 +47,11 @@ SDL_Rect gameInfoRect = {width - 250, height - 160, 200, 50};
 SDL_Rect exitRect = {width - 250, height - 100, 200, 50};
 
 // Presets related buttons
-SDL_Rect presetRect = {width / 2 - 85, height - 215, 170, 170};
-SDL_Rect presetTextRect = {width / 2 - 40, height - 215, 80, 170};
-SDL_Rect selCLPresetRect = {width / 2 - 115, height - 215, 20, 170};
-SDL_Rect selCRPresetRect = {width / 2 + 95, height - 215, 20, 170};
+SDL_Rect presetRect = {width / 2 - 85, height - 160, 170, 115};
+SDL_Rect presetTextRect = {width / 2 - 40, height - 160, 80, 115};
+SDL_Rect selCLPresetRect = {width / 2 - 115, height - 160, 20, 115};
+SDL_Rect selCRPresetRect = {width / 2 + 95, height - 160, 20, 115};
+SDL_Rect presetTitleRect = {width / 2 - 115, height - 215, 230, 50};
 
 namespace player {
 	void InventoryEvent(SDL_Event event, bool &inventory, bool &colorPick, bool &bgColorPick, int &fps) {
@@ -166,6 +167,7 @@ namespace overlay {
 			draw::DrawButton(renderer, selCLPresetRect, 2, mouseX, mouseY);
 			draw::DrawButton(renderer, selCRPresetRect, 2, mouseX, mouseY);
 			draw::DrawText(renderer, font, presetTextRect, std::to_string(preset).c_str(), textColor);
+			draw::DrawText(renderer, font, presetTitleRect, "Presets", textColor);
 
 			// Backgrounds
 			draw::DrawPreview(renderer, bgGameplay, 2);
