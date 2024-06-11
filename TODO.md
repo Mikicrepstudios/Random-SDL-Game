@@ -13,9 +13,6 @@
 ## Thinking:
 -  shadows
 
-### Format:
-- feature - rank
-(description/s if any)
 ### Explanations:
 - Very soon - priority, most likely coming next few updates
 - Planned   - will probably add it to this
