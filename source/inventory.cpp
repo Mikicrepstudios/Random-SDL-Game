@@ -8,6 +8,7 @@
 #include "graphics.h"
 #include "overlay.h"
 #include "player.h"
+#include "preset.h"
 
 const int width = 1280;
 const int height = 800;
