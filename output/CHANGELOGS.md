@@ -1,10 +1,9 @@
 ## Added:
-- Presets title text
+- Preset chooser with num keys
 
 ## Removed:
 
 ## Changed/Fixed:
-- Made presets preview and buttons smaller
 
 ## Notes:
 - Unfinished

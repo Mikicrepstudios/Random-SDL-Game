@@ -17,4 +17,5 @@ EXIT - closes game
 
 ### Extra
 ESC - If there is already open UI it closes it otherwise it closes game
+0-9 - Preset chooser
 F3 - Opens game info

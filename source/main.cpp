@@ -6,13 +6,14 @@
 
 #include "block.h"
 #include "cheats.h"
+#include "controls.h"
 #include "files.h"
 #include "game.h"
 #include "graphics.h"
 #include "overlay.h"
 #include "player.h"
 
-const char* windowtitle = "Mikicrep | Build 41";
+const char* windowtitle = "Mikicrep | Build 42";
 
 int fps = 60;
 int width = 1280;
@@ -95,6 +96,8 @@ int main() {
 				if(event.key.keysym.sym == SDLK_F3)
 					gameInfo = !gameInfo;
 
+			// Preset chooser
+			controls::presetChooser(event, preset);
 			// Player movement
 			player::PlayerMovement(event, worldMap, mapWidth, mapHeight, playerSpeed, playerX, playerY);
 			// Inventory
