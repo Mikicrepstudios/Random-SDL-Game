@@ -1,6 +1,8 @@
 /*--- TODO List ---*/
 ## Very soon:
 - Rename draw::DrawPreview to draw::DrawRect
+- Struct of all settings
+- Player struct
 
 ## Planned:
 - undo/redo

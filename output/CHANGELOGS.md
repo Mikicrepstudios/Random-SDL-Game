@@ -1,9 +1,10 @@
 ## Added:
-- Preset chooser with num keys
+- Added preset
 
 ## Removed:
 
 ## Changed/Fixed:
+- Changed preset to curPreset
 
 ## Notes:
 - Unfinished
