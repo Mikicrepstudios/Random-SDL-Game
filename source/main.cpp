@@ -12,8 +12,9 @@
 #include "graphics.h"
 #include "overlay.h"
 #include "player.h"
+#include "presets.h"
 
-const char* windowtitle = "Mikicrep | Build 42";
+const char* windowtitle = "Mikicrep | Build 43";
 
 int fps = 60;
 int width = 1280;
@@ -39,7 +40,8 @@ int main() {
 	bool inventory, colorPick, bgColorPick, playerColorPick = false;
 	bool gameInfo = false;
 	int blockColor = 2;
-	int preset = 1;
+	Preset preset[10];
+	int curPreset = 1;
 	int curHoverX, curHoverY = 0;
 
 	// Game world
@@ -97,7 +99,7 @@ int main() {
 					gameInfo = !gameInfo;
 
 			// Preset chooser
-			controls::presetChooser(event, preset);
+			controls::presetChooser(event, curPreset);
 			// Player movement
 			player::PlayerMovement(event, worldMap, mapWidth, mapHeight, playerSpeed, playerX, playerY);
 			// Inventory
@@ -139,7 +141,7 @@ int main() {
 		game::RenderMap(renderer, worldMap, width, height, mapWidth, mapHeight, camOffSetX, camOffSetY, camScale);
 
 		// Overlays
-		overlay::Inventory(renderer, font, inventory, colorPick, bgColorPick, playerColorPick, gameInfo, blockColor, bgColor, playerColor, mouseX, mouseY, preset);
+		overlay::Inventory(renderer, font, inventory, colorPick, bgColorPick, playerColorPick, gameInfo, blockColor, bgColor, playerColor, mouseX, mouseY, curPreset);
 		overlay::Mouse(renderer, highlight, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, camOffSetX, camOffSetY, camScale, bgColor);
 
 		// Game info
