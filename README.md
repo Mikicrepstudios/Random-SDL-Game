@@ -14,5 +14,8 @@ This command only works on arch based linux distros, for other ones you gotta fi
 - You can move `output` folder out of repo folder and delete repo folder
 - You can delete .md files too but do not delete anything else
 
+## Documentation
+Currently does not exist, will be [here](https://github.com/Mikicrepstudios/Random-SDL-Game-DOCS)
+
 ### Runs on potato.
 
