@@ -1,3 +1,5 @@
+## Controls
+
 ### Player
 wasd - movement
 e - open inventory
