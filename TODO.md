@@ -1,11 +1,11 @@
-# TODO List
+## TODO List
 
-## Very soon:
+### Very soon:
 - Rename draw::DrawPreview to draw::DrawRect
 - Struct of all settings
 - Player struct
 
-## Planned:
+### Planned:
 - undo/redo
 (temponary memory to revert accidental clicks/missclicks, got idea for last placed block undo/redo, thinking abt bigger limit)
 - block textures
@@ -13,7 +13,7 @@
 - no collision block
 (block where player got ability to go thru it)
 
-## Thinking:
+### Thinking:
 -  shadows
 
 ### Explanations:
