@@ -1,10 +1,8 @@
 ## Added:
-- Added preset
 
 ## Removed:
 
 ## Changed/Fixed:
-- Changed preset to curPreset
+- Temponary bugfix for bug #1
 
 ## Notes:
-- Unfinished
