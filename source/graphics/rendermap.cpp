@@ -9,6 +9,7 @@ namespace game {
 		int maxYBlocks = height / camScale;
 		for(int x = 0; x <= maxXBlocks; x++) {
 			for(int y = 0; y <= maxYBlocks; y++) {
+				if((camOffSetX - width / camScale) > -mapWidth) {
 				// Get current block id and define variables
 				int objectId = worldMap[x - camOffSetX][y - camOffSetY].type;
 				int colorId = worldMap[x - camOffSetX][y - camOffSetY].color;
@@ -22,6 +23,7 @@ namespace game {
 					SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
 					SDL_Rect curRect = {x * camScale, y * camScale, camScale, camScale};
 					SDL_RenderFillRect(renderer, &curRect);
+				}
 				}
 			}
 		}
