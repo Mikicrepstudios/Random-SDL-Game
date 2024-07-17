@@ -144,35 +144,35 @@ namespace overlay {
 			SDL_RenderFillRect(renderer, &bgRect);
 
 			// Color
-			draw::DrawPreview(renderer, colorRectb, 2);
-			draw::DrawPreview(renderer, colorRect, blockColor);
+			draw::DrawRect(renderer, colorRectb, 2);
+			draw::DrawRect(renderer, colorRect, blockColor);
 			draw::DrawText(renderer, font, colorTextRect, "Block", textColor);
 
 			// BG Color
-			draw::DrawPreview(renderer, bgColorRectb, 2);
-			draw::DrawPreview(renderer, bgColorRect, bgColor);
+			draw::DrawRect(renderer, bgColorRectb, 2);
+			draw::DrawRect(renderer, bgColorRect, bgColor);
 			draw::DrawText(renderer, font, bgColorTextRect, "BG", textColor);
 
 			// Player Color
-			draw::DrawPreview(renderer, playerColorRectb, 2);
-			draw::DrawPreview(renderer, playerColorRect, playerColor);
+			draw::DrawRect(renderer, playerColorRectb, 2);
+			draw::DrawRect(renderer, playerColorRect, playerColor);
 			draw::DrawText(renderer, font, playerColorTextRect, "Player", textColor);
 
 			// Preview
-			draw::DrawPreview(renderer, previewRectb, 2);
-			draw::DrawPreview(renderer, previewRect, blockColor);
+			draw::DrawRect(renderer, previewRectb, 2);
+			draw::DrawRect(renderer, previewRect, blockColor);
 			draw::DrawText(renderer, font, previewTextRect, "Preview", textColor);
 			
 			// Presets
-			draw::DrawPreview(renderer, presetRect, 2);
+			draw::DrawRect(renderer, presetRect, 2);
 			draw::DrawButton(renderer, selCLPresetRect, 2, mouseX, mouseY);
 			draw::DrawButton(renderer, selCRPresetRect, 2, mouseX, mouseY);
 			draw::DrawText(renderer, font, presetTextRect, std::to_string(preset).c_str(), textColor);
 			draw::DrawText(renderer, font, presetTitleRect, "Presets", textColor);
 
 			// Backgrounds
-			draw::DrawPreview(renderer, bgGameplay, 2);
-			draw::DrawPreview(renderer, bgGame, 2);
+			draw::DrawRect(renderer, bgGameplay, 2);
+			draw::DrawRect(renderer, bgGame, 2);
 
 			// Titles
 			draw::DrawText(renderer, font, gameplayTextRect, "Gameplay", textColor);

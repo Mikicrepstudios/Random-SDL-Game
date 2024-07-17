@@ -20,7 +20,7 @@ namespace draw {
 			SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
 		SDL_RenderFillRect(renderer, &rect);
 	}
-	void DrawPreview(SDL_Renderer* renderer, SDL_Rect rect, int color) {
+	void DrawRect(SDL_Renderer* renderer, SDL_Rect rect, int color) {
 		graphics::GetColor(color, colorR, colorG, colorB);
 		SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
 		SDL_RenderFillRect(renderer, &rect);
