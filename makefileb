@@ -1,0 +1,11 @@
+run: output/sdlgaem
+	$<
+
+output/sdlgaem: $(wildcard source/*.cpp) $(wildcard source/*/*.cpp)
+	g++ $^ -o $@ -lSDL2 -lSDL2_image -lSDL2_ttf -I/usr/include/SDL2 -I./source/headers
+
+windows: $(wildcard source/*.cpp) $(wildcard source/*/*.cpp)
+	x86_64-w64-mingw32-g++ $^ -o main.exe -static -static-libstdc++ -static-libgcc -lSDL2 -lSDL2_image -lSDL2_ttf -Isdl2mingw/include -Lsdl2mingw/lib -I./source/headers
+
+clean:
+	rm output/sdlgaem
