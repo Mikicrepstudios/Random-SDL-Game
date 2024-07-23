@@ -20,7 +20,7 @@ int fps = 60;
 int width = 1280;
 int height = 800;
 
-int main() {
+int main(int argc, char **argv) {
 	// SDL variables
 	int bgColor = 1;
 	int mouseX, mouseY = 0;
