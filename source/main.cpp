@@ -14,7 +14,7 @@
 #include "player.h"
 #include "presets.h"
 
-const char* windowtitle = "Mikicrep | Build 45";
+const char* windowtitle = "Mikicrep | Build 46";
 
 int fps = 60;
 int width = 1280;
@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
 
 	// Prepare game
 	SDL_Window *window;
-	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, 0);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 	SDL_Event event;
 
