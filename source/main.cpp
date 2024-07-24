@@ -14,7 +14,7 @@
 #include "player.h"
 #include "presets.h"
 
-const char* windowtitle = "Mikicrep | Build 46";
+const char* windowtitle = "Mikicrep | Build 47";
 
 int fps = 60;
 int width = 1280;
@@ -36,8 +36,15 @@ int main(int argc, char **argv) {
 
 	// Game
 	bool highlight = false;
-	bool colorPickerTool, playerTp, camTp = false;
-	bool inventory, colorPick, bgColorPick, playerColorPick = false;
+	bool colorPickerTool = false;
+	bool playerTp = false;
+	bool camTp = false;
+
+	bool inventory = false;
+	bool colorPick = false;
+	bool bgColorPick = false;
+	bool playerColorPick = false;
+
 	bool gameInfo = false;
 	int blockColor = 2;
 	Preset preset[10];
@@ -50,7 +57,8 @@ int main(int argc, char **argv) {
 	Block worldMap[250][250] = {};
 
 	// Player
-	int playerX, playerY = 0;
+	int playerX = 0;
+	int playerY = 0;
 	int playerColor = 6;
 	int playerSpeed = 1;
 
