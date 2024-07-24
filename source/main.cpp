@@ -14,13 +14,13 @@
 #include "player.h"
 #include "presets.h"
 
-const char* windowtitle = "Mikicrep | Build 45";
+const char* windowtitle = "Mikicrep | Build 46";
 
 int fps = 60;
 int width = 1280;
 int height = 800;
 
-int main() {
+int main(int argc, char **argv) {
 	// SDL variables
 	int bgColor = 1;
 	int mouseX, mouseY = 0;
@@ -56,7 +56,7 @@ int main() {
 
 	// Prepare game
 	SDL_Window *window;
-	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, 0);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 	SDL_Event event;
 
@@ -136,6 +136,7 @@ int main() {
 
 		// Pre logic
 		worldMap[playerX][playerY] = Block(1, playerColor);
+
 
 		// Draw map
 		game::RenderMap(renderer, worldMap, width, height, mapWidth, mapHeight, camOffSetX, camOffSetY, camScale);
