@@ -10,4 +10,4 @@ windows: $(wildcard source/*.cpp) $(wildcard source/*/*.cpp)
 
 clean:
 	rm output/sdlgaem
-	rm outputwindows/sdlgaem.exe
+	rm output/sdlgaem.exe

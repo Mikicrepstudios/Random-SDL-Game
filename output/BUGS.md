@@ -4,7 +4,7 @@
 Explanation: Bug is caused by going off map
 Update2: Fixed but now hovering over it crashes
 
-2: Fonts sometime freaks out and whole games font goes into chrisis
+2: Fonts sometime freaks out and whole games font goes into crisis
 
 3. Presets dont work
 Explanation: Will be fully implemented after release
