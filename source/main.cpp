@@ -21,7 +21,6 @@ int width = 1280;
 int height = 800;
 
 int main(int argc, char **argv) {
-	std::cout << "Entering main function\n";
 	// SDL variables
 	int bgColor = 1;
 	int mouseX, mouseY = 0;
@@ -61,7 +60,6 @@ int main(int argc, char **argv) {
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 	SDL_Event event;
 
-	std::cout << "Initing SDL\n";
 	SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();
 	TTF_Font* font = TTF_OpenFont("customize/font.ttf", 48);
@@ -69,7 +67,6 @@ int main(int argc, char **argv) {
 	gamemap::ClearMap(worldMap, mapWidth, mapHeight);
 	files::LoadMap(worldMap, mapWidth, mapHeight);
 	files::LoadSettings(playerX, playerY, camOffSetX, camOffSetY, camScale, playerColor, blockColor, bgColor);
-	std::cout << "Running = true\n";
 	bool running = true;
 
 	while(running) {
@@ -146,9 +143,7 @@ int main(int argc, char **argv) {
 
 		// Overlays
 		overlay::Inventory(renderer, font, inventory, colorPick, bgColorPick, playerColorPick, gameInfo, blockColor, bgColor, playerColor, mouseX, mouseY, curPreset);
-		std::cout << "breakpoint2\n";
 		overlay::Mouse(renderer, highlight, inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, camOffSetX, camOffSetY, camScale, bgColor);
-		std::cout << "breakpoint3\n";
 
 		// Game info
 		if (gameInfo) {
@@ -163,7 +158,6 @@ int main(int argc, char **argv) {
 
 		// Timer
 		SDL_Delay(1000 / fps);
-		std::cout << "Finished executing";
 	}
 
 	IMG_Quit();
