@@ -11,9 +11,14 @@
 (overlay on block to make it seem like it got texture)
 - no collision block
 (block where player got ability to go thru it)
+- Are you sure you want to exit (on ESC)
+exit with/o saving cancel
+- Are you sure you want to clear canvas (on c)
+yes no
 
 ### Thinking:
--  shadows
+- shadows
+- 32bit windows support
 
 ### Explanations:
 - Very soon - priority, most likely coming next few updates
