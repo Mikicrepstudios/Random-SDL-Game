@@ -8,6 +8,11 @@ You can use it also as pixelart editor if you want.
 - Supports **linux** and **windows** (shh linux is given bigger love)
 - Made for **ultra** low-end devices
 
+## Running on Windows
+If you get game by default then it wont run at all on windows.
+
+You have to move all files from x86_64dll (for 64bit windows) or x86dll (for 32bit windows) folder to same place where is executable.
+
 ## Requirements
 For linux compiling:
 
