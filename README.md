@@ -25,11 +25,22 @@ Theese commands only works on arch based linux distros, for other ones you gotta
 - You can move `output` folder out of repo folder and delete repo folder
 - You can delete .md and .dll files too but do not delete anything else
 - Game will open automatically after successful compilation
-### Windows
+### Windows x86_64 (64bit)
 1. Clone this repo
 2. Download `sdl2mingw.zip` [here](https://drive.google.com/drive/folders/1uVe7oKMzCTTUeMJuHL7vqK0O2FK_pIPs?usp=drive_link)
 3. Extract `sdl2mingw.zip` in root folder of repo (make sure you put folder not contents of folder)
 4. Open terminal and run `make windows`
+5. Move contents from `x86_64dll` folder to output folder
+- You can move `output` folder out of repo folder and delete repo folder
+- You can delete .md files too but do not delete anything else
+- Game will not open automatically after successful compilation
+- Works under [WINE](https://www.winehq.org/) too
+### Windows x86 (32bit)
+1. Clone this repo
+2. Download `sdl2mingw32.zip` [here](https://drive.google.com/drive/folders/1uVe7oKMzCTTUeMJuHL7vqK0O2FK_pIPs?usp=drive_link)
+3. Extract `sdl2mingw32.zip` in root folder of repo (make sure you put folder not contents of folder)
+4. Open terminal and run `make windows32`
+5. Move contents from `x86dll` folder to output folder
 - You can move `output` folder out of repo folder and delete repo folder
 - You can delete .md files too but do not delete anything else
 - Game will not open automatically after successful compilation

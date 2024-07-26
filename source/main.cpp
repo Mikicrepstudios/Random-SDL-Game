@@ -14,7 +14,7 @@
 #include "player.h"
 #include "presets.h"
 
-const char* windowtitle = "Mikicrep | Build 47";
+const char* windowtitle = "Mikicrep | Build 48";
 
 int fps = 60;
 int width = 1280;
