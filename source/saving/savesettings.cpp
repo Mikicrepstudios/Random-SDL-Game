@@ -1,37 +1,45 @@
 #include <fstream>
 #include <iostream>
 
+#include "settings.h"
+
 namespace files {
-	void SaveSettings(int playerX, int playerY, int camOffSetX, int camOffSetY, int camScale, int playerColor, int blockColor, int bgColor) {
+	void SaveSettings(game::Settings settings, game::Player player, game::Camera camera, int blockColor) {
 		std::ofstream settingsFile("save/settings.msave"); // Open file
 
 		// Save settings
 		if(settingsFile.is_open()) {
-			settingsFile << playerX << " "
-				<< playerY << " "
-				<< camOffSetX << " "
-				<< camOffSetY << " "
-				<< camScale << " "
-				<< playerColor << " "
-				<< blockColor << " "
-				<< bgColor << " ";
+			settingsFile << 
+				   blockColor << " "
+				<< settings.bgColor << " "
+
+				<< player.x << " "
+				<< player.y << " "
+				<< player.color << " "
+
+				<< camera.offSetX << " "
+				<< camera.offSetY << " "
+				<< camera.scale << " ";
 			settingsFile.close();
 		}
 	}
 
-	void LoadSettings(int &playerX, int &playerY, int &camOffSetX, int &camOffSetY, int &camScale, int &playerColor, int &blockColor, int &bgColor) {
+	void LoadSettings(game::Settings &settings, game::Player &player, game::Camera &camera, int &blockColor) {
 		std::ifstream settingsFile("save/settings.msave"); // Open file
 
 		// Load settings
 		if(settingsFile.is_open()) {
-			settingsFile >> playerX >>
-					playerY >>
-					camOffSetX >>
-					camOffSetY >>
-					camScale >>
-					playerColor >>
+			settingsFile >> 
 					blockColor >>
-					bgColor;
+					settings.bgColor >>
+
+					player.x >>
+					player.y >>
+					player.color >>
+
+					camera.offSetX >>
+					camera.offSetY >>
+					camera.scale;
 			settingsFile.close();
 		}
 	}

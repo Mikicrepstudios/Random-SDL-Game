@@ -9,4 +9,4 @@ First check if your suggestion listed in [TODO.md](https://github.com/Mikicrepst
 If it isnt, you can post suggestions in [issues](https://github.com/Mikicrepstudios/Random-SDL-Game/issues) page, make sure you select "Feedback request" template
 
 ## Contributing
-Feel free to play with code, create pull requests or just give feedback on [Mikicrep Studios discord server](https://discord.gg/DdaGyeWp9U), it will really mean to me. If you want, as an contribution reward you will get your pfp or any pic you want to be added on our predefined save ;)
+Feel free to play with code, create pull requests or just give feedback on [Mikicrep Studios discord server](https://discord.gg/DdaGyeWp9U), it will really mean to me. If you want, as an contribution reward you will get your pfp or any pic you want to be added on our predefined save ;) (Must be 18x18)

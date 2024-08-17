@@ -3,16 +3,22 @@
 
 #include "graphics.h"
 
-int colorR, colorG, colorB = 0;
+graphics::Colors* color = graphics::initColors();
 
 namespace draw {
-	void DrawButton(SDL_Renderer* renderer, SDL_Rect rect, int color, int mouseX, int mouseY) {
-		graphics::GetColor(color, colorR, colorG, colorB);
+	void SetCol(SDL_Renderer* renderer, int bgColor) {
+		SDL_SetRenderDrawColor(renderer, color[bgColor - 1].r, color[bgColor - 1].g, color[bgColor - 1].b, 255);
+	}
+
+	void DrawButton(SDL_Renderer* renderer, SDL_Rect rect, int colorid, int mouseX, int mouseY) {
+		int colorR = color[colorid - 1].r;
+		int colorG = color[colorid - 1].g;
+		int colorB = color[colorid - 1].b;
 		if (mouseX >= rect.x && mouseX <= rect.x + rect.w &&
 			mouseY >= rect.y && mouseY <= rect.y + rect.h) {
-			colorR -= colorR * .25;
-			colorG -= colorG * .25;
-			colorB -= colorB * .25;
+			colorR *= .25;
+			colorG *= .25;
+			colorB *= .25;
 			SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
 			SDL_RenderFillRect(renderer, &rect);
 		}
@@ -20,14 +26,15 @@ namespace draw {
 			SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
 		SDL_RenderFillRect(renderer, &rect);
 	}
-	void DrawRect(SDL_Renderer* renderer, SDL_Rect rect, int color) {
-		graphics::GetColor(color, colorR, colorG, colorB);
-		SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
+	void DrawRect(SDL_Renderer* renderer, SDL_Rect rect, int colorid) {
+		SDL_SetRenderDrawColor(renderer, color[colorid - 1].r, color[colorid - 1].g, color[colorid - 1].b, 255);
 		SDL_RenderFillRect(renderer, &rect);
 	}
-	void DrawText(SDL_Renderer* renderer, TTF_Font* font, SDL_Rect rect, const char* text, SDL_Color color) {
-		SDL_Surface* textSurface = TTF_RenderText_Solid(font, text, color);
+	void DrawText(SDL_Renderer* renderer, TTF_Font* font, SDL_Rect rect, const char* text, SDL_Color textColor) {
+		SDL_Surface* textSurface = TTF_RenderText_Solid(font, text, textColor);
 		SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 		SDL_RenderCopy(renderer, textTexture, NULL, &rect);
+		SDL_FreeSurface(textSurface);
+        SDL_DestroyTexture(textTexture);
 	}
 }
