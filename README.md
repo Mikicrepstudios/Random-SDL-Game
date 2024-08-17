@@ -22,6 +22,8 @@ For windows compiling:
 
 ```pacman -S --needed mingw-w64-gcc```
 
+Also you must get `mingw-w64-sdl2` from AUR for windows compiling
+
 Theese commands only works on arch based linux distros, for other ones you gotta find coresponding packages
 
 ## Compiling and running
@@ -58,6 +60,9 @@ Currently does not exist, will be [here](https://github.com/Mikicrepstudios/Rand
 
 ## Bug reporting && Suggestions && Contributing
 Please read [CONTRIBUTING.md](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
+
+## Support us
+You can support us by giving us star on github <3
 
 ### Runs on potato.
 

@@ -1,173 +1,47 @@
+#include "graphics.h"
+#include <cstdlib>
+
 namespace graphics {
-    void GetColor(int colorId, int &colorR, int &colorG, int &colorB) {
-        switch(colorId) {
-        case 1:
-            colorR = 0;
-            colorG = 0;
-            colorB = 0;
-            break;
-        case 2:
-            colorR = 130;
-            colorG = 124;
-            colorB = 112;
-            break;
-        case 3:
-            colorR = 74;
-            colorG = 73;
-            colorB = 87;
-            break;
-        case 4:
-            colorR = 5;
-            colorG = 17;
-            colorB = 85;
-            break;
-        case 5:
-            colorR = 79;
-            colorG = 2;
-            colorB = 236;
-            break;
-        case 6:
-            colorR = 45;
-            colorG = 105;
-            colorB = 203;
-            break;
-        case 7:
-            colorR = 0;
-            colorG = 166;
-            colorB = 238;
-            break;
-        case 8:
-            colorR = 111;
-            colorG = 235;
-            colorB = 255;
-            break;
+    Colors* initColors() {
+        Colors* colors = static_cast<Colors*>(std::malloc(32 * sizeof(Colors)));
 
+        // R                // G                // B
+        colors[0].r = 0;    colors[0].g = 0;    colors[0].b = 0;
+        colors[1].r = 130;  colors[1].g = 124;  colors[1].b = 112;
+        colors[2].r = 74;   colors[2].g = 73;   colors[2].b = 87;
+        colors[3].r = 5;    colors[3].g = 17;   colors[3].b = 87;
+        colors[4].r = 79;   colors[4].g = 2;    colors[4].b = 236;
+        colors[5].r = 45;   colors[5].g = 105;  colors[5].b = 203;
+        colors[6].r = 0;    colors[6].g = 166;  colors[6].b = 238;
+        colors[7].r = 111;  colors[7].g = 235;  colors[7].b = 255;
 
-        case 9:
-            colorR = 6;
-            colorG = 54;
-            colorB = 25;
-            break;
-        case 10:
-            colorR = 86;
-            colorG = 98;
-            colorB = 4;
-            break;
-        case 11:
-            colorR = 155;
-            colorG = 149;
-            colorB = 0;
-            break;
-        case 12:
-            colorR = 17;
-            colorG = 150;
-            colorB = 59;
-            break;
-        case 13:
-            colorR = 81;
-            colorG = 225;
-            colorB = 19;
-            break;
-        case 14:
-            colorR = 42;
-            colorG = 102;
-            colorB = 106;
-            break;
-        case 15:
-            colorR = 8;
-            colorG = 162;
-            colorB = 154;
-            break;
+        colors[8].r = 6;    colors[8].g = 54;   colors[8].b = 25;
+        colors[9].r = 86;   colors[9].g = 98;   colors[9].b = 4;
+        colors[10].r = 155; colors[10].g = 149; colors[10].b = 0;
+        colors[11].r = 17;  colors[11].g = 150; colors[11].b = 59;
+        colors[12].r = 81;  colors[12].g = 225; colors[12].b = 19;
+        colors[13].r = 42;  colors[13].g = 102; colors[13].b = 106;
+        colors[14].r = 8;   colors[14].g = 162; colors[14].b = 154;
+        colors[15].r = 8;   colors[15].g = 253; colors[15].b = 204;
 
-        case 16:
-            colorR = 8;
-            colorG = 253;
-            colorB = 204;
-            break;
+        colors[16].r = 90;  colors[16].g = 59;  colors[16].b = 28;
+        colors[17].r = 174; colors[17].g = 101; colors[17].b = 7;
+        colors[18].r = 247; colors[18].g = 170; colors[18].b = 48;
+        colors[19].r = 244; colors[19].g = 234; colors[19].b = 92;
+        colors[20].r = 172; colors[20].g = 190; colors[20].b = 156;
+        colors[21].r = 142; colors[21].g = 123; colors[21].b = 164;
+        colors[22].r = 214; colors[22].g = 160; colors[22].b = 144;
+        colors[23].r = 183; colors[23].g = 192; colors[23].b = 255;
 
+        colors[24].r = 71;  colors[24].g = 1;   colors[24].b = 31;
+        colors[25].r = 161; colors[25].g = 44;  colors[25].b = 50;
+        colors[26].r = 254; colors[26].g = 59;  colors[26].b = 30;
+        colors[27].r = 250; colors[27].g = 47;  colors[27].b = 122;
+        colors[28].r = 153; colors[28].g = 47;  colors[28].b = 124;
+        colors[29].r = 230; colors[29].g = 28;  colors[29].b = 247;
+        colors[30].r = 251; colors[30].g = 159; colors[30].b = 218;
+        colors[31].r = 255; colors[31].g = 255; colors[31].b = 255;
 
-        case 17:
-            colorR = 90;
-            colorG = 59;
-            colorB = 28;
-            break;
-        case 18:
-            colorR = 174;
-            colorG = 101;
-            colorB = 7;
-            break;
-        case 19:
-            colorR = 247;
-            colorG = 170;
-            colorB = 48;
-            break;
-        case 20:
-            colorR = 244;
-            colorG = 234;
-            colorB = 92;
-            break;
-        case 21:
-            colorR = 172;
-            colorG = 190;
-            colorB = 156;
-            break;
-        case 22:
-            colorR = 142;
-            colorG = 123;
-            colorB = 164;
-            break;
-        case 23:
-            colorR = 214;
-            colorG = 160;
-            colorB = 144;
-            break;
-        case 24:
-            colorR = 183;
-            colorG = 192;
-            colorB = 255;
-            break;
-
-
-        case 25:
-            colorR = 71;
-            colorG = 1;
-            colorB = 31;
-            break;
-        case 26:
-            colorR = 161;
-            colorG = 44;
-            colorB = 50;
-            break;
-        case 27:
-            colorR = 254;
-            colorG = 59;
-            colorB = 30;
-            break;
-        case 28:
-            colorR = 250;
-            colorG = 47;
-            colorB = 122;
-            break;
-        case 29:
-            colorR = 153;
-            colorG = 47;
-            colorB = 124;
-            break;
-        case 30:
-            colorR = 230;
-            colorG = 28;
-            colorB = 247;
-            break;
-        case 31:
-            colorR = 251;
-            colorG = 159;
-            colorB = 218;
-            break;
-        case 32:
-            colorR = 255;
-            colorG = 255;
-            colorB = 255;
-            break;
-        }
+        return colors;
     }
 }

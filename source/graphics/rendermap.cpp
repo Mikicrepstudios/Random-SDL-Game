@@ -1,7 +1,7 @@
 #include "SDL2/SDL.h"
 
+#include "addional.h"
 #include "block.h"
-#include "graphics.h"
 
 namespace game {
 	void RenderMap(SDL_Renderer* renderer, Block worldMap[250][250], int width, int height, int mapWidth, int mapHeight, int camOffSetX, int camOffSetY, int camScale) {
@@ -17,12 +17,8 @@ namespace game {
 
 				// Get color data
 				if (objectId != 0) {
-					graphics::GetColor(colorId, colorR, colorG, colorB);
-
-					// Do rendering
-					SDL_SetRenderDrawColor(renderer, colorR, colorG, colorB, 255);
 					SDL_Rect curRect = {x * camScale, y * camScale, camScale, camScale};
-					SDL_RenderFillRect(renderer, &curRect);
+					draw::DrawRect(renderer, curRect, colorId);
 				}
 				}
 			}

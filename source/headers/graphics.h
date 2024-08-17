@@ -1,5 +1,11 @@
 #pragma once
 
 namespace graphics {
-	extern void GetColor(int colorId, int &colorR, int &colorG, int &colorB);
+	struct Colors {
+		int r;
+		int g;
+		int b;
+	};
+
+	extern Colors* initColors();
 }

@@ -1,24 +1,25 @@
 #include "SDL2/SDL.h"
 
 #include "block.h"
+#include "settings.h"
 
 namespace player {
-	void PlayerMovement(SDL_Event event, Block worldMap[250][250], int mapWidth, int mapHeight, int playerSpeed, int &playerX, int &playerY) {
-		if(event.key.keysym.sym == SDLK_w && worldMap[playerX][playerY - playerSpeed].type == 0 && playerY != 0) {
-			worldMap[playerX][playerY].type = 0;
-			playerY -= playerSpeed;
+	void PlayerMovement(SDL_Event event, Block worldMap[250][250], int mapWidth, int mapHeight, game::Player &player) {
+		if(event.key.keysym.sym == SDLK_w && worldMap[player.x][player.y - player.speed].type == 0 && player.y != 0) {
+			worldMap[player.x][player.y].type = 0;
+			player.y -= player.speed;
 		}
-		else if(event.key.keysym.sym == SDLK_a && worldMap[playerX - playerSpeed][playerY].type == 0 && playerX != 0) {
-			worldMap[playerX][playerY].type = 0;
-			playerX -= playerSpeed;
+		else if(event.key.keysym.sym == SDLK_a && worldMap[player.x - player.speed][player.y].type == 0 && player.x != 0) {
+			worldMap[player.x][player.y].type = 0;
+			player.x -= player.speed;
 		}
-		else if(event.key.keysym.sym == SDLK_s && playerY != mapHeight && worldMap[playerX][playerY + playerSpeed].type == 0) {
-			worldMap[playerX][playerY].type = 0;
-			playerY += playerSpeed;
+		else if(event.key.keysym.sym == SDLK_s && player.y != mapHeight && worldMap[player.x][player.y + player.speed].type == 0) {
+			worldMap[player.x][player.y].type = 0;
+			player.y += player.speed;
 		}
-		else if(event.key.keysym.sym == SDLK_d && playerX != mapWidth && worldMap[playerX + playerSpeed][playerY].type == 0) {
-			worldMap[playerX][playerY].type = 0;
-			playerX += playerSpeed;
+		else if(event.key.keysym.sym == SDLK_d && player.x != mapWidth && worldMap[player.x + player.speed][player.y].type == 0) {
+			worldMap[player.x][player.y].type = 0;
+			player.x += player.speed;
 		}
 	}
 }
