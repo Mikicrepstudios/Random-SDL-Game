@@ -17,7 +17,8 @@
 #include "presets.h"
 #include "settings.h"
 
-const char* windowtitle = "Mikicrep | Build 49";
+// 1.0
+const char* windowtitle = "Mikicrep | 1.0 | Build 50";
 
 int fps = 60;
 int width = 1280;
