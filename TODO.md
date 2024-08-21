@@ -16,9 +16,8 @@ if no then player cannot place blocks if yes player can, i need this to organize
 - Improve ESC keybinding
 better way of closing pickers
 - Make int pickerid and bool picker instead of multiple bools
-- Map struct
 - Cheats struct
-- File which will link struct values and variables
+- SDL settings struct
 
 ### Thinking:
 - shadows
