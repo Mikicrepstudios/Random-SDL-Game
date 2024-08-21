@@ -191,10 +191,6 @@ namespace overlay {
 			draw::DrawButton(renderer, rects.exitRect, 27, mouseX, mouseY);
 			draw::DrawText(renderer, font, rects.exitRect, "Exit", textColor);
 
-			// RELEASE TEXT
-			SDL_Rect releaseRect = {width / 2 - 200, height / 2 - 50, 400, 100};
-			draw::DrawText(renderer, font, releaseRect, "Thank you for trying our game", textColor);
-
 			// Color pickers
 			if(colorPick)
 				overlay::ColorPicker(renderer, font, "Block Color", width, height);

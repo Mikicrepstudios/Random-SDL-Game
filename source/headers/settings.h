@@ -1,9 +1,12 @@
 #pragma once
 
+#include "block.h"
+
 namespace game {
     struct Settings {
         // Player settings
 	    int curPreset = 0;
+        int blockColor = 0; // Updates every frame
         int bgColor = 1;
 
         // Event settings
@@ -20,7 +23,9 @@ namespace game {
     };
 
     struct Map {
-
+        int width = 250 - 1;
+        int height = 250 - 1;
+        Block map[250][250] = {};
     };
 
     struct Player {

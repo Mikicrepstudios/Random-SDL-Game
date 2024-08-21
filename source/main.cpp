@@ -12,13 +12,14 @@
 #include "files.h"
 #include "game.h"
 #include "inventory.h"
+#include "logic.h"
 #include "overlay.h"
 #include "player.h"
 #include "presets.h"
 #include "settings.h"
 
-// 1.0
-const char* windowtitle = "Mikicrep | 1.0 | Build 50";
+// Latest release 1.0
+const char* windowtitle = "Mikicrep | Build 51";
 
 int fps = 60;
 int width = 1280;
@@ -33,6 +34,7 @@ int main(int argc, char **argv) {
 
 	// Structs
 	game::Settings settings = {};
+	game::Map map = {};
 	game::Player player = {};
 	game::Camera camera = {};
 	game::Dialogues dialogues = {};
@@ -52,11 +54,6 @@ int main(int argc, char **argv) {
 	int curHoverX = 0;
 	int curHoverY = 0;
 
-	// Game world
-	int mapWidth = 250 - 1;
-	int mapHeight = 250 - 1;
-	Block worldMap[250][250] = {};
-
 	// Prepare game
 	// Initilize structs
 	inventory::rects inventoryRects = inventory::initRects(width, height);
@@ -70,8 +67,8 @@ int main(int argc, char **argv) {
 	TTF_Init();
 	TTF_Font* font = TTF_OpenFont("customize/font.ttf", 48);
 	IMG_Init(IMG_INIT_PNG);
-	gamemap::ClearMap(worldMap, mapWidth, mapHeight);
-	files::LoadMap(worldMap, mapWidth, mapHeight);
+	gamemap::ClearMap(map.map, map.width, map.height);
+	files::LoadMap(map.map, map.width, map.height);
 	files::LoadSettings(settings, player, camera, preset[settings.curPreset].blockColor);
 	bool running = true;
 
@@ -80,6 +77,9 @@ int main(int argc, char **argv) {
 		SDL_GetMouseState(&mouseX, &mouseY);
 		curHoverX = mouseX / camera.scale;
 		curHoverY = mouseY / camera.scale;
+
+		// Update vars
+		logic::updateVars(settings, preset);
 
 		// Event loop
 		while(SDL_PollEvent(&event) != 0) {
@@ -137,7 +137,7 @@ int main(int argc, char **argv) {
 			// Preset chooser
 			controls::presetChooser(event, settings.curPreset);
 			// Player movement
-			player::PlayerMovement(event, worldMap, mapWidth, mapHeight, player);
+			player::PlayerMovement(event, map.map, map.width, map.height, player);
 			// Inventory
 			player::InventoryEvent(event, settings.inventory, settings.colorPick, settings.bgColorPick, fps);
 
@@ -153,12 +153,12 @@ int main(int argc, char **argv) {
 			if(dialogues.exitDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, width, height) == 3)
 				running = false;
 			else if(dialogues.exitDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, width, height) == 2) {
-				files::SaveMap(worldMap, mapWidth, mapHeight);
+				files::SaveMap(map.map, map.width, map.height);
 				files::SaveSettings(settings, player, camera, preset[settings.curPreset].blockColor);
 				running = false;
 			}
 			if(dialogues.clearDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, width, height) == 2) {
-				gamemap::ClearMap(worldMap, mapWidth, mapHeight);
+				gamemap::ClearMap(map.map, map.width, map.height);
 				dialogues.clearDialogue = false;
 			}
 
@@ -166,11 +166,11 @@ int main(int argc, char **argv) {
 			if(camTp)
 				cheats::camTp(event, camTp, camera.highlight, camera.offSetX - curHoverX, camera.offSetY - curHoverY, camera.offSetX, camera.offSetY);
 			else if(playerTp)
-				cheats::playerTp(event, worldMap, playerTp, camera.highlight, -camera.offSetX + curHoverX, -camera.offSetY + curHoverY, player.x, player.y);
+				cheats::playerTp(event, map.map, playerTp, camera.highlight, -camera.offSetX + curHoverX, -camera.offSetY + curHoverY, player.x, player.y);
 			else
-				player::MouseEvent(event, isMouseDown, settings.colorPickerTool, camera.highlight, settings.inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, preset[settings.curPreset].blockColor, camera.offSetX, camera.offSetY);
+				player::MouseEvent(event, isMouseDown, settings.colorPickerTool, camera.highlight, settings.inventory, map.map, map.width, map.height, curHoverX, curHoverY, preset[settings.curPreset].blockColor, camera.offSetX, camera.offSetY);
 
-			player::MouseInvChooser(renderer, event, inventoryRects, settings.inventory, running, camera.highlight, camTp, playerTp, settings.colorPick, settings.bgColorPick, settings.playerColorPick, settings.gameInfo, worldMap, mapWidth, mapHeight, preset[settings.curPreset].blockColor, settings.bgColor, player.color, mouseX, mouseY, width, height, player.x, player.y, camera.offSetX, camera.offSetY, camera.scale, settings, player, camera);
+			player::MouseInvChooser(renderer, event, inventoryRects, settings.inventory, running, camera.highlight, camTp, playerTp, settings.colorPick, settings.bgColorPick, settings.playerColorPick, settings.gameInfo, map.map, map.width, map.height, preset[settings.curPreset].blockColor, settings.bgColor, player.color, mouseX, mouseY, width, height, player.x, player.y, camera.offSetX, camera.offSetY, camera.scale, settings, player, camera);
 		}
 
 		// Set BG color to new color
@@ -183,15 +183,15 @@ int main(int argc, char **argv) {
 		SDL_RenderCopy(renderer, backgroundTexture, NULL, &backgroundRect);
 
 		// Pre logic
-		worldMap[player.x][player.y] = Block(1, player.color);
+		map.map[player.x][player.y] = Block(1, player.color);
 
 
 		// Draw map
-		game::RenderMap(renderer, worldMap, width, height, mapWidth, mapHeight, camera.offSetX, camera.offSetY, camera.scale);
+		game::RenderMap(renderer, map.map, width, height, map.width, map.height, camera.offSetX, camera.offSetY, camera.scale);
 
 		// Overlays
 		overlay::Inventory(renderer, font, inventoryRects, settings.inventory, settings.colorPick, settings.bgColorPick, settings.playerColorPick, settings.gameInfo, preset[settings.curPreset].blockColor, settings.bgColor, player.color, width, height, mouseX, mouseY, settings.curPreset);
-		overlay::Mouse(renderer, camera.highlight, settings.inventory, worldMap, mapWidth, mapHeight, curHoverX, curHoverY, camera.offSetX, camera.offSetY, camera.scale, settings.bgColor);
+		overlay::Mouse(renderer, camera.highlight, settings.inventory, map.map, map.width, map.height, curHoverX, curHoverY, camera.offSetX, camera.offSetY, camera.scale, settings.bgColor);
 
 		// Game info
 		if (settings.gameInfo) {
