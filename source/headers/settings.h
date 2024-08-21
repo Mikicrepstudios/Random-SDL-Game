@@ -3,6 +3,12 @@
 #include "block.h"
 
 namespace game {
+    struct SDL_Settings {
+        int fps = 60;
+        int width = 1280;
+        int height = 800;
+    };
+
     struct Settings {
         // Player settings
 	    int curPreset = 0;

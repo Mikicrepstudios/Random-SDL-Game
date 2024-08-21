@@ -25,7 +25,7 @@ namespace dialogues {
         SDL_Rect titleRect = {width / 2 - 300, height / 2 - 100, 600, 50};
         SDL_Rect descRect = {width / 2 - 275, height / 2 - 40, 550, 25};
         SDL_Rect noRect = {width / 2 - 275, height / 2 + 25, 200, 50};
-        SDL_Rect confirmRect = {width / 2 + 75, height / 2 + 25, 200, 50};
+        SDL_Rect yesRect = {width / 2 + 75, height / 2 + 25, 200, 50};
         SDL_Color textColor = {255, 255, 255};
         const char* titleText = "";
         const char* descText = "You will loose any unsaved progress.";
@@ -45,13 +45,13 @@ namespace dialogues {
 
         // Draw buttons
         draw::DrawButton(renderer, noRect, 27, mouseX, mouseY);
-        draw::DrawButton(renderer, confirmRect, 13, mouseX, mouseY);
+        draw::DrawButton(renderer, yesRect, 13, mouseX, mouseY);
 
         // Give buttons text
 
         if(textid != 1) {
             draw::DrawText(renderer, font, noRect, "No", textColor);
-            draw::DrawText(renderer, font, confirmRect, "Yes", textColor);
+            draw::DrawText(renderer, font, yesRect, "Yes", textColor);
             draw::DrawText(renderer, font, descRect, descText, textColor);
         }
         else {
@@ -61,7 +61,7 @@ namespace dialogues {
 
             draw::DrawText(renderer, font, noRect, "Cancel", textColor);
             draw::DrawText(renderer, font, forceExitRect, "Exit without saving", textColor);
-            draw::DrawText(renderer, font, confirmRect, "Exit with saving", textColor);
+            draw::DrawText(renderer, font, yesRect, "Exit with saving", textColor);
         }
 
         if (mouseX >= noRect.x && mouseX <= noRect.x + noRect.w &&

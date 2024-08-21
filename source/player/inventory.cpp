@@ -154,8 +154,6 @@ namespace overlay {
 			
 			// Presets
 			draw::DrawRect(renderer, rects.presetRect, 2);
-			draw::DrawButton(renderer, rects.selCLPresetRect, 2, mouseX, mouseY);
-			draw::DrawButton(renderer, rects.selCRPresetRect, 2, mouseX, mouseY);
 			draw::DrawText(renderer, font, rects.presetTextRect, std::to_string(preset + 1).c_str(), textColor);
 			draw::DrawText(renderer, font, rects.presetTitleRect, "Presets", textColor);
 
