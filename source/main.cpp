@@ -19,11 +19,7 @@
 #include "settings.h"
 
 // Latest release 1.0
-const char* windowtitle = "Mikicrep | Build 51";
-
-int fps = 60;
-int width = 1280;
-int height = 800;
+const char* windowtitle = "Mikicrep | Build 52";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -33,6 +29,7 @@ int main(int argc, char **argv) {
 	int mouseY = 0;
 
 	// Structs
+	game::SDL_Settings sdlSettings = {};
 	game::Settings settings = {};
 	game::Map map = {};
 	game::Player player = {};
@@ -56,12 +53,16 @@ int main(int argc, char **argv) {
 
 	// Prepare game
 	// Initilize structs
-	inventory::rects inventoryRects = inventory::initRects(width, height);
+	inventory::rects inventoryRects = inventory::initRects(sdlSettings.width, sdlSettings.height);
 
 	SDL_Window *window;
-	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
+	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, sdlSettings.width, sdlSettings.height, SDL_WINDOW_RESIZABLE);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 	SDL_Event event;
+
+	// Load custom bg
+	SDL_Surface* backgroundSurface = IMG_Load("customize/background.png");
+	SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
 
 	SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();
@@ -91,11 +92,11 @@ int main(int argc, char **argv) {
 
 			if (event.type == SDL_WINDOWEVENT) {
                 if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-                    width = event.window.data1;
-                    height = event.window.data2;
+                    sdlSettings.width = event.window.data1;
+                    sdlSettings.height = event.window.data2;
 
 					// Update rects
-					inventoryRects = inventory::initRects(width, height);
+					inventoryRects = inventory::initRects(sdlSettings.width, sdlSettings.height);
                 }
 			}
 
@@ -111,7 +112,7 @@ int main(int argc, char **argv) {
 					settings.bgColorPick = false;
 
 					settings.inventory = false;
-					fps = 60;
+					sdlSettings.fps = 60;
 				}
 
 				if(event.key.keysym.sym == SDLK_F11) {
@@ -139,7 +140,7 @@ int main(int argc, char **argv) {
 			// Player movement
 			player::PlayerMovement(event, map.map, map.width, map.height, player);
 			// Inventory
-			player::InventoryEvent(event, settings.inventory, settings.colorPick, settings.bgColorPick, fps);
+			player::InventoryEvent(event, settings.inventory, settings.colorPick, settings.bgColorPick, sdlSettings.fps);
 
 			// Clear map
 			if(event.key.keysym.sym == SDLK_c)
@@ -150,14 +151,14 @@ int main(int argc, char **argv) {
 			}
 
 			// Dialogues : Yes
-			if(dialogues.exitDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, width, height) == 3)
+			if(dialogues.exitDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, sdlSettings.width, sdlSettings.height) == 3)
 				running = false;
-			else if(dialogues.exitDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, width, height) == 2) {
+			else if(dialogues.exitDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, sdlSettings.width, sdlSettings.height) == 2) {
 				files::SaveMap(map.map, map.width, map.height);
 				files::SaveSettings(settings, player, camera, preset[settings.curPreset].blockColor);
 				running = false;
 			}
-			if(dialogues.clearDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, width, height) == 2) {
+			if(dialogues.clearDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, sdlSettings.width, sdlSettings.height) == 2) {
 				gamemap::ClearMap(map.map, map.width, map.height);
 				dialogues.clearDialogue = false;
 			}
@@ -170,16 +171,14 @@ int main(int argc, char **argv) {
 			else
 				player::MouseEvent(event, isMouseDown, settings.colorPickerTool, camera.highlight, settings.inventory, map.map, map.width, map.height, curHoverX, curHoverY, preset[settings.curPreset].blockColor, camera.offSetX, camera.offSetY);
 
-			player::MouseInvChooser(renderer, event, inventoryRects, settings.inventory, running, camera.highlight, camTp, playerTp, settings.colorPick, settings.bgColorPick, settings.playerColorPick, settings.gameInfo, map.map, map.width, map.height, preset[settings.curPreset].blockColor, settings.bgColor, player.color, mouseX, mouseY, width, height, player.x, player.y, camera.offSetX, camera.offSetY, camera.scale, settings, player, camera);
+			player::MouseInvChooser(renderer, event, inventoryRects, settings.inventory, running, camera.highlight, camTp, playerTp, settings.colorPick, settings.bgColorPick, settings.playerColorPick, settings.gameInfo, map.map, map.width, map.height, preset[settings.curPreset].blockColor, settings.bgColor, player.color, mouseX, mouseY, sdlSettings.width, sdlSettings.height, player.x, player.y, camera.offSetX, camera.offSetY, camera.scale, settings, player, camera);
 		}
 
 		// Set BG color to new color
 		draw::SetCol(renderer, settings.bgColor);
 		SDL_RenderClear(renderer);
 		// ... or if there is custom bg
-		SDL_Surface* backgroundSurface = IMG_Load("customize/background.png");
-		SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
-		SDL_Rect backgroundRect = {0, 0, width, height};
+		SDL_Rect backgroundRect = {0, 0, sdlSettings.width, sdlSettings.height};
 		SDL_RenderCopy(renderer, backgroundTexture, NULL, &backgroundRect);
 
 		// Pre logic
@@ -187,31 +186,31 @@ int main(int argc, char **argv) {
 
 
 		// Draw map
-		game::RenderMap(renderer, map.map, width, height, map.width, map.height, camera.offSetX, camera.offSetY, camera.scale);
+		game::RenderMap(renderer, map.map, sdlSettings.width, sdlSettings.height, map.width, map.height, camera.offSetX, camera.offSetY, camera.scale);
 
 		// Overlays
-		overlay::Inventory(renderer, font, inventoryRects, settings.inventory, settings.colorPick, settings.bgColorPick, settings.playerColorPick, settings.gameInfo, preset[settings.curPreset].blockColor, settings.bgColor, player.color, width, height, mouseX, mouseY, settings.curPreset);
+		overlay::Inventory(renderer, font, inventoryRects, settings.inventory, settings.colorPick, settings.bgColorPick, settings.playerColorPick, settings.gameInfo, preset[settings.curPreset].blockColor, settings.bgColor, player.color, sdlSettings.width, sdlSettings.height, mouseX, mouseY, settings.curPreset);
 		overlay::Mouse(renderer, camera.highlight, settings.inventory, map.map, map.width, map.height, curHoverX, curHoverY, camera.offSetX, camera.offSetY, camera.scale, settings.bgColor);
 
 		// Game info
 		if (settings.gameInfo) {
 			if (settings.bgColor == 32)
-				player::gameInfo(renderer, font, altTextColor, fps, camera.scale, camera.offSetX, camera.offSetY, player.x, player.y);
+				player::gameInfo(renderer, font, altTextColor, sdlSettings.fps, camera.scale, camera.offSetX, camera.offSetY, player.x, player.y);
 			else
-				player::gameInfo(renderer, font, textColor, fps, camera.scale, camera.offSetX, camera.offSetY, player.x, player.y);
+				player::gameInfo(renderer, font, textColor, sdlSettings.fps, camera.scale, camera.offSetX, camera.offSetY, player.x, player.y);
 		}
 
 		// Dialogues : No
-		if (dialogues.exitDialogue && dialogues::confirmDialogue(renderer, font, width, height, mouseX, mouseY, 1) == 1)
+		if (dialogues.exitDialogue && dialogues::confirmDialogue(renderer, font, sdlSettings.width, sdlSettings.height, mouseX, mouseY, 1) == 1)
 				dialogues.exitDialogue = false;
-		if (dialogues.clearDialogue && dialogues::confirmDialogue(renderer, font, width, height, mouseX, mouseY, 2) == 1)
+		if (dialogues.clearDialogue && dialogues::confirmDialogue(renderer, font, sdlSettings.width, sdlSettings.height, mouseX, mouseY, 2) == 1)
 				dialogues.clearDialogue = false;
 
 		// Show results
 		SDL_RenderPresent(renderer);
 
 		// Timer
-		SDL_Delay(1000 / fps);
+		SDL_Delay(1000 / sdlSettings.fps);
 	}
 
 	IMG_Quit();

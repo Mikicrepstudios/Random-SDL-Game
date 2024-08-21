@@ -7,7 +7,6 @@
 (overlay on block to make it seem like it got texture)
 - no collision block
 (block where player got ability to go thru it)
-- Rename confirmRect to yesRect
 - Double clicking button auto accepts dialogue
 it can also auto deny, i dont which one to do
 - Bool canPlayerPlace
@@ -18,6 +17,8 @@ better way of closing pickers
 - Make int pickerid and bool picker instead of multiple bools
 - Cheats struct
 - SDL settings struct
+- better way of getting dialogue results
+- rescale background on window resize
 
 ### Thinking:
 - shadows
