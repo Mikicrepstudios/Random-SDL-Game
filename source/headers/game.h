@@ -9,5 +9,5 @@ namespace game {
 }
 
 namespace gamemap {
-	extern void ClearMap(Block worldMap[250][250], int mapWidth, int mapHeight);
+	extern void ClearMap(game::Map &map);
 }

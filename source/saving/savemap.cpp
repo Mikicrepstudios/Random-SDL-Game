@@ -1,19 +1,20 @@
 #include <fstream>
 
 #include "block.h"
+#include "settings.h"
 
 namespace files {
-	void SaveMap(Block worldMap[250][250], int mapWidth, int mapHeight) {
+	void SaveMap(game::Map map) {
 		// Open file
 		std::ofstream blocktypesFile("save/map1.msave");
 		std::ofstream blockcolorsFile("save/map2.msave");
 
 		// Save blocktype
 		if (blocktypesFile.is_open()) {
-			for (int x = 0; x <= mapWidth; x++) {
-				for (int y = 0; y <= mapHeight; y++) {
-					if (worldMap[x][y].type != 1) {
-						blocktypesFile << worldMap[x][y].type << " "; // Write blocks
+			for (int x = 0; x <= map.width; x++) {
+				for (int y = 0; y <= map.height; y++) {
+					if (map.map[x][y].type != 1) {
+						blocktypesFile << map.map[x][y].type << " "; // Write blocks
 					}
 					else {
 						blocktypesFile << 0 << " "; // Do not write if player
@@ -25,10 +26,10 @@ namespace files {
 		}
 		// Save colors
 		if (blockcolorsFile.is_open()) {
-			for (int x = 0; x <= mapWidth; x++) {
-				for (int y = 0; y <= mapHeight; y++) {
-					if (worldMap[x][y].type != 1) {
-						blockcolorsFile << worldMap[x][y].color << " "; // Write blocks
+			for (int x = 0; x <= map.width; x++) {
+				for (int y = 0; y <= map.height; y++) {
+					if (map.map[x][y].type != 1) {
+						blockcolorsFile << map.map[x][y].color << " "; // Write blocks
 					}
 					else {
 						blockcolorsFile << 0 << " "; // Do not write if player
@@ -40,25 +41,25 @@ namespace files {
 		}
 	}
 
-	void LoadMap(Block worldMap[250][250], int mapWidth, int mapHeight) {
+	void LoadMap(game::Map &map) {
 		// Open file
 		std::ifstream blocktypesFile("save/map1.msave");
 		std::ifstream blockcolorsFile("save/map2.msave");
 
 		// Load blocktypes
 		if (blocktypesFile.is_open()) {
-			for (int x = 0; x <= mapWidth; x++) {
-				for (int y = 0; y <= mapHeight; y++) {
-					blocktypesFile >> worldMap[x][y].type;
+			for (int x = 0; x <= map.width; x++) {
+				for (int y = 0; y <= map.height; y++) {
+					blocktypesFile >> map.map[x][y].type;
 				}
 			}
 			blocktypesFile.close();
 		}
 		// Load colors
 		if (blockcolorsFile.is_open()) {
-			for (int x = 0; x <= mapWidth; x++) {
-				for (int y = 0; y <= mapHeight; y++) {
-					blockcolorsFile >> worldMap[x][y].color;
+			for (int x = 0; x <= map.width; x++) {
+				for (int y = 0; y <= map.height; y++) {
+					blockcolorsFile >> map.map[x][y].color;
 				}
 			}
 			blockcolorsFile.close();
