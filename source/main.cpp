@@ -19,7 +19,7 @@
 #include "settings.h"
 
 // Latest release 1.0
-const char* windowtitle = "Mikicrep | Build 52";
+const char* windowtitle = "Mikicrep | Build 53";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
 
 	// Prepare game
 	// Initilize structs
-	inventory::rects inventoryRects = inventory::initRects(sdlSettings.width, sdlSettings.height);
+	inventory::rects inventoryRects = inventory::initRects(sdlSettings);
 
 	SDL_Window *window;
 	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, sdlSettings.width, sdlSettings.height, SDL_WINDOW_RESIZABLE);
@@ -68,9 +68,9 @@ int main(int argc, char **argv) {
 	TTF_Init();
 	TTF_Font* font = TTF_OpenFont("customize/font.ttf", 48);
 	IMG_Init(IMG_INIT_PNG);
-	gamemap::ClearMap(map.map, map.width, map.height);
-	files::LoadMap(map.map, map.width, map.height);
-	files::LoadSettings(settings, player, camera, preset[settings.curPreset].blockColor);
+	gamemap::ClearMap(map);
+	files::LoadMap(map);
+	files::LoadSettings(settings, player, camera);
 	bool running = true;
 
 	while(running) {
@@ -96,7 +96,7 @@ int main(int argc, char **argv) {
                     sdlSettings.height = event.window.data2;
 
 					// Update rects
-					inventoryRects = inventory::initRects(sdlSettings.width, sdlSettings.height);
+					inventoryRects = inventory::initRects(sdlSettings);
                 }
 			}
 
@@ -154,12 +154,12 @@ int main(int argc, char **argv) {
 			if(dialogues.exitDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, sdlSettings.width, sdlSettings.height) == 3)
 				running = false;
 			else if(dialogues.exitDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, sdlSettings.width, sdlSettings.height) == 2) {
-				files::SaveMap(map.map, map.width, map.height);
-				files::SaveSettings(settings, player, camera, preset[settings.curPreset].blockColor);
+				files::SaveMap(map);
+				files::SaveSettings(settings, player, camera);
 				running = false;
 			}
 			if(dialogues.clearDialogue && dialogues::confirmDialogueEvent(event, mouseX, mouseY, sdlSettings.width, sdlSettings.height) == 2) {
-				gamemap::ClearMap(map.map, map.width, map.height);
+				gamemap::ClearMap(map);
 				dialogues.clearDialogue = false;
 			}
 
@@ -171,7 +171,7 @@ int main(int argc, char **argv) {
 			else
 				player::MouseEvent(event, isMouseDown, settings.colorPickerTool, camera.highlight, settings.inventory, map.map, map.width, map.height, curHoverX, curHoverY, preset[settings.curPreset].blockColor, camera.offSetX, camera.offSetY);
 
-			player::MouseInvChooser(renderer, event, inventoryRects, settings.inventory, running, camera.highlight, camTp, playerTp, settings.colorPick, settings.bgColorPick, settings.playerColorPick, settings.gameInfo, map.map, map.width, map.height, preset[settings.curPreset].blockColor, settings.bgColor, player.color, mouseX, mouseY, sdlSettings.width, sdlSettings.height, player.x, player.y, camera.offSetX, camera.offSetY, camera.scale, settings, player, camera);
+			player::MouseInvChooser(renderer, event, inventoryRects, settings.inventory, running, camera.highlight, camTp, playerTp, settings.colorPick, settings.bgColorPick, settings.playerColorPick, settings.gameInfo, map.map, map.width, map.height, preset[settings.curPreset].blockColor, settings.bgColor, player.color, mouseX, mouseY, sdlSettings.width, sdlSettings.height, player.x, player.y, camera.offSetX, camera.offSetY, camera.scale, settings, map, player, camera);
 		}
 
 		// Set BG color to new color

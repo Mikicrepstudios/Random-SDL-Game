@@ -13,7 +13,7 @@ namespace player {
 
 	extern void InventoryEvent(SDL_Event event, bool &inventory, bool &colorPick, bool &bgColorPick, int &fps);
 
-	extern void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, bool &inventory, bool &running, bool &highlight, bool &camTp, bool &playerTp, bool &colorPick, bool &bgColorPick, bool &playerColorPick, bool &gameInfo, Block worldMap[250][250], int mapWidth, int mapHeight, int &blockColor, int &bgColor, int &playerColor, int mouseX, int mouseY, int width, int height, int &playerX, int &playerY, int &camOffSetX, int &camOffSetY, int &camScale, game::Settings settings, game::Player player, game::Camera camera);
+	extern void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, bool &inventory, bool &running, bool &highlight, bool &camTp, bool &playerTp, bool &colorPick, bool &bgColorPick, bool &playerColorPick, bool &gameInfo, Block worldMap[250][250], int mapWidth, int mapHeight, int &blockColor, int &bgColor, int &playerColor, int mouseX, int mouseY, int width, int height, int &playerX, int &playerY, int &camOffSetX, int &camOffSetY, int &camScale, game::Settings settings, game::Map map, game::Player player, game::Camera camera);
 
 	extern void ColorPickerEvent(bool &picker, int mouseX, int mouseY, int width, int height, int &color);
 }

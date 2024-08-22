@@ -1,6 +1,6 @@
 ## KNOWN BUGS
 ### Format
-- [FIXED]  - Bug was fixed and should not reapp
+- [FIXED]  - Bug was fixed and should not reappear
 - [UNSURE] - Bug wasnt seen in a long time, maybe it is resolved?
 - [EXISTS] - Bug currently exists
 

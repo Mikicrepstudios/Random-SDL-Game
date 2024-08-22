@@ -12,35 +12,36 @@
 #include "settings.h"
 
 namespace inventory {
-	rects initRects(int width, int height) {
+	rects initRects(game::SDL_Settings sdlSettings) {
 		rects rects;
-		rects.colorRect = {50, 50, 80, 80};
-		rects.colorRectb = {45, 45, 90, 90};
-		rects.colorTextRect = {50, 140, 80, 40};
-		rects.bgColorRect = {width - 130, 50, 80, 80};
-		rects.bgColorRectb = {width - 135, 45, 90, 90};
-		rects.bgColorTextRect = {width - 130, 140, 80, 40};
-		rects.playerColorRect = {50, 200, 80, 80};
-		rects.playerColorRectb = {45, 195, 90, 90};
-		rects.playerColorTextRect = {50, 290, 80, 40};
-		rects.previewRect = {width / 2 - 50, 50, 100, 100};
-		rects.previewRectb = {width / 2 - 55, 45, 110, 110};
-		rects.previewTextRect = {width / 2 - 50, 160, 100, 40};
-		rects.bgGameplay = {45, height - 215, 420, 170};
-		rects.gameplayTextRect = {150, height - 210, 200, 50};
-		rects.camTpRect = {50, height - 160, 200, 50};
-		rects.playerTpRect = {50, height - 100, 200, 50};
-		rects.bgGame = {width - 465, height - 215, 420, 170};
-		rects.gameTextRect = {width - 360, height - 210, 200, 50};
-		rects.saveRect = {width - 460, height - 160, 200, 50};
-		rects.loadRect = {width - 460, height - 100, 200, 50};
-		rects.gameInfoRect = {width - 250, height - 160, 200, 50};
-		rects.exitRect = {width - 250, height - 100, 200, 50};
-		rects.presetRect = {width / 2 - 85, height - 160, 170, 115};
-		rects.presetTextRect = {width / 2 - 40, height - 160, 80, 115};
-		rects.selCLPresetRect = {width / 2 - 115, height - 160, 20, 115};
-		rects.selCRPresetRect = {width / 2 + 95, height - 160, 20, 115};
-		rects.presetTitleRect = {width / 2 - 115, height - 215, 230, 50};
+		// Name                     X Offset                      Y Offset                 Width Height
+		rects.colorRect           = {50,                          50,                       80,  80 };
+		rects.colorRectb          = {45,                          45,                       90,  90 };
+		rects.colorTextRect       = {50,                          140,                      80,  40 };
+		rects.bgColorRect         = {sdlSettings.width - 130,     50,                       80,  80 };
+		rects.bgColorRectb        = {sdlSettings.width - 135,     45,                       90,  90 };
+		rects.bgColorTextRect     = {sdlSettings.width - 130,     140,                      80,  40 };
+		rects.playerColorRect     = {50,                          200,                      80,  80 };
+		rects.playerColorRectb    = {45,                          195,                      90,  90 };
+		rects.playerColorTextRect = {50,                          290,                      80,  40 };
+		rects.previewRect         = {sdlSettings.width / 2 - 50,  50,                       100, 100};
+		rects.previewRectb        = {sdlSettings.width / 2 - 55,  45,                       110, 110};
+		rects.previewTextRect     = {sdlSettings.width / 2 - 50,  160,                      100, 40 };
+		rects.bgGameplay          = {45,                          sdlSettings.height - 215, 420, 170};
+		rects.gameplayTextRect    = {150,                         sdlSettings.height - 210, 200, 50 };
+		rects.camTpRect           = {50,                          sdlSettings.height - 160, 200, 50 };
+		rects.playerTpRect        = {50,                          sdlSettings.height - 100, 200, 50 };
+		rects.bgGame              = {sdlSettings.width - 465,     sdlSettings.height - 215, 420, 170};
+		rects.gameTextRect        = {sdlSettings.width - 360,     sdlSettings.height - 210, 200, 50 };
+		rects.saveRect            = {sdlSettings.width - 460,     sdlSettings.height - 160, 200, 50 };
+		rects.loadRect            = {sdlSettings.width - 460,     sdlSettings.height - 100, 200, 50 };
+		rects.gameInfoRect        = {sdlSettings.width - 250,     sdlSettings.height - 160, 200, 50 };
+		rects.exitRect            = {sdlSettings.width - 250,     sdlSettings.height - 100, 200, 50 };
+		rects.presetRect          = {sdlSettings.width / 2 - 85,  sdlSettings.height - 160, 170, 115};
+		rects.presetTextRect      = {sdlSettings.width / 2 - 40,  sdlSettings.height - 160, 80,  115};
+		rects.selCLPresetRect     = {sdlSettings.width / 2 - 115, sdlSettings.height - 160, 20,  115};
+		rects.selCRPresetRect     = {sdlSettings.width / 2 + 95,  sdlSettings.height - 160, 20,  115};
+		rects.presetTitleRect     = {sdlSettings.width / 2 - 115, sdlSettings.height - 215, 230, 50 };
 		return rects;
 	}
 }
@@ -62,7 +63,7 @@ namespace player {
 			}
 		}
 	}
-	void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, bool &inventory, bool &running, bool &highlight, bool &camTp, bool &playerTp, bool &colorPick, bool &bgColorPick, bool &playerColorPick, bool &gameInfo, Block worldMap[250][250], int mapWidth, int mapHeight, int &blockColor, int &bgColor, int &playerColor, int mouseX, int mouseY, int width, int height, int &playerX, int &playerY, int &camOffSetX, int &camOffSetY, int &camScale, game::Settings settings, game::Player player, game::Camera camera) {
+	void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, bool &inventory, bool &running, bool &highlight, bool &camTp, bool &playerTp, bool &colorPick, bool &bgColorPick, bool &playerColorPick, bool &gameInfo, Block worldMap[250][250], int mapWidth, int mapHeight, int &blockColor, int &bgColor, int &playerColor, int mouseX, int mouseY, int width, int height, int &playerX, int &playerY, int &camOffSetX, int &camOffSetY, int &camScale, game::Settings settings, game::Map map, game::Player player, game::Camera camera) {
 		if (event.type == SDL_MOUSEBUTTONDOWN && inventory) {
 			if (!colorPick && !bgColorPick) {
 				// Gameplay
@@ -81,13 +82,13 @@ namespace player {
 				// Game
 				if (mouseX >= rects.saveRect.x && mouseX <= rects.saveRect.x + rects.saveRect.w &&
 				mouseY >= rects.saveRect.y && mouseY <= rects.saveRect.y + rects.saveRect.h) {
-					files::SaveMap(worldMap, mapWidth, mapHeight);
-					files::SaveSettings(settings, player, camera, blockColor);
+					files::SaveMap(map);
+					files::SaveSettings(settings, player, camera);
 				}
 				else if (mouseX >= rects.loadRect.x && mouseX <= rects.loadRect.x + rects.loadRect.w &&
 				mouseY >= rects.loadRect.y && mouseY <= rects.loadRect.y + rects.loadRect.h) {
-					files::LoadMap(worldMap, mapWidth, mapHeight);
-					files::LoadSettings(settings, player, camera, blockColor);
+					files::LoadMap(map);
+					files::LoadSettings(settings, player, camera);
 				}
 				else if (mouseX >= rects.gameInfoRect.x && mouseX <= rects.gameInfoRect.x + rects.gameInfoRect.w &&
 				mouseY >= rects.gameInfoRect.y && mouseY <= rects.gameInfoRect.y + rects.gameInfoRect.h && !colorPick && !bgColorPick)

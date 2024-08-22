@@ -1,6 +1,7 @@
 ## TODO List
 
 ### Very soon:
+- full inventory argument removing
 
 ### Planned:
 - block textures
@@ -16,9 +17,7 @@ if no then player cannot place blocks if yes player can, i need this to organize
 better way of closing pickers
 - Make int pickerid and bool picker instead of multiple bools
 - Cheats struct
-- SDL settings struct
 - better way of getting dialogue results
-- rescale background on window resize
 
 ### Thinking:
 - shadows

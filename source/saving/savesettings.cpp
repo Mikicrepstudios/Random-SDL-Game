@@ -4,13 +4,13 @@
 #include "settings.h"
 
 namespace files {
-	void SaveSettings(game::Settings settings, game::Player player, game::Camera camera, int blockColor) {
+	void SaveSettings(game::Settings settings, game::Player player, game::Camera camera) {
 		std::ofstream settingsFile("save/settings.msave"); // Open file
 
 		// Save settings
 		if(settingsFile.is_open()) {
 			settingsFile << 
-				   blockColor << " "
+				   settings.blockColor << " "
 				<< settings.bgColor << " "
 
 				<< player.x << " "
@@ -24,13 +24,13 @@ namespace files {
 		}
 	}
 
-	void LoadSettings(game::Settings &settings, game::Player &player, game::Camera &camera, int &blockColor) {
+	void LoadSettings(game::Settings &settings, game::Player &player, game::Camera &camera) {
 		std::ifstream settingsFile("save/settings.msave"); // Open file
 
 		// Load settings
 		if(settingsFile.is_open()) {
 			settingsFile >> 
-					blockColor >>
+					settings.blockColor >>
 					settings.bgColor >>
 
 					player.x >>
