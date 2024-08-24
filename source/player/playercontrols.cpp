@@ -2,28 +2,30 @@
 
 #include "addional.h"
 #include "block.h"
+#include "presets.h"
+#include "settings.h"
 
 namespace player {
-	void MouseEvent(SDL_Event event, bool isMouseDown, bool &colorPickerTool, bool &highlight, bool inventory, Block worldMap[250][250], int mapWidth, int mapHeight, int curHoverX, int curHoverY, int &blockColor, int camOffSetX, int camOffSetY) {
-		if (curHoverX <= mapWidth && curHoverY <= mapHeight && !inventory && worldMap[curHoverX - camOffSetX][curHoverY - camOffSetY].type != 1) {
-			if (!highlight) {
-				if(isMouseDown) {
+	void MouseEvent(SDL_Event event, game::SDL_Settings sdlSettings, game::Settings &settings, game::Map &map, game::Camera &camera, game::Preset preset[10]) {
+		if (sdlSettings.curHoverX <= map.width && sdlSettings.curHoverY <= map.height && !settings.inventory && map.map[sdlSettings.curHoverX - camera.offSetX][sdlSettings.curHoverY - camera.offSetY].type != 1) {
+			if (!camera.highlight) {
+				if(sdlSettings.isMouseDown) {
 					Uint32 mouseButtons = SDL_GetMouseState(NULL, NULL);
 					if (mouseButtons & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-						worldMap[curHoverX - camOffSetX][curHoverY - camOffSetY].type = 2;
-						worldMap[curHoverX - camOffSetX][curHoverY - camOffSetY].color = blockColor;
+						map.map[sdlSettings.curHoverX - camera.offSetX][sdlSettings.curHoverY - camera.offSetY].type = 2;
+						map.map[sdlSettings.curHoverX - camera.offSetX][sdlSettings.curHoverY - camera.offSetY].color = settings.blockColor;
 					}
 					else if (mouseButtons & SDL_BUTTON(SDL_BUTTON_RIGHT)) {
-						worldMap[curHoverX - camOffSetX][curHoverY - camOffSetY].type = 0;
-						worldMap[curHoverX - camOffSetX][curHoverY - camOffSetY].color = 0;
+						map.map[sdlSettings.curHoverX - camera.offSetX][sdlSettings.curHoverY - camera.offSetY].type = 0;
+						map.map[sdlSettings.curHoverX - camera.offSetX][sdlSettings.curHoverY - camera.offSetY].color = 0;
 					}
 				}
 			}
-			else if (event.type == SDL_MOUSEBUTTONDOWN && colorPickerTool) {
-				if (worldMap[curHoverX - camOffSetX][curHoverY - camOffSetY].type == 2) {
-					blockColor = worldMap[curHoverX - camOffSetX][curHoverY - camOffSetY].color;
-					colorPickerTool = !colorPickerTool;
-					highlight = !highlight;
+			else if (event.type == SDL_MOUSEBUTTONDOWN && settings.colorPickerTool) {
+				if (map.map[sdlSettings.curHoverX - camera.offSetX][sdlSettings.curHoverY - camera.offSetY].type == 2) {
+					preset[settings.curPreset].blockColor = map.map[sdlSettings.curHoverX - camera.offSetX][sdlSettings.curHoverY - camera.offSetY].color;
+					settings.colorPickerTool = !settings.colorPickerTool;
+					camera.highlight = !camera.highlight;
 				}
 			}
 		}

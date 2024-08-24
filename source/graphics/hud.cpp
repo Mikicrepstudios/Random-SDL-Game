@@ -3,9 +3,10 @@
 #include <string>
 
 #include "addional.h"
+#include "settings.h"
 
 namespace player {
-	void gameInfo(SDL_Renderer* renderer, TTF_Font* font, SDL_Color color, int fps, int camScale, int camOffSetX, int camOffSetY, int playerX, int playerY) {
+	void gameInfo(SDL_Renderer* renderer, game::SDL_Settings sdlSettings, game::Camera camera, game::Player player, SDL_Color color) {
 		// Rects
 		SDL_Rect fpsRect = {0, 0, 100, 20};
 
@@ -17,23 +18,23 @@ namespace player {
 		SDL_Rect playerYRect = {0, 120, 100, 20};
 
 		// Text processing
-		std::string fpsText = "Fps: " + std::to_string(fps);
-		std::string camScaleText = "Camscale: " + std::to_string(camScale);
+		std::string fpsText = "Fps: " + std::to_string(sdlSettings.fps);
+		std::string camScaleText = "Camscale: " + std::to_string(camera.scale);
 
-		std::string camXText = "Cam X: " + std::to_string(abs(camOffSetX));
-		std::string camYText = "Cam Y: " + std::to_string(abs(camOffSetY));
+		std::string camXText = "Cam X: " + std::to_string(abs(camera.offSetX));
+		std::string camYText = "Cam Y: " + std::to_string(abs(camera.offSetY));
 
-		std::string playerXText = "Player X: " + std::to_string(playerX);
-		std::string playerYText = "Player Y: " + std::to_string(playerY);
+		std::string playerXText = "Player X: " + std::to_string(player.x);
+		std::string playerYText = "Player Y: " + std::to_string(player.y);
 
 		// Show results
-		draw::DrawText(renderer, font, fpsRect, fpsText.c_str(), color);
-		draw::DrawText(renderer, font, camScaleRect, camScaleText.c_str(), color);
+		draw::DrawText(renderer, sdlSettings.font, fpsRect, fpsText.c_str(), color);
+		draw::DrawText(renderer, sdlSettings.font, camScaleRect, camScaleText.c_str(), color);
 
-		draw::DrawText(renderer, font, camXRect, camXText.c_str(), color);
-		draw::DrawText(renderer, font, camYRect, camYText.c_str(), color);
+		draw::DrawText(renderer, sdlSettings.font, camXRect, camXText.c_str(), color);
+		draw::DrawText(renderer, sdlSettings.font, camYRect, camYText.c_str(), color);
 
-		draw::DrawText(renderer, font, playerXRect, playerXText.c_str(), color);
-		draw::DrawText(renderer, font, playerYRect, playerYText.c_str(), color);
+		draw::DrawText(renderer, sdlSettings.font, playerXRect, playerXText.c_str(), color);
+		draw::DrawText(renderer, sdlSettings.font, playerYRect, playerYText.c_str(), color);
 	}
 }

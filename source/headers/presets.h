@@ -1,9 +1,9 @@
 #ifndef PRESETS_H_INCLUDED
 #define PRESETS_H_INCLUDED
 
-namespace settings {
+namespace game {
 	struct Preset {
-		int blockColor;
+		int blockColor; // Write here to update
 	};
 }
 

@@ -4,5 +4,5 @@
 #include "settings.h"
 
 namespace logic {
-    extern void updateVars(game::Settings &settings, settings::Preset preset[10]);
+    extern void updateVars(game::Settings &settings, game::Player &player, game::Preset preset[10]);
 }

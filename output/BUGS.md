@@ -14,3 +14,5 @@
 3: [EXISTS] Clicking "Yes" on dialogue places block
 - Explanation: When you press c and click yes on dialogue, block places on that place
 - Status: Will be fixed hopefully in next update
+
+4. [EXISTS] Clicking on first color in color picker doesnt close menu
