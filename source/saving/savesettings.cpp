@@ -15,7 +15,7 @@ namespace files {
 
 				<< player.x << " "
 				<< player.y << " "
-				<< player.color << " "
+				<< settings.playerColor << " "
 
 				<< camera.offSetX << " "
 				<< camera.offSetY << " "
@@ -35,7 +35,7 @@ namespace files {
 
 					player.x >>
 					player.y >>
-					player.color >>
+					settings.playerColor >>
 
 					camera.offSetX >>
 					camera.offSetY >>

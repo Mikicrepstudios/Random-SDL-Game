@@ -13,7 +13,7 @@
 
 namespace inventory {
 	rects initRects(game::SDL_Settings sdlSettings) {
-		rects rects;
+		rects rects = {};
 		// Name                     X Offset                      Y Offset                 Width Height
 		rects.colorRect           = {50,                          50,                       80,  80 };
 		rects.colorRectb          = {45,                          45,                       90,  90 };
@@ -47,37 +47,43 @@ namespace inventory {
 }
 
 namespace player {
-	void InventoryEvent(SDL_Event event, bool &inventory, bool &colorPick, bool &bgColorPick, int &fps) {
+	void InventoryEvent(SDL_Event event, game::Settings &settings, game::SDL_Settings &sdlSettings) {
 		if(event.key.keysym.sym == SDLK_e) {
-			if (!inventory) {
-				inventory = true;
-				fps = 15; // Reduce CPU usage
+			if (!settings.inventory) {
+				settings.inventory = true;
+				sdlSettings.fps = 15; // Reduce CPU usage
 			}
 			else {
 				// Before stopping inv exit every sub UI
-				colorPick = false;
-				bgColorPick = false;
+				settings.colorPick = false;
+				settings.bgColorPick = false;
 
-				inventory = false;
-				fps = 60;
+				settings.inventory = false;
+				sdlSettings.fps = 60;
 			}
 		}
 	}
-	void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, bool &inventory, bool &running, bool &highlight, bool &camTp, bool &playerTp, bool &colorPick, bool &bgColorPick, bool &playerColorPick, bool &gameInfo, Block worldMap[250][250], int mapWidth, int mapHeight, int &blockColor, int &bgColor, int &playerColor, int mouseX, int mouseY, int width, int height, int &playerX, int &playerY, int &camOffSetX, int &camOffSetY, int &camScale, game::Settings settings, game::Map map, game::Player player, game::Camera camera) {
-		if (event.type == SDL_MOUSEBUTTONDOWN && inventory) {
-			if (!colorPick && !bgColorPick) {
+	void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Cheats &cheats, game::Preset preset[10]) {
+		if (event.type == SDL_MOUSEBUTTONDOWN && settings.inventory) {
+			int mouseX = sdlSettings.mouseX;
+			int mouseY = sdlSettings.mouseY;
+
+			int width = sdlSettings.width;
+			int height = sdlSettings.height;
+
+			if (!settings.colorPick && !settings.bgColorPick) {
 				// Gameplay
 				if (mouseX >= rects.camTpRect.x && mouseX <= rects.camTpRect.x + rects.camTpRect.w &&
 					mouseY >= rects.camTpRect.y && mouseY <= rects.camTpRect.y + rects.camTpRect.h) {
-					camTp = !camTp;
-					highlight = !highlight;
-					inventory = false;
+					cheats.camTp = !cheats.camTp;
+					camera.highlight = !camera.highlight;
+					settings.inventory = false;
 				}
 				else if (mouseX >= rects.playerTpRect.x && mouseX <= rects.playerTpRect.x + rects.playerTpRect.w &&
 					mouseY >= rects.playerTpRect.y && mouseY <= rects.playerTpRect.y + rects.playerTpRect.h) {
-					playerTp = !playerTp;
-					highlight = !highlight;
-					inventory = false;
+					cheats.playerTp = !cheats.playerTp;
+					camera.highlight = !camera.highlight;
+					settings.inventory = false;
 				}
 				// Game
 				if (mouseX >= rects.saveRect.x && mouseX <= rects.saveRect.x + rects.saveRect.w &&
@@ -91,33 +97,33 @@ namespace player {
 					files::LoadSettings(settings, player, camera);
 				}
 				else if (mouseX >= rects.gameInfoRect.x && mouseX <= rects.gameInfoRect.x + rects.gameInfoRect.w &&
-				mouseY >= rects.gameInfoRect.y && mouseY <= rects.gameInfoRect.y + rects.gameInfoRect.h && !colorPick && !bgColorPick)
-					gameInfo = !gameInfo;
+				mouseY >= rects.gameInfoRect.y && mouseY <= rects.gameInfoRect.y + rects.gameInfoRect.h && !settings.colorPick && !settings.bgColorPick)
+					settings.gameInfo = !settings.gameInfo;
 				else if (mouseX >= rects.exitRect.x && mouseX <= rects.exitRect.x + rects.exitRect.w &&
 				mouseY >= rects.exitRect.y && mouseY <= rects.exitRect.y + rects.exitRect.h)
-					running = false;
+					sdlSettings.running = false;
 			}
 
 			// Color
 			if (mouseX >= rects.colorRectb.x && mouseX <= rects.colorRectb.x + rects.colorRectb.w &&
-			mouseY >= rects.colorRectb.y && mouseY <= rects.colorRectb.y + rects.colorRectb.h && !bgColorPick && !playerColorPick)
-				colorPick = !colorPick;
-			else if (colorPick)
-				player::ColorPickerEvent(colorPick, mouseX, mouseY, width, height, blockColor);
+			mouseY >= rects.colorRectb.y && mouseY <= rects.colorRectb.y + rects.colorRectb.h && !settings.bgColorPick && !settings.playerColorPick)
+				settings.colorPick = !settings.colorPick;
+			else if (settings.colorPick)
+				preset[settings.curPreset].blockColor = player::ColorPickerEvent(sdlSettings, settings, 1);
 
 			// BG Color
 			if (mouseX >= rects.bgColorRectb.x && mouseX <= rects.bgColorRectb.x + rects.bgColorRectb.w &&
-			mouseY >= rects.bgColorRectb.y && mouseY <= rects.bgColorRectb.y + rects.bgColorRectb.h && !colorPick && !playerColorPick)
-				bgColorPick = !bgColorPick;
-			else if (bgColorPick)
-				player::ColorPickerEvent(bgColorPick, mouseX, mouseY, width, height, bgColor);
+			mouseY >= rects.bgColorRectb.y && mouseY <= rects.bgColorRectb.y + rects.bgColorRectb.h && !settings.colorPick && !settings.playerColorPick)
+				settings.bgColorPick = !settings.bgColorPick;
+			else if (settings.bgColorPick)
+				settings.bgColor = player::ColorPickerEvent(sdlSettings,settings, 2);
 
 			// Player Color
 			if (mouseX >= rects.playerColorRectb.x && mouseX <= rects.playerColorRectb.x + rects.playerColorRectb.w &&
-			mouseY >= rects.playerColorRectb.y && mouseY <= rects.playerColorRectb.y + rects.playerColorRectb.h && !colorPick && !bgColorPick)
-				playerColorPick = !playerColorPick;
-			else if (playerColorPick)
-				player::ColorPickerEvent(playerColorPick, mouseX, mouseY, width, height, playerColor);
+			mouseY >= rects.playerColorRectb.y && mouseY <= rects.playerColorRectb.y + rects.playerColorRectb.h && !settings.colorPick && !settings.bgColorPick)
+				settings.playerColorPick = !settings.playerColorPick;
+			else if (settings.playerColorPick)
+				settings.playerColor = player::ColorPickerEvent(sdlSettings, settings, 3);
 		}
 	}
 }
