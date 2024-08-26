@@ -6,7 +6,7 @@
 #include "settings.h"
 
 namespace player {
-	void gameInfo(SDL_Renderer* renderer, game::SDL_Settings sdlSettings, game::Camera camera, game::Player player, SDL_Color color) {
+	void GameInfo(SDL_Renderer* renderer, game::SDL_Settings sdlSettings, game::Camera camera, game::Player player, SDL_Color color) {
 		// Rects
 		SDL_Rect fpsRect = {0, 0, 100, 20};
 

@@ -34,7 +34,7 @@ namespace inventory {
         SDL_Rect presetTitleRect = {};
     };
 
-    rects initRects(game::SDL_Settings sdlSettings);
+    rects InitRects(game::SDL_Settings sdlSettings);
 }
 
 #endif

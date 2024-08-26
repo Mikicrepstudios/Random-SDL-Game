@@ -3,7 +3,7 @@
 
 #include "graphics.h"
 
-graphics::Colors* color = graphics::initColors();
+graphics::Colors* color = graphics::InitColors();
 
 namespace draw {
 	void SetCol(SDL_Renderer* renderer, int bgColor) {

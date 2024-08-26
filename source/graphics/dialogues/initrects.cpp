@@ -2,7 +2,7 @@
 #include "settings.h"
 
 namespace dialogues {
-    rects initRects(game::SDL_Settings sdlSettings) {
+    rects InitRects(game::SDL_Settings sdlSettings) {
         rects rects = {};
         // Name                    X Offset                     Y Offset                    Width Height
         rects.backgroundRect = {sdlSettings.width / 2 - 300, sdlSettings.height / 2 - 100, 600, 200};

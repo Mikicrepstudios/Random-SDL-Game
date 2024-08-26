@@ -7,5 +7,5 @@ namespace graphics {
 		int b;
 	};
 
-	extern Colors* initColors();
+	extern Colors* InitColors();
 }
