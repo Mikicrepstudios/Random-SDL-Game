@@ -14,6 +14,11 @@
 - New struct dialogueRects
 - Demo save text now got black border
 
+-- Build 55
+- Renderer is now part of game::sdlSettings struct
+- Added game.colorPicker and game.colorPickerId to fix old messy implementation of color picker
+- Pressing button which causes dialogue for 2nd time closes dialogue (flip flop switch)
+
 ## Removed:
 -- Build 51
 - Removed release text
@@ -26,6 +31,10 @@
 
 -- Build 54
 - Shortened function arguments
+
+-- Build 55
+- Removed colorPick, bgColorPick, playerColorPick from game::settings
+- Inventory is no longer dropping fps to 15 (Removed optimization)
 
 ## Changed/Fixed:
 -- Build 52
@@ -44,6 +53,12 @@
 - Added settings.playerColor to modify easier player color value
 - Makefile scans for files even deeper
 - Demo save stars now got stars on fullhd resouluton
+
+-- Build 55
+- Rewrote colorPicker
+- All functions now start with big letter
+- ConfirmDialogue() is now bool
+- Dialogue results are now handled way better
 
 ## Notes:
 

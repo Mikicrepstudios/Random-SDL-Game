@@ -5,10 +5,12 @@
 #include "dialogues.h"
 
 namespace dialogues {
-	int confirmDialogueEvent(SDL_Event event, int mouseX, int mouseY, int width, int height, rects dialoguesRects) {
+	int ConfirmDialogueEvent(SDL_Event event, game::SDL_Settings sdlSettings, rects dialoguesRects) {
+        int mouseX = sdlSettings.mouseX;
+        int mouseY = sdlSettings.mouseY;
         
         if (event.type == SDL_MOUSEBUTTONDOWN) {
-            if (mouseX >= dialoguesRects.yesRect.x && mouseX <= dialoguesRects.yesRect.x + dialoguesRects.yesRect.w &&
+            if      (mouseX >= dialoguesRects.yesRect.x && mouseX <= dialoguesRects.yesRect.x + dialoguesRects.yesRect.w &&
                     mouseY >= dialoguesRects.yesRect.y && mouseY <= dialoguesRects.yesRect.y + dialoguesRects.yesRect.h)
                     return 2;
             else if (mouseX >= dialoguesRects.otherYesRect.x && mouseX <= dialoguesRects.otherYesRect.x + dialoguesRects.otherYesRect.w &&
@@ -19,12 +21,12 @@ namespace dialogues {
         return 0;
 	}
 
-    int confirmDialogue(SDL_Renderer* renderer, TTF_Font* font, int width, int height, int mouseX, int mouseY, int textid, rects dialoguesRects) {
+    bool ConfirmDialogue(game::SDL_Settings sdlSettings, game::Settings settings, rects dialoguesRects) {
         SDL_Color textColor = {255, 255, 255};
         const char* titleText = "";
         const char* descText = "You will loose any unsaved progress.";
 
-        switch (textid) {
+        switch (settings.dialogueId) {
             case 1:
                 titleText = "Are you sure you want to quit game?";
                 break;
@@ -34,33 +36,33 @@ namespace dialogues {
         }
 
         // Draw dialogue
-        draw::DrawRect(renderer, dialoguesRects.backgroundRect, 2);
-        draw::DrawText(renderer, font, dialoguesRects.titleRect, titleText, textColor);
+        draw::DrawRect(sdlSettings.renderer, dialoguesRects.backgroundRect, 2);
+        draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.titleRect, titleText, textColor);
 
         // Draw buttons
-        draw::DrawButton(renderer, dialoguesRects.noRect, 27, mouseX, mouseY);
-        draw::DrawButton(renderer, dialoguesRects.yesRect, 13, mouseX, mouseY);
+        draw::DrawButton(sdlSettings.renderer, dialoguesRects.noRect, 27, sdlSettings.mouseX, sdlSettings.mouseY);
+        draw::DrawButton(sdlSettings.renderer, dialoguesRects.yesRect, 13, sdlSettings.mouseX, sdlSettings.mouseY);
 
         // Give buttons text
 
-        if(textid != 1) {
-            draw::DrawText(renderer, font, dialoguesRects.noRect, "No", textColor);
-            draw::DrawText(renderer, font, dialoguesRects.yesRect, "Yes", textColor);
-            draw::DrawText(renderer, font, dialoguesRects.descRect, descText, textColor);
+        if(settings.dialogueId != 1) {
+            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.noRect, "No", textColor);
+            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.yesRect, "Yes", textColor);
+            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.descRect, descText, textColor);
         }
         else {
             // Draw addional button for saving
-            draw::DrawButton(renderer, dialoguesRects.otherYesRect, 27, mouseX, mouseY);
+            draw::DrawButton(sdlSettings.renderer, dialoguesRects.otherYesRect, 27, sdlSettings.mouseX, sdlSettings.mouseY);
 
-            draw::DrawText(renderer, font, dialoguesRects.noRect, "Cancel", textColor);
-            draw::DrawText(renderer, font, dialoguesRects.otherYesRect, "Exit without saving", textColor);
-            draw::DrawText(renderer, font, dialoguesRects.yesRect, "Exit with saving", textColor);
+            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.noRect, "Cancel", textColor);
+            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.otherYesRect, "Exit without saving", textColor);
+            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.yesRect, "Exit with saving", textColor);
         }
 
-        if (mouseX >= dialoguesRects.noRect.x && mouseX <= dialoguesRects.noRect.x + dialoguesRects.noRect.w &&
-				mouseY >= dialoguesRects.noRect.y && mouseY <= dialoguesRects.noRect.y + dialoguesRects.noRect.h)
-                return 1;
+        if (sdlSettings.mouseX >= dialoguesRects.noRect.x && sdlSettings.mouseX <= dialoguesRects.noRect.x + dialoguesRects.noRect.w &&
+				sdlSettings.mouseY >= dialoguesRects.noRect.y && sdlSettings.mouseY <= dialoguesRects.noRect.y + dialoguesRects.noRect.h)
+                return true;
 
-        return 0;
+        return false;
     }
 }

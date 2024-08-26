@@ -1,7 +1,7 @@
 #include "SDL2/SDL.h"
 
 namespace controls {
-	void presetChooser(SDL_Event event, int &preset) {
+	void PresetChooser(SDL_Event event, int &preset) {
 		if(event.key.keysym.sym == SDLK_1) {
 			preset = 0;
 		}

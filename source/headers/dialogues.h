@@ -12,8 +12,8 @@ namespace dialogues {
         SDL_Rect otherYesRect = {};
     };
 
-    rects initRects(game::SDL_Settings sdlSettings);
+    rects InitRects(game::SDL_Settings sdlSettings);
 
-    extern int confirmDialogueEvent(SDL_Event event, int mouseX, int mouseY, int width, int height, rects dialoguesRects);
-    extern int confirmDialogue(SDL_Renderer* renderer, TTF_Font* font, int width, int height, int mouseX, int mouseY, int textid, rects dialoguesRects);
+    extern int ConfirmDialogueEvent(SDL_Event event, game::SDL_Settings sdlSettings, rects dialoguesRects);
+    extern bool ConfirmDialogue(game::SDL_Settings sdlSettings, game::Settings settings, rects dialoguesRects);
 }

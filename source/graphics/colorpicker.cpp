@@ -1,10 +1,11 @@
+#include <string>
 #include "SDL2/SDL.h"
 
 #include "addional.h"
 #include "settings.h"
 
 namespace player {
-	int ColorPickerEvent(game::SDL_Settings sdlSettings, game::Settings &settings, int pickerId) {
+	int ColorPickerEvent(game::SDL_Settings sdlSettings, game::Settings &settings) {
 		int startposw = sdlSettings.width / 2 - 500;
 		int startposh = sdlSettings.height / 2 - 300;
 		int curColor = 1;
@@ -18,23 +19,13 @@ namespace player {
 					return curColor;
 				
 				// Disable color picker based on pickerId
-				switch (pickerId) {
-				case 1:
-					settings.colorPick = false;
-					break;
-				case 2:
-					settings.bgColorPick = false;
-					break;
-				case 3:
-					settings.playerColorPick = false;
-					break;
-				}
+				settings.colorPicker = false;
 
 				curColor++;
 			}
 		}
 		// If clicked outside then return same value
-		switch (pickerId) {
+		switch (settings.colorPickerId) {
 			case 1:
 				return settings.blockColor;
 				break;
@@ -50,26 +41,40 @@ namespace player {
 }
 
 namespace overlay {
-	void ColorPicker(SDL_Renderer* renderer, TTF_Font* font, const char* text, int width, int height) {
+	void ColorPicker(game::SDL_Settings sdlSettings, game::Settings settings) {
 		SDL_Color textColor = {255, 255, 255};
+		std::string text = "";
 		int curColor = 1;
 
 		// Draw bg
-		SDL_Rect bgRect = {width / 2 - 425, height / 2 - 250, 850, 475};
-		draw::DrawRect(renderer, bgRect, 2);
+		SDL_Rect bgRect = {sdlSettings.width / 2 - 425, sdlSettings.height / 2 - 250, 850, 475};
+		draw::DrawRect(sdlSettings.renderer, bgRect, 2);
 
-		int startposw = width / 2 - 500;
-		int startposh = height / 2 - 300;
+		int startposw = sdlSettings.width / 2 - 500;
+		int startposh = sdlSettings.height / 2 - 300;
 
 		// Draw text
-		SDL_Rect titleTextRect = {width / 2 - 100, height / 2 - 250, 200, 50};
-		draw::DrawText(renderer, font, titleTextRect, text, textColor);
+		SDL_Rect titleTextRect = {sdlSettings.width / 2 - 100, sdlSettings.height / 2 - 250, 200, 50};
+
+		switch(settings.colorPickerId) {
+			case 1:
+				text = "Block Color";
+				break;
+			case 2:
+				text = "BG Color";
+				break;
+			case 3:
+				text = "Player Color";
+				break;
+		}
+
+		draw::DrawText(sdlSettings.renderer, sdlSettings.font, titleTextRect, text.c_str(), textColor);
 
 		// Draw grid
 		for(int y = 1; y <= 4; y++) {
 			for(int x = 1; x <= 8; x++) {
 				SDL_Rect curRect = {startposw + (100 * x), startposh + (100 * y), 100, 100};
-				draw::DrawRect(renderer, curRect, curColor);
+				draw::DrawRect(sdlSettings.renderer, curRect, curColor);
 
 				curColor++;
 			}

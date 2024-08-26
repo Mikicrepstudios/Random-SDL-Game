@@ -7,7 +7,8 @@
 
 namespace game {
     struct SDL_Settings {
-        TTF_Font* font;
+        SDL_Renderer* renderer = {};
+        TTF_Font* font = {};
         SDL_Color textColor = {255, 255, 255};
 	    SDL_Color altTextColor = {0, 0, 0};
 
@@ -36,9 +37,12 @@ namespace game {
 	    bool colorPickerTool = false;
 
         // Color pickers
-        bool colorPick = false;
-        bool bgColorPick = false;
-	    bool playerColorPick = false;
+        int colorPickerId = 0;
+        bool colorPicker = false;
+
+        // Dialogues
+        int dialogueId = 0;
+        bool dialogue = false;
 
         // Addional settings
 	    bool gameInfo = false;
@@ -68,11 +72,6 @@ namespace game {
 
         // Effects
 	    bool highlight = false;
-    };
-
-    struct Dialogues {
-        bool exitDialogue = false;
-	    bool clearDialogue = false;
     };
 
     struct Cheats {

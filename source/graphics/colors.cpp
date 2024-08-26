@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 namespace graphics {
-    Colors* initColors() {
+    Colors* InitColors() {
         Colors* colors = static_cast<Colors*>(std::malloc(32 * sizeof(Colors)));
 
         // R                // G                // B

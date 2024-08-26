@@ -1,5 +1,5 @@
 #pragma once
 
 namespace controls {
-	void presetChooser(SDL_Event event, int &preset);
+	void PresetChooser(SDL_Event event, int &preset);
 }
