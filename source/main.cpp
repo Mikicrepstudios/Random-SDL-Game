@@ -13,13 +13,14 @@
 #include "game.h"
 #include "inventory.h"
 #include "logic.h"
+#include "mouse.h"
 #include "overlay.h"
 #include "player.h"
 #include "presets.h"
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | 1.1 | Build 55";
+const char* windowtitle = "Mikicrep | Build 56";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -45,6 +46,11 @@ int main(int argc, char **argv) {
 	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, sdlSettings.width, sdlSettings.height, SDL_WINDOW_RESIZABLE);
 	sdlSettings.renderer = SDL_CreateRenderer(window, -1, 0);
 	SDL_Event event;
+
+	// Adding icon to window
+	SDL_Surface* iconSurface = IMG_Load("icon.png");
+	SDL_SetWindowIcon(window, iconSurface);
+	SDL_FreeSurface(iconSurface);
 
 	// Load custom bg
 	SDL_Surface* backgroundSurface = IMG_Load("customize/background.png");
@@ -125,7 +131,7 @@ int main(int argc, char **argv) {
 			// Player movement
 			player::PlayerMovement(event, map, player);
 			// Inventory
-			player::InventoryEvent(event, settings);
+			inventory::Event(event, settings);
 
 			// Clear map
 			if(event.key.keysym.sym == SDLK_c) {
@@ -161,9 +167,9 @@ int main(int argc, char **argv) {
 			else if(cheats.playerTp)
 				cheats::PlayerTp(event, map.map, cheats.playerTp, camera.highlight, -camera.offSetX + sdlSettings.curHoverX, -camera.offSetY + sdlSettings.curHoverY, player.x, player.y);
 			else
-				player::MouseEvent(event, sdlSettings, settings, map, camera, preset);
+				mouse::Event(event, sdlSettings, settings, map, camera, preset);
 
-			player::MouseInvChooser(sdlSettings.renderer, event, inventoryRects, sdlSettings, settings, map, player, camera, cheats, preset);
+			inventory::Chooser(sdlSettings.renderer, event, inventoryRects, sdlSettings, settings, map, player, camera, cheats, preset);
 			}
 
 		// Set BG color to new color
@@ -180,8 +186,8 @@ int main(int argc, char **argv) {
 		game::RenderMap(sdlSettings.renderer, map.map, sdlSettings.width, sdlSettings.height, map.width, map.height, camera.offSetX, camera.offSetY, camera.scale);
 
 		// Overlays
-		overlay::Inventory(sdlSettings.renderer, sdlSettings.font, inventoryRects, settings.inventory, settings.gameInfo, preset[settings.curPreset].blockColor, settings.bgColor, settings.playerColor, sdlSettings.width, sdlSettings.height, sdlSettings.mouseX, sdlSettings.mouseY, settings.curPreset, sdlSettings, settings);
-		overlay::Mouse(sdlSettings.renderer, camera.highlight, settings.inventory, map.map, map.width, map.height, sdlSettings.curHoverX, sdlSettings.curHoverY, camera.offSetX, camera.offSetY, camera.scale, settings.bgColor);
+		inventory::Overlay(sdlSettings.renderer, sdlSettings.font, inventoryRects, settings.inventory, settings.gameInfo, preset[settings.curPreset].blockColor, settings.bgColor, settings.playerColor, sdlSettings.width, sdlSettings.height, sdlSettings.mouseX, sdlSettings.mouseY, settings.curPreset, sdlSettings, settings);
+		mouse::Overlay(sdlSettings, settings, map, camera);
 
 		// Game info
 		if (settings.gameInfo) {
