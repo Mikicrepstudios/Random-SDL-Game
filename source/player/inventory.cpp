@@ -48,10 +48,7 @@ namespace inventory {
 		rects.presetTitleRect     = {sdlSettings.width / 2 - 115, sdlSettings.height - 215, 230, 50 };
 		return rects;
 	}
-}
-
-namespace player {
-	void InventoryEvent(SDL_Event event, game::Settings &settings) {
+	void Event(SDL_Event event, game::Settings &settings) {
 		if(event.key.keysym.sym == SDLK_e) {
 			if (!settings.inventory) {
 				settings.inventory = true;
@@ -63,7 +60,7 @@ namespace player {
 			}
 		}
 	}
-	void MouseInvChooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Cheats &cheats, game::Preset preset[10]) {
+	void Chooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Cheats &cheats, game::Preset preset[10]) {
 		if (event.type == SDL_MOUSEBUTTONDOWN && settings.inventory) {
 			int mouseX = sdlSettings.mouseX;
 			int mouseY = sdlSettings.mouseY;
@@ -141,10 +138,7 @@ namespace player {
 				settings.playerColor = player::ColorPickerEvent(sdlSettings, settings);
 		}
 	}
-}
-
-namespace overlay {
-	void Inventory(SDL_Renderer* renderer, TTF_Font* font, inventory::rects rects, bool inventory, bool gameInfo, int blockColor, int bgColor, int playerColor, int width, int height, int mouseX, int mouseY, int preset, game::SDL_Settings sdlSettings, game::Settings settings) {
+	void Overlay(SDL_Renderer* renderer, TTF_Font* font, inventory::rects rects, bool inventory, bool gameInfo, int blockColor, int bgColor, int playerColor, int width, int height, int mouseX, int mouseY, int preset, game::SDL_Settings sdlSettings, game::Settings settings) {
 		// Define variables
 		int colorR, colorG, colorB = 0;
 		SDL_Color textColor = {255, 255, 255};

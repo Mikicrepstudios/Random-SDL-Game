@@ -5,8 +5,8 @@
 #include "presets.h"
 #include "settings.h"
 
-namespace player {
-	void MouseEvent(SDL_Event event, game::SDL_Settings sdlSettings, game::Settings &settings, game::Map &map, game::Camera &camera, game::Preset preset[10]) {
+namespace mouse {
+	void Event(SDL_Event event, game::SDL_Settings sdlSettings, game::Settings &settings, game::Map &map, game::Camera &camera, game::Preset preset[10]) {
 		if (sdlSettings.curHoverX <= map.width && sdlSettings.curHoverY <= map.height && !settings.inventory && map.map[sdlSettings.curHoverX - camera.offSetX][sdlSettings.curHoverY - camera.offSetY].type != 1) {
 			if (!camera.highlight) {
 				if(sdlSettings.isMouseDown) {
@@ -30,23 +30,23 @@ namespace player {
 			}
 		}
 	}
-}
+	void Overlay(game::SDL_Settings sdlSettings, game::Settings settings, game::Map map, game::Camera camera) {
+		int curHoverX = sdlSettings.curHoverX;
+		int curHoverY = sdlSettings.curHoverY;
 
-namespace overlay {
-	void Mouse(SDL_Renderer* renderer, bool highlight, bool inventory, Block worldMap[250][250], int mapWidth, int mapHeight, int curHoverX, int curHoverY, int camOffSetX, int camOffSetY, int camScale, int bgColor) {
-		if (curHoverX <= mapWidth && curHoverY <= mapHeight && worldMap[curHoverX - camOffSetX][curHoverY - camOffSetY].type != 1 && !inventory) {
-			SDL_Rect mouseRect = {curHoverX * camScale, curHoverY * camScale, camScale, camScale};
-			if (highlight == false) {
-                if (bgColor == 32 || worldMap[curHoverX - camOffSetX][curHoverY - camOffSetY].color == 32)
-					draw::DrawRect(renderer, mouseRect, 1);
+		if (curHoverX <= map.width && curHoverY <= map.height && map.map[curHoverX - camera.offSetX][curHoverY - camera.offSetY].type != 1 && !settings.inventory) {
+			SDL_Rect mouseRect = {curHoverX * camera.scale, curHoverY * camera.scale, camera.scale, camera.scale};
+			if (camera.highlight == false) {
+                if (settings.bgColor == 32 || map.map[curHoverX - camera.offSetX][curHoverY - camera.offSetY].color == 32)
+					draw::DrawRect(sdlSettings.renderer, mouseRect, 1);
 				else
-					draw::DrawRect(renderer, mouseRect, 32);
+					draw::DrawRect(sdlSettings.renderer, mouseRect, 32);
 			}
 			else {
-				if (bgColor == 27)
-					draw::DrawRect(renderer, mouseRect, 26);
+				if (settings.bgColor == 27)
+					draw::DrawRect(sdlSettings.renderer, mouseRect, 26);
 				else
-					draw::DrawRect(renderer, mouseRect, 27);
+					draw::DrawRect(sdlSettings.renderer, mouseRect, 27);
 			}
 		}
 	}

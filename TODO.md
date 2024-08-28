@@ -12,7 +12,8 @@ if no then player cannot place blocks if yes player can, i need this to organize
 - resize elements on window resize
 - Include width, height, fullscreen, colors in gameInfo
 - move player color with colors // in save // in settings and add saving preset ability
-- move all inventory functions to namespace inventory
+- bool cheats & int cheatId
+- namespace for colorpicker
 
 ### Thinking:
 - shadows
@@ -23,6 +24,7 @@ if no then player cannot place blocks if yes player can, i need this to organize
 - multiple save slots
 - Custom color pallete
 - Dialogues rects in dialogues cpp instead of main
+- Rename camera to cam
 
 ### Explanations:
 - Very soon - priority, most likely coming next few updates
