@@ -1,25 +1,26 @@
 #include "SDL2/SDL.h"
 
 #include "block.h"
+#include "settings.h"
 
 namespace cheats {
-	void CamTp(SDL_Event event, bool &target, bool &highlight, int curHoverX, int curHoverY, int &targetX, int &targetY) {
-		if (event.type == SDL_MOUSEBUTTONDOWN) {
-			targetX = curHoverX;
-			targetY = curHoverY;
+	void CamTp(game::SDL_Settings sdlSettings, game::Settings &settings, game::Camera &camera) {
+		if (sdlSettings.event.type == SDL_MOUSEBUTTONDOWN) {
+			camera.offSetX -= sdlSettings.curHoverX;
+			camera.offSetY -= sdlSettings.curHoverY;
 
-			target = false;
-			highlight = false;
+			settings.cheats = false;
+			camera.highlight = false;
 		}
 	}
-	void PlayerTp(SDL_Event event, Block worldMap[250][250], bool &target, bool &highlight, int curHoverX, int curHoverY, int &targetX, int &targetY) {
-		if (event.type == SDL_MOUSEBUTTONDOWN) {
-			worldMap[targetX][targetY].type = 0;
-			targetX = curHoverX;
-			targetY = curHoverY;
+	void PlayerTp(game::SDL_Settings sdlSettings, game::Settings &settings, game::Map &map, game::Camera &camera, game::Player &player) {
+		if (sdlSettings.event.type == SDL_MOUSEBUTTONDOWN) {
+			map.map[player.x][player.y].type = 0; // Remove current player so you dont have ghost player
+			player.x = -camera.offSetX + sdlSettings.curHoverX;
+			player.y = -camera.offSetY + sdlSettings.curHoverY;
 
-			target = false;
-			highlight = false;
+			settings.cheats = false;
+			camera.highlight = false;
 		}
 	}
 }

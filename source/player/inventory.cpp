@@ -4,9 +4,9 @@
 
 #include "addional.h"
 #include "block.h"
+#include "colorpicker.h"
 #include "files.h"
 #include "inventory.h"
-#include "overlay.h"
 #include "player.h"
 #include "presets.h"
 #include "settings.h"
@@ -60,7 +60,7 @@ namespace inventory {
 			}
 		}
 	}
-	void Chooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Cheats &cheats, game::Preset preset[10]) {
+	void Chooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset preset[10]) {
 		if (event.type == SDL_MOUSEBUTTONDOWN && settings.inventory) {
 			int mouseX = sdlSettings.mouseX;
 			int mouseY = sdlSettings.mouseY;
@@ -73,14 +73,16 @@ namespace inventory {
 				// Cam TP
 				if (mouseX >= rects.camTpRect.x && mouseX <= rects.camTpRect.x + rects.camTpRect.w &&
 					mouseY >= rects.camTpRect.y && mouseY <= rects.camTpRect.y + rects.camTpRect.h) {
-					cheats.camTp = !cheats.camTp;
+					settings.cheatsId = 1;
+					settings.cheats = true;
 					camera.highlight = !camera.highlight;
 					settings.inventory = false;
 				}
 				// Player TP
 				else if (mouseX >= rects.playerTpRect.x && mouseX <= rects.playerTpRect.x + rects.playerTpRect.w &&
 					mouseY >= rects.playerTpRect.y && mouseY <= rects.playerTpRect.y + rects.playerTpRect.h) {
-					cheats.playerTp = !cheats.playerTp;
+					settings.cheatsId = 2;
+					settings.cheats = true;
 					camera.highlight = !camera.highlight;
 					settings.inventory = false;
 				}
@@ -117,7 +119,7 @@ namespace inventory {
 				settings.colorPickerId = 1;
 			}
 			else if (settings.colorPicker && settings.colorPickerId == 1)
-				preset[settings.curPreset].blockColor = player::ColorPickerEvent(sdlSettings, settings);
+				preset[settings.curPreset].blockColor = colorpicker::Event(sdlSettings, settings);
 
 			// BG Color
 			if (mouseX >= rects.bgColorRectb.x && mouseX <= rects.bgColorRectb.x + rects.bgColorRectb.w &&
@@ -126,7 +128,7 @@ namespace inventory {
 				settings.colorPickerId = 2;
 			}
 			else if (settings.colorPicker && settings.colorPickerId == 2)
-				settings.bgColor = player::ColorPickerEvent(sdlSettings, settings);
+				settings.bgColor = colorpicker::Event(sdlSettings, settings);
 
 			// Player Color
 			if (mouseX >= rects.playerColorRectb.x && mouseX <= rects.playerColorRectb.x + rects.playerColorRectb.w &&
@@ -135,7 +137,7 @@ namespace inventory {
 				settings.colorPickerId = 3;
 			}
 			else if (settings.colorPicker && settings.colorPickerId == 3)
-				settings.playerColor = player::ColorPickerEvent(sdlSettings, settings);
+				settings.playerColor = colorpicker::Event(sdlSettings, settings);
 		}
 	}
 	void Overlay(SDL_Renderer* renderer, TTF_Font* font, inventory::rects rects, bool inventory, bool gameInfo, int blockColor, int bgColor, int playerColor, int width, int height, int mouseX, int mouseY, int preset, game::SDL_Settings sdlSettings, game::Settings settings) {
@@ -207,11 +209,11 @@ namespace inventory {
 
 			// Color pickers
 			if(settings.colorPicker && settings.colorPickerId == 1)
-				overlay::ColorPicker(sdlSettings, settings);
+				colorpicker::Overlay(sdlSettings, settings);
 			else if(settings.colorPicker && settings.colorPickerId == 2)
-				overlay::ColorPicker(sdlSettings, settings);
+				colorpicker::Overlay(sdlSettings, settings);
 			else if(settings.colorPicker && settings.colorPickerId == 3)
-				overlay::ColorPicker(sdlSettings, settings);
+				colorpicker::Overlay(sdlSettings, settings);
 
 			}
 	}

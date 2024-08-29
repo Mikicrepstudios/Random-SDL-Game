@@ -42,7 +42,7 @@ namespace inventory {
     extern void Event(SDL_Event event, game::Settings &settings);
 
     // Handle mouse clicks
-	extern void Chooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Cheats &cheats, game::Preset preset[10]);
+	extern void Chooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset preset[10]);
 
     // Draw UI
     extern void Overlay(SDL_Renderer* renderer, TTF_Font* font, inventory::rects rects, bool inventory, bool gameInfo, int blockColor, int bgColor,  int playerColor, int width, int height, int mouseX, int mouseY, int preset, game::SDL_Settings sdlSettings, game::Settings settings);

@@ -14,13 +14,12 @@
 #include "inventory.h"
 #include "logic.h"
 #include "mouse.h"
-#include "overlay.h"
 #include "player.h"
 #include "presets.h"
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 56";
+const char* windowtitle = "Mikicrep | Build 57";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -32,11 +31,13 @@ int main(int argc, char **argv) {
 	game::Map map = {};
 	game::Player player = {};
 	game::Camera camera = {};
-	game::Cheats cheats = {};
 
 	// Preset stuff
 	game::Preset preset[10] = {};
 	preset[0].blockColor = 2;
+
+	// Gameinfo
+	std::string gameInfoTexts[16] = {};
 
 	// Prepare game
 	// Initilize structs
@@ -45,7 +46,6 @@ int main(int argc, char **argv) {
 	SDL_Window *window;
 	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, sdlSettings.width, sdlSettings.height, SDL_WINDOW_RESIZABLE);
 	sdlSettings.renderer = SDL_CreateRenderer(window, -1, 0);
-	SDL_Event event;
 
 	// Adding icon to window
 	SDL_Surface* iconSurface = IMG_Load("icon.png");
@@ -56,6 +56,7 @@ int main(int argc, char **argv) {
 	SDL_Surface* backgroundSurface = IMG_Load("customize/background.png");
 	SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(sdlSettings.renderer, backgroundSurface);
 
+	SDL_Event event = {};
 	SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();
 	sdlSettings.font = TTF_OpenFont("customize/font.ttf", 48);
@@ -72,9 +73,11 @@ int main(int argc, char **argv) {
 
 		// Update vars
 		logic::UpdateVars(settings, player, preset);
+		player::InitGameInfoTexts(sdlSettings, settings, camera, player, gameInfoTexts);
 
 		// Event loop
 		while(SDL_PollEvent(&event) != 0) {
+			sdlSettings.event = event;
 			// Check does player hold mouse button
 			if(event.type == SDL_MOUSEBUTTONDOWN)
 				sdlSettings.isMouseDown = true;
@@ -162,14 +165,14 @@ int main(int argc, char **argv) {
 					sdlSettings.running = false;
 
 			// Cheats
-			if(cheats.camTp)
-				cheats::CamTp(event, cheats.camTp, camera.highlight, camera.offSetX - sdlSettings.curHoverX, camera.offSetY - sdlSettings.curHoverY, camera.offSetX, camera.offSetY);
-			else if(cheats.playerTp)
-				cheats::PlayerTp(event, map.map, cheats.playerTp, camera.highlight, -camera.offSetX + sdlSettings.curHoverX, -camera.offSetY + sdlSettings.curHoverY, player.x, player.y);
+			if(settings.cheats && settings.cheatsId == 1)
+				cheats::CamTp(sdlSettings, settings, camera);
+			else if(settings.cheats && settings.cheatsId == 2)
+				cheats::PlayerTp(sdlSettings, settings, map, camera, player);
 			else
 				mouse::Event(event, sdlSettings, settings, map, camera, preset);
 
-			inventory::Chooser(sdlSettings.renderer, event, inventoryRects, sdlSettings, settings, map, player, camera, cheats, preset);
+			inventory::Chooser(sdlSettings.renderer, event, inventoryRects, sdlSettings, settings, map, player, camera, preset);
 			}
 
 		// Set BG color to new color
@@ -192,9 +195,9 @@ int main(int argc, char **argv) {
 		// Game info
 		if (settings.gameInfo) {
 			if (settings.bgColor == 32)
-				player::GameInfo(sdlSettings.renderer, sdlSettings, camera, player, sdlSettings.altTextColor);
+				player::GameInfo(sdlSettings, sdlSettings.altTextColor, gameInfoTexts);
 			else
-				player::GameInfo(sdlSettings.renderer, sdlSettings, camera, player, sdlSettings.textColor);
+				player::GameInfo(sdlSettings, sdlSettings.textColor, gameInfoTexts);
 		}
 
 		// Dialogues : No
