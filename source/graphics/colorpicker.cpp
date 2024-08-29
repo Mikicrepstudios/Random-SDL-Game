@@ -4,8 +4,8 @@
 #include "addional.h"
 #include "settings.h"
 
-namespace player {
-	int ColorPickerEvent(game::SDL_Settings sdlSettings, game::Settings &settings) {
+namespace colorpicker {
+	int Event(game::SDL_Settings sdlSettings, game::Settings &settings) {
 		int startposw = sdlSettings.width / 2 - 500;
 		int startposh = sdlSettings.height / 2 - 300;
 		int curColor = 1;
@@ -38,10 +38,7 @@ namespace player {
 		}
 		return -69; // Nice
 	}
-}
-
-namespace overlay {
-	void ColorPicker(game::SDL_Settings sdlSettings, game::Settings settings) {
+	void Overlay(game::SDL_Settings sdlSettings, game::Settings settings) {
 		SDL_Color textColor = {255, 255, 255};
 		std::string text = "";
 		int curColor = 1;

@@ -8,6 +8,7 @@
 namespace game {
     struct SDL_Settings {
         SDL_Renderer* renderer = {};
+        SDL_Event event = {};
         TTF_Font* font = {};
         SDL_Color textColor = {255, 255, 255};
 	    SDL_Color altTextColor = {0, 0, 0};
@@ -34,7 +35,7 @@ namespace game {
 
         // Event settings
         bool inventory = false;
-	    bool colorPickerTool = false;
+	    bool colorPickerTool = false; // todo remove
 
         // Color pickers
         int colorPickerId = 0;
@@ -43,6 +44,10 @@ namespace game {
         // Dialogues
         int dialogueId = 0;
         bool dialogue = false;
+
+        // Cheats
+        int cheatsId = 0;
+        bool cheats = false;
 
         // Addional settings
 	    bool gameInfo = false;
@@ -72,10 +77,5 @@ namespace game {
 
         // Effects
 	    bool highlight = false;
-    };
-
-    struct Cheats {
-        bool camTp = false;
-        bool playerTp = false;
     };
 }
