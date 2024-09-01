@@ -14,6 +14,7 @@ namespace game {
 	    SDL_Color altTextColor = {0, 0, 0};
 
         bool running = true;
+        bool cliInput = false;
         bool isMouseDown = false;
 
         int fps = 60;

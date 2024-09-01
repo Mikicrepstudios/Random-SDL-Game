@@ -1,0 +1,16 @@
+-Sky map which has a 2d image instead of a skybox
+-You could probably push a pointer onto the stack and ret and it would jump to it
+-Maybe make the symbol constructor opcode have its own codes soas to not take up more bytecodes than needed
+-To shrink the array dimension value array, simply just increment the pointer when the dimension is decremented
+-Maybe make a flag for memory sections that says weather the script allocated it. This will prevent users from accidentally going out of bounds. (Make it optional of course)
+-Don't bother with making a fuck ton of pointer arrays with multi-dimensional arrays. Instead, make one big long array, and use an algorithm to pick the members based on the indexes. Left-most index multiplies by the dimension, and then from left-to-right, it decrements the dimension and adds the dimension times all those indexes multiplied together.
+-Make class symbols identifiable by scope id
+-Make sure to make the address-of operator return debris if it's a c-like pointer
+-Make a simple generic function for removing manual array members by member size. Convert void to byte so it can be incremented by 1.
+-Make the string opcode create a debris. If this debris is assigned to a pointer, remove it without deleting the data at its address.
+-Make debris not delete when returned from a function.
+-Make it possible to parse code with just a string instead of with an entire script.
+-For structs, maybe have a list of symbol strings and a list of data types.
+-Add ability to manually add more 16 bit standard calls
+-Maybe one day, add gap removal simulation to the memory system so that memory can be allocated seperately and the script environment doesn't need one huge memory range.
+-Maybe make a cache of object pointers so that deleted ones can be prevented from causing errors

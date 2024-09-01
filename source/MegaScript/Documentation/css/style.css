@@ -1,0 +1,27 @@
+.page {
+  position: relative;
+  width: 90%;
+  left: 5%;
+  text-align: center;
+}
+
+.title {
+  background-color: lightgrey;
+  border: 6px outset;
+  margin: 24;
+}
+
+hr {
+  margin: 30;
+}
+
+.shrink {
+  width: fit-content;
+  block-size: fit-content;
+  text-align: left;
+}
+
+li {
+  white-space: nowrap;
+  line-break: none;
+}

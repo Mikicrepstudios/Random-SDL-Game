@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>MegaScript</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/table.css">
+</head>
+<body>
+<div class="page">
+  <h3>Links</h3>
+  <a href="../index.html">Index</a>
+  <div class="title">
+    <h1>Problems</h1>
+    <p>Here is a list of the known problems in this version.</p>
+  </div>
+  <center>
+    <div class="shrink">
+      <ol>
+        <li>Object callbacks can currently only have one argument due to the way that they are encoded.</li>
+        <li>Strings are still pushed onto the stack as raw pointers. They simply point to the string in the code.</li>
+        <li>Library files as well as regular MegaScript files don't load correctly on Windows.</li>
+        <li>Error catching is not entirely finished. Some errors may freeze the program, or cause a segmentation fault.</li>
+      </ol>
+    </div>
+  </center>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+title("bool")
+
+new bool8 Values
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight
+stop

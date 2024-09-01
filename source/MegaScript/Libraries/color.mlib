@@ -1,0 +1,9 @@
+title("color")
+
+function RGB(uint32 r, uint32 g, uint32 b)
+    return (r << 16) | (g << 8) | b
+stop
+
+function RGBA(uint32 r, uint32 g, uint32 b, uint32 a)
+    return (a << 24) | (r << 16) | (g << 8) | b
+stop

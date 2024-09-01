@@ -1,0 +1,90 @@
+\\Enums
+new enum OS
+    Undefined,
+    Windows,
+    Linux,
+    BSD,
+    MacOS,
+    TempleOS
+stop
+
+new enum Type
+    Void,
+    Null,
+    Int8,
+    Int16,
+    Int32,
+    Int64,
+    UInt8,
+    UInt16,
+    UInt32,
+    UInt64,
+    Float32,
+    Float64,
+    Float128,
+    Number,
+    Struct,
+    Class,
+    Function,
+    Array,
+    Dynamic,
+    Bool,
+    Object,
+    Pointer,
+    Symbol,
+    Label,
+    CustomSymbol,
+    String,
+    Char,
+    Generic,
+    Operation,
+    CPointer,
+    DataType,
+    ForLoopSave,
+    WhileLoopSave,
+    SwitchSave,
+    Debris,
+    Element,
+    Enum,
+    List,
+    EnumSave,
+    AutoDelete,
+    Bool8,
+    Bool16,
+    Bool32,
+    Bool64,
+    New,
+    Bool8C,
+    Bool16C,
+    Bool32C,
+    Bool64C
+stop
+
+\\Load library files
+if(current_os == OS.Linux)
+    loadlib("Libraries/math.mlib")
+    loadlib("Libraries/random.mlib")
+    loadlib("Libraries/string.mlib")
+elseif(current_os == OS.Windows)
+    loadlib("Libraries\math.mlib")
+    loadlib("Libraries\random.mlib")
+    loadlib("Libraries\string.mlib")
+stop
+
+\\Define functions
+function help()
+    if(current_os == OS.Windows)
+        shell("start Documentation\index.html")
+    elseif(current_os == OS.Linux)
+        shell("xdg-open Documentation/index.html")
+    stop
+    return 0
+stop
+
+\\Define keywords
+#keyword tau 6.2831853071
+#keyword pythagoras 1.4142135623
+#keyword phi 1.6180339887
+#keyword pi 3.1415926535
+#keyword true 1bu
+#keyword false 0bu

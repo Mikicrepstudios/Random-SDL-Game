@@ -1,0 +1,8 @@
+new struct Test
+	int a,
+	int b
+stop
+
+Test a
+
+echo(typeof(a))

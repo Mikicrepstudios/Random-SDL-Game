@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>MegaScript</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/table.css">
+</head>
+<body>
+<div class="page">
+  <h3>Links</h3>
+  <a href="../../index.html">Index</a> | <a href="../bytecodes.html">Bytecodes</a>
+  <div class="title">
+    <h1>FloatOpcode (19)</h1>
+    <p>Pushes a floating point number onto the stack.</p>
+  </div>
+  <p>The float bytecode is used to create all floating points regardless of size. After the bytecode, one byte is used to define the float size in bytes. Then, the specified amount of bytes is read from the memory, and the program counter is incremented by that same size. Finally, the extracted bytes are casted to a float, and it is then pushed onto the stack.</p>
+  <center>
+    <hr>
+    <h2>Syntax Table</h2>
+    <table>
+      <tr>
+        <th>-></th>
+        <th>Bytecode</th>
+        <th>Size</th>
+        <th>Data</th>
+      </tr>
+      <tr>
+        <th>Bytes:</th>
+        <td>1</td>
+        <td>1</td>
+        <td title="Varying size">?</td>
+      </tr>
+    </table>
+    <hr>
+    <h2>Push Order</h2>
+    <div class="shrink">
+      <ol>
+        <li><a href="../data_types/0A.html">FloatType</a> / <a href="../data_types/0B.html">DoubleType</a> / <a href="../data_types/0C.html">LongDoubleType</a></li>
+      </ol>
+    </div>
+  </center>
+</div>
+</body>
+</html>

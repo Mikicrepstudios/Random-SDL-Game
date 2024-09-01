@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>MegaScript</title>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/table.css">
+</head>
+<body>
+<div class="page">
+  <h3>Links</h3>
+  <a href="../../index.html">Index</a> | <a href="../bytecodes.html">Bytecodes</a>
+  <div class="title">
+    <h1>StandardCallOpcode (66)</h1>
+    <p>Executes a standard call based on a 16 bit ID system.</p>
+  </div>
+  <p>The standard call bytecode is a useful tool for adding new standard functions to the MegaScript interpreter. When one of these standard calls is parsed by name, it is converted into a 16 bit ID, which saves space. Because this ID is 16 bit (2 bytes), it means that you can have up to 65,536 unique built-in standard calls.</p>
+  <center>
+    <hr>
+    <h2>Syntax Table</h2>
+    <table>
+      <tr>
+        <th>-></th>
+        <th>Bytecode</th>
+        <th>Call ID</th>
+        <th>Operation</th>
+        <th>Call End</th>
+      </tr>
+      <tr>
+        <th>Bytes:</th>
+        <td>1</td>
+        <td>2</td>
+        <td title="Varying size">?</td>
+        <td>1</td>
+      </tr>
+    </table>
+    <hr>
+    <h2>Push Order</h2>
+    <div class="shrink">
+      <ol>
+        <li><a href="../data_types/1B.html">GenericType</a></li>
+      </ol>
+    </div>
+  </center>
+</div>
+</body>
+</html>

@@ -9,6 +9,11 @@
 - Added SDL_Event in game::SDL_Settings
 - Added more stuff to gameInfo
 
+-- Build 58
+- Added namespace hud
+- Added cliInput bool to game::sdlSettings
+- Added f9 shortcut for very very experimental testing scripting terminal
+
 ## Removed:
 -- Build 56
 - Shortened function arguments
@@ -16,6 +21,10 @@
 -- Build 57
 - Removed namespace overlay and overlay.h
 - Removed struct game::cheats
+- Shortened function arguments
+
+-- Build 58
+- Removed player::initGameInfoText() function
 - Shortened function arguments
 
 ## Changed/Fixed:
@@ -28,6 +37,11 @@
 - Moved overlay:ColorPicker() to colorpicker:Overlay() and player::ColorPickerEvent() to colorpicker:Event()
 - Renamed hud.cpp to gameinfo.cpp
 - Rewrote gameInfo code
+
+-- Build 58
+- Renamed game::settings camera to game::settings cam
+- Renamed addional.h to draw.h
+- Moved player::GameInfo() function to hud::GameInfo()
 
 ## Notes:
 
