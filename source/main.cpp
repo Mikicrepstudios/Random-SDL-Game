@@ -4,13 +4,17 @@
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 
-#include "addional.h"
+//#include "MegaScript/main.c"
+
 #include "block.h"
 #include "cheats.h"
 #include "controls.h"
+#include "commands.h"
 #include "dialogues.h"
+#include "draw.h"
 #include "files.h"
 #include "game.h"
+#include "hud.h"
 #include "inventory.h"
 #include "logic.h"
 #include "mouse.h"
@@ -19,7 +23,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 57";
+const char* windowtitle = "Mikicrep | Build 58";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -30,14 +34,11 @@ int main(int argc, char **argv) {
 	game::Settings settings = {};
 	game::Map map = {};
 	game::Player player = {};
-	game::Camera camera = {};
+	game::Camera cam = {};
 
 	// Preset stuff
 	game::Preset preset[10] = {};
 	preset[0].blockColor = 2;
-
-	// Gameinfo
-	std::string gameInfoTexts[16] = {};
 
 	// Prepare game
 	// Initilize structs
@@ -63,17 +64,16 @@ int main(int argc, char **argv) {
 	IMG_Init(IMG_INIT_PNG);
 	gamemap::ClearMap(map);
 	files::LoadMap(map);
-	files::LoadSettings(settings, player, camera);
+	files::LoadSettings(settings, player, cam);
 
 	while(sdlSettings.running) {
 		// Main
 		SDL_GetMouseState(&sdlSettings.mouseX, &sdlSettings.mouseY);
-		sdlSettings.curHoverX = sdlSettings.mouseX / camera.scale;
-		sdlSettings.curHoverY = sdlSettings.mouseY / camera.scale;
+		sdlSettings.curHoverX = sdlSettings.mouseX / cam.scale;
+		sdlSettings.curHoverY = sdlSettings.mouseY / cam.scale;
 
 		// Update vars
 		logic::UpdateVars(settings, player, preset);
-		player::InitGameInfoTexts(sdlSettings, settings, camera, player, gameInfoTexts);
 
 		// Event loop
 		while(SDL_PollEvent(&event) != 0) {
@@ -124,10 +124,13 @@ int main(int argc, char **argv) {
 
 				if(event.key.keysym.sym == SDLK_q) {
 					settings.colorPickerTool = !settings.colorPickerTool;
-					camera.highlight = !camera.highlight;
+					cam.highlight = !cam.highlight;
 				}
 				if(event.key.keysym.sym == SDLK_F3)
 					settings.gameInfo = !settings.gameInfo;
+
+				if(event.key.keysym.sym == SDLK_F9)
+					sdlSettings.cliInput = true;
 
 			// Preset chooser
 			controls::PresetChooser(event, settings.curPreset);
@@ -143,7 +146,7 @@ int main(int argc, char **argv) {
 			}
 
 			// Camera
-			events::Camera(event, settings.inventory, camera.offSetX, camera.offSetY, camera.scale);
+			events::Camera(event, settings.inventory, cam.offSetX, cam.offSetY, cam.scale);
 			}
 
 			// Dialogues : Yes
@@ -152,7 +155,7 @@ int main(int argc, char **argv) {
 					switch(settings.dialogueId) {
 						case 1:
 							files::SaveMap(map);
-							files::SaveSettings(settings, player, camera);
+							files::SaveSettings(settings, player, cam);
 							sdlSettings.running = false;
 							break;
 						case 2:
@@ -161,18 +164,18 @@ int main(int argc, char **argv) {
 							break;
 					}
 			else if(dialogueResult == 3)
-				if(settings.dialogueId == true)
+				if(settings.dialogueId == 1)
 					sdlSettings.running = false;
 
 			// Cheats
 			if(settings.cheats && settings.cheatsId == 1)
-				cheats::CamTp(sdlSettings, settings, camera);
+				cheats::CamTp(sdlSettings, settings, cam);
 			else if(settings.cheats && settings.cheatsId == 2)
-				cheats::PlayerTp(sdlSettings, settings, map, camera, player);
+				cheats::PlayerTp(sdlSettings, settings, map, cam, player);
 			else
-				mouse::Event(event, sdlSettings, settings, map, camera, preset);
+				mouse::Event(event, sdlSettings, settings, map, cam, preset);
 
-			inventory::Chooser(sdlSettings.renderer, event, inventoryRects, sdlSettings, settings, map, player, camera, preset);
+			inventory::Chooser(sdlSettings.renderer, event, inventoryRects, sdlSettings, settings, map, player, cam, preset);
 			}
 
 		// Set BG color to new color
@@ -186,23 +189,29 @@ int main(int argc, char **argv) {
 		map.map[player.x][player.y] = Block(1, settings.playerColor);
 
 		// Draw map
-		game::RenderMap(sdlSettings.renderer, map.map, sdlSettings.width, sdlSettings.height, map.width, map.height, camera.offSetX, camera.offSetY, camera.scale);
+		game::RenderMap(sdlSettings.renderer, map.map, sdlSettings.width, sdlSettings.height, map.width, map.height, cam.offSetX, cam.offSetY, cam.scale);
 
 		// Overlays
 		inventory::Overlay(sdlSettings.renderer, sdlSettings.font, inventoryRects, settings.inventory, settings.gameInfo, preset[settings.curPreset].blockColor, settings.bgColor, settings.playerColor, sdlSettings.width, sdlSettings.height, sdlSettings.mouseX, sdlSettings.mouseY, settings.curPreset, sdlSettings, settings);
-		mouse::Overlay(sdlSettings, settings, map, camera);
+		mouse::Overlay(sdlSettings, settings, map, cam);
 
 		// Game info
-		if (settings.gameInfo) {
-			if (settings.bgColor == 32)
-				player::GameInfo(sdlSettings, sdlSettings.altTextColor, gameInfoTexts);
-			else
-				player::GameInfo(sdlSettings, sdlSettings.textColor, gameInfoTexts);
-		}
+		if (settings.gameInfo) hud::GameInfo(sdlSettings, settings, cam, player);
 
 		// Dialogues : No
 		if(settings.dialogue && dialogues::ConfirmDialogue(sdlSettings, settings, dialoguesRects))
 			settings.dialogue = false;
+
+		// Cli Input
+		if(sdlSettings.cliInput) {
+			std::string command = "";
+			draw::SetCol(sdlSettings.renderer, settings.bgColor);
+			draw::DrawRect(sdlSettings.renderer, {0, 0, 200, 50}, 27);
+			SDL_RenderPresent(sdlSettings.renderer);
+			std::cin >> command;
+			commands::Executor(command);
+			sdlSettings.cliInput = false;
+		}
 
 		// Show results
 		SDL_RenderPresent(sdlSettings.renderer);
