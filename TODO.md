@@ -15,6 +15,7 @@ if no then player cannot place blocks if yes player can, i need this to organize
 - make all cheats functions into int and return 1 when completed, if returned 1 turn off highlight and cheats bool outside of actual function
 - Check whats causing when camera goes way too much down it goes back to beggining but keeping offset
 - Better way of defining gameinfotext array
+- Dont count lines from MegaScript
 
 ### Thinking:
 - shadows
