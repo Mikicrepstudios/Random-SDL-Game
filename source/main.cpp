@@ -23,7 +23,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 58";
+const char* windowtitle = "Mikicrep | Build 59";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -206,10 +206,10 @@ int main(int argc, char **argv) {
 		if(sdlSettings.cliInput) {
 			std::string command = "";
 			draw::SetCol(sdlSettings.renderer, settings.bgColor);
-			draw::DrawRect(sdlSettings.renderer, {0, 0, 200, 50}, 27);
+			draw::DrawRect(sdlSettings.renderer, {0, 0, 25, 25}, 27);
 			SDL_RenderPresent(sdlSettings.renderer);
-			std::cin >> command;
-			commands::Executor(command);
+			std::getline(std::cin, command);
+			commands::Executor(command, sdlSettings, settings, map);
 			sdlSettings.cliInput = false;
 		}
 

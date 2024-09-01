@@ -13,6 +13,12 @@
 - Added namespace hud
 - Added cliInput bool to game::sdlSettings
 - Added f9 shortcut for very very experimental testing scripting terminal
+- Added echo command (UNFINISHED)
+
+-- Build 59
+- Finished echo command
+- Added args and argsCount variable
+- Added place command
 
 ## Removed:
 -- Build 56
