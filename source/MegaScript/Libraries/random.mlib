@@ -1,9 +1,0 @@
-title("random")
-
-function rand()
-    uint64 a = (int64) time() * 1000
-    uint32 t = (a ^ a >> 15) * (a | a)
-    t ^= t + ((t ^ t >> 7) * (t | 61))
-    t = t ^ t >> 14
-    return (float64) t / 4294967295
-stop

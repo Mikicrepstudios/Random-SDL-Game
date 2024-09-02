@@ -20,6 +20,10 @@
 - Added args and argsCount variable
 - Added place command
 
+-- Build 60
+- Added blockColor argument to place command
+- Place command now outputs result
+
 ## Removed:
 -- Build 56
 - Shortened function arguments

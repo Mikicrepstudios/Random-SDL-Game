@@ -4,8 +4,6 @@
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 
-//#include "MegaScript/main.c"
-
 #include "block.h"
 #include "cheats.h"
 #include "controls.h"
@@ -23,7 +21,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 59";
+const char* windowtitle = "Mikicrep | Build 60";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -56,6 +54,7 @@ int main(int argc, char **argv) {
 	// Load custom bg
 	SDL_Surface* backgroundSurface = IMG_Load("customize/background.png");
 	SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(sdlSettings.renderer, backgroundSurface);
+	SDL_FreeSurface(backgroundSurface);
 
 	SDL_Event event = {};
 	SDL_Init(SDL_INIT_VIDEO);
@@ -141,8 +140,8 @@ int main(int argc, char **argv) {
 
 			// Clear map
 			if(event.key.keysym.sym == SDLK_c) {
-						settings.dialogueId = 2;
-						settings.dialogue = !settings.dialogue;
+				settings.dialogueId = 2;
+				settings.dialogue = !settings.dialogue;
 			}
 
 			// Camera
