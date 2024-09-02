@@ -16,7 +16,7 @@ namespace commands {
 
         // Get amount of args
        if (commandId == args) {
-            argsCount = 0;
+            argsCount = 0; // If no arguments then set to 0
         }
         else {
             std::istringstream stream(args);
@@ -33,8 +33,11 @@ namespace commands {
         // World
         else if(commandId == "place") status = Place(args, argsCount, settings, map);
         
+        // Handle errors
+        // If no command was found
         else std::cout << "Error executing command : Not found" << std::endl;
 
+        // If command for any reason fails to run successfully write this
         if(status == 1) std::cout << "Error executing command" << std::endl;
         else if(status == -69) std::cout << "Something gone VERY wrong" << std::endl;
     }
