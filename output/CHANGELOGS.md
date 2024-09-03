@@ -37,6 +37,9 @@
 - Removed player::initGameInfoText() function
 - Shortened function arguments
 
+-- Build 60
+- Shortened function arguments (finished finnaly)
+
 ## Changed/Fixed:
 -- Build 56
 - Renamed MouseInvChooser() to Chooser(), InventoryEvent() to Event(), InventoryOverlay() to Overlay()
@@ -52,6 +55,9 @@
 - Renamed game::settings camera to game::settings cam
 - Renamed addional.h to draw.h
 - Moved player::GameInfo() function to hud::GameInfo()
+
+-- Build 60
+- "Whole" inventory mess is finnaly over
 
 ## Notes:
 

@@ -21,7 +21,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 60";
+const char* windowtitle = "Mikicrep | Build 61";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -145,7 +145,7 @@ int main(int argc, char **argv) {
 			}
 
 			// Camera
-			events::Camera(event, settings.inventory, cam.offSetX, cam.offSetY, cam.scale);
+			events::Camera(sdlSettings, settings, cam);
 			}
 
 			// Dialogues : Yes
@@ -174,7 +174,7 @@ int main(int argc, char **argv) {
 			else
 				mouse::Event(event, sdlSettings, settings, map, cam, preset);
 
-			inventory::Chooser(sdlSettings.renderer, event, inventoryRects, sdlSettings, settings, map, player, cam, preset);
+			inventory::Chooser(sdlSettings, settings, map, player, cam, preset, inventoryRects);
 			}
 
 		// Set BG color to new color
@@ -188,10 +188,10 @@ int main(int argc, char **argv) {
 		map.map[player.x][player.y] = Block(1, settings.playerColor);
 
 		// Draw map
-		game::RenderMap(sdlSettings.renderer, map.map, sdlSettings.width, sdlSettings.height, map.width, map.height, cam.offSetX, cam.offSetY, cam.scale);
+		game::RenderMap(sdlSettings, map, cam);
 
 		// Overlays
-		inventory::Overlay(sdlSettings.renderer, sdlSettings.font, inventoryRects, settings.inventory, settings.gameInfo, preset[settings.curPreset].blockColor, settings.bgColor, settings.playerColor, sdlSettings.width, sdlSettings.height, sdlSettings.mouseX, sdlSettings.mouseY, settings.curPreset, sdlSettings, settings);
+		inventory::Overlay(sdlSettings, settings, inventoryRects);
 		mouse::Overlay(sdlSettings, settings, map, cam);
 
 		// Game info
