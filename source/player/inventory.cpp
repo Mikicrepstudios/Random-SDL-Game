@@ -60,8 +60,8 @@ namespace inventory {
 			}
 		}
 	}
-	void Chooser(SDL_Renderer* renderer, SDL_Event event, inventory::rects rects, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset preset[10]) {
-		if (event.type == SDL_MOUSEBUTTONDOWN && settings.inventory) {
+	void Chooser(game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset preset[10], inventory::rects rects) {
+		if (sdlSettings.event.type == SDL_MOUSEBUTTONDOWN && settings.inventory) {
 			int mouseX = sdlSettings.mouseX;
 			int mouseY = sdlSettings.mouseY;
 
@@ -140,39 +140,44 @@ namespace inventory {
 				settings.playerColor = colorpicker::Event(sdlSettings, settings);
 		}
 	}
-	void Overlay(SDL_Renderer* renderer, TTF_Font* font, inventory::rects rects, bool inventory, bool gameInfo, int blockColor, int bgColor, int playerColor, int width, int height, int mouseX, int mouseY, int preset, game::SDL_Settings sdlSettings, game::Settings settings) {
+	void Overlay(game::SDL_Settings sdlSettings, game::Settings settings, inventory::rects rects) {
 		// Define variables
+		SDL_Renderer* renderer = sdlSettings.renderer;
+		TTF_Font* font = sdlSettings.font;
+		int mouseX = sdlSettings.mouseX;
+		int mouseY = sdlSettings.mouseY;
+
 		int colorR, colorG, colorB = 0;
 		SDL_Color textColor = {255, 255, 255};
 
-		if (inventory) {
+		if (settings.inventory) {
 			// Render bg
-			SDL_Rect bgRect = {25, 25, width - 50, height - 50};
+			SDL_Rect bgRect = {25, 25, sdlSettings.width - 50, sdlSettings.height - 50};
 			draw::DrawRect(renderer, bgRect, 3);
 
 			// Color
 			draw::DrawRect(renderer, rects.colorRectb, 2);
-			draw::DrawRect(renderer, rects.colorRect, blockColor);
+			draw::DrawRect(renderer, rects.colorRect, settings.blockColor);
 			draw::DrawText(renderer, font, rects.colorTextRect, "Block", textColor);
 
 			// BG Color
 			draw::DrawRect(renderer, rects.bgColorRectb, 2);
-			draw::DrawRect(renderer, rects.bgColorRect, bgColor);
+			draw::DrawRect(renderer, rects.bgColorRect, settings.bgColor);
 			draw::DrawText(renderer, font, rects.bgColorTextRect, "BG", textColor);
 
 			// Player Color
 			draw::DrawRect(renderer, rects.playerColorRectb, 2);
-			draw::DrawRect(renderer, rects.playerColorRect, playerColor);
+			draw::DrawRect(renderer, rects.playerColorRect, settings.playerColor);
 			draw::DrawText(renderer, font, rects.playerColorTextRect, "Player", textColor);
 
 			// Preview
 			draw::DrawRect(renderer, rects.previewRectb, 2);
-			draw::DrawRect(renderer, rects.previewRect, blockColor);
+			draw::DrawRect(renderer, rects.previewRect, settings.blockColor);
 			draw::DrawText(renderer, font, rects.previewTextRect, "Preview", textColor);
 			
 			// Presets
 			draw::DrawRect(renderer, rects.presetRect, 2);
-			draw::DrawText(renderer, font, rects.presetTextRect, std::to_string(preset + 1).c_str(), textColor);
+			draw::DrawText(renderer, font, rects.presetTextRect, std::to_string(settings.curPreset + 1).c_str(), textColor);
 			draw::DrawText(renderer, font, rects.presetTitleRect, "Presets", textColor);
 
 			// Backgrounds

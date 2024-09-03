@@ -1,11 +1,13 @@
 #pragma once
 
+#include "settings.h"
+
 namespace events {
-	extern void Camera(SDL_Event event, bool inventory, int &camOffSetX, int &camOffSetY, int &camScale);
+	extern void Camera(game::SDL_Settings sdlSettings, game::Settings settings, game::Camera &cam);
 }
 
 namespace game {
-	extern void RenderMap(SDL_Renderer* renderer, Block worldMap[250][250], int width, int height, int mapWidth, int mapHeight, int camOffSetX, int camOffSetY, int camScale);
+	extern void RenderMap(game::SDL_Settings sdlSettings, game::Map map, game::Camera cam);
 }
 
 namespace gamemap {
