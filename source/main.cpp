@@ -21,7 +21,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 61";
+const char* windowtitle = "Mikicrep | Build 62";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -42,8 +42,8 @@ int main(int argc, char **argv) {
 	// Initilize structs
 	inventory::rects inventoryRects = inventory::InitRects(sdlSettings);
 	dialogues::rects dialoguesRects = dialogues::InitRects(sdlSettings);
-	SDL_Window *window;
-	window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, sdlSettings.width, sdlSettings.height, SDL_WINDOW_RESIZABLE);
+	SDL_Window* window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
+							  sdlSettings.width, sdlSettings.height, SDL_WINDOW_RESIZABLE);
 	sdlSettings.renderer = SDL_CreateRenderer(window, -1, 0);
 
 	// Adding icon to window

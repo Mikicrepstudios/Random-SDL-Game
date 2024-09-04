@@ -38,7 +38,13 @@
 - Shortened function arguments
 
 -- Build 60
+- Shortened function arguments
+
+-- Build 61
 - Shortened function arguments (finished finnaly)
+
+-- Build 62
+- Added curPreset in gameInfo
 
 ## Changed/Fixed:
 -- Build 56
@@ -56,8 +62,11 @@
 - Renamed addional.h to draw.h
 - Moved player::GameInfo() function to hud::GameInfo()
 
--- Build 60
+-- Build 61
 - "Whole" inventory mess is finnaly over
+
+-- Build 62
+- SDL_Window is now defined bit nicer so now main.cpp is fully readable without scrolling sideways
 
 ## Notes:
 
