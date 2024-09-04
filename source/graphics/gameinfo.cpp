@@ -22,18 +22,19 @@ namespace hud {
 		gameInfoTexts[2] = "Fps: " + std::to_string(sdlSettings.fps);
 		//gameInfoTexts[3] = "";
 
-		gameInfoTexts[4] = "Block color: " + std::to_string(settings.blockColor);
-		gameInfoTexts[5] = "BG color: " + std::to_string(settings.bgColor);
-		//gameInfoTexts[6] = "";
+		gameInfoTexts[4] = "Cur preset: " + std::to_string(settings.curPreset + 1);
+		gameInfoTexts[5] = "Block color: " + std::to_string(settings.blockColor);
+		gameInfoTexts[6] = "BG color: " + std::to_string(settings.bgColor);
+		//gameInfoTexts[7] = "";
 
-		gameInfoTexts[7] = "Cam X: " + std::to_string(abs(cam.offSetX));
-		gameInfoTexts[8] = "Cam Y: " + std::to_string(abs(cam.offSetY));
-		gameInfoTexts[9] = "Camscale: " + std::to_string(cam.scale);
-		//gameInfoTexts[10] = "";
+		gameInfoTexts[8] = "Cam X: " + std::to_string(abs(cam.offSetX));
+		gameInfoTexts[9] = "Cam Y: " + std::to_string(abs(cam.offSetY));
+		gameInfoTexts[10] = "Camscale: " + std::to_string(cam.scale);
+		//gameInfoTexts[11] = "";
 
-		gameInfoTexts[11] = "Player X: " + std::to_string(player.x);
-		gameInfoTexts[12] = "Player Y: " + std::to_string(player.y);
-		gameInfoTexts[13] = "Player color: " + std::to_string(settings.playerColor);
+		gameInfoTexts[12] = "Player X: " + std::to_string(player.x);
+		gameInfoTexts[13] = "Player Y: " + std::to_string(player.y);
+		gameInfoTexts[14] = "Player color: " + std::to_string(settings.playerColor);
 
 		// Draw gameInfo hud
 		for(int i = 0; i <= 13; i++) {
