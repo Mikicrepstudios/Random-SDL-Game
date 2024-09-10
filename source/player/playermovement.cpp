@@ -4,7 +4,7 @@
 #include "settings.h"
 
 namespace player {
-	void PlayerMovement(SDL_Event event, game::Map &map, game::Player &player) {
+	void Movement(SDL_Event event, game::Map &map, game::Player &player) {
 		if(event.key.keysym.sym == SDLK_w && map.map[player.x][player.y - player.speed].type == 0 && player.y != 0) {
 			map.map[player.x][player.y].type = 0;
 			player.y -= player.speed;
