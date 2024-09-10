@@ -68,6 +68,9 @@
 -- Build 62
 - SDL_Window is now defined bit nicer so now main.cpp is fully readable without scrolling sideways
 
+-- Build 63
+- Changed player::PlayerMovement() to player::Movement()
+
 ## Notes:
 
 

@@ -21,7 +21,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 62";
+const char* windowtitle = "Mikicrep | Build 63";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -134,7 +134,7 @@ int main(int argc, char **argv) {
 			// Preset chooser
 			controls::PresetChooser(event, settings.curPreset);
 			// Player movement
-			player::PlayerMovement(event, map, player);
+			player::Movement(event, map, player);
 			// Inventory
 			inventory::Event(event, settings);
 
