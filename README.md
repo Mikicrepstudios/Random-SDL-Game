@@ -56,7 +56,7 @@ Theese commands only works on arch based linux distros, for other ones you gotta
 *Compiling is recommended unless you get game from [releases](https://github.com/Mikicrepstudios/Random-SDL-Game/releases) page*
 
 ## Documentation
-Currently does not exist, will be [here](https://github.com/Mikicrepstudios/Random-SDL-Game/tree/docs)
+Currently does not exist, will be [here](https://github.com/Mikicrepstudios/Random-SDL-Game-DOCS)
 
 ## Bug reporting && Suggestions && Contributing
 Please read [CONTRIBUTING.md](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
