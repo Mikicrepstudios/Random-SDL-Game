@@ -11,8 +11,7 @@
 2: [UNSURE] Fonts sometime freaks out and whole games font goes into crisis
 - Explanation: After some time of game running, fonts will dissapear and appear in 1st row of gameInfo
 
-3: [EXISTS] Clicking "Yes" on dialogue places block
+3: [FIXED] Clicking "Yes" on dialogue places block
 - Explanation: When you press c and click yes on dialogue, block places on that place
-- Status: Will be fixed hopefully in next update
 
-4. [EXISTS] Clicking on first color in color picker doesnt close menu
+4: [EXISTS] Clicking on first color in color picker doesnt close menu
