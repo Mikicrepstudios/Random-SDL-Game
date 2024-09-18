@@ -24,6 +24,9 @@
 - Added blockColor argument to place command
 - Place command now outputs result
 
+-- Build 64
+- Added canPlayerPlace bool
+
 ## Removed:
 -- Build 56
 - Shortened function arguments
@@ -70,6 +73,10 @@
 
 -- Build 63
 - Changed player::PlayerMovement() to player::Movement()
+
+-- Build 64
+- gameInfoTexts[16] is now defined nicer
+- Fixed bug no. 4
 
 ## Notes:
 

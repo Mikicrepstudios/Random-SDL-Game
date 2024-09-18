@@ -34,9 +34,12 @@ namespace game {
         int bgColor = 1;
         int playerColor = 6; // Write here to update
 
+        // Bools
+        bool canPlayerPlace = true;
+
         // Event settings
         bool inventory = false;
-	    bool colorPickerTool = false; // todo remove
+	    bool colorPickerTool = false; // todo remove (TURN INTO CHEATS)
 
         // Color pickers
         int colorPickerId = 0;
