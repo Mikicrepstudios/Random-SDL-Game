@@ -2,7 +2,6 @@
 
 ### Very soon:
 - Better way of defining gameinfotext array
-- Dont count lines from MegaScript
 - Dialogues rects in dialogues cpp instead of main and inventory*
 
 ### Planned:
