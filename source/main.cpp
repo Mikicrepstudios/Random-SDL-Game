@@ -21,7 +21,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 64";
+const char* windowtitle = "Mikicrep | Build 65";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -72,7 +72,7 @@ int main(int argc, char **argv) {
 		sdlSettings.curHoverY = sdlSettings.mouseY / cam.scale;
 
 		// Update vars
-		logic::UpdateVars(settings, player, preset);
+		logic::UpdateVars(settings, player, cam, preset);
 
 		// Event loop
 		while(SDL_PollEvent(&event) != 0) {
@@ -122,8 +122,8 @@ int main(int argc, char **argv) {
 				}
 
 				if(event.key.keysym.sym == SDLK_q) {
-					settings.colorPickerTool = !settings.colorPickerTool;
-					cam.highlight = !cam.highlight;
+					settings.cheatsId = 3;
+					settings.cheats = !settings.cheats;
 				}
 				if(event.key.keysym.sym == SDLK_F3)
 					settings.gameInfo = !settings.gameInfo;
@@ -171,7 +171,6 @@ int main(int argc, char **argv) {
 				cheats::CamTp(sdlSettings, settings, cam);
 			else if(settings.cheats && settings.cheatsId == 2)
 				cheats::PlayerTp(sdlSettings, settings, map, cam, player);
-
 
 			if(settings.canPlayerPlace == true) mouse::Event(event, sdlSettings, settings, map, cam, preset);
 

@@ -75,7 +75,6 @@ namespace inventory {
 					mouseY >= rects.camTpRect.y && mouseY <= rects.camTpRect.y + rects.camTpRect.h) {
 					settings.cheatsId = 1;
 					settings.cheats = true;
-					camera.highlight = !camera.highlight;
 					settings.inventory = false;
 				}
 				// Player TP
@@ -83,7 +82,6 @@ namespace inventory {
 					mouseY >= rects.playerTpRect.y && mouseY <= rects.playerTpRect.y + rects.playerTpRect.h) {
 					settings.cheatsId = 2;
 					settings.cheats = true;
-					camera.highlight = !camera.highlight;
 					settings.inventory = false;
 				}
 				// Game

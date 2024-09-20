@@ -24,8 +24,14 @@
 - Added blockColor argument to place command
 - Place command now outputs result
 
+-- Build 62
+- Added curPreset in gameInfo
+
 -- Build 64
 - Added canPlayerPlace bool
+
+-- Build 65
+- Added colorPickerTool to cheats
 
 ## Removed:
 -- Build 56
@@ -46,8 +52,8 @@
 -- Build 61
 - Shortened function arguments (finished finnaly)
 
--- Build 62
-- Added curPreset in gameInfo
+-- Build 65
+- Removed bool colorPickerTool
 
 ## Changed/Fixed:
 -- Build 56
@@ -77,6 +83,9 @@
 -- Build 64
 - gameInfoTexts[16] is now defined nicer
 - Fixed bug no. 4
+
+-- Build 65
+- Changed a bit mouse::Event() function
 
 ## Notes:
 

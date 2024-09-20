@@ -1,5 +1,5 @@
 #include "SDL2/SDL.h"
-
+#include <iostream>
 #include "draw.h"
 #include "block.h"
 #include "presets.h"
@@ -8,7 +8,7 @@
 namespace mouse {
 	void Event(SDL_Event event, game::SDL_Settings sdlSettings, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]) {
 		if (sdlSettings.curHoverX <= map.width && sdlSettings.curHoverY <= map.height && !settings.inventory && map.map[sdlSettings.curHoverX - cam.offSetX][sdlSettings.curHoverY - cam.offSetY].type != 1) {
-			if (!cam.highlight) {
+			if (!settings.cheats) {
 				if(sdlSettings.isMouseDown) {
 					Uint32 mouseButtons = SDL_GetMouseState(NULL, NULL);
 					if (mouseButtons & SDL_BUTTON(SDL_BUTTON_LEFT)) {
@@ -21,11 +21,10 @@ namespace mouse {
 					}
 				}
 			}
-			else if (event.type == SDL_MOUSEBUTTONDOWN && settings.colorPickerTool) {
+			else if (event.type == SDL_MOUSEBUTTONDOWN && settings.cheats && settings.cheatsId == 3) {
 				if (map.map[sdlSettings.curHoverX - cam.offSetX][sdlSettings.curHoverY - cam.offSetY].type == 2) {
 					preset[settings.curPreset].blockColor = map.map[sdlSettings.curHoverX - cam.offSetX][sdlSettings.curHoverY - cam.offSetY].color;
-					settings.colorPickerTool = !settings.colorPickerTool;
-					cam.highlight = !cam.highlight;
+					settings.cheats = false;
 				}
 			}
 		}
