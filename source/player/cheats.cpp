@@ -10,7 +10,6 @@ namespace cheats {
 			cam.offSetY -= sdlSettings.curHoverY;
 
 			settings.cheats = false;
-			cam.highlight = false;
 		}
 	}
 	void PlayerTp(game::SDL_Settings sdlSettings, game::Settings &settings, game::Map &map, game::Camera &cam, game::Player &player) {
@@ -20,7 +19,6 @@ namespace cheats {
 			player.y = -cam.offSetY + sdlSettings.curHoverY;
 
 			settings.cheats = false;
-			cam.highlight = false;
 		}
 	}
 }

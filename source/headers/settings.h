@@ -39,7 +39,6 @@ namespace game {
 
         // Event settings
         bool inventory = false;
-	    bool colorPickerTool = false; // todo remove (TURN INTO CHEATS)
 
         // Color pickers
         int colorPickerId = 0;
@@ -80,6 +79,6 @@ namespace game {
         int offSetY = 0;
 
         // Effects
-	    bool highlight = false;
+	    bool highlight = false; // Updates every frame
     };
 }
