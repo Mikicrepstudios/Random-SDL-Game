@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 
 #include "presets.h"
+#include "settings.h"
 
 namespace inventory {
     struct rects {

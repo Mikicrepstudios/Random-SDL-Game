@@ -87,6 +87,9 @@
 -- Build 65
 - Changed a bit mouse::Event() function
 
+-- Build 66
+- Split inventory.cpp in multiple files
+
 ## Notes:
 
 
