@@ -3,10 +3,8 @@
 ### Very soon:
 
 ### Planned:
-- block textures
+- block textures -- SINCE BUILD 15
 (overlay on block to make it seem like it got texture)
-- no collision block
-(block where player got ability to go thru it)
 if no then player cannot place blocks if yes player can, i need this to organize code bit better
 - resize elements on window resize
 - move player color with colors // in save // in settings and add saving preset ability

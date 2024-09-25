@@ -7,7 +7,7 @@ namespace events {
 }
 
 namespace game {
-	extern void RenderMap(game::SDL_Settings sdlSettings, game::Map map, game::Camera cam);
+	extern void RenderMap(game::SDL_Settings sdlSettings, game::Settings settings, game::Map map, game::Camera cam);
 }
 
 namespace gamemap {

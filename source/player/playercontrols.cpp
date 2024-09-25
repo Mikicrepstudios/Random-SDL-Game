@@ -14,10 +14,12 @@ namespace mouse {
 					if (mouseButtons & SDL_BUTTON(SDL_BUTTON_LEFT)) {
 						map.map[sdlSettings.curHoverX - cam.offSetX][sdlSettings.curHoverY - cam.offSetY].type = 2;
 						map.map[sdlSettings.curHoverX - cam.offSetX][sdlSettings.curHoverY - cam.offSetY].color = settings.blockColor;
+						map.map[sdlSettings.curHoverX - cam.offSetX][sdlSettings.curHoverY - cam.offSetY].isSolid = settings.placeSolidBlocks;
 					}
 					else if (mouseButtons & SDL_BUTTON(SDL_BUTTON_RIGHT)) {
 						map.map[sdlSettings.curHoverX - cam.offSetX][sdlSettings.curHoverY - cam.offSetY].type = 0;
 						map.map[sdlSettings.curHoverX - cam.offSetX][sdlSettings.curHoverY - cam.offSetY].color = 0;
+						map.map[sdlSettings.curHoverX - cam.offSetX][sdlSettings.curHoverY - cam.offSetY].isSolid = false;
 					}
 				}
 			}

@@ -21,7 +21,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 67";
+const char* windowtitle = "Mikicrep | Build 68";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -185,10 +185,11 @@ int main(int argc, char **argv) {
 		SDL_RenderCopy(sdlSettings.renderer, backgroundTexture, NULL, &backgroundRect);
 
 		// Pre logic
-		map.map[player.x][player.y] = Block(1, settings.playerColor);
+		// Prepare player
+		map.map[player.x][player.y].type = 1;
 
 		// Draw map
-		game::RenderMap(sdlSettings, map, cam);
+		game::RenderMap(sdlSettings, settings, map, cam);
 
 		// Overlays
 		inventory::Overlay(sdlSettings, settings, inventoryRects);

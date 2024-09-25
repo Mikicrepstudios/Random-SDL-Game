@@ -5,7 +5,7 @@
 #include "settings.h"
 
 namespace commands {
-    int GetBlock(std::string args, int argsCount, game::Map map) {
+    int GetBlockColor(std::string args, int argsCount, game::Map map) {
         if(argsCount == 0 || argsCount == 1) {
             std::cout << "Not enough arguments" << std::endl;
             

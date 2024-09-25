@@ -36,6 +36,12 @@
 -- Build 67
 - Added getblock command
 
+-- Build 68
+- Added getblocktype command
+- FINNALY Added non collision block WHICH WAS ON TODO SINCE BUILD 6
+- Added mapsolids.msave
+- Added isblocksolid command
+
 ## Removed:
 -- Build 56
 - Shortened function arguments
@@ -57,6 +63,9 @@
 
 -- Build 65
 - Removed bool colorPickerTool
+
+-- Build 68
+- Removed block struct function
 
 ## Changed/Fixed:
 -- Build 56
@@ -92,6 +101,16 @@
 
 -- Build 66
 - Split inventory.cpp in multiple files
+
+-- Build 68
+- Renamed getblock command to getblockcolor
+- Rewrote player::Movement()
+- Changed a bit player::Event()
+- Player is now overlay
+- Greatly improved savemap.cpp code
+- Renamed map.msave to maptype.msave // DO THIS TO MIRATE SAVE
+- Renamed map2.masave to mapcolors.msave // DO THIS TO MIGRATE SAVE
+- Removed some artifacts from default map
 
 ## Notes:
 

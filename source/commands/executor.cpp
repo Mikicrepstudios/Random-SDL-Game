@@ -29,7 +29,9 @@ namespace commands {
 
         // Utils
         if(commandId == "echo") status = Echo(args);
-        else if(commandId == "getblock") status = GetBlock(args, argsCount, map);
+        else if(commandId == "getblocktype") status = GetBlockType(args, argsCount, map);
+        else if(commandId == "getblockcolor") status = GetBlockColor(args, argsCount, map);
+        else if(commandId == "isblocksolid") status = IsBlockSolid(args, argsCount, map);
 
         // World
         else if(commandId == "place") status = Place(args, argsCount, settings, map);
