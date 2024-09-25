@@ -33,6 +33,9 @@
 -- Build 65
 - Added colorPickerTool to cheats
 
+-- Build 67
+- Added getblock command
+
 ## Removed:
 -- Build 56
 - Shortened function arguments

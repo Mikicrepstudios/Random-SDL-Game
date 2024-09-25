@@ -21,7 +21,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 66";
+const char* windowtitle = "Mikicrep | Build 67";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
 	SDL_Window* window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
 							  sdlSettings.width, sdlSettings.height, SDL_WINDOW_RESIZABLE);
 	sdlSettings.renderer = SDL_CreateRenderer(window, -1, 0);
-
+	
 	// Adding icon to window
 	SDL_Surface* iconSurface = IMG_Load("icon.png");
 	SDL_SetWindowIcon(window, iconSurface);
