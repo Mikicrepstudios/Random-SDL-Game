@@ -29,6 +29,7 @@ namespace commands {
 
         // Utils
         if(commandId == "echo") status = Echo(args);
+        else if(commandId == "getblock") status = GetBlock(args, argsCount, map);
 
         // World
         else if(commandId == "place") status = Place(args, argsCount, settings, map);
