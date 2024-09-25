@@ -9,13 +9,12 @@
 */
 
 struct Block {
-	int type;
-	int color;
+	// Look
+	int type = 0; // Check comments above
+	int color = 0; // Base color of block
 
-	Block() : type(0), color(0) {}
-
-	Block(int _type, int _color)
-	: type(_type), color(_color) {}
+	// Properties
+	bool isSolid = true; // Can player pass thru it?
 };
 
 #endif

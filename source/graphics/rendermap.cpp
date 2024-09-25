@@ -5,7 +5,7 @@
 #include "settings.h"
 
 namespace game {
-	void RenderMap(game::SDL_Settings sdlSettings, game::Map map, game::Camera cam) {
+	void RenderMap(game::SDL_Settings sdlSettings, game::Settings settings, game::Map map, game::Camera cam) {
 		int maxXBlocks = sdlSettings.width / cam.scale;
 		int maxYBlocks = sdlSettings.height / cam.scale;
 		for(int x = 0; x <= maxXBlocks; x++) {
@@ -17,9 +17,11 @@ namespace game {
 				int colorR, colorG, colorB = 0;
 
 				// Get color data
-				if (objectId != 0) {
+				if(objectId != 0) {
 					SDL_Rect curRect = {x * cam.scale, y * cam.scale, cam.scale, cam.scale};
 					draw::DrawRect(sdlSettings.renderer, curRect, colorId);
+
+					if(objectId == 1) draw::DrawRect(sdlSettings.renderer, curRect, settings.playerColor);
 				}
 				}
 			}

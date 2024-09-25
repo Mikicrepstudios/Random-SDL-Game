@@ -36,6 +36,7 @@ namespace game {
 
         // Bools
         bool canPlayerPlace = true;
+        bool placeSolidBlocks = true;
 
         // Event settings
         bool inventory = false;

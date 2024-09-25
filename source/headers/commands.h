@@ -9,7 +9,9 @@ namespace commands {
 
     // Utils
     extern int Echo(std::string args);
-    extern int GetBlock(std::string args, int argsCount, game::Map map);
+    extern int GetBlockType(std::string args, int argsCount, game::Map map);
+    extern int GetBlockColor(std::string args, int argsCount, game::Map map);
+    extern int IsBlockSolid(std::string args, int argsCount, game::Map map);
 
     // World
     extern int Place(std::string args, int argsCount, game::Settings settings, game::Map &map);

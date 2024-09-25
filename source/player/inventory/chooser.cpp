@@ -15,6 +15,12 @@ namespace inventory {
 			int height = sdlSettings.height;
 
 			if (!settings.colorPicker) { // Checks if any color picker is active
+				// Solid
+				if (mouseX >= rects.solidRectb.x && mouseX <= rects.solidRectb.x + rects.solidRectb.w &&
+					mouseY >= rects.solidRectb.y && mouseY <= rects.solidRectb.y + rects.solidRectb.h) {
+					settings.placeSolidBlocks = !settings.placeSolidBlocks;
+				}
+
 				// Gameplay
 				// Cam TP
 				if (mouseX >= rects.camTpRect.x && mouseX <= rects.camTpRect.x + rects.camTpRect.w &&

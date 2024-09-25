@@ -40,6 +40,12 @@ namespace inventory {
 			draw::DrawRect(renderer, rects.previewRectb, 2);
 			draw::DrawRect(renderer, rects.previewRect, settings.blockColor);
 			draw::DrawText(renderer, font, rects.previewTextRect, "Preview", textColor);
+
+			// Solid
+			draw::DrawRect(renderer, rects.solidRectb, 2);
+			if(settings.placeSolidBlocks) draw::DrawRect(renderer, rects.solidRect, 13);
+			else draw::DrawRect(renderer, rects.solidRect, 27);
+			draw::DrawText(renderer, font, rects.solidTextRect, "Solid", textColor);
 			
 			// Presets
 			draw::DrawRect(renderer, rects.presetRect, 2);
