@@ -42,6 +42,9 @@
 - Added mapsolids.msave
 - Added isblocksolid command
 
+-- Build 69
+- Added extra if for cheats
+
 ## Removed:
 -- Build 56
 - Shortened function arguments
