@@ -21,7 +21,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 69";
+const char* windowtitle = "Mikicrep | Build 70";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -168,8 +168,17 @@ int main(int argc, char **argv) {
 
 			// Cheats
 			if(settings.cheats) {
-				if(settings.cheatsId == 1) cheats::CamTp(sdlSettings, settings, cam);
-				else if(settings.cheatsId == 2) cheats::PlayerTp(sdlSettings, settings, map, cam, player);
+				int cheatsResult = 0;
+
+				switch(settings.cheatsId) {
+					case 1:
+						cheatsResult = cheats::CamTp(sdlSettings, settings, cam);
+						break;
+					case 2:
+						cheatsResult = cheats::PlayerTp(sdlSettings, settings, map, cam, player);
+				}
+				
+				if(cheatsResult == 1) settings.cheats = false;
 			}
 
 			if(settings.canPlayerPlace == true) mouse::Event(event, sdlSettings, settings, map, cam, preset);

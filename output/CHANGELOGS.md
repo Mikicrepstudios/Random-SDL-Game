@@ -115,6 +115,10 @@
 - Renamed map2.masave to mapcolors.msave // DO THIS TO MIGRATE SAVE
 - Removed some artifacts from default map
 
+-- Build 70
+- Cheats functions are now int, disabling cheats is now handled outside of function
+- Cheats calling is now in switch statement
+
 ## Notes:
 
 
