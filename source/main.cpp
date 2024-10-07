@@ -21,7 +21,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 70";
+const char* windowtitle = "Mikicrep | Build 71";
 
 int main(int argc, char **argv) {
 	// SDL variables

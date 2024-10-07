@@ -45,6 +45,9 @@
 -- Build 69
 - Added extra if for cheats
 
+-- Build 71
+- Added getbgcolor command
+
 ## Removed:
 -- Build 56
 - Shortened function arguments
