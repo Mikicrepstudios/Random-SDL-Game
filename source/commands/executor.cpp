@@ -29,6 +29,7 @@ namespace commands {
 
         // Utils
         if(commandId == "echo") status = Echo(args);
+        else if(commandId == "getbgcolor") status = GetBGColor(settings.bgColor);
         else if(commandId == "getblocktype") status = GetBlockType(args, argsCount, map);
         else if(commandId == "getblockcolor") status = GetBlockColor(args, argsCount, map);
         else if(commandId == "isblocksolid") status = IsBlockSolid(args, argsCount, map);
