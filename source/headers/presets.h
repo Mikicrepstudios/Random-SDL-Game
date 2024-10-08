@@ -1,10 +1,7 @@
-#ifndef PRESETS_H_INCLUDED
-#define PRESETS_H_INCLUDED
+#pragma once
 
 namespace game {
 	struct Preset {
 		int blockColor; // Write here to update
 	};
 }
-
-#endif

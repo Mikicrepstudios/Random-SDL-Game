@@ -3,10 +3,11 @@
 #include <sstream>
 
 #include "commands.h"
+#include "presets.h"
 #include "settings.h"
 
 namespace commands {
-    void Executor(std::string command, game::SDL_Settings sdlSettings, game::Settings settings, game::Map &map) {
+    void Executor(std::string command, game::SDL_Settings sdlSettings, game::Settings settings, game::Map &map, game::Preset preset[10]) {
         int status = 0;
         size_t pos = command.find(' ');
 
@@ -34,7 +35,11 @@ namespace commands {
         else if(commandId == "getblockcolor") status = GetBlockColor(args, argsCount, map);
         else if(commandId == "isblocksolid") status = IsBlockSolid(args, argsCount, map);
 
+        // Player
+        else if(commandId == "setblockcolor") status = SetBlockColor(args, argsCount, settings, preset);
+
         // World
+        else if(commandId == "destroy") status = Destroy(args, argsCount, map);
         else if(commandId == "place") status = Place(args, argsCount, settings, map);
         
         // Handle errors
