@@ -48,6 +48,10 @@
 -- Build 71
 - Added getbgcolor command
 
+-- Build 72
+- Added destroy command
+- Added setblockcolor command
+
 ## Removed:
 -- Build 56
 - Shortened function arguments
