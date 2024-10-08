@@ -4,6 +4,8 @@
 
 You can use it also as pixelart editor if you want.
 
+[Project page](https://miki.macakom.net/projects/rsg)
+
 ## Compatibility
 - Supports **linux** and **windows** (shh linux is given bigger love)
 - Made for **ultra** low-end devices
@@ -56,7 +58,7 @@ Theese commands only works on arch based linux distros, for other ones you gotta
 *Compiling is recommended unless you get game from [releases](https://github.com/Mikicrepstudios/Random-SDL-Game/releases) page*
 
 ## Documentation
-Currently does not exist, will be [here](https://github.com/Mikicrepstudios/Random-SDL-Game-DOCS)
+Currently does not exist, will be [here](https://miki.macakom.net/projects/docs/rsg/index)
 
 ## Bug reporting && Suggestions && Contributing
 Please read [CONTRIBUTING.md](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
