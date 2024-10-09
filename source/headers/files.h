@@ -1,11 +1,12 @@
 #pragma once
 
 #include "block.h"
+#include "presets.h"
 #include "settings.h"
 
 namespace files {
 	extern void SaveMap(game::Map map);
 	extern void SaveSettings(game::Settings settings, game::Player player, game::Camera cam);
 	extern void LoadMap(game::Map &map);
-	extern void LoadSettings(game::Settings &settings, game::Player &player, game::Camera &cam);
+	extern void LoadSettings(game::Settings &settings, game::Player &player, game::Camera &cam, game::Preset preset[10]);
 }	

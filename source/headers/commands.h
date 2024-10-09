@@ -6,7 +6,7 @@
 #include "settings.h"
 
 namespace commands {
-    extern void Executor(std::string command, game::SDL_Settings sdlSettings, game::Settings settings, game::Map &map, game::Preset preset[10]);
+    extern void Executor(std::string command, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Preset preset[10]);
 
     // Utils
     extern int Echo(std::string args);
@@ -16,7 +16,9 @@ namespace commands {
     extern int IsBlockSolid(std::string args, int argsCount, game::Map map);
 
     // Player
+    extern int SetBGColor(std::string args, int argsCount, game::Settings &settings);
     extern int SetBlockColor(std::string args, int argsCount, game::Settings &settings, game::Preset preset[10]);
+    extern int SetPlayerColor(std::string args, int argsCount, game::Settings &settings);
 
     // World
     extern int Destroy(std::string args, int argsCount, game::Map &map);

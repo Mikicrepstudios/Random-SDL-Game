@@ -21,7 +21,7 @@
 #include "settings.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 72";
+const char* windowtitle = "Mikicrep | Build 73";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
 	IMG_Init(IMG_INIT_PNG);
 	gamemap::ClearMap(map);
 	files::LoadMap(map);
-	files::LoadSettings(settings, player, cam);
+	files::LoadSettings(settings, player, cam, preset);
 
 	while(sdlSettings.running) {
 		// Main

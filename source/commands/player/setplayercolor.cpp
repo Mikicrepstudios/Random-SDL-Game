@@ -6,7 +6,7 @@
 #include "settings.h"
 
 namespace commands {
-    int SetBlockColor(std::string args, int argsCount, game::Settings &settings, game::Preset preset[10]) {
+    int SetPlayerColor(std::string args, int argsCount, game::Settings &settings) {
         if(argsCount == 0) {
             std::cout << "Not enough arguments" << std::endl;
             
@@ -29,7 +29,7 @@ namespace commands {
         // run
         if(argsCount == 1) {
             if(color >= 1 && color <= 32) {
-                preset[settings.curPreset].blockColor = color;
+                settings.playerColor = color;
 
                 return 0;
             }

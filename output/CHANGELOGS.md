@@ -52,6 +52,10 @@
 - Added destroy command
 - Added setblockcolor command
 
+-- Build 73
+- Added setbgcolor and setplayercolor commands
+- Added detection if player sets color outside color range
+
 ## Removed:
 -- Build 56
 - Shortened function arguments
@@ -125,6 +129,10 @@
 -- Build 70
 - Cheats functions are now int, disabling cheats is now handled outside of function
 - Cheats calling is now in switch statement
+
+-- Build 73
+- Fixed demo map collisions
+- Fixed loading block color from save
 
 ## Notes:
 
