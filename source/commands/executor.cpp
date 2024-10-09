@@ -7,7 +7,7 @@
 #include "settings.h"
 
 namespace commands {
-    void Executor(std::string command, game::SDL_Settings sdlSettings, game::Settings settings, game::Map &map, game::Preset preset[10]) {
+    void Executor(std::string command, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Preset preset[10]) {
         int status = 0;
         size_t pos = command.find(' ');
 
@@ -36,7 +36,9 @@ namespace commands {
         else if(commandId == "isblocksolid") status = IsBlockSolid(args, argsCount, map);
 
         // Player
+        else if(commandId == "setbgcolor") status = SetBGColor(args, argsCount, settings);
         else if(commandId == "setblockcolor") status = SetBlockColor(args, argsCount, settings, preset);
+        else if(commandId == "setplayercolor") status = SetPlayerColor(args, argsCount, settings);
 
         // World
         else if(commandId == "destroy") status = Destroy(args, argsCount, map);

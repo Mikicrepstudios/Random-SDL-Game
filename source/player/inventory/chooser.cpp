@@ -47,7 +47,7 @@ namespace inventory {
 				else if (mouseX >= rects.loadRect.x && mouseX <= rects.loadRect.x + rects.loadRect.w &&
 				mouseY >= rects.loadRect.y && mouseY <= rects.loadRect.y + rects.loadRect.h) {
 					files::LoadMap(map);
-					files::LoadSettings(settings, player, camera);
+					files::LoadSettings(settings, player, camera, preset);
 				}
 				// Game Info
 				else if (mouseX >= rects.gameInfoRect.x && mouseX <= rects.gameInfoRect.x + rects.gameInfoRect.w &&

@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 
+#include "presets.h"
 #include "settings.h"
 
 namespace files {
@@ -24,13 +25,13 @@ namespace files {
 		}
 	}
 
-	void LoadSettings(game::Settings &settings, game::Player &player, game::Camera &cam) {
+	void LoadSettings(game::Settings &settings, game::Player &player, game::Camera &cam, game::Preset preset[10]) {
 		std::ifstream settingsFile("save/settings.msave"); // Open file
 
 		// Load settings
 		if(settingsFile.is_open()) {
 			settingsFile >> 
-					settings.blockColor >>
+					preset[settings.curPreset].blockColor >>
 					settings.bgColor >>
 
 					player.x >>

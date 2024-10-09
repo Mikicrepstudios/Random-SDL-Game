@@ -28,9 +28,16 @@ namespace commands {
 
         // run
         if(argsCount == 1) {
-            preset[settings.curPreset].blockColor = color;
+            if(color >= 1 && color <= 32) {
+                preset[settings.curPreset].blockColor = color;
 
-            return 0;
+                return 0;
+            }
+            else {
+                std::cout << "Color must be between 1 and 32" << std::endl;
+                
+                return 1;
+            }
         }
 
         if(argsCount > 1) {
