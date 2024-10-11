@@ -56,6 +56,10 @@
 - Added setbgcolor and setplayercolor commands
 - Added detection if player sets color outside color range
 
+-- Build 74
+- Brick texture
+- Textures (TESTING, UNFINISHED, UNOPTIMIZED)
+
 ## Removed:
 -- Build 56
 - Shortened function arguments

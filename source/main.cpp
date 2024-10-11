@@ -19,9 +19,10 @@
 #include "player.h"
 #include "presets.h"
 #include "settings.h"
+#include "textures.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 73";
+const char* windowtitle = "Mikicrep | Build 74";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -45,6 +46,10 @@ int main(int argc, char **argv) {
 	SDL_Window* window = SDL_CreateWindow(windowtitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 
 							  sdlSettings.width, sdlSettings.height, SDL_WINDOW_RESIZABLE);
 	sdlSettings.renderer = SDL_CreateRenderer(window, -1, 0);
+
+	// Textures
+	textures::BlockTextures blockTextures[32] = {};
+	textures::initBlocks(sdlSettings, blockTextures);
 	
 	// Adding icon to window
 	SDL_Surface* iconSurface = IMG_Load("icon.png");
@@ -198,7 +203,7 @@ int main(int argc, char **argv) {
 		map.map[player.x][player.y].type = 1;
 
 		// Draw map
-		game::RenderMap(sdlSettings, settings, map, cam);
+		game::RenderMap(sdlSettings, settings, map, cam, blockTextures);
 
 		// Overlays
 		inventory::Overlay(sdlSettings, settings, inventoryRects);
