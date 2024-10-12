@@ -30,7 +30,7 @@ namespace game {
     struct Settings {
         // Player settings
 	    int curPreset = 0;
-        int blockColor = 0; // Updates every frame
+        int blockColor = 1; // Updates every frame
         int blockTextureId = 0;
         int bgColor = 1;
         int playerColor = 6; // Write here to update

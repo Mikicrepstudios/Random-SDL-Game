@@ -2,6 +2,6 @@
 
 namespace game {
 	struct Preset {
-		int blockColor; // Write here to update
+		int blockColor = 1; // Write here to update
 	};
 }
