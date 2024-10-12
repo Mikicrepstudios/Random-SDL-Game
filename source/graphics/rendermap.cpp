@@ -16,12 +16,13 @@ namespace game {
 				int objectId = map.map[x - cam.offSetX][y - cam.offSetY].type;
 				int colorId = map.map[x - cam.offSetX][y - cam.offSetY].color;
 				int textureId = map.map[x - cam.offSetX][y - cam.offSetY].texture;
-				int colorR, colorG, colorB = 0;
 
 				// Get color data
 				if(objectId != 0) {
 					SDL_Rect curRect = {x * cam.scale, y * cam.scale, cam.scale, cam.scale};
-					draw::DrawRect(sdlSettings.renderer, curRect, colorId);
+
+					if(colorId != 0)
+						draw::DrawRect(sdlSettings.renderer, curRect, colorId);
 
 					if(textureId != 0)
 						SDL_RenderCopy(sdlSettings.renderer, blockTextures[textureId].texture, NULL, &curRect);
