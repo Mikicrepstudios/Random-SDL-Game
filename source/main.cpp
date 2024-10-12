@@ -206,9 +206,9 @@ int main(int argc, char **argv) {
 
 			if(settings.canPlayerPlace == true) mouse::Event(event, sdlSettings, settings, map, cam, preset);
 
-		std::cout << "Start inv chooser" << std::endl;
+		std::cout << "Start inv chooser" << std::endl; // gets executed
 			inventory::Chooser(sdlSettings, settings, map, player, cam, preset, inventoryRects);
-		std::cout << "End inv chooser" << std::endl;
+		std::cout << "End inv chooser" << std::endl; // doesnt get executed
 			}
 		std::cout << "breakpoint" << std::endl;
 
