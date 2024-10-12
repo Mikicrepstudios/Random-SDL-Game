@@ -22,7 +22,7 @@
 #include "textures.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 75 | WinFix";
+const char* windowtitle = "Mikicrep | Build 76 | WinFix";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -207,7 +207,7 @@ int main(int argc, char **argv) {
 			if(settings.canPlayerPlace == true) mouse::Event(event, sdlSettings, settings, map, cam, preset);
 
 		std::cout << "Start inv chooser" << std::endl; // gets executed
-			inventory::Chooser(sdlSettings, settings, map, player, cam, preset, inventoryRects);
+			if(settings.inventory) inventory::Chooser(sdlSettings, settings, map, player, cam, preset, inventoryRects);
 		std::cout << "End inv chooser" << std::endl; // doesnt get executed
 			}
 		std::cout << "breakpoint" << std::endl;
