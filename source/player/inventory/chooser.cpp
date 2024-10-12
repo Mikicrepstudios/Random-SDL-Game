@@ -11,7 +11,7 @@
 namespace inventory {
     void Chooser(game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset preset[10], inventory::rects rects) {
 		std::cout << "breakpoint" << std::endl; // this doesnt get executed
-		if (sdlSettings.event.type == SDL_MOUSEBUTTONDOWN && settings.inventory) {
+		if (sdlSettings.event.type == SDL_MOUSEBUTTONDOWN) {
 			int mouseX = sdlSettings.mouseX;
 			int mouseY = sdlSettings.mouseY;
 
