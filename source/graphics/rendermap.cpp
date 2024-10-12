@@ -21,7 +21,7 @@ namespace game {
 				if(objectId != 0) {
 					SDL_Rect curRect = {x * cam.scale, y * cam.scale, cam.scale, cam.scale};
 
-					if(colorId != 0)
+					//if(colorId != 0)
 						draw::DrawRect(sdlSettings.renderer, curRect, colorId);
 
 					if(textureId != 0)
