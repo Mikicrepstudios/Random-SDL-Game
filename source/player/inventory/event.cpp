@@ -9,6 +9,7 @@ namespace inventory {
 			else {
 				// Before stopping inv exit every sub UI
 				settings.colorPicker = false;
+				settings.texturePicker = false;
 				settings.inventory = false;
 			}
 		}

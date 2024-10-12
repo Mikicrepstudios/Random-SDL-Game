@@ -14,7 +14,7 @@ namespace inventory {
 			int width = sdlSettings.width;
 			int height = sdlSettings.height;
 
-			if (!settings.colorPicker) { // Checks if any color picker is active
+			if (!settings.colorPicker && !settings.texturePicker) { // Checks if any color picker is active
 				// Solid
 				if (mouseX >= rects.solidRectb.x && mouseX <= rects.solidRectb.x + rects.solidRectb.w &&
 					mouseY >= rects.solidRectb.y && mouseY <= rects.solidRectb.y + rects.solidRectb.h) {
@@ -62,32 +62,43 @@ namespace inventory {
 				}
 			}
 
-			// Color
-			if (mouseX >= rects.colorRectb.x && mouseX <= rects.colorRectb.x + rects.colorRectb.w &&
-			mouseY >= rects.colorRectb.y && mouseY <= rects.colorRectb.y + rects.colorRectb.h && !settings.colorPicker) {
-				settings.colorPicker = !settings.colorPicker;
-				settings.colorPickerId = 1;
-			}
-			else if (settings.colorPicker && settings.colorPickerId == 1)
-				preset[settings.curPreset].blockColor = colorpicker::Event(sdlSettings, settings);
+			if(!settings.texturePicker) {
+				// Color
+				if (mouseX >= rects.colorRectb.x && mouseX <= rects.colorRectb.x + rects.colorRectb.w &&
+				mouseY >= rects.colorRectb.y && mouseY <= rects.colorRectb.y + rects.colorRectb.h && !settings.colorPicker) {
+					settings.colorPicker = !settings.colorPicker;
+					settings.colorPickerId = 1;
+				}
+				else if (settings.colorPicker && settings.colorPickerId == 1)
+					preset[settings.curPreset].blockColor = colorpicker::Event(sdlSettings, settings);
 
-			// BG Color
-			if (mouseX >= rects.bgColorRectb.x && mouseX <= rects.bgColorRectb.x + rects.bgColorRectb.w &&
-			mouseY >= rects.bgColorRectb.y && mouseY <= rects.bgColorRectb.y + rects.bgColorRectb.h && !settings.colorPicker) {
-				settings.colorPicker = !settings.colorPicker;
-				settings.colorPickerId = 2;
-			}
-			else if (settings.colorPicker && settings.colorPickerId == 2)
-				settings.bgColor = colorpicker::Event(sdlSettings, settings);
+				// BG Color
+				if (mouseX >= rects.bgColorRectb.x && mouseX <= rects.bgColorRectb.x + rects.bgColorRectb.w &&
+				mouseY >= rects.bgColorRectb.y && mouseY <= rects.bgColorRectb.y + rects.bgColorRectb.h && !settings.colorPicker) {
+					settings.colorPicker = !settings.colorPicker;
+					settings.colorPickerId = 2;
+				}
+				else if (settings.colorPicker && settings.colorPickerId == 2)
+					settings.bgColor = colorpicker::Event(sdlSettings, settings);
 
-			// Player Color
-			if (mouseX >= rects.playerColorRectb.x && mouseX <= rects.playerColorRectb.x + rects.playerColorRectb.w &&
-			mouseY >= rects.playerColorRectb.y && mouseY <= rects.playerColorRectb.y + rects.playerColorRectb.h && !settings.colorPicker) {
-				settings.colorPicker = !settings.colorPicker;
-				settings.colorPickerId = 3;
+				// Player Color
+				if (mouseX >= rects.playerColorRectb.x && mouseX <= rects.playerColorRectb.x + rects.playerColorRectb.w &&
+				mouseY >= rects.playerColorRectb.y && mouseY <= rects.playerColorRectb.y + rects.playerColorRectb.h && !settings.colorPicker) {
+					settings.colorPicker = !settings.colorPicker;
+					settings.colorPickerId = 3;
+				}
+				else if (settings.colorPicker && settings.colorPickerId == 3)
+					settings.playerColor = colorpicker::Event(sdlSettings, settings);
 			}
-			else if (settings.colorPicker && settings.colorPickerId == 3)
-				settings.playerColor = colorpicker::Event(sdlSettings, settings);
+
+			if(!settings.colorPicker) {
+				// Texture
+				if (mouseX >= rects.textureIdRectb.x && mouseX <= rects.textureIdRectb.x + rects.textureIdRectb.w &&
+				mouseY >= rects.textureIdRectb.y && mouseY <= rects.textureIdRectb.y + rects.textureIdRectb.h)
+					settings.texturePicker = !settings.texturePicker;
+				else if (settings.texturePicker)
+					settings.blockTextureId = textures::PickerEvent(sdlSettings, settings);
+			}
 		}
 	}
 }

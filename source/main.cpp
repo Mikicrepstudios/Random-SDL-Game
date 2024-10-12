@@ -22,7 +22,7 @@
 #include "textures.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 74";
+const char* windowtitle = "Mikicrep | Build 75";
 
 int main(int argc, char **argv) {
 	// SDL variables
@@ -164,6 +164,7 @@ int main(int argc, char **argv) {
 							break;
 						case 2:
 							gamemap::ClearMap(map);
+							settings.dialogueId = 0;
 							settings.dialogue = false;
 							break;
 					}
@@ -206,15 +207,17 @@ int main(int argc, char **argv) {
 		game::RenderMap(sdlSettings, settings, map, cam, blockTextures);
 
 		// Overlays
-		inventory::Overlay(sdlSettings, settings, inventoryRects);
+		inventory::Overlay(sdlSettings, settings, inventoryRects, blockTextures);
 		mouse::Overlay(sdlSettings, settings, map, cam);
 
 		// Game info
 		if (settings.gameInfo) hud::GameInfo(sdlSettings, settings, cam, player);
 
 		// Dialogues : No
-		if(settings.dialogue && dialogues::ConfirmDialogue(sdlSettings, settings, dialoguesRects))
+		if(settings.dialogue && dialogues::ConfirmDialogue(sdlSettings, settings, dialoguesRects)) {
+			settings.dialogueId = 0;
 			settings.dialogue = false;
+		}
 
 		// Cli Input
 		if(sdlSettings.cliInput) {

@@ -4,8 +4,6 @@
 - Handle errors in executor instead in every command
 
 ### Planned:
-- block textures -- SINCE BUILD 15
-(overlay on block to make it seem like it got texture)
 if no then player cannot place blocks if yes player can, i need this to organize code bit better
 - resize elements on window resize
 - Check whats causing when camera goes way too much down it goes back to beggining but keeping offset
@@ -14,6 +12,13 @@ if no then player cannot place blocks if yes player can, i need this to organize
 - getcampos, getplayerpos, getplayercolor cmd
 - terminalmode
 - better saving (presets, colors, etc)
+- Switch instead of ifs in inventory::Overlay() color pickers
+- Colors in block textures
+- Fix variable names (uppercase words) in savemap.cpp
+- Make quick color picker pick block texture too
+- Add textureId to presets
+- setblocktexture, getblocktexture cmds
+- add to place cmd texture argument
 
 ### Thinking:
 - shadows
