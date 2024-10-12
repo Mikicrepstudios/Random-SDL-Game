@@ -1,3 +1,4 @@
+#include <iostream>
 #include "SDL2/SDL.h"
 
 #include "draw.h"
@@ -20,9 +21,7 @@ namespace game {
 				// Get color data
 				if(objectId != 0) {
 					SDL_Rect curRect = {x * cam.scale, y * cam.scale, cam.scale, cam.scale};
-
-					//if(colorId != 0)
-						draw::DrawRect(sdlSettings.renderer, curRect, colorId);
+					draw::DrawRect(sdlSettings.renderer, curRect, colorId);
 
 					if(textureId != 0)
 						SDL_RenderCopy(sdlSettings.renderer, blockTextures[textureId].texture, NULL, &curRect);

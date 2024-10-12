@@ -1,3 +1,4 @@
+#include <iostream>
 #include "SDL2/SDL.h"
 #include <SDL_ttf.h>
 
@@ -32,6 +33,8 @@ namespace draw {
 			SDL_SetRenderDrawColor(renderer, color[colorid - 1].r, color[colorid - 1].g, color[colorid - 1].b, 255);
 			SDL_RenderFillRect(renderer, &rect);
 		}
+		else if(colorid - 1 < 0) std::cout << "DrawRect() got colorid less than 0";
+		else if(colorid - 1 > 32) std::cout << "DrawRect() got color id bigger than 32";
 	}
 
 	void DrawTextureRect(SDL_Renderer* renderer, SDL_Rect rect, SDL_Texture* texture) {
