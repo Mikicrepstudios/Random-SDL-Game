@@ -206,11 +206,10 @@ int main(int argc, char **argv) {
 
 			if(settings.canPlayerPlace == true) mouse::Event(event, sdlSettings, settings, map, cam, preset);
 
-		std::cout << "Start inv chooser" << std::endl; // gets executed
+			std::cout << "inv chooser check" << std::endl;
+
 			if(settings.inventory) inventory::Chooser(sdlSettings, settings, map, player, cam, preset, inventoryRects);
-		std::cout << "End inv chooser" << std::endl; // doesnt get executed
 			}
-		std::cout << "breakpoint" << std::endl;
 
 		// Set BG color to new color
 		draw::SetCol(sdlSettings.renderer, settings.bgColor);

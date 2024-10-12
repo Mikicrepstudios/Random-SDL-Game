@@ -155,6 +155,9 @@
 - Fixed bug No. 4
 - Fixed issue where when you close dialogue, its buttons are still detected
 
+-- Build 76
+- Added checks to draw::DrawRect to colorId, it used to access invalid memory
+
 ## Notes:
 
 
