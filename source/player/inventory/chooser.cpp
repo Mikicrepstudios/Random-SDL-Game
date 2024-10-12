@@ -1,12 +1,16 @@
+#include <iostream>
+
 #include "cheats.h"
 #include "colorpicker.h"
 #include "files.h"
 #include "inventory.h"
 #include "presets.h"
 #include "settings.h"
+#include "textures.h"
 
 namespace inventory {
     void Chooser(game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset preset[10], inventory::rects rects) {
+		std::cout << "breakpoint" << std::endl;
 		if (sdlSettings.event.type == SDL_MOUSEBUTTONDOWN && settings.inventory) {
 			int mouseX = sdlSettings.mouseX;
 			int mouseY = sdlSettings.mouseY;
@@ -14,6 +18,7 @@ namespace inventory {
 			int width = sdlSettings.width;
 			int height = sdlSettings.height;
 
+		std::cout << "breakpoint" << std::endl;
 			if (!settings.colorPicker && !settings.texturePicker) { // Checks if any color picker is active
 				// Solid
 				if (mouseX >= rects.solidRectb.x && mouseX <= rects.solidRectb.x + rects.solidRectb.w &&
@@ -61,6 +66,7 @@ namespace inventory {
 					settings.dialogue = true;
 				}
 			}
+		std::cout << "breakpoint" << std::endl;
 
 			if(!settings.texturePicker) {
 				// Color
@@ -90,6 +96,7 @@ namespace inventory {
 				else if (settings.colorPicker && settings.colorPickerId == 3)
 					settings.playerColor = colorpicker::Event(sdlSettings, settings);
 			}
+		std::cout << "breakpoint" << std::endl;
 
 			if(!settings.colorPicker) {
 				// Texture

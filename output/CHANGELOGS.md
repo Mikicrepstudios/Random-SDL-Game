@@ -68,6 +68,9 @@
 - BLOCK TEXTURES (mostly) FINISHED - WAS ON TODO SINCE BUILD 15
 - Added maptextures.msave
 
+-- Build 76
+- Added debugging statements
+
 ## Removed:
 -- Build 56
 - Shortened function arguments
