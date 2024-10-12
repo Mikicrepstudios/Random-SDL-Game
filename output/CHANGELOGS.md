@@ -57,8 +57,16 @@
 - Added detection if player sets color outside color range
 
 -- Build 74
-- Brick texture
+- Brick, placeholder texture
 - Textures (TESTING, UNFINISHED, UNOPTIMIZED)
+
+-- Build 75
+- Added block.texture
+- Added blockTextureId to game::Settings
+- Grass, stone texture
+- Added draw::DrawRectTexture()
+- BLOCK TEXTURES (mostly) FINISHED - WAS ON TODO SINCE BUILD 15
+- Added maptextures.msave
 
 ## Removed:
 -- Build 56
@@ -137,6 +145,12 @@
 -- Build 73
 - Fixed demo map collisions
 - Fixed loading block color from save
+
+-- Build 75
+- Block texture is not drawn on top of player anymore
+- Optimized texture CPU usage (by not rendering air texture)
+- Fixed bug No. 4
+- Fixed issue where when you close dialogue, its buttons are still detected
 
 ## Notes:
 

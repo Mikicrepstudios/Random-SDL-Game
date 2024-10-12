@@ -6,6 +6,7 @@
 
 namespace colorpicker {
 	int Event(game::SDL_Settings sdlSettings, game::Settings &settings) {
+        // This will run on mouse click
 		int startposw = sdlSettings.width / 2 - 500;
 		int startposh = sdlSettings.height / 2 - 300;
 		int curColor = 1;
@@ -14,16 +15,20 @@ namespace colorpicker {
 			for(int x = 1; x <= 8; x++) {
 				SDL_Rect curRect = {startposw + (100 * x), startposh + (100 * y), 100, 100};
 
+				// Disable color picker based on pickerId
+				settings.colorPicker = false;
+
 				if (sdlSettings.mouseX >= curRect.x && sdlSettings.mouseX <= curRect.x + curRect.w &&
 				sdlSettings.mouseY >= curRect.y && sdlSettings.mouseY <= curRect.y + curRect.h)
 					return curColor;
-				
-				// Disable color picker based on pickerId
-				settings.colorPicker = false;
 
 				curColor++;
 			}
 		}
+
+		// Handle clicking outside
+		settings.colorPicker = false;
+
 		// If clicked outside then return same value
 		switch (settings.colorPickerId) {
 			case 1:
@@ -36,6 +41,7 @@ namespace colorpicker {
 				return settings.playerColor;
 				break;
 		}
+
 		return -69; // Nice
 	}
 	void Overlay(game::SDL_Settings sdlSettings, game::Settings settings) {

@@ -31,6 +31,7 @@ namespace game {
         // Player settings
 	    int curPreset = 0;
         int blockColor = 0; // Updates every frame
+        int blockTextureId = 0;
         int bgColor = 1;
         int playerColor = 6; // Write here to update
 
@@ -41,9 +42,10 @@ namespace game {
         // Event settings
         bool inventory = false;
 
-        // Color pickers
+        // Pickers
         int colorPickerId = 0;
         bool colorPicker = false;
+        bool texturePicker = false;
 
         // Dialogues
         int dialogueId = 0;

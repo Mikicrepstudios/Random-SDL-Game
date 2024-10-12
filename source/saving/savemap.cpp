@@ -8,6 +8,7 @@ namespace files {
 		// Open file
 		std::ofstream blocktypesFile("save/maptypes.msave");
 		std::ofstream blockcolorsFile("save/mapcolors.msave");
+		std::ofstream blocktexturesFile("save/maptextures.msave");
 
 		std::ofstream blocksolidsFile("save/mapsolids.msave");
 
@@ -37,6 +38,19 @@ namespace files {
 
 			blockcolorsFile.close();
 		}
+		// Save textures
+		if (blocktexturesFile.is_open()) {
+			for (int x = 0; x <= map.width; x++) {
+				for (int y = 0; y <= map.height; y++) {
+					if (map.map[x][y].type != 1) blocktexturesFile << map.map[x][y].texture << " "; // Write blocks
+					else blocktexturesFile << 0 << " "; // Do not write if player
+				}
+
+				blocktexturesFile << "\n"; // Start a new line for the next row
+			}
+
+			blocktexturesFile.close();
+		}
 
 		// Save solidity
 		if (blocksolidsFile.is_open()) {
@@ -56,6 +70,7 @@ namespace files {
 		// Open file
 		std::ifstream blocktypesFile("save/maptypes.msave");
 		std::ifstream blockcolorsFile("save/mapcolors.msave");
+		std::ifstream blocktexturesFile("save/maptextures.msave");
 
 		std::ifstream blocksolidsFile("save/mapsolids.msave");
 
@@ -76,6 +91,15 @@ namespace files {
 				}
 			}
 			blockcolorsFile.close();
+		}
+		// Load textures
+		if (blocktexturesFile.is_open()) {
+			for (int x = 0; x <= map.width; x++) {
+				for (int y = 0; y <= map.height; y++) {
+					blocktexturesFile >> map.map[x][y].texture;
+				}
+			}
+			blocktexturesFile.close();
 		}
 
 		// Load solids

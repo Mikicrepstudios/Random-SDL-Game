@@ -5,6 +5,7 @@
 
 #include "presets.h"
 #include "settings.h"
+#include "textures.h"
 
 namespace inventory {
     struct rects {
@@ -20,9 +21,17 @@ namespace inventory {
         SDL_Rect playerColorRectb = {};
         SDL_Rect playerColorTextRect = {};
 
+        SDL_Rect textureColorRect = {};
+        SDL_Rect textureColorRectb = {};
+        SDL_Rect textureColorTextRect = {};
+
         SDL_Rect previewRect = {};
         SDL_Rect previewRectb = {};
         SDL_Rect previewTextRect = {};
+
+        SDL_Rect textureIdRect = {};
+        SDL_Rect textureIdRectb = {};
+        SDL_Rect textureIdTextRect = {};
 
         SDL_Rect solidRect = {};
         SDL_Rect solidRectb = {};
@@ -52,7 +61,7 @@ namespace inventory {
 	extern void Chooser(game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset preset[10], inventory::rects rects);
 
     // Draw UI
-    extern void Overlay(game::SDL_Settings sdlSettings, game::Settings settings, inventory::rects rects);
+    extern void Overlay(game::SDL_Settings sdlSettings, game::Settings settings, inventory::rects rects, textures::BlockTextures blockTextures[32]);
 }
 
 #endif

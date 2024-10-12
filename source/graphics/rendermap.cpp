@@ -15,6 +15,7 @@ namespace game {
 				// Get current block id and define variables
 				int objectId = map.map[x - cam.offSetX][y - cam.offSetY].type;
 				int colorId = map.map[x - cam.offSetX][y - cam.offSetY].color;
+				int textureId = map.map[x - cam.offSetX][y - cam.offSetY].texture;
 				int colorR, colorG, colorB = 0;
 
 				// Get color data
@@ -22,9 +23,10 @@ namespace game {
 					SDL_Rect curRect = {x * cam.scale, y * cam.scale, cam.scale, cam.scale};
 					draw::DrawRect(sdlSettings.renderer, curRect, colorId);
 
-					if(objectId == 1) draw::DrawRect(sdlSettings.renderer, curRect, settings.playerColor);
+					if(textureId != 0)
+						SDL_RenderCopy(sdlSettings.renderer, blockTextures[textureId].texture, NULL, &curRect);
 
-					SDL_RenderCopy(sdlSettings.renderer, blockTextures[1].texture, NULL, &curRect);
+					if(objectId == 1) draw::DrawRect(sdlSettings.renderer, curRect, settings.playerColor);
 				}
 				}
 			}

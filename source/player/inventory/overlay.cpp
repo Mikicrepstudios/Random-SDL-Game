@@ -4,9 +4,10 @@
 #include "draw.h"
 #include "inventory.h"
 #include "settings.h"
+#include "textures.h"
 
 namespace inventory {
-	void Overlay(game::SDL_Settings sdlSettings, game::Settings settings, inventory::rects rects) {
+	void Overlay(game::SDL_Settings sdlSettings, game::Settings settings, inventory::rects rects, textures::BlockTextures blockTextures[32]) {
 		// Define variables
 		SDL_Renderer* renderer = sdlSettings.renderer;
 		TTF_Font* font = sdlSettings.font;
@@ -40,6 +41,11 @@ namespace inventory {
 			draw::DrawRect(renderer, rects.previewRectb, 2);
 			draw::DrawRect(renderer, rects.previewRect, settings.blockColor);
 			draw::DrawText(renderer, font, rects.previewTextRect, "Preview", textColor);
+
+			// BG Color
+			draw::DrawRect(renderer, rects.textureIdRectb, 2);
+			draw::DrawTextureRect(renderer, rects.textureIdRect, blockTextures[settings.blockTextureId].texture);
+			draw::DrawText(renderer, font, rects.textureIdTextRect, "Text. id", textColor);
 
 			// Solid
 			draw::DrawRect(renderer, rects.solidRectb, 2);
@@ -91,7 +97,9 @@ namespace inventory {
 				colorpicker::Overlay(sdlSettings, settings);
 			else if(settings.colorPicker && settings.colorPickerId == 3)
 				colorpicker::Overlay(sdlSettings, settings);
-
 			}
+
+			if(settings.texturePicker)
+				textures::PickerOverlay(sdlSettings, blockTextures);
 	}
 }

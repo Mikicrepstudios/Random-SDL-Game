@@ -13,9 +13,9 @@ namespace inventory {
 		rects.colorRectb          = {45,                          45,                       90,  90 };
 		rects.colorTextRect       = {50,                          140,                      80,  40 };
 
-		rects.bgColorRect         = {sdlSettings.width - 130,     50,                       80,  80 };
-		rects.bgColorRectb        = {sdlSettings.width - 135,     45,                       90,  90 };
-		rects.bgColorTextRect     = {sdlSettings.width - 130,     140,                      80,  40 };
+		rects.bgColorRect         = {155,                         50,                       80,  80 };
+		rects.bgColorRectb        = {150,                         45,                       90,  90 };
+		rects.bgColorTextRect     = {155,                         140,                      80,  40 };
 
 		rects.playerColorRect     = {50,                          200,                      80,  80 };
 		rects.playerColorRectb    = {45,                          195,                      90,  90 };
@@ -24,6 +24,10 @@ namespace inventory {
 		rects.previewRect         = {sdlSettings.width / 2 - 50,  50,                       100, 100};
 		rects.previewRectb        = {sdlSettings.width / 2 - 55,  45,                       110, 110};
 		rects.previewTextRect     = {sdlSettings.width / 2 - 50,  160,                      100, 40 };
+
+		rects.textureIdRect         = {sdlSettings.width - 130,     50,                     80,  80 };
+		rects.textureIdRectb        = {sdlSettings.width - 135,     45,                     90,  90 };
+		rects.textureIdTextRect     = {sdlSettings.width - 130,     140,                    80,  40 };
 
         rects.solidRect           = {50,                          sdlSettings.height - 355, 80,  80 };
         rects.solidRectb          = {45,                          sdlSettings.height - 360, 90,  90 };
