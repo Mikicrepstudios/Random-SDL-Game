@@ -1,13 +1,16 @@
+#include <iostream>
+
 #include "cheats.h"
 #include "colorpicker.h"
 #include "files.h"
 #include "inventory.h"
 #include "presets.h"
 #include "settings.h"
+#include "textures.h"
 
 namespace inventory {
-    void Chooser(game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset preset[10], inventory::rects rects) {
-		if (sdlSettings.event.type == SDL_MOUSEBUTTONDOWN && settings.inventory) {
+    void Chooser(game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::rects &rects) {
+		if (sdlSettings.event.type == SDL_MOUSEBUTTONDOWN) {
 			int mouseX = sdlSettings.mouseX;
 			int mouseY = sdlSettings.mouseY;
 

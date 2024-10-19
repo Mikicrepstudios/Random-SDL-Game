@@ -68,6 +68,12 @@
 - BLOCK TEXTURES (mostly) FINISHED - WAS ON TODO SINCE BUILD 15
 - Added maptextures.msave
 
+-- Build 76
+- Added debugging statements
+
+-- Build 77
+- Added lots of textures
+
 ## Removed:
 -- Build 56
 - Shortened function arguments
@@ -151,6 +157,10 @@
 - Optimized texture CPU usage (by not rendering air texture)
 - Fixed bug No. 4
 - Fixed issue where when you close dialogue, its buttons are still detected
+
+-- Build 76
+- Added checks to draw::DrawRect to colorId, it used to access invalid memory
+- WINFIX WENT UNSUCCESSFULY
 
 ## Notes:
 

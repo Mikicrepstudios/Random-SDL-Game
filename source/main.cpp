@@ -22,11 +22,14 @@
 #include "textures.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 75";
+const char* windowtitle = "Mikicrep | Build 77";
 
 int main(int argc, char **argv) {
 	// SDL variables
+	bool debug = false;
 	bool fullscreen = false;
+
+	if(debug) std::cout << "Defining structs" << std::endl;
 
 	// Structs
 	game::SDL_Settings sdlSettings = {};
@@ -35,9 +38,13 @@ int main(int argc, char **argv) {
 	game::Player player = {};
 	game::Camera cam = {};
 
+	if(debug) std::cout << "Defining presets" << std::endl;
+
 	// Preset stuff
 	game::Preset preset[10] = {};
 	preset[0].blockColor = 2;
+
+	if(debug) std::cout << "Start preparing game : Initilizing structs" << std::endl;
 
 	// Prepare game
 	// Initilize structs
@@ -47,19 +54,27 @@ int main(int argc, char **argv) {
 							  sdlSettings.width, sdlSettings.height, SDL_WINDOW_RESIZABLE);
 	sdlSettings.renderer = SDL_CreateRenderer(window, -1, 0);
 
+	if(debug) std::cout << "Init textures" << std::endl;
+
 	// Textures
 	textures::BlockTextures blockTextures[32] = {};
 	textures::initBlocks(sdlSettings, blockTextures);
+
+	if(debug) std::cout << "Init icon.png" << std::endl;
 	
 	// Adding icon to window
 	SDL_Surface* iconSurface = IMG_Load("icon.png");
 	SDL_SetWindowIcon(window, iconSurface);
 	SDL_FreeSurface(iconSurface);
 
+	if(debug) std::cout << "Init customize/background.png" << std::endl;
+
 	// Load custom bg
 	SDL_Surface* backgroundSurface = IMG_Load("customize/background.png");
 	SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(sdlSettings.renderer, backgroundSurface);
 	SDL_FreeSurface(backgroundSurface);
+
+	if(debug) std::cout << "Init SDL stuff; Load save" << std::endl;
 
 	SDL_Event event = {};
 	SDL_Init(SDL_INIT_VIDEO);
@@ -69,6 +84,8 @@ int main(int argc, char **argv) {
 	gamemap::ClearMap(map);
 	files::LoadMap(map);
 	files::LoadSettings(settings, player, cam, preset);
+
+	if(debug) std::cout << "Start running loop" << std::endl;
 
 	while(sdlSettings.running) {
 		// Main
@@ -189,7 +206,7 @@ int main(int argc, char **argv) {
 
 			if(settings.canPlayerPlace == true) mouse::Event(event, sdlSettings, settings, map, cam, preset);
 
-			inventory::Chooser(sdlSettings, settings, map, player, cam, preset, inventoryRects);
+			if(settings.inventory) inventory::Chooser(sdlSettings, settings, map, player, cam, preset, inventoryRects);
 			}
 
 		// Set BG color to new color
