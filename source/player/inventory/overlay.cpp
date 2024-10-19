@@ -7,7 +7,7 @@
 #include "textures.h"
 
 namespace inventory {
-	void Overlay(game::SDL_Settings sdlSettings, game::Settings settings, inventory::rects rects, textures::BlockTextures blockTextures[32]) {
+	void Overlay(game::SDL_Settings sdlSettings, game::Settings settings, inventory::rects &rects, textures::BlockTextures blockTextures[32]) {
 		// Define variables
 		SDL_Renderer* renderer = sdlSettings.renderer;
 		TTF_Font* font = sdlSettings.font;

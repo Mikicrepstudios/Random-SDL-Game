@@ -19,6 +19,7 @@ if no then player cannot place blocks if yes player can, i need this to organize
 - Add textureId to presets
 - setblocktexture, getblocktexture cmds
 - add to place cmd texture argument
+- make debug thing that prints whole settings struct and maybe all others
 
 ### Thinking:
 - shadows

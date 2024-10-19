@@ -1,3 +1,4 @@
+#include <iostream>
 #include "SDL2/SDL.h"
 
 #include "draw.h"
@@ -16,7 +17,6 @@ namespace game {
 				int objectId = map.map[x - cam.offSetX][y - cam.offSetY].type;
 				int colorId = map.map[x - cam.offSetX][y - cam.offSetY].color;
 				int textureId = map.map[x - cam.offSetX][y - cam.offSetY].texture;
-				int colorR, colorG, colorB = 0;
 
 				// Get color data
 				if(objectId != 0) {
