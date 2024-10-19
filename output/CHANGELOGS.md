@@ -71,6 +71,9 @@
 -- Build 76
 - Added debugging statements
 
+-- Build 77
+- Added lots of textures
+
 ## Removed:
 -- Build 56
 - Shortened function arguments
@@ -157,6 +160,7 @@
 
 -- Build 76
 - Added checks to draw::DrawRect to colorId, it used to access invalid memory
+- WINFIX WENT UNSUCCESSFULY
 
 ## Notes:
 
