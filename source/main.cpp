@@ -22,11 +22,11 @@
 #include "textures.h"
 
 // Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 76 | WinFix";
+const char* windowtitle = "Mikicrep | Build 77";
 
 int main(int argc, char **argv) {
 	// SDL variables
-	bool debug = true;
+	bool debug = false;
 	bool fullscreen = false;
 
 	if(debug) std::cout << "Defining structs" << std::endl;
@@ -205,8 +205,6 @@ int main(int argc, char **argv) {
 			}
 
 			if(settings.canPlayerPlace == true) mouse::Event(event, sdlSettings, settings, map, cam, preset);
-
-			std::cout << "inv chooser check" << std::endl;
 
 			if(settings.inventory) inventory::Chooser(sdlSettings, settings, map, player, cam, preset, inventoryRects);
 			}

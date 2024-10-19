@@ -2,12 +2,14 @@
 #### Most random game/game engine I made where I just put most random features.
 - by Mikicrep
 
+### WINDOWS VERSION SOMEHOW BROKE, CONTACT ME IF YOU CAN HELP ME FIX IT
+
 You can use it also as pixelart editor if you want.
 
 [Project page](https://miki.macakom.net/projects/rsg)
 
 ## Compatibility
-- Supports **linux** and **windows** (shh linux is given bigger love)
+- Supports **linux** and ~~**windows**~~ (shh linux is given bigger love)
 - Made for **ultra** low-end devices
 
 ## Running on Windows
