@@ -2,12 +2,14 @@
 #include <string>
 #include <sstream>
 
+#include "mf/core.h"
+
 #include "commands.h"
 #include "presets.h"
 #include "settings.h"
 
 namespace commands {
-    void Executor(std::string command, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Preset preset[10]) {
+    void Executor(std::string command, core::MF_Window &window, game::Settings &settings, game::Map &map, game::Preset preset[10]) {
         int status = 0;
         size_t pos = command.find(' ');
 
