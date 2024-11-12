@@ -1,15 +1,19 @@
 #include <string>
 #include "SDL2/SDL.h"
 
-#include "draw.h"
+#include "mf/core.h"
+#include "mf/colors.h"
+#include "mf/graphics.h"
+#include "mf/logic.h"
+
 #include "settings.h"
 #include "textures.h"
 
 namespace textures {
-	int PickerEvent(game::SDL_Settings sdlSettings, game::Settings &settings) {
+	int PickerEvent(core::MF_Window &window, game::Settings &settings) {
         // This will run on mouse click
-		int startposw = sdlSettings.width / 2 - 500;
-		int startposh = sdlSettings.height / 2 - 200;
+		int startposw = window.width / 2 - 500;
+		int startposh = window.height / 2 - 200;
 		int curTexture = 1;
 
 		for(int y = 1; y <= 2; y++) {
@@ -19,9 +23,7 @@ namespace textures {
                 // Disable picker
 				settings.texturePicker = false;
 
-				if (sdlSettings.mouseX >= curRect.x && sdlSettings.mouseX <= curRect.x + curRect.w &&
-				sdlSettings.mouseY >= curRect.y && sdlSettings.mouseY <= curRect.y + curRect.h)
-					return curTexture - 1; // Textures dont start from 1
+				if(logic::IsMouseTouching(window.mouseX, window.mouseY, curRect)) return curTexture - 1; // Textures dont start from 1
 
 				curTexture++;
 			}
@@ -31,13 +33,13 @@ namespace textures {
 		settings.texturePicker = false;
 		return settings.blockTextureId;
 	}
-	void PickerOverlay(game::SDL_Settings sdlSettings, textures::BlockTextures blockTextures[32]) {
+	void PickerOverlay(core::MF_Window &window, textures::BlockTextures blockTextures[32]) {
 		SDL_Color textColor = {255, 255, 255};
         int curTexture = 0;
 
 		// Draw bg
 		SDL_Rect bgRect = {sdlSettings.width / 2 - 425, sdlSettings.height / 2 - 150, 850, 275};
-		draw::DrawRect(sdlSettings.renderer, bgRect, 2);
+		draw::DrawRect(sdlSettings.renderer, bgRect, colors::gray);
 
 		int startposw = sdlSettings.width / 2 - 500;
 		int startposh = sdlSettings.height / 2 - 200;
@@ -46,7 +48,7 @@ namespace textures {
 		SDL_Rect titleTextRect = {sdlSettings.width / 2 - 100, sdlSettings.height / 2 - 150, 200, 50};
 
 
-		draw::DrawText(sdlSettings.renderer, sdlSettings.font, titleTextRect, "Texture Picker", textColor);
+		draw::DrawText(sdlSettings.renderer, sdlSettings.font, titleTextRect, "Texture Picker", colors::white);
 
 		// Draw grid
 		for(int y = 1; y <= 2; y++) {
