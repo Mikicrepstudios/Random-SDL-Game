@@ -24,12 +24,12 @@ namespace game {
 				// Get color data
 				if(objectId != 0) {
 					SDL_Rect curRect = {x * cam.scale, y * cam.scale, cam.scale, cam.scale};
-					draw::DrawRect(window.renderer, curRect, colors::colorID[colorId]);
+					draw::DrawRect(window.renderer, curRect, colors::colorID[colorId - 1]);
 
 					if(textureId != 0)
 						SDL_RenderCopy(window.renderer, blockTextures[textureId].texture, NULL, &curRect);
 
-					if(objectId == 1) draw::DrawRect(window.renderer, curRect, colors::colorID[settings.playerColor]);
+					if(objectId == 1) draw::DrawRect(window.renderer, curRect, colors::colorID[settings.playerColor - 1]);
 				}
 				}
 			}

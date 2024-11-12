@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 			  << "Copyright Mikicrep Studios 2023-2024" << std::endl;
 
     // Main stuff
-    const std::string title = "Mikicrep | Build 78"; // Latest release 1.1 // changed btw
+    const std::string title = "Mikicrep | Build 79"; // Latest release 1.1 // changed btw
     core::MF_Window window = {};
     SDL_Event event = {};
 	bool debug = false;
@@ -87,10 +87,6 @@ int main(int argc, char **argv) {
 
 	if(debug) std::cout << "Init SDL stuff; Load save" << std::endl;
 
-	SDL_Init(SDL_INIT_VIDEO);
-	TTF_Init();
-	window.font = TTF_OpenFont("customize/font.ttf", 48);
-	IMG_Init(IMG_INIT_PNG);
 	gamemap::ClearMap(map);
 	files::LoadMap(map);
 	files::LoadSettings(settings, player, cam, preset);

@@ -1,6 +1,3 @@
-# PROJECT IS CURRENTLY IN REWRITE; IT CANNOT BE BUILDED
-# MIGRATING TO MIKICREP FRAMEWORK
-
 # Random SDL Game
 #### Most random game/game engine I made where I just put most random features.
 - by Mikicrep

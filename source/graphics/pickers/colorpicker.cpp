@@ -79,7 +79,7 @@ namespace colorpicker {
 		for(int y = 1; y <= 4; y++) {
 			for(int x = 1; x <= 8; x++) {
 				SDL_Rect curRect = {startposw + (100 * x), startposh + (100 * y), 100, 100};
-				draw::DrawRect(window.renderer, curRect, colors::colorID[curColor]);
+				draw::DrawRect(window.renderer, curRect, colors::colorID[curColor - 1]);
 
 				curColor++;
 			}
