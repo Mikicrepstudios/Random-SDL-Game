@@ -1,8 +1,10 @@
 #pragma once
 
+#include "mf/core.h"
+
 #include "settings.h"
 
 namespace colorpicker {
-    extern void Overlay(game::SDL_Settings sdlSettings, game::Settings settings);
-	extern int Event(game::SDL_Settings sdlSettings, game::Settings &settings);
+    void Overlay(core::MF_Window &window, game::Settings settings);
+	int Event(core::MF_Window &window, game::Settings &settings);
 }
