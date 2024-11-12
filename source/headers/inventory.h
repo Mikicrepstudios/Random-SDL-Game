@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 
+#include "mf/core.h"
+
 #include "presets.h"
 #include "settings.h"
 #include "textures.h"
@@ -58,7 +60,7 @@ namespace inventory {
     extern void Event(SDL_Event event, game::Settings &settings);
 
     // Handle mouse clicks
-	extern void Chooser(game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::rects &rects);
+	void Chooser(core::MF_Window &window, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::rects &rects);
 
     // Draw UI
     extern void Overlay(game::SDL_Settings sdlSettings, game::Settings settings, inventory::rects &rects, textures::BlockTextures blockTextures[32]);
