@@ -12,7 +12,7 @@ namespace textures {
         SDL_Texture* texture = {};
     };
 
-    extern void initBlocks(core::MF_Window &window, BlockTextures blockTextures[32]);
+    void initBlocks(core::MF_Window &window, BlockTextures blockTextures[32]);
 
     // Pickers
     int PickerEvent(core::MF_Window &window, game::Settings &settings);
