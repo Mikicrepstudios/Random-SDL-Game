@@ -1,10 +1,12 @@
 #pragma once
 
+#include "mf/core.h"
+
 #include "settings.h"
 #include "textures.h"
 
 namespace events {
-	extern void Camera(game::SDL_Settings sdlSettings, game::Settings settings, game::Camera &cam);
+	void Camera(core::MF_Window &window, game::Settings settings, game::Camera &cam);
 }
 
 namespace game {
