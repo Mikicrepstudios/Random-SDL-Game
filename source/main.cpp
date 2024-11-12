@@ -4,6 +4,8 @@
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 
+#include "mf/core.h"
+
 #include "block.h"
 #include "cheats.h"
 #include "controls.h"
@@ -21,18 +23,25 @@
 #include "settings.h"
 #include "textures.h"
 
-// Latest release 1.1
-const char* windowtitle = "Mikicrep | Build 77";
-
 int main(int argc, char **argv) {
-	// SDL variables
+	bool running = true;
+    std::cout << "-------Mikicrep Framework-------" << std::endl
+              << "-------Ver: 1.3.0---------------" << std::endl
+              //<< "-------Ver: D E V---------------" << std::endl
+              << "Copyright Mikicrep Studios 2024" << std::endl;
+	std::cout << "Random SDL Game" << std::endl
+			  << "Ver: DEV" << std::endl
+			  << "Copyright Mikicrep Studios 2023-2024" << std::endl;
+
+    // Main stuff
+    const std::string title = "Mikicrep | Build 78"; // Latest release 1.1 // changed btw
+    core::MF_Window window = {};
+    SDL_Event event = {};
 	bool debug = false;
-	bool fullscreen = false;
 
 	if(debug) std::cout << "Defining structs" << std::endl;
 
 	// Structs
-	game::SDL_Settings sdlSettings = {};
 	game::Settings settings = {};
 	game::Map map = {};
 	game::Player player = {};
