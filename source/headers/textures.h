@@ -5,14 +5,14 @@
 
 #include "mf/core.h"
 
-#include "settings.h"
+#include "textures.h"
 
 namespace textures {
     struct BlockTextures {
         SDL_Texture* texture = {};
     };
 
-    extern void initBlocks(game::SDL_Settings &sdlSettings, BlockTextures blockTextures[32]);
+    extern void initBlocks(core::MF_Window &window, BlockTextures blockTextures[32]);
 
     // Pickers
     int PickerEvent(core::MF_Window &window, game::Settings &settings);
