@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "mf/core.h"
+
 namespace colors {
     // 1-8 Colors
     constexpr MF_Color black = {0, 0, 0};              // 0

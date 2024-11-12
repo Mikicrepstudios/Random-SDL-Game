@@ -5,6 +5,7 @@
 
 #include "mf/core.h"
 
+#include "settings.h"
 #include "textures.h"
 
 namespace textures {
