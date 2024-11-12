@@ -1,8 +1,9 @@
+#include "mf/core.h"
+
 #include "inventory.h"
-#include "settings.h"
 
 namespace inventory {
-    rects InitRects(game::SDL_Settings sdlSettings) {
+    rects InitRects(core::MF_Window &window) {
 		// widthFactor and heightFactor // TODO //
 		/*float wFactor = sdlSettings.width / 1280;
 		float hFactor = sdlSettings.height / 800;*/
@@ -22,35 +23,35 @@ namespace inventory {
 		rects.playerColorTextRect = {50,                          290,                      80,  40 };
 
 		// TODO SET THEESE WHEN NEEDED
-		rects.textureColorRect    = {sdlSettings.width - 130,     50,                       80,  80 };
-		rects.textureColorRectb   = {sdlSettings.width - 135,     45,                       90,  90 };
-		rects.textureColorTextRect= {sdlSettings.width - 130,     140,                      80,  40 };
+		rects.textureColorRect    = {window.width - 130,     50,                       80,  80 };
+		rects.textureColorRectb   = {window.width - 135,     45,                       90,  90 };
+		rects.textureColorTextRect= {window.width - 130,     140,                      80,  40 };
 
-		rects.previewRect         = {sdlSettings.width / 2 - 50,  50,                       100, 100};
-		rects.previewRectb        = {sdlSettings.width / 2 - 55,  45,                       110, 110};
-		rects.previewTextRect     = {sdlSettings.width / 2 - 50,  160,                      100, 40 };
+		rects.previewRect         = {window.width / 2 - 50,  50,                       100, 100};
+		rects.previewRectb        = {window.width / 2 - 55,  45,                       110, 110};
+		rects.previewTextRect     = {window.width / 2 - 50,  160,                      100, 40 };
 
-		rects.textureIdRect       = {sdlSettings.width - 130,     50,                       80,  80 };
-		rects.textureIdRectb      = {sdlSettings.width - 135,     45,                       90,  90 };
-		rects.textureIdTextRect   = {sdlSettings.width - 130,     140,                      80,  40 };
+		rects.textureIdRect       = {window.width - 130,     50,                       80,  80 };
+		rects.textureIdRectb      = {window.width - 135,     45,                       90,  90 };
+		rects.textureIdTextRect   = {window.width - 130,     140,                      80,  40 };
 
-        rects.solidRect           = {50,                          sdlSettings.height - 355, 80,  80 };
-        rects.solidRectb          = {45,                          sdlSettings.height - 360, 90,  90 };
-        rects.solidTextRect       = {50,                          sdlSettings.height - 260, 80,  40 };
+        rects.solidRect           = {50,                          window.height - 355, 80,  80 };
+        rects.solidRectb          = {45,                          window.height - 360, 90,  90 };
+        rects.solidTextRect       = {50,                          window.height - 260, 80,  40 };
 
-		rects.bgGameplay          = {45,                          sdlSettings.height - 215, 420, 170};
-		rects.gameplayTextRect    = {150,                         sdlSettings.height - 210, 200, 50 };
-		rects.camTpRect           = {50,                          sdlSettings.height - 160, 200, 50 };
-		rects.playerTpRect        = {50,                          sdlSettings.height - 100, 200, 50 };
-		rects.bgGame              = {sdlSettings.width - 465,     sdlSettings.height - 215, 420, 170};
-		rects.gameTextRect        = {sdlSettings.width - 360,     sdlSettings.height - 210, 200, 50 };
-		rects.saveRect            = {sdlSettings.width - 460,     sdlSettings.height - 160, 200, 50 };
-		rects.loadRect            = {sdlSettings.width - 460,     sdlSettings.height - 100, 200, 50 };
-		rects.gameInfoRect        = {sdlSettings.width - 250,     sdlSettings.height - 160, 200, 50 };
-		rects.exitRect            = {sdlSettings.width - 250,     sdlSettings.height - 100, 200, 50 };
-		rects.presetRect          = {sdlSettings.width / 2 - 85,  sdlSettings.height - 160, 170, 115};
-		rects.presetTextRect      = {sdlSettings.width / 2 - 40,  sdlSettings.height - 160, 80,  115};
-		rects.presetTitleRect     = {sdlSettings.width / 2 - 115, sdlSettings.height - 215, 230, 50 };
+		rects.bgGameplay          = {45,                          window.height - 215, 420, 170};
+		rects.gameplayTextRect    = {150,                         window.height - 210, 200, 50 };
+		rects.camTpRect           = {50,                          window.height - 160, 200, 50 };
+		rects.playerTpRect        = {50,                          window.height - 100, 200, 50 };
+		rects.bgGame              = {window.width - 465,     window.height - 215, 420, 170};
+		rects.gameTextRect        = {window.width - 360,     window.height - 210, 200, 50 };
+		rects.saveRect            = {window.width - 460,     window.height - 160, 200, 50 };
+		rects.loadRect            = {window.width - 460,     window.height - 100, 200, 50 };
+		rects.gameInfoRect        = {window.width - 250,     window.height - 160, 200, 50 };
+		rects.exitRect            = {window.width - 250,     window.height - 100, 200, 50 };
+		rects.presetRect          = {window.width / 2 - 85,  window.height - 160, 170, 115};
+		rects.presetTextRect      = {window.width / 2 - 40,  window.height - 160, 80,  115};
+		rects.presetTitleRect     = {window.width / 2 - 115, window.height - 215, 230, 50 };
 		return rects;
 	}
 }

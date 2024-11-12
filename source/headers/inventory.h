@@ -54,7 +54,7 @@ namespace inventory {
         SDL_Rect presetTitleRect = {};
     };
 
-    rects InitRects(game::SDL_Settings sdlSettings);
+    rects InitRects(core::MF_Window &window);
 
     // Handle pressing E
     void Event(SDL_Event event, game::Settings &settings);
