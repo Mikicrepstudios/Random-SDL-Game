@@ -4,5 +4,5 @@
 #include "settings.h"
 
 namespace player {
-	extern void Movement(SDL_Event event, game::Map &map, game::Player &player);
+	void Movement(SDL_Event event, game::Map &map, game::Player &player);
 }
