@@ -5,6 +5,8 @@
 #include <SDL_image.h>
 
 #include "mf/core.h"
+#include "mf/colors.h"
+#include "mf/graphics.h"
 
 #include "block.h"
 #include "cheats.h"
@@ -128,7 +130,7 @@ int main(int argc, char **argv) {
 
 			// Window
 			if(event.type == SDL_QUIT)
-				window.running = false;
+				running = false;
 			if(event.type == SDL_KEYDOWN) {
 				if(event.key.keysym.sym == SDLK_ESCAPE) {
 					if (!settings.inventory) {
@@ -181,13 +183,13 @@ int main(int argc, char **argv) {
 			}
 
 			// Dialogues : Yes
-			int dialogueResult = dialogues::ConfirmDialogueEvent(event, window, dialoguesRects);
+			int dialogueResult = dialogues::ConfirmDialogueEvent(window, dialoguesRects);
 			if(dialogueResult == 2)
 					switch(settings.dialogueId) {
 						case 1:
 							files::SaveMap(map);
 							files::SaveSettings(settings, player, cam);
-							window.running = false;
+							running = false;
 							break;
 						case 2:
 							gamemap::ClearMap(map);
@@ -205,16 +207,16 @@ int main(int argc, char **argv) {
 
 				switch(settings.cheatsId) {
 					case 1:
-						cheatsResult = cheats::CamTp(window, settings, cam);
+						cheatsResult = cheats::CamTp(window, game, settings, cam);
 						break;
 					case 2:
-						cheatsResult = cheats::PlayerTp(window, settings, map, cam, player);
+						cheatsResult = cheats::PlayerTp(window, game, settings, map, cam, player);
 				}
 				
 				if(cheatsResult == 1) settings.cheats = false;
 			}
 
-			if(settings.canPlayerPlace == true) mouse::Event(event, window, settings, map, cam, preset);
+			if(settings.canPlayerPlace == true) mouse::Event(window, game, settings, map, cam, preset);
 
 			if(settings.inventory) inventory::Chooser(window, settings, map, player, cam, preset, inventoryRects);
 			}
@@ -235,7 +237,7 @@ int main(int argc, char **argv) {
 
 		// Overlays
 		inventory::Overlay(window, settings, inventoryRects, blockTextures);
-		mouse::Overlay(window, settings, map, cam);
+		mouse::Overlay(window, game, settings, map, cam);
 
 		// Game info
 		if (settings.gameInfo) hud::GameInfo(window, settings, cam, player);
@@ -247,14 +249,14 @@ int main(int argc, char **argv) {
 		}
 
 		// Cli Input
-		if(window.cliInput) {
+		if(game.cliInput) {
 			std::string command = "";
 			draw::SetCol(window.renderer, settings.bgColor);
-			draw::DrawRect(window.renderer, {0, 0, 25, 25}, 27);
-			SDL_RenderPresent(sdlSettings.renderer);
+			draw::DrawRect(window.renderer, {0, 0, 25, 25}, colors::red);
+			SDL_RenderPresent(window.renderer);
 			std::getline(std::cin, command);
 			commands::Executor(command, window, settings, map, preset);
-			window.cliInput = false;
+			game.cliInput = false;
 		}
 
 		// Show results
