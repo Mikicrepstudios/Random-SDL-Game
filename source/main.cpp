@@ -28,8 +28,7 @@
 int main(int argc, char **argv) {
 	bool running = true;
     std::cout << "-------Mikicrep Framework-------" << std::endl
-              << "-------Ver: 1.3.0---------------" << std::endl
-              //<< "-------Ver: D E V---------------" << std::endl
+              << "-------Ver: 1.3.0M--------------" << std::endl
               << "Copyright Mikicrep Studios 2024" << std::endl;
 	std::cout << "Random SDL Game" << std::endl
 			  << "Ver: DEV" << std::endl
@@ -88,7 +87,6 @@ int main(int argc, char **argv) {
 
 	if(debug) std::cout << "Init SDL stuff; Load save" << std::endl;
 
-	SDL_Event event = {};
 	SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();
 	window.font = TTF_OpenFont("customize/font.ttf", 48);

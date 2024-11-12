@@ -2,6 +2,7 @@
 #include "SDL2/SDL.h"
 #include <SDL_ttf.h>
 
+#include "mf/core.h"
 #include "mf/colors.h"
 
 namespace draw {
