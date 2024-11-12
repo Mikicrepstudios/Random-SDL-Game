@@ -14,5 +14,5 @@ namespace game {
 }
 
 namespace gamemap {
-	extern void ClearMap(game::Map &map);
+	void ClearMap(game::Map &map);
 }
