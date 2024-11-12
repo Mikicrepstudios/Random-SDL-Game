@@ -1,13 +1,12 @@
 #include "SDL2/SDL.h"
 #include <SDL_image.h>
 
-#include "settings.h"
+#include "mf/core.h"
+
 #include "textures.h"
 
-#include <iostream>
-
 namespace textures {
-    void initBlocks(game::SDL_Settings &sdlSettings, BlockTextures blockTextures[32]) {
+    void initBlocks(core::MF_Window &window, BlockTextures blockTextures[32]) {
 	    SDL_Surface* placeholderSurface = IMG_Load("customize/textures/blocks/placeholder.png");
         SDL_Surface* bricksSurface = IMG_Load("customize/textures/blocks/bricks.png");
 	    SDL_Surface* stoneSurface = IMG_Load("customize/textures/blocks/stone.png");
