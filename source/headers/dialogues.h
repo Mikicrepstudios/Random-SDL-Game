@@ -14,7 +14,7 @@ namespace dialogues {
         SDL_Rect otherYesRect = {};
     };
 
-    rects InitRects(game::SDL_Settings sdlSettings);
+    rects InitRects(core::MF_Window &window);
 
     int ConfirmDialogueEvent(core::MF_Window &window, rects dialoguesRects);
     bool ConfirmDialogue(core::MF_Window &window, game::Settings settings, rects dialoguesRects);
