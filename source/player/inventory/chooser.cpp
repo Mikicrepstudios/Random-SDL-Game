@@ -12,12 +12,6 @@
 namespace inventory {
     void Chooser(core::MF_Window &window, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::rects &rects) {
 		if (window.event.type == SDL_MOUSEBUTTONDOWN) {
-			int mouseX = window.mouseX;
-			int mouseY = window.mouseY;
-
-			int width = window.width;
-			int height = window.height;
-
 			if (!settings.colorPicker && !settings.texturePicker) { // Checks if any color picker is active
 				// Solid
 				if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.solidRectb))

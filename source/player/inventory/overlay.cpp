@@ -1,105 +1,102 @@
 #include <string>
 
+#include "mf/core.h"
+#include "mf/colors.h"
+#include "mf/graphics.h"
+
 #include "colorpicker.h"
-#include "draw.h"
 #include "inventory.h"
 #include "settings.h"
 #include "textures.h"
 
 namespace inventory {
-	void Overlay(game::SDL_Settings sdlSettings, game::Settings settings, inventory::rects &rects, textures::BlockTextures blockTextures[32]) {
+	void Overlay(core::MF_Window &window, game::Settings settings, inventory::rects &rects, textures::BlockTextures blockTextures[32]) {
 		// Define variables
-		SDL_Renderer* renderer = sdlSettings.renderer;
-		TTF_Font* font = sdlSettings.font;
-		int mouseX = sdlSettings.mouseX;
-		int mouseY = sdlSettings.mouseY;
-
 		int colorR, colorG, colorB = 0;
-		SDL_Color textColor = {255, 255, 255};
 
 		if (settings.inventory) {
 			// Render bg
-			SDL_Rect bgRect = {25, 25, sdlSettings.width - 50, sdlSettings.height - 50};
-			draw::DrawRect(renderer, bgRect, 3);
+			SDL_Rect bgRect = {25, 25, window.width - 50, window.height - 50};
+			draw::DrawRect(window.renderer, bgRect, colors::darkgray);
 
 			// Color
-			draw::DrawRect(renderer, rects.colorRectb, 2);
-			draw::DrawRect(renderer, rects.colorRect, settings.blockColor);
-			draw::DrawText(renderer, font, rects.colorTextRect, "Block", textColor);
+			draw::DrawRect(window.renderer, rects.colorRectb, colors::gray);
+			draw::DrawRect(window.renderer, rects.colorRect, colors::colorID[settings.blockColor]);
+			draw::DrawText(window.renderer, window.font, rects.colorTextRect, "Block", colors::white);
 
 			// BG Color
-			draw::DrawRect(renderer, rects.bgColorRectb, 2);
-			draw::DrawRect(renderer, rects.bgColorRect, settings.bgColor);
-			draw::DrawText(renderer, font, rects.bgColorTextRect, "BG", textColor);
+			draw::DrawRect(window.renderer, rects.bgColorRectb, colors::gray);
+			draw::DrawRect(window.renderer, rects.bgColorRect, colors::colorID[settings.bgColor]);
+			draw::DrawText(window.renderer, window.font, rects.bgColorTextRect, "BG", colors::white);
 
 			// Player Color
-			draw::DrawRect(renderer, rects.playerColorRectb, 2);
-			draw::DrawRect(renderer, rects.playerColorRect, settings.playerColor);
-			draw::DrawText(renderer, font, rects.playerColorTextRect, "Player", textColor);
+			draw::DrawRect(window.renderer, rects.playerColorRectb, colors::gray);
+			draw::DrawRect(window.renderer, rects.playerColorRect, colors::colorID[settings.playerColor]);
+			draw::DrawText(window.renderer, window.font, rects.playerColorTextRect, "Player", colors::white);
 
 			// Preview
-			draw::DrawRect(renderer, rects.previewRectb, 2);
-			draw::DrawRect(renderer, rects.previewRect, settings.blockColor);
-			draw::DrawText(renderer, font, rects.previewTextRect, "Preview", textColor);
+			draw::DrawRect(window.renderer, rects.previewRectb, colors::gray);
+			draw::DrawRect(window.renderer, rects.previewRect, colors::colorID[settings.blockColor]);
+			draw::DrawText(window.renderer, window.font, rects.previewTextRect, "Preview", colors::white);
 
 			// BG Color
-			draw::DrawRect(renderer, rects.textureIdRectb, 2);
-			draw::DrawTextureRect(renderer, rects.textureIdRect, blockTextures[settings.blockTextureId].texture);
-			draw::DrawText(renderer, font, rects.textureIdTextRect, "Text. id", textColor);
+			draw::DrawRect(window.renderer, rects.textureIdRectb, colors::gray);
+			draw::DrawTextureRect(window.renderer, rects.textureIdRect, blockTextures[settings.blockTextureId].texture);
+			draw::DrawText(window.renderer, window.font, rects.textureIdTextRect, "Text. id", colors::white);
 
 			// Solid
-			draw::DrawRect(renderer, rects.solidRectb, 2);
-			if(settings.placeSolidBlocks) draw::DrawRect(renderer, rects.solidRect, 13);
-			else draw::DrawRect(renderer, rects.solidRect, 27);
-			draw::DrawText(renderer, font, rects.solidTextRect, "Solid", textColor);
+			draw::DrawRect(window.renderer, rects.solidRectb, colors::gray);
+			if(settings.placeSolidBlocks) draw::DrawRect(window.renderer, rects.solidRect, colors::lightgreen);
+			else draw::DrawRect(window.renderer, rects.solidRect, colors::red);
+			draw::DrawText(window.renderer, window.font, rects.solidTextRect, "Solid", colors::white);
 			
 			// Presets
-			draw::DrawRect(renderer, rects.presetRect, 2);
-			draw::DrawText(renderer, font, rects.presetTextRect, std::to_string(settings.curPreset + 1).c_str(), textColor);
-			draw::DrawText(renderer, font, rects.presetTitleRect, "Presets", textColor);
+			draw::DrawRect(window.renderer, rects.presetRect, colors::gray);
+			draw::DrawText(window.renderer, window.font, rects.presetTextRect, std::to_string(settings.curPreset + 1).c_str(), colors::white);
+			draw::DrawText(window.renderer, window.font, rects.presetTitleRect, "Presets", colors::white);
 
 			// Backgrounds
-			draw::DrawRect(renderer, rects.bgGameplay, 2);
-			draw::DrawRect(renderer, rects.bgGame, 2);
+			draw::DrawRect(window.renderer, rects.bgGameplay, colors::gray);
+			draw::DrawRect(window.renderer, rects.bgGame, colors::gray);
 
 			// Titles
-			draw::DrawText(renderer, font, rects.gameplayTextRect, "Gameplay", textColor);
-			draw::DrawText(renderer, font, rects.gameTextRect, "Game", textColor);
+			draw::DrawText(window.renderer, window.font, rects.gameplayTextRect, "Gameplay", colors::white);
+			draw::DrawText(window.renderer, window.font, rects.gameTextRect, "Game", colors::white);
 
 			// Camtp button
-			draw::DrawButton(renderer, rects.camTpRect, 7, mouseX, mouseY);
-			draw::DrawText(renderer, font, rects.camTpRect, "Cam TP", textColor);
+			draw::DrawButton(window.renderer, rects.camTpRect, colors::aqua, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, rects.camTpRect, "Cam TP", colors::white);
 
 			// Playertp button
-			draw::DrawButton(renderer, rects.playerTpRect, 7, mouseX, mouseY);
-			draw::DrawText(renderer, font, rects.playerTpRect, "Player TP", textColor);
+			draw::DrawButton(window.renderer, rects.playerTpRect, colors::aqua, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, rects.playerTpRect, "Player TP", colors::white);
 
 			// Save button
-			draw::DrawButton(renderer, rects.saveRect, 13, mouseX, mouseY);
-			draw::DrawText(renderer, font, rects.saveRect, "Save", textColor);
+			draw::DrawButton(window.renderer, rects.saveRect, colors::lightgreen, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, rects.saveRect, "Save", colors::white);
 
 			// Gameinfo button
-			draw::DrawButton(renderer, rects.gameInfoRect, 3, mouseX, mouseY);
-			draw::DrawText(renderer, font, rects.gameInfoRect, "Game Info", textColor);
+			draw::DrawButton(window.renderer, rects.gameInfoRect, colors::darkgray, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, rects.gameInfoRect, "Game Info", colors::white);
 
 			// Load button
-			draw::DrawButton(renderer, rects.loadRect, 6, mouseX, mouseY);
-			draw::DrawText(renderer, font, rects.loadRect, "Load", textColor);
+			draw::DrawButton(window.renderer, rects.loadRect, colors::indigo, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, rects.loadRect, "Load", colors::white);
 
 			// Exit button
-			draw::DrawButton(renderer, rects.exitRect, 27, mouseX, mouseY);
-			draw::DrawText(renderer, font, rects.exitRect, "Exit", textColor);
+			draw::DrawButton(window.renderer, rects.exitRect, colors::red, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, rects.exitRect, "Exit", colors::white);
 
 			// Color pickers
 			if(settings.colorPicker && settings.colorPickerId == 1)
-				colorpicker::Overlay(sdlSettings, settings);
+				colorpicker::Overlay(window, settings);
 			else if(settings.colorPicker && settings.colorPickerId == 2)
-				colorpicker::Overlay(sdlSettings, settings);
+				colorpicker::Overlay(window, settings);
 			else if(settings.colorPicker && settings.colorPickerId == 3)
-				colorpicker::Overlay(sdlSettings, settings);
+				colorpicker::Overlay(window, settings);
 			}
 
 			if(settings.texturePicker)
-				textures::PickerOverlay(sdlSettings, blockTextures);
+				textures::PickerOverlay(window, blockTextures);
 	}
 }

@@ -63,7 +63,7 @@ namespace inventory {
 	void Chooser(core::MF_Window &window, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::rects &rects);
 
     // Draw UI
-    extern void Overlay(game::SDL_Settings sdlSettings, game::Settings settings, inventory::rects &rects, textures::BlockTextures blockTextures[32]);
+    void Overlay(core::MF_Window &window, game::Settings settings, inventory::rects &rects, textures::BlockTextures blockTextures[32]);
 }
 
 #endif
