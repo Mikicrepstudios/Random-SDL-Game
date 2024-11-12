@@ -57,7 +57,7 @@ namespace inventory {
     rects InitRects(game::SDL_Settings sdlSettings);
 
     // Handle pressing E
-    extern void Event(SDL_Event event, game::Settings &settings);
+    void Event(SDL_Event event, game::Settings &settings);
 
     // Handle mouse clicks
 	void Chooser(core::MF_Window &window, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::rects &rects);
