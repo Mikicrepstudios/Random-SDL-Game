@@ -2,11 +2,13 @@
 
 #include <string>
 
+#include "mf/core.h"
+
 #include "presets.h"
 #include "settings.h"
 
 namespace commands {
-    extern void Executor(std::string command, game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Preset preset[10]);
+    void Executor(std::string command, core::MF_Window &window, game::Settings &settings, game::Map &map, game::Preset preset[10]);
 
     // Utils
     extern int Echo(std::string args);
