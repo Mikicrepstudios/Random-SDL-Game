@@ -1,5 +1,7 @@
 #pragma once
 
+#include "mf/core.h"
+
 #include "settings.h"
 
 namespace dialogues {
@@ -14,6 +16,6 @@ namespace dialogues {
 
     rects InitRects(game::SDL_Settings sdlSettings);
 
-    extern int ConfirmDialogueEvent(SDL_Event event, game::SDL_Settings sdlSettings, rects dialoguesRects);
-    extern bool ConfirmDialogue(game::SDL_Settings sdlSettings, game::Settings settings, rects dialoguesRects);
+    int ConfirmDialogueEvent(core::MF_Window &window, rects dialoguesRects);
+    bool ConfirmDialogue(core::MF_Window &window, game::Settings settings, rects dialoguesRects);
 }
