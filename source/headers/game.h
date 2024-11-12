@@ -10,7 +10,7 @@ namespace events {
 }
 
 namespace game {
-	extern void RenderMap(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera cam, textures::BlockTextures blockTextures[32]);
+	void RenderMap(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera cam, textures::BlockTextures blockTextures[32]);
 }
 
 namespace gamemap {
