@@ -1,4 +1,5 @@
-#include <iostream>
+#include "mf/core.h"
+#include "mf/logic.h"
 
 #include "cheats.h"
 #include "colorpicker.h"
@@ -9,56 +10,49 @@
 #include "textures.h"
 
 namespace inventory {
-    void Chooser(game::SDL_Settings &sdlSettings, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::rects &rects) {
-		if (sdlSettings.event.type == SDL_MOUSEBUTTONDOWN) {
-			int mouseX = sdlSettings.mouseX;
-			int mouseY = sdlSettings.mouseY;
+    void Chooser(core::MF_Window &window, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::rects &rects) {
+		if (window.event.type == SDL_MOUSEBUTTONDOWN) {
+			int mouseX = window.mouseX;
+			int mouseY = window.mouseY;
 
-			int width = sdlSettings.width;
-			int height = sdlSettings.height;
+			int width = window.width;
+			int height = window.height;
 
 			if (!settings.colorPicker && !settings.texturePicker) { // Checks if any color picker is active
 				// Solid
-				if (mouseX >= rects.solidRectb.x && mouseX <= rects.solidRectb.x + rects.solidRectb.w &&
-					mouseY >= rects.solidRectb.y && mouseY <= rects.solidRectb.y + rects.solidRectb.h) {
+				if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.solidRectb))
 					settings.placeSolidBlocks = !settings.placeSolidBlocks;
-				}
 
 				// Gameplay
 				// Cam TP
-				if (mouseX >= rects.camTpRect.x && mouseX <= rects.camTpRect.x + rects.camTpRect.w &&
-					mouseY >= rects.camTpRect.y && mouseY <= rects.camTpRect.y + rects.camTpRect.h) {
+				if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.camTpRect)) {
 					settings.cheatsId = 1;
 					settings.cheats = true;
 					settings.inventory = false;
 				}
 				// Player TP
-				else if (mouseX >= rects.playerTpRect.x && mouseX <= rects.playerTpRect.x + rects.playerTpRect.w &&
-					mouseY >= rects.playerTpRect.y && mouseY <= rects.playerTpRect.y + rects.playerTpRect.h) {
+				else if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.playerTpRect)) {
 					settings.cheatsId = 2;
 					settings.cheats = true;
 					settings.inventory = false;
 				}
+
 				// Game
 				// Save
-				if (mouseX >= rects.saveRect.x && mouseX <= rects.saveRect.x + rects.saveRect.w &&
-				mouseY >= rects.saveRect.y && mouseY <= rects.saveRect.y + rects.saveRect.h) {
+				if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.saveRect)) {
 					files::SaveMap(map);
 					files::SaveSettings(settings, player, camera);
 				}
 				// Load
-				else if (mouseX >= rects.loadRect.x && mouseX <= rects.loadRect.x + rects.loadRect.w &&
-				mouseY >= rects.loadRect.y && mouseY <= rects.loadRect.y + rects.loadRect.h) {
+				else if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.loadRect)) {
 					files::LoadMap(map);
 					files::LoadSettings(settings, player, camera, preset);
 				}
 				// Game Info
-				else if (mouseX >= rects.gameInfoRect.x && mouseX <= rects.gameInfoRect.x + rects.gameInfoRect.w &&
-				mouseY >= rects.gameInfoRect.y && mouseY <= rects.gameInfoRect.y + rects.gameInfoRect.h)
+				else if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.gameInfoRect))
 					settings.gameInfo = !settings.gameInfo;
 				// Exit
-				else if (mouseX >= rects.exitRect.x && mouseX <= rects.exitRect.x + rects.exitRect.w &&
-				mouseY >= rects.exitRect.y && mouseY <= rects.exitRect.y + rects.exitRect.h) {
+				else if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.exitRect)) {
 					settings.inventory = false;
 					settings.dialogueId = 1;
 					settings.dialogue = true;
@@ -67,40 +61,36 @@ namespace inventory {
 
 			if(!settings.texturePicker) {
 				// Color
-				if (mouseX >= rects.colorRectb.x && mouseX <= rects.colorRectb.x + rects.colorRectb.w &&
-				mouseY >= rects.colorRectb.y && mouseY <= rects.colorRectb.y + rects.colorRectb.h && !settings.colorPicker) {
+				if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.colorRectb)) {
 					settings.colorPicker = !settings.colorPicker;
 					settings.colorPickerId = 1;
 				}
 				else if (settings.colorPicker && settings.colorPickerId == 1)
-					preset[settings.curPreset].blockColor = colorpicker::Event(sdlSettings, settings);
+					preset[settings.curPreset].blockColor = colorpicker::Event(window, settings);
 
 				// BG Color
-				if (mouseX >= rects.bgColorRectb.x && mouseX <= rects.bgColorRectb.x + rects.bgColorRectb.w &&
-				mouseY >= rects.bgColorRectb.y && mouseY <= rects.bgColorRectb.y + rects.bgColorRectb.h && !settings.colorPicker) {
+				if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.bgColorRectb)) {
 					settings.colorPicker = !settings.colorPicker;
 					settings.colorPickerId = 2;
 				}
 				else if (settings.colorPicker && settings.colorPickerId == 2)
-					settings.bgColor = colorpicker::Event(sdlSettings, settings);
+					settings.bgColor = colorpicker::Event(window, settings);
 
 				// Player Color
-				if (mouseX >= rects.playerColorRectb.x && mouseX <= rects.playerColorRectb.x + rects.playerColorRectb.w &&
-				mouseY >= rects.playerColorRectb.y && mouseY <= rects.playerColorRectb.y + rects.playerColorRectb.h && !settings.colorPicker) {
+				if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.playerColorRectb)) {
 					settings.colorPicker = !settings.colorPicker;
 					settings.colorPickerId = 3;
 				}
 				else if (settings.colorPicker && settings.colorPickerId == 3)
-					settings.playerColor = colorpicker::Event(sdlSettings, settings);
+					settings.playerColor = colorpicker::Event(window, settings);
 			}
 
 			if(!settings.colorPicker) {
 				// Texture
-				if (mouseX >= rects.textureIdRectb.x && mouseX <= rects.textureIdRectb.x + rects.textureIdRectb.w &&
-				mouseY >= rects.textureIdRectb.y && mouseY <= rects.textureIdRectb.y + rects.textureIdRectb.h)
+				if(logic::IsMouseTouching(window.mouseX, window.mouseY, rects.textureIdRectb))
 					settings.texturePicker = !settings.texturePicker;
 				else if (settings.texturePicker)
-					settings.blockTextureId = textures::PickerEvent(sdlSettings, settings);
+					settings.blockTextureId = textures::PickerEvent(window, settings);
 			}
 		}
 	}
