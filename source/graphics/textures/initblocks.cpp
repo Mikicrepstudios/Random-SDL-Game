@@ -26,22 +26,22 @@ namespace textures {
 
 
         blockTextures[0].texture = nullptr;
-        blockTextures[1].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, placeholderSurface);
-        blockTextures[2].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, bricksSurface);
-        blockTextures[3].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, stoneSurface);
-        blockTextures[4].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, woodSurface);
-        blockTextures[5].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, logsSurface);
-        blockTextures[6].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, grassSurface);
-        blockTextures[7].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, dirtSurface);
+        blockTextures[1].texture = SDL_CreateTextureFromSurface(window.renderer, placeholderSurface);
+        blockTextures[2].texture = SDL_CreateTextureFromSurface(window.renderer, bricksSurface);
+        blockTextures[3].texture = SDL_CreateTextureFromSurface(window.renderer, stoneSurface);
+        blockTextures[4].texture = SDL_CreateTextureFromSurface(window.renderer, woodSurface);
+        blockTextures[5].texture = SDL_CreateTextureFromSurface(window.renderer, logsSurface);
+        blockTextures[6].texture = SDL_CreateTextureFromSurface(window.renderer, grassSurface);
+        blockTextures[7].texture = SDL_CreateTextureFromSurface(window.renderer, dirtSurface);
 
-        blockTextures[8].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, sandSurface);
-        blockTextures[9].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, oreSurface);
-        blockTextures[10].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, glassSurface);
-        blockTextures[11].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, waterSurface);
-        blockTextures[12].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, lavaSurface);
-        blockTextures[13].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, woolSurface);
-        blockTextures[14].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, leavesSurface);
-        blockTextures[15].texture = SDL_CreateTextureFromSurface(sdlSettings.renderer, placeholderSurface); //TODO
+        blockTextures[8].texture = SDL_CreateTextureFromSurface(window.renderer, sandSurface);
+        blockTextures[9].texture = SDL_CreateTextureFromSurface(window.renderer, oreSurface);
+        blockTextures[10].texture = SDL_CreateTextureFromSurface(window.renderer, glassSurface);
+        blockTextures[11].texture = SDL_CreateTextureFromSurface(window.renderer, waterSurface);
+        blockTextures[12].texture = SDL_CreateTextureFromSurface(window.renderer, lavaSurface);
+        blockTextures[13].texture = SDL_CreateTextureFromSurface(window.renderer, woolSurface);
+        blockTextures[14].texture = SDL_CreateTextureFromSurface(window.renderer, leavesSurface);
+        blockTextures[15].texture = SDL_CreateTextureFromSurface(window.renderer, placeholderSurface); //TODO
 
         SDL_FreeSurface(placeholderSurface);
         SDL_FreeSurface(bricksSurface);
