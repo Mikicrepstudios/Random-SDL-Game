@@ -1,28 +1,25 @@
 #include "SDL2/SDL.h"
 #include <SDL_ttf.h>
 
+#include "mf/core.h"
+#include "mf/colors.h"
+#include "mf/graphics.h"
+#include "mf/logic.h"
+
 #include "draw.h"
 #include "dialogues.h"
 
 namespace dialogues {
-	int ConfirmDialogueEvent(SDL_Event event, game::SDL_Settings sdlSettings, rects dialoguesRects) {
-        int mouseX = sdlSettings.mouseX;
-        int mouseY = sdlSettings.mouseY;
-        
-        if (event.type == SDL_MOUSEBUTTONDOWN) {
-            if      (mouseX >= dialoguesRects.yesRect.x && mouseX <= dialoguesRects.yesRect.x + dialoguesRects.yesRect.w &&
-                    mouseY >= dialoguesRects.yesRect.y && mouseY <= dialoguesRects.yesRect.y + dialoguesRects.yesRect.h)
-                    return 2;
-            else if (mouseX >= dialoguesRects.otherYesRect.x && mouseX <= dialoguesRects.otherYesRect.x + dialoguesRects.otherYesRect.w &&
-                    mouseY >= dialoguesRects.otherYesRect.y && mouseY <= dialoguesRects.otherYesRect.y + dialoguesRects.otherYesRect.h)
-                    return 3; // Save and exit
+	int ConfirmDialogueEvent(core::MF_Window &window, rects dialoguesRects) {
+        if (window.event.type == SDL_MOUSEBUTTONDOWN) {
+            if(logic::IsMouseTouching(window.mouseX, window.mouseY, dialoguesRects.yesRect)) return 2;
+            else if(logic::IsMouseTouching(window.mouseX, window.mouseY, dialoguesRects.otherYesRect)) return 3; // Save and exit
         }
 
         return 0;
 	}
 
-    bool ConfirmDialogue(game::SDL_Settings sdlSettings, game::Settings settings, rects dialoguesRects) {
-        SDL_Color textColor = {255, 255, 255};
+    bool ConfirmDialogue(core::MF_Window &window, game::Settings settings, rects dialoguesRects) {
         const char* titleText = "";
         const char* descText = "You will loose any unsaved progress.";
 
@@ -36,32 +33,30 @@ namespace dialogues {
         }
 
         // Draw dialogue
-        draw::DrawRect(sdlSettings.renderer, dialoguesRects.backgroundRect, 2);
-        draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.titleRect, titleText, textColor);
+        draw::DrawRect(window.renderer, dialoguesRects.backgroundRect, colors::gray);
+        draw::DrawText(window.renderer, window.font, dialoguesRects.titleRect, titleText, colors::white);
 
         // Draw buttons
-        draw::DrawButton(sdlSettings.renderer, dialoguesRects.noRect, 27, sdlSettings.mouseX, sdlSettings.mouseY);
-        draw::DrawButton(sdlSettings.renderer, dialoguesRects.yesRect, 13, sdlSettings.mouseX, sdlSettings.mouseY);
+        draw::DrawButton(window.renderer, dialoguesRects.noRect, colors::red, window.mouseX, window.mouseY);
+        draw::DrawButton(window.renderer, dialoguesRects.yesRect, colors::lightgreen, window.mouseX, window.mouseY);
 
         // Give buttons text
 
         if(settings.dialogueId != 1) {
-            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.noRect, "No", textColor);
-            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.yesRect, "Yes", textColor);
-            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.descRect, descText, textColor);
+            draw::DrawText(window.renderer, window.font, dialoguesRects.noRect, "No", colors::white);
+            draw::DrawText(window.renderer, window.font, dialoguesRects.yesRect, "Yes", colors::white);
+            draw::DrawText(window.renderer, window.font, dialoguesRects.descRect, descText, colors::white);
         }
         else {
             // Draw addional button for saving
-            draw::DrawButton(sdlSettings.renderer, dialoguesRects.otherYesRect, 27, sdlSettings.mouseX, sdlSettings.mouseY);
+            draw::DrawButton(window.renderer, dialoguesRects.otherYesRect, colors::red, window.mouseX, window.mouseY);
 
-            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.noRect, "Cancel", textColor);
-            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.otherYesRect, "Exit without saving", textColor);
-            draw::DrawText(sdlSettings.renderer, sdlSettings.font, dialoguesRects.yesRect, "Exit with saving", textColor);
+            draw::DrawText(window.renderer, window.font, dialoguesRects.noRect, "Cancel", colors::white);
+            draw::DrawText(window.renderer, window.font, dialoguesRects.otherYesRect, "Exit without saving", colors::white);
+            draw::DrawText(window.renderer, window.font, dialoguesRects.yesRect, "Exit with saving", colors::white);
         }
 
-        if (sdlSettings.mouseX >= dialoguesRects.noRect.x && sdlSettings.mouseX <= dialoguesRects.noRect.x + dialoguesRects.noRect.w &&
-				sdlSettings.mouseY >= dialoguesRects.noRect.y && sdlSettings.mouseY <= dialoguesRects.noRect.y + dialoguesRects.noRect.h)
-                return true;
+        if(logic::IsMouseTouching(window.mouseX, window.mouseY, dialoguesRects.noRect)) return true;
 
         return false;
     }
