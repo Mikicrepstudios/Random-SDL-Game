@@ -21,17 +21,17 @@ namespace inventory {
 
 			// Color
 			draw::DrawRect(window.renderer, rects.colorRectb, colors::gray);
-			draw::DrawRect(window.renderer, rects.colorRect, colors::colorID[settings.blockColor]);
+			draw::DrawRect(window.renderer, rects.colorRect, colors::colorID[settings.blockColor - 1]);
 			draw::DrawText(window.renderer, window.font, rects.colorTextRect, "Block", colors::white);
 
 			// BG Color
 			draw::DrawRect(window.renderer, rects.bgColorRectb, colors::gray);
-			draw::DrawRect(window.renderer, rects.bgColorRect, colors::colorID[settings.bgColor]);
+			draw::DrawRect(window.renderer, rects.bgColorRect, colors::colorID[settings.bgColor - 1]);
 			draw::DrawText(window.renderer, window.font, rects.bgColorTextRect, "BG", colors::white);
 
 			// Player Color
 			draw::DrawRect(window.renderer, rects.playerColorRectb, colors::gray);
-			draw::DrawRect(window.renderer, rects.playerColorRect, colors::colorID[settings.playerColor]);
+			draw::DrawRect(window.renderer, rects.playerColorRect, colors::colorID[settings.playerColor - 1]);
 			draw::DrawText(window.renderer, window.font, rects.playerColorTextRect, "Player", colors::white);
 
 			// Preview

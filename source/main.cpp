@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 			  << "Copyright Mikicrep Studios 2023-2024" << std::endl;
 
     // Main stuff
-    const std::string title = "Mikicrep | Build 79"; // Latest release 1.1 // changed btw
+    const std::string title = "Mikicrep | Build 80"; // Latest release 1.1
     core::MF_Window window = {};
     SDL_Event event = {};
 	bool debug = false;
