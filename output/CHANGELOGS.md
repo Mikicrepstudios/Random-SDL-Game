@@ -76,6 +76,9 @@
 -- Build 77
 - Added lots of textures
 
+-- Build 81
+- Texture has been added on top of preview rect
+
 ## Removed:
 -- Build 56
 - Shortened function arguments
@@ -163,6 +166,11 @@
 -- Build 76
 - Added checks to draw::DrawRect to colorId, it used to access invalid memory
 - WINFIX WENT UNSUCCESSFULY
+
+-- Build 81
+- Renamed customize folder to assets
+- Texture loading now uses Mikicrep Framework function
+- Fixed Preview rect color
 
 ## Notes:
 
