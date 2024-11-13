@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 			  << "Copyright Mikicrep Studios 2023-2024" << std::endl;
 
     // Main stuff
-    const std::string title = "Mikicrep | Build 80"; // Latest release 1.1
+    const std::string title = "Mikicrep | Build 81"; // Latest release 1.1
     core::MF_Window window = {};
     SDL_Event event = {};
 	bool debug = false;
@@ -78,10 +78,10 @@ int main(int argc, char **argv) {
 	SDL_SetWindowIcon(window.window, iconSurface);
 	SDL_FreeSurface(iconSurface);
 
-	if(debug) std::cout << "Init customize/background.png" << std::endl;
+	if(debug) std::cout << "Init assets/background.png" << std::endl;
 
 	// Load custom bg
-	SDL_Surface* backgroundSurface = IMG_Load("customize/background.png");
+	SDL_Surface* backgroundSurface = IMG_Load("assets/background.png");
 	SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(window.renderer, backgroundSurface);
 	SDL_FreeSurface(backgroundSurface);
 

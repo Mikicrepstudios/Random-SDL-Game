@@ -36,10 +36,11 @@ namespace inventory {
 
 			// Preview
 			draw::DrawRect(window.renderer, rects.previewRectb, colors::gray);
-			draw::DrawRect(window.renderer, rects.previewRect, colors::colorID[settings.blockColor]);
+			draw::DrawRect(window.renderer, rects.previewRect, colors::colorID[settings.blockColor - 1]);
+			draw::DrawTextureRect(window.renderer, rects.previewRect, blockTextures[settings.blockTextureId].texture);
 			draw::DrawText(window.renderer, window.font, rects.previewTextRect, "Preview", colors::white);
 
-			// BG Color
+			// Textures
 			draw::DrawRect(window.renderer, rects.textureIdRectb, colors::gray);
 			draw::DrawTextureRect(window.renderer, rects.textureIdRect, blockTextures[settings.blockTextureId].texture);
 			draw::DrawText(window.renderer, window.font, rects.textureIdTextRect, "Text. id", colors::white);
