@@ -25,6 +25,10 @@ $(shell mkdir -p $(OUT_DIR) $(OBJ_DIR))
 
 all: $(APP)
 
+# Open app
+open:
+	./output/app
+
 run: $(APP)
 	$<
 
@@ -46,6 +50,7 @@ windows: $(SRCS)
 windows32: $(SRCS)
 	@echo "You must have 'sdl2mingw32' folder."
 	i686-w64-mingw32-g++ $^ -o $(OUT_DIR)/app-x86.exe -I./miki-framework/ -I./source/headers -Isdl2mingw32/include/SDL2 -Lsdl2mingw32/lib -static-libstdc++ -static-libgcc -lmingw32 -lSDL2main -lSDL2_image -lSDL2_ttf -lSDL2_mixer -lSDL2
+
 
 # Clean output directories
 clean:
