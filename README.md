@@ -1,5 +1,5 @@
 # Random SDL Game
-#### Most random game I made where I just put most random features. Made using Mikicrep Framework
+#### Most random game I made where I just put most random features, made using Mikicrep Framework
 - by Mikicrep
 
 ### WINDOWS VERSION SOMEHOW BROKE, CONTACT ME IF YOU CAN HELP ME FIX IT
