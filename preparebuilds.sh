@@ -3,8 +3,8 @@
 echo "Deleting all files from ./releases folder"
 rm releases/*
 
-echo "Compiling app for all OSes"
-./allplatforms.sh
+#echo "Compiling app for all OSes"
+#./allplatforms.sh
 
 echo "Copying all assets to output folder"
 cp mf output -r
