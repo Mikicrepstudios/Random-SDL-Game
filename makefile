@@ -1,6 +1,7 @@
 # Compiler and flags
 CXX := g++
-CXXFLAGS := -std=c++17 -Wall -I/usr/include/SDL2 -I./miki-framework/ -I./source/headers -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+CXXFLAGS := -std=c++17 -Wall -I/usr/include/SDL2 -I./miki-framework/ -I./source/headers
+LDFLAGS := -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 # Paths
 SRC_DIR := source
@@ -9,12 +10,15 @@ OBJ_DIR := output/objects
 OUT_DIR := output
 APP := $(OUT_DIR)/app
 
-# Find source files (recursive with wildcards)
-SRCS := $(wildcard $(SRC_DIR)/**/**/*.cpp) $(wildcard $(FRAMEWORK_DIR)/**/**/*.cpp)
+# Recursive wildcard function
+rwildcard = $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter $(subst *,%,$2),$d))
+
+# Find all .cpp source files recursively
+SRCS := $(call rwildcard,$(SRC_DIR)/,*.cpp) $(call rwildcard,$(FRAMEWORK_DIR)/,*.cpp)
 OBJS := $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SRCS))
 
-# Create output folders automatically
-$(shell mkdir -p $(OUT_DIR) $(OBJ_DIR) $(OBJ_DIR)/$(SRC_DIR) $(OBJ_DIR)/$(FRAMEWORK_DIR))
+# Ensure output directories exist
+$(shell mkdir -p $(OUT_DIR) $(OBJ_DIR))
 
 # Rules
 .PHONY: all run clean windows windows32
@@ -26,7 +30,7 @@ run: $(APP)
 
 # Link all object files
 $(APP): $(OBJS)
-	$(CXX) $^ -o $@ $(CXXFLAGS)
+	$(CXX) $^ -o $@ $(CXXFLAGS) $(LDFLAGS)
 
 # Rule to compile each object
 $(OBJ_DIR)/%.o: %.cpp
