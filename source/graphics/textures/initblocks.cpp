@@ -23,5 +23,6 @@ namespace textures {
         blockTextures[12].texture = core::LoadImg(window.renderer, "assets/textures/blocks/lava.png");
         blockTextures[13].texture = core::LoadImg(window.renderer, "assets/textures/blocks/wool.png");
         blockTextures[14].texture = core::LoadImg(window.renderer, "assets/textures/blocks/leaves.png");
+        blockTextures[15].texture = core::LoadImg(window.renderer, "assets/textures/blocks/cactus.png");
     }
 }
