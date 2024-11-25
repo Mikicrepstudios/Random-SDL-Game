@@ -1,5 +1,5 @@
 # Random SDL Game
-#### Most random game/game engine I made where I just put most random features.
+#### Most random game I made where I just put most random features.
 - by Mikicrep
 
 ### WINDOWS VERSION SOMEHOW BROKE, CONTACT ME IF YOU CAN HELP ME FIX IT
