@@ -79,7 +79,7 @@
 -- Build 81
 - Texture has been added on top of preview rect
 
--- Build 83
+-- Build 84
 - Added cactus texture
 
 ## Removed:
