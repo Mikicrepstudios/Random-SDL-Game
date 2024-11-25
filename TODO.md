@@ -19,7 +19,6 @@
 - setblocktexture, getblocktexture cmds
 - add to place cmd texture argument
 - make debug thing that prints whole settings struct and maybe all others
-- Change all include SDLs to SDL.h
 - Change all <> sdl includes to ""
 - Autosave
 
