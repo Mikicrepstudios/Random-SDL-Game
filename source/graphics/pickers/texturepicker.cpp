@@ -1,5 +1,5 @@
 #include <string>
-#include "SDL2/SDL.h"
+#include "SDL.h"
 
 #include "mf/core.h"
 #include "mf/colors.h"
