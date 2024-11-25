@@ -1,4 +1,4 @@
-#include "SDL2/SDL.h"
+#include "SDL.h"
 
 namespace controls {
 	void PresetChooser(SDL_Event event, int &preset) {
