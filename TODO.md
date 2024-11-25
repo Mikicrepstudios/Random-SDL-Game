@@ -20,6 +20,7 @@
 - add to place cmd texture argument
 - make debug thing that prints whole settings struct and maybe all others
 - Autosave
+- Docs
 
 ### Thinking:
 - shadows
