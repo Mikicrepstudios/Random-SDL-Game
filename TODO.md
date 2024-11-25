@@ -22,7 +22,6 @@ if no then player cannot place blocks if yes player can, i need this to organize
 - make debug thing that prints whole settings struct and maybe all others
 - Change all include SDLs to SDL.h
 - Change all <> sdl includes to ""
-- Rename customize to assets folder
 - Autosave
 
 ### Thinking:
