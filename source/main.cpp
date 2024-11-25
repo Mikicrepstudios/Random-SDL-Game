@@ -31,11 +31,11 @@ int main(int argc, char **argv) {
               << "-------Ver: 1.3.0M--------------" << std::endl
               << "Copyright Mikicrep Studios 2024" << std::endl;
 	std::cout << "Random SDL Game" << std::endl
-			  << "Ver: DEV" << std::endl
+			  << "Ver: 2.0" << std::endl
 			  << "Copyright Mikicrep Studios 2023-2024" << std::endl;
 
     // Main stuff
-    const std::string title = "Mikicrep | Build 85"; // Latest release 1.1
+    const std::string title = "Mikicrep | Build 85"; // Latest release 2.0
     core::MF_Window window = {};
     SDL_Event event = {};
 	bool debug = false;
