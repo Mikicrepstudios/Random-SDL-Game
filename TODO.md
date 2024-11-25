@@ -4,7 +4,6 @@
 - Handle errors in executor instead in every command
 
 ### Planned:
-if no then player cannot place blocks if yes player can, i need this to organize code bit better
 - resize elements on window resize
 - Check whats causing when camera goes way too much down it goes back to beggining but keeping offset
 - Dialogues rects in dialogues cpp instead of main and inventory*
