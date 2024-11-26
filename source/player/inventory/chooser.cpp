@@ -10,7 +10,7 @@
 #include "textures.h"
 
 namespace inventory {
-    void Chooser(core::MF_Window &window, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::rects &rects) {
+    void Chooser(core::MF_Window &window, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects) {
 		if (window.event.type == SDL_MOUSEBUTTONDOWN) {
 			if (!settings.colorPicker && !settings.texturePicker) { // Checks if any color picker is active
 				// Solid

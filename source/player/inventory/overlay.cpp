@@ -10,7 +10,7 @@
 #include "textures.h"
 
 namespace inventory {
-	void Overlay(core::MF_Window &window, game::Settings settings, inventory::rects &rects, textures::BlockTextures blockTextures[32]) {
+	void Overlay(core::MF_Window &window, game::Settings settings, inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects, textures::BlockTextures blockTextures[32]) {
 		// Define variables
 		int colorR, colorG, colorB = 0;
 
