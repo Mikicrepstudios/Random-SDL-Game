@@ -10,7 +10,17 @@
 #include "textures.h"
 
 namespace inventory {
-    struct rects {
+    struct MenuRects {
+        SDL_Rect previewRect = {};
+        SDL_Rect previewRectb = {};
+        SDL_Rect previewTextRect = {};
+
+        SDL_Rect bgGameplay = {};
+        SDL_Rect gameplayTextRect = {};
+        SDL_Rect bgGame = {};
+        SDL_Rect gameTextRect = {};
+    };
+    struct ColorRects {
         SDL_Rect colorRect = {};
         SDL_Rect colorRectb = {};
         SDL_Rect colorTextRect = {};
@@ -22,48 +32,51 @@ namespace inventory {
         SDL_Rect playerColorRect = {};
         SDL_Rect playerColorRectb = {};
         SDL_Rect playerColorTextRect = {};
-
-        SDL_Rect textureColorRect = {};
-        SDL_Rect textureColorRectb = {};
-        SDL_Rect textureColorTextRect = {};
-
-        SDL_Rect previewRect = {};
-        SDL_Rect previewRectb = {};
-        SDL_Rect previewTextRect = {};
-
+    };
+    struct DecalRects {
         SDL_Rect textureIdRect = {};
         SDL_Rect textureIdRectb = {};
         SDL_Rect textureIdTextRect = {};
+    };
+    struct GameplayRects {
+        SDL_Rect camTpRect = {};
+        SDL_Rect playerTpRect = {};
+    };
+    struct GameRects {
+        SDL_Rect saveRect = {};
+        SDL_Rect loadRect = {};
+        SDL_Rect gameInfoRect = {};
+        SDL_Rect exitRect = {};
+    };
+    struct OtherRects {
+        /*SDL_Rect textureColorRect = {};
+        SDL_Rect textureColorRectb = {};
+        SDL_Rect textureColorTextRect = {};*/
 
         SDL_Rect solidRect = {};
         SDL_Rect solidRectb = {};
         SDL_Rect solidTextRect = {};
 
-        SDL_Rect bgGameplay = {};
-        SDL_Rect gameplayTextRect = {};
-        SDL_Rect camTpRect = {};
-        SDL_Rect playerTpRect = {};
-        SDL_Rect bgGame = {};
-        SDL_Rect gameTextRect = {};
-        SDL_Rect saveRect = {};
-        SDL_Rect loadRect = {};
-        SDL_Rect gameInfoRect = {};
-        SDL_Rect exitRect = {};
         SDL_Rect presetRect = {};
         SDL_Rect presetTextRect = {};
         SDL_Rect presetTitleRect = {};
     };
 
-    rects InitRects(core::MF_Window &window);
+    MenuRects InitMenuRects(core::MF_Window &window);
+    ColorRects InitColorRects(core::MF_Window &window);
+    DecalRects InitDecalRects(core::MF_Window &window);
+    GameplayRects InitGameplayRects(core::MF_Window &window);
+    GameRects InitGameRects(core::MF_Window &window);
+    OtherRects InitOtherRects(core::MF_Window &window);
 
     // Handle pressing E
     void Event(SDL_Event event, game::Settings &settings);
 
     // Handle mouse clicks
-	void Chooser(core::MF_Window &window, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::rects &rects);
+	void Chooser(core::MF_Window &window, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects);
 
     // Draw UI
-    void Overlay(core::MF_Window &window, game::Settings settings, inventory::rects &rects, textures::BlockTextures blockTextures[32]);
+    void Overlay(core::MF_Window &window, game::Settings settings, inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects, textures::BlockTextures blockTextures[32]);
 }
 
 #endif
