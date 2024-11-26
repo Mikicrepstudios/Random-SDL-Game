@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
               << "-------Ver: 1.3.0M--------------" << std::endl
               << "Copyright Mikicrep Studios 2024" << std::endl;
 	std::cout << "Random SDL Game" << std::endl
-			  << "Ver: 2.0" << std::endl
+			  << "Ver: DEV" << std::endl
 			  << "Copyright Mikicrep Studios 2023-2024" << std::endl;
 
     // Main stuff
