@@ -14,14 +14,13 @@ namespace inventory {
 		rects.gameplayTextRect    = {150,                         window.height - 210, 200, 50 };
 		rects.bgGame              = {window.width - 465,     window.height - 215, 420, 170};
 		rects.gameTextRect        = {window.width - 360,     window.height - 210, 200, 50 };
-	}
-    rects InitRects(core::MF_Window &window) {
-		// widthFactor and heightFactor // TODO //
-		/*float wFactor = sdlSettings.width / 1280;
-		float hFactor = sdlSettings.height / 800;*/
 
-		rects rects = {};
-		// Name                     X Offset                      Y Offset                 Width Height
+		return rects;
+	}
+
+	ColorRects InitColorRects(core::MF_Window &window) {
+		ColorRects rects = {};
+
 		rects.colorRect           = {50,                          50,                       80,  80 };
 		rects.colorRectb          = {45,                          45,                       90,  90 };
 		rects.colorTextRect       = {50,                          140,                      80,  40 };
@@ -34,27 +33,56 @@ namespace inventory {
 		rects.playerColorRectb    = {45,                          195,                      90,  90 };
 		rects.playerColorTextRect = {50,                          290,                      80,  40 };
 
-		// TODO SET THEESE WHEN NEEDED
-		rects.textureColorRect    = {window.width - 130,     50,                       80,  80 };
-		rects.textureColorRectb   = {window.width - 135,     45,                       90,  90 };
-		rects.textureColorTextRect= {window.width - 130,     140,                      80,  40 };
+		return rects;
+	}
 
-		
+	DecalRects InitDecalRects(core::MF_Window &window) {
+		DecalRects rects = {};
 
 		rects.textureIdRect       = {window.width - 130,     50,                       80,  80 };
 		rects.textureIdRectb      = {window.width - 135,     45,                       90,  90 };
 		rects.textureIdTextRect   = {window.width - 130,     140,                      80,  40 };
 
-        rects.solidRect           = {50,                          window.height - 355, 80,  80 };
-        rects.solidRectb          = {45,                          window.height - 360, 90,  90 };
-        rects.solidTextRect       = {50,                          window.height - 260, 80,  40 };
+		return rects;
+	}
+	GameplayRects InitGameplayRects(core::MF_Window &window) {
+		GameplayRects rects = {};
 
 		rects.camTpRect           = {50,                          window.height - 160, 200, 50 };
 		rects.playerTpRect        = {50,                          window.height - 100, 200, 50 };
+
+		return rects;
+	}
+	GameRects InitGameRects(core::MF_Window &window) {
+		GameRects rects = {};
+
 		rects.saveRect            = {window.width - 460,     window.height - 160, 200, 50 };
 		rects.loadRect            = {window.width - 460,     window.height - 100, 200, 50 };
 		rects.gameInfoRect        = {window.width - 250,     window.height - 160, 200, 50 };
 		rects.exitRect            = {window.width - 250,     window.height - 100, 200, 50 };
+
+		return rects;
+	}
+    OtherRects InitOtherRects(core::MF_Window &window) {
+		// widthFactor and heightFactor // TODO //
+		/*float wFactor = sdlSettings.width / 1280;
+		float hFactor = sdlSettings.height / 800;*/
+
+		OtherRects rects = {};
+		// Name                     X Offset                      Y Offset                 Width Height
+
+		// TODO SET THEESE WHEN NEEDED
+		/*rects.textureColorRect    = {window.width - 130,     50,                       80,  80 };
+		rects.textureColorRectb   = {window.width - 135,     45,                       90,  90 };
+		rects.textureColorTextRect= {window.width - 130,     140,                      80,  40 };*/
+
+		
+
+
+        rects.solidRect           = {50,                          window.height - 355, 80,  80 };
+        rects.solidRectb          = {45,                          window.height - 360, 90,  90 };
+        rects.solidTextRect       = {50,                          window.height - 260, 80,  40 };
+
 		rects.presetRect          = {window.width / 2 - 85,  window.height - 160, 170, 115};
 		rects.presetTextRect      = {window.width / 2 - 40,  window.height - 160, 80,  115};
 		rects.presetTitleRect     = {window.width / 2 - 115, window.height - 215, 230, 50 };
