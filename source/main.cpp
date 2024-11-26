@@ -62,8 +62,15 @@ int main(int argc, char **argv) {
 	// Prepare game
 	// Initilize structs
 	if(debug) std::cout << "Start preparing game : Initilizing structs" << std::endl;
-	inventory::rects inventoryRects = inventory::InitRects(window);
 	dialogues::rects dialoguesRects = dialogues::InitRects(window);
+
+	// Inv rects
+	inventory::MenuRects inventoryMenuRects = inventory::InitMenuRects(window);
+	inventory::ColorRects inventoryColorRects = inventory::InitColorRects(window);
+	inventory::DecalRects inventoryDecalRects = inventory::InitDecalRects(window);
+	inventory::GameplayRects inventoryGameplayRects = inventory::InitGameplayRects(window);
+	inventory::GameRects inventoryGameRects = inventory::InitGameRects(window);
+	inventory::OtherRects inventoryOtherRects = inventory::InitOtherRects(window);
 
 
 	// Textures
@@ -117,8 +124,15 @@ int main(int argc, char **argv) {
                     window.height = event.window.data2;
 
 					// Update rects
-					inventoryRects = inventory::InitRects(window);
 					dialoguesRects = dialogues::InitRects(window);
+
+					// Inv rects
+					inventoryMenuRects = inventory::InitMenuRects(window);
+					inventoryColorRects = inventory::InitColorRects(window);
+					inventoryDecalRects = inventory::InitDecalRects(window);
+					inventoryGameplayRects = inventory::InitGameplayRects(window);
+					inventoryGameRects = inventory::InitGameRects(window);
+					inventoryOtherRects = inventory::InitOtherRects(window);
                 }
 			}
 
