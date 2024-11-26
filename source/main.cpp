@@ -226,7 +226,7 @@ int main(int argc, char **argv) {
 
 			if(settings.canPlayerPlace == true) mouse::Event(window, game, settings, map, cam, preset);
 
-			if(settings.inventory) inventory::Chooser(window, settings, map, player, cam, preset, inventoryRects);
+			if(settings.inventory) inventory::Chooser(window, settings, map, player, cam, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
 			}
 
 		// Set BG color to new color
@@ -244,7 +244,7 @@ int main(int argc, char **argv) {
 		game::RenderMap(window, settings, map, cam, blockTextures);
 
 		// Overlays
-		inventory::Overlay(window, settings, inventoryRects, blockTextures);
+		inventory::Overlay(window, settings, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects, blockTextures);
 		mouse::Overlay(window, game, settings, map, cam);
 
 		// Game info
