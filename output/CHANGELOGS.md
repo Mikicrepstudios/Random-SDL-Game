@@ -5,6 +5,7 @@
 ## Removed:
 
 ## Changed/Fixed:
+- InventoryRects are split now in 6 different rects
 
 ## Notes:
 
