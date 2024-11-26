@@ -20,73 +20,73 @@ namespace inventory {
 			draw::DrawRect(window.renderer, bgRect, colors::darkgray);
 
 			// Color
-			draw::DrawRect(window.renderer, rects.colorRectb, colors::gray);
-			draw::DrawRect(window.renderer, rects.colorRect, colors::colorID[settings.blockColor - 1]);
-			draw::DrawText(window.renderer, window.font, rects.colorTextRect, "Block", colors::white);
+			draw::DrawRect(window.renderer, colorRects.colorRectb, colors::gray);
+			draw::DrawRect(window.renderer, colorRects.colorRect, colors::colorID[settings.blockColor - 1]);
+			draw::DrawText(window.renderer, window.font, colorRects.colorTextRect, "Block", colors::white);
 
 			// BG Color
-			draw::DrawRect(window.renderer, rects.bgColorRectb, colors::gray);
-			draw::DrawRect(window.renderer, rects.bgColorRect, colors::colorID[settings.bgColor - 1]);
-			draw::DrawText(window.renderer, window.font, rects.bgColorTextRect, "BG", colors::white);
+			draw::DrawRect(window.renderer, colorRects.bgColorRectb, colors::gray);
+			draw::DrawRect(window.renderer, colorRects.bgColorRect, colors::colorID[settings.bgColor - 1]);
+			draw::DrawText(window.renderer, window.font, colorRects.bgColorTextRect, "BG", colors::white);
 
 			// Player Color
-			draw::DrawRect(window.renderer, rects.playerColorRectb, colors::gray);
-			draw::DrawRect(window.renderer, rects.playerColorRect, colors::colorID[settings.playerColor - 1]);
-			draw::DrawText(window.renderer, window.font, rects.playerColorTextRect, "Player", colors::white);
+			draw::DrawRect(window.renderer, colorRects.playerColorRectb, colors::gray);
+			draw::DrawRect(window.renderer, colorRects.playerColorRect, colors::colorID[settings.playerColor - 1]);
+			draw::DrawText(window.renderer, window.font, colorRects.playerColorTextRect, "Player", colors::white);
 
 			// Preview
-			draw::DrawRect(window.renderer, rects.previewRectb, colors::gray);
-			draw::DrawRect(window.renderer, rects.previewRect, colors::colorID[settings.blockColor - 1]);
-			draw::DrawTextureRect(window.renderer, rects.previewRect, blockTextures[settings.blockTextureId].texture);
-			draw::DrawText(window.renderer, window.font, rects.previewTextRect, "Preview", colors::white);
+			draw::DrawRect(window.renderer, menuRects.previewRectb, colors::gray);
+			draw::DrawRect(window.renderer, menuRects.previewRect, colors::colorID[settings.blockColor - 1]);
+			draw::DrawTextureRect(window.renderer, menuRects.previewRect, blockTextures[settings.blockTextureId].texture);
+			draw::DrawText(window.renderer, window.font, menuRects.previewTextRect, "Preview", colors::white);
 
 			// Textures
-			draw::DrawRect(window.renderer, rects.textureIdRectb, colors::gray);
-			draw::DrawTextureRect(window.renderer, rects.textureIdRect, blockTextures[settings.blockTextureId].texture);
-			draw::DrawText(window.renderer, window.font, rects.textureIdTextRect, "Text. id", colors::white);
+			draw::DrawRect(window.renderer, decalRects.textureIdRectb, colors::gray);
+			draw::DrawTextureRect(window.renderer, decalRects.textureIdRect, blockTextures[settings.blockTextureId].texture);
+			draw::DrawText(window.renderer, window.font, decalRects.textureIdTextRect, "Text. id", colors::white);
 
 			// Solid
-			draw::DrawRect(window.renderer, rects.solidRectb, colors::gray);
-			if(settings.placeSolidBlocks) draw::DrawRect(window.renderer, rects.solidRect, colors::lightgreen);
-			else draw::DrawRect(window.renderer, rects.solidRect, colors::red);
-			draw::DrawText(window.renderer, window.font, rects.solidTextRect, "Solid", colors::white);
+			draw::DrawRect(window.renderer, otherRects.solidRectb, colors::gray);
+			if(settings.placeSolidBlocks) draw::DrawRect(window.renderer, otherRects.solidRect, colors::lightgreen);
+			else draw::DrawRect(window.renderer, otherRects.solidRect, colors::red);
+			draw::DrawText(window.renderer, window.font, otherRects.solidTextRect, "Solid", colors::white);
 			
 			// Presets
-			draw::DrawRect(window.renderer, rects.presetRect, colors::gray);
-			draw::DrawText(window.renderer, window.font, rects.presetTextRect, std::to_string(settings.curPreset + 1).c_str(), colors::white);
-			draw::DrawText(window.renderer, window.font, rects.presetTitleRect, "Presets", colors::white);
+			draw::DrawRect(window.renderer, otherRects.presetRect, colors::gray);
+			draw::DrawText(window.renderer, window.font, otherRects.presetTextRect, std::to_string(settings.curPreset + 1).c_str(), colors::white);
+			draw::DrawText(window.renderer, window.font, otherRects.presetTitleRect, "Presets", colors::white);
 
 			// Backgrounds
-			draw::DrawRect(window.renderer, rects.bgGameplay, colors::gray);
-			draw::DrawRect(window.renderer, rects.bgGame, colors::gray);
+			draw::DrawRect(window.renderer, menuRects.bgGameplay, colors::gray);
+			draw::DrawRect(window.renderer, menuRects.bgGame, colors::gray);
 
 			// Titles
-			draw::DrawText(window.renderer, window.font, rects.gameplayTextRect, "Gameplay", colors::white);
-			draw::DrawText(window.renderer, window.font, rects.gameTextRect, "Game", colors::white);
+			draw::DrawText(window.renderer, window.font, menuRects.gameplayTextRect, "Gameplay", colors::white);
+			draw::DrawText(window.renderer, window.font, menuRects.gameTextRect, "Game", colors::white);
 
 			// Camtp button
-			draw::DrawButton(window.renderer, rects.camTpRect, colors::aqua, window.mouseX, window.mouseY);
-			draw::DrawText(window.renderer, window.font, rects.camTpRect, "Cam TP", colors::white);
+			draw::DrawButton(window.renderer, gameplayRects.camTpRect, colors::aqua, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, gameplayRects.camTpRect, "Cam TP", colors::white);
 
 			// Playertp button
-			draw::DrawButton(window.renderer, rects.playerTpRect, colors::aqua, window.mouseX, window.mouseY);
-			draw::DrawText(window.renderer, window.font, rects.playerTpRect, "Player TP", colors::white);
+			draw::DrawButton(window.renderer, gameplayRects.playerTpRect, colors::aqua, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, gameplayRects.playerTpRect, "Player TP", colors::white);
 
 			// Save button
-			draw::DrawButton(window.renderer, rects.saveRect, colors::lightgreen, window.mouseX, window.mouseY);
-			draw::DrawText(window.renderer, window.font, rects.saveRect, "Save", colors::white);
+			draw::DrawButton(window.renderer, gameRects.saveRect, colors::lightgreen, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, gameRects.saveRect, "Save", colors::white);
 
 			// Gameinfo button
-			draw::DrawButton(window.renderer, rects.gameInfoRect, colors::darkgray, window.mouseX, window.mouseY);
-			draw::DrawText(window.renderer, window.font, rects.gameInfoRect, "Game Info", colors::white);
+			draw::DrawButton(window.renderer, gameRects.gameInfoRect, colors::darkgray, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, gameRects.gameInfoRect, "Game Info", colors::white);
 
 			// Load button
-			draw::DrawButton(window.renderer, rects.loadRect, colors::indigo, window.mouseX, window.mouseY);
-			draw::DrawText(window.renderer, window.font, rects.loadRect, "Load", colors::white);
+			draw::DrawButton(window.renderer, gameRects.loadRect, colors::indigo, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, gameRects.loadRect, "Load", colors::white);
 
 			// Exit button
-			draw::DrawButton(window.renderer, rects.exitRect, colors::red, window.mouseX, window.mouseY);
-			draw::DrawText(window.renderer, window.font, rects.exitRect, "Exit", colors::white);
+			draw::DrawButton(window.renderer, gameRects.exitRect, colors::red, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, gameRects.exitRect, "Exit", colors::white);
 
 			// Color pickers
 			if(settings.colorPicker && settings.colorPickerId == 1)
