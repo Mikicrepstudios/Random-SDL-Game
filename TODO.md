@@ -2,6 +2,7 @@
 
 ### Very soon:
 - Handle errors in executor instead in every command
+- Better SDL header for header files
 
 ### Planned:
 - resize elements on window resize
@@ -21,7 +22,6 @@
 - make debug thing that prints whole settings struct and maybe all others
 - Autosave
 - Docs
-- Better SDL header for header files
 
 ### Thinking:
 - shadows
