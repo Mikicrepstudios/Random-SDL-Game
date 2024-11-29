@@ -227,7 +227,7 @@ int main(int argc, char **argv) {
 			if(settings.canPlayerPlace == true) mouse::Event(window, game, settings, map, cam, preset);
 
 			std::cout << "Running inventory function" << std::endl;
-			if(settings.inventory) inventory::Chooser(window, settings, map, player, cam, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
+			if(settings.inventory) inventory::Chooser(window, settings, player, cam, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
 			std::cout << "Finished running inventory function :D" << std::endl;
 			}
 
