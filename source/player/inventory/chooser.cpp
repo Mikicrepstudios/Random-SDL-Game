@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "mf/core.h"
 #include "mf/logic.h"
 
@@ -10,7 +12,7 @@
 #include "textures.h"
 
 namespace inventory {
-    void Chooser(core::MF_Window &window, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &camera, game::Preset (&preset)[10], inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects) {
+    void Chooser(core::MF_Window &window, game::Settings &settings, game::Player &player, game::Camera &camera, game::Preset preset[10], inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects) {
 		if (window.event.type == SDL_MOUSEBUTTONDOWN) {
 			if (!settings.colorPicker && !settings.texturePicker) { // Checks if any color picker is active
 				// Solid
@@ -32,16 +34,17 @@ namespace inventory {
 				}
 
 				// Game
-				// Save
+				// SAVE AND LOAD HAS BEEN DISABLED IN INVENTORY (maybe permamently)
+				/*// Save
 				if(logic::IsMouseTouching(window.mouseX, window.mouseY, gameRects.saveRect)) {
-					files::SaveMap(map);
+					//files::SaveMap(map);
 					files::SaveSettings(settings, player, camera);
 				}
 				// Load
 				else if(logic::IsMouseTouching(window.mouseX, window.mouseY, gameRects.loadRect)) {
-					files::LoadMap(map);
+					//files::LoadMap(map);
 					files::LoadSettings(settings, player, camera, preset);
-				}
+				}*/
 				// Game Info
 				else if(logic::IsMouseTouching(window.mouseX, window.mouseY, gameRects.gameInfoRect))
 					settings.gameInfo = !settings.gameInfo;

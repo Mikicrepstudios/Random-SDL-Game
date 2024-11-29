@@ -72,17 +72,17 @@ namespace inventory {
 			draw::DrawButton(window.renderer, gameplayRects.playerTpRect, colors::aqua, window.mouseX, window.mouseY);
 			draw::DrawText(window.renderer, window.font, gameplayRects.playerTpRect, "Player TP", colors::white);
 
-			// Save button
+			/*// Save button
 			draw::DrawButton(window.renderer, gameRects.saveRect, colors::lightgreen, window.mouseX, window.mouseY);
-			draw::DrawText(window.renderer, window.font, gameRects.saveRect, "Save", colors::white);
+			draw::DrawText(window.renderer, window.font, gameRects.saveRect, "Save", colors::white);*/
 
 			// Gameinfo button
 			draw::DrawButton(window.renderer, gameRects.gameInfoRect, colors::darkgray, window.mouseX, window.mouseY);
 			draw::DrawText(window.renderer, window.font, gameRects.gameInfoRect, "Game Info", colors::white);
 
 			// Load button
-			draw::DrawButton(window.renderer, gameRects.loadRect, colors::indigo, window.mouseX, window.mouseY);
-			draw::DrawText(window.renderer, window.font, gameRects.loadRect, "Load", colors::white);
+			/*draw::DrawButton(window.renderer, gameRects.loadRect, colors::indigo, window.mouseX, window.mouseY);
+			draw::DrawText(window.renderer, window.font, gameRects.loadRect, "Load", colors::white);*/
 
 			// Exit button
 			draw::DrawButton(window.renderer, gameRects.exitRect, colors::red, window.mouseX, window.mouseY);
