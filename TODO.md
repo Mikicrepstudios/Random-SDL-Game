@@ -23,6 +23,7 @@
 - Autosave
 - Docs
 - Colorpicker, texturepicker, overlay got textcolor var
+- Inv overlay got colorRGB vars
 
 ### Thinking:
 - shadows
