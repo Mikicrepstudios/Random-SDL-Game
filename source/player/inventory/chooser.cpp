@@ -34,7 +34,8 @@ namespace inventory {
 				}
 
 				// Game
-				// Save
+				// SAVE AND LOAD HAS BEEN DISABLED IN INVENTORY (maybe permamently)
+				/*// Save
 				if(logic::IsMouseTouching(window.mouseX, window.mouseY, gameRects.saveRect)) {
 					//files::SaveMap(map);
 					files::SaveSettings(settings, player, camera);
@@ -43,7 +44,7 @@ namespace inventory {
 				else if(logic::IsMouseTouching(window.mouseX, window.mouseY, gameRects.loadRect)) {
 					//files::LoadMap(map);
 					files::LoadSettings(settings, player, camera, preset);
-				}
+				}*/
 				// Game Info
 				else if(logic::IsMouseTouching(window.mouseX, window.mouseY, gameRects.gameInfoRect))
 					settings.gameInfo = !settings.gameInfo;
