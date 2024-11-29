@@ -22,6 +22,7 @@
 - make debug thing that prints whole settings struct and maybe all others
 - Autosave
 - Docs
+- Colorpicker, texturepicker, overlay got textcolor var
 
 ### Thinking:
 - shadows
