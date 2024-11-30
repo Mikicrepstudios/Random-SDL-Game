@@ -2,7 +2,6 @@
 
 ### Very soon:
 - Handle errors in executor instead in every command
-- Better SDL header for header files
 
 ### Planned:
 - resize elements on window resize
