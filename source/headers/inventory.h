@@ -1,7 +1,7 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-#include <SDL2/SDL.h>
+#include "SDL.h"
 
 #include "mf/core.h"
 
