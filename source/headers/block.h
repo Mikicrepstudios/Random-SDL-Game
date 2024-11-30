@@ -1,5 +1,4 @@
-#ifndef BLOCK_H_INCLUDED
-#define BLOCK_H_INCLUDED
+#pragma once
 
 // Type
 /*
@@ -17,5 +16,3 @@ struct Block {
 	// Properties
 	bool isSolid = true; // Can player pass thru it?
 };
-
-#endif
