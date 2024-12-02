@@ -7,6 +7,12 @@
 
 namespace commands {
     int SetBlockColor(std::string args, int argsCount, game::Settings &settings, game::Preset preset[10]) {
+        /**
+         * @brief Function for SetBlockColor command
+         * @param args Command arguments
+         * @param argsCount Amount of command arguments
+         * @param settings Place where is block color located
+         */
         if(argsCount == 0) {
             std::cout << "Not enough arguments" << std::endl;
             
