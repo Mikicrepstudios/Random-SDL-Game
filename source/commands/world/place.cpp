@@ -6,6 +6,13 @@
 
 namespace commands {
     int Place(std::string args, int argsCount, game::Settings settings, game::Map &map) {
+        /**
+         * @brief Function for Place command
+         * @param args Command arguments
+         * @param argsCount Amount of command arguments
+         * @param settings Game settings
+         * @param map Game map
+         */
         // Empty command
         if(argsCount == 0 || argsCount == 1) {
             std::cout << "Not enough arguments" << std::endl;
