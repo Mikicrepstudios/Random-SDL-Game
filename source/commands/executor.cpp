@@ -10,6 +10,14 @@
 
 namespace commands {
     void Executor(std::string command, core::MF_Window &window, game::Settings &settings, game::Map &map, game::Preset preset[10]) {
+        /**
+         * @brief Function that is used to execute game commands
+         * @param command Whole command including arguments
+         * @param window Game window
+         * @param settings Game settings
+         * @param map Game map
+         * @param preset All player presets
+         */
         int status = 0;
         size_t pos = command.find(' ');
 
