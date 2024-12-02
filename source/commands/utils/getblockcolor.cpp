@@ -7,7 +7,7 @@
 namespace commands {
     int GetBlockColor(std::string args, int argsCount, game::Map map) {
         /**
-         * @brief Function for GetBGColor command
+         * @brief Function for GetBlockColor command
          * @param args Command arguments
          * @param argsCount Amount of command arguments
          * @param map Game map
