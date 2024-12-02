@@ -6,6 +6,12 @@
 
 namespace commands {
     int Destroy(std::string args, int argsCount, game::Map &map) {
+        /**
+         * @brief Function for Destroy command
+         * @param args Command arguments
+         * @param argsCount Amount of command arguments
+         * @param map Game map
+         */
         // Empty command
         if(argsCount == 0 || argsCount == 1) {
             std::cout << "Not enough arguments" << std::endl;
