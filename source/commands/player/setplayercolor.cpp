@@ -7,6 +7,12 @@
 
 namespace commands {
     int SetPlayerColor(std::string args, int argsCount, game::Settings &settings) {
+        /**
+         * @brief Function for SetPlayerColor command
+         * @param args Command arguments
+         * @param argsCount Amount of command arguments
+         * @param settings Place where is player color located
+         */
         if(argsCount == 0) {
             std::cout << "Not enough arguments" << std::endl;
             
