@@ -7,6 +7,12 @@
 
 namespace commands {
     int SetBGColor(std::string args, int argsCount, game::Settings &settings) {
+        /**
+         * @brief Function for SetBGColor command
+         * @param args Command arguments
+         * @param argsCount Amount of command arguments
+         * @param settings Place where is BG color located
+         */
         if(argsCount == 0) {
             std::cout << "Not enough arguments" << std::endl;
             
