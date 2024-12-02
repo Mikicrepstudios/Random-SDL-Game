@@ -11,7 +11,7 @@ namespace commands {
          * @brief Function for SetBlockColor command
          * @param args Command arguments
          * @param argsCount Amount of command arguments
-         * @param settings Place where is block color located
+         * @param settings Game settings
          */
         if(argsCount == 0) {
             std::cout << "Not enough arguments" << std::endl;
