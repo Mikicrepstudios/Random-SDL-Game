@@ -4,6 +4,11 @@
 
 namespace dialogues {
     rects InitRects(core::MF_Window &window) {
+        /**
+         * @brief This function initilizes dialogue rects
+         * @param window Game window
+         */
+        
         rects rects = {};
         // Name                    X Offset                     Y Offset                    Width Height
         rects.backgroundRect = {window.width / 2 - 300, window.height / 2 - 100, 600, 200};
