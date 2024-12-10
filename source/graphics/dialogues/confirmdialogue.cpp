@@ -11,6 +11,12 @@
 
 namespace dialogues {
 	int ConfirmDialogueEvent(core::MF_Window &window, rects dialoguesRects) {
+        /**
+         * @brief This function checks when user presses confirm button in dialogue
+         * @param window Game window
+         * @param dialoguesRects All dialgoue rects
+         */
+
         if (window.event.type == SDL_MOUSEBUTTONDOWN) {
             if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, dialoguesRects.yesRect)) return 2;
             else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, dialoguesRects.otherYesRect)) return 3; // Save and exit
@@ -20,6 +26,13 @@ namespace dialogues {
 	}
 
     bool ConfirmDialogue(core::MF_Window &window, game::Settings settings, rects dialoguesRects) {
+        /**
+         * @brief This function draws dialgoue and closes when cancel is hovered
+         * @param window Game window
+         * @param settings Game settings
+         * @param dialoguesRects All dialgoue rects
+         */
+
         const char* titleText = "";
         const char* descText = "You will loose any unsaved progress.";
 
