@@ -1,0 +1,66 @@
+\doxysection{textures Namespace Reference}
+\hypertarget{namespacetextures}{}\label{namespacetextures}\index{textures@{textures}}
+
+
+Namespace that contains all stuff related to game textures.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtextures_1_1BlockTextures}{Block\+Textures}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacetextures_a11b0a9c5b442953cdc6b891446d1eddd}{Picker\+Event}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings)
+\item 
+void \mbox{\hyperlink{namespacetextures_a254afc35f4e14a3e75e01bb20ab59943}{Picker\+Overlay}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structtextures_1_1BlockTextures}{textures\+::\+Block\+Textures}} block\+Textures\mbox{[}32\mbox{]})
+\item 
+void \mbox{\hyperlink{namespacetextures_a2dbd6b94910954b5ff83fb6c225b90b5}{init\+Blocks}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structtextures_1_1BlockTextures}{Block\+Textures}} block\+Textures\mbox{[}32\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Namespace that contains all stuff related to game textures. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetextures_a2dbd6b94910954b5ff83fb6c225b90b5}\index{textures@{textures}!initBlocks@{initBlocks}}
+\index{initBlocks@{initBlocks}!textures@{textures}}
+\doxysubsubsection{\texorpdfstring{initBlocks()}{initBlocks()}}
+{\footnotesize\ttfamily \label{namespacetextures_a2dbd6b94910954b5ff83fb6c225b90b5} 
+void textures\+::init\+Blocks (\begin{DoxyParamCaption}\item[{core\+::\+MF\+\_\+\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{structtextures_1_1BlockTextures}{Block\+Textures}}}]{block\+Textures}{\mbox{[}32\mbox{]}}\end{DoxyParamCaption})}
+
+This function loads all textures into specified variable 
+\begin{DoxyParams}{Parameters}
+{\em window} & Game window \\
+\hline
+{\em block\+Textures} & Variable that will get all textures loaded into\\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacetextures_a11b0a9c5b442953cdc6b891446d1eddd}\index{textures@{textures}!PickerEvent@{PickerEvent}}
+\index{PickerEvent@{PickerEvent}!textures@{textures}}
+\doxysubsubsection{\texorpdfstring{PickerEvent()}{PickerEvent()}}
+{\footnotesize\ttfamily \label{namespacetextures_a11b0a9c5b442953cdc6b891446d1eddd} 
+int textures\+::\+Picker\+Event (\begin{DoxyParamCaption}\item[{core\+::\+MF\+\_\+\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&}]{settings}{}\end{DoxyParamCaption})}
+
+This function checks when and which texture is selected from texture picker 
+\begin{DoxyParams}{Parameters}
+{\em window} & Game window \\
+\hline
+{\em settings} & Game settings\\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacetextures_a254afc35f4e14a3e75e01bb20ab59943}\index{textures@{textures}!PickerOverlay@{PickerOverlay}}
+\index{PickerOverlay@{PickerOverlay}!textures@{textures}}
+\doxysubsubsection{\texorpdfstring{PickerOverlay()}{PickerOverlay()}}
+{\footnotesize\ttfamily \label{namespacetextures_a254afc35f4e14a3e75e01bb20ab59943} 
+void textures\+::\+Picker\+Overlay (\begin{DoxyParamCaption}\item[{core\+::\+MF\+\_\+\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{structtextures_1_1BlockTextures}{textures\+::\+Block\+Textures}}}]{block\+Textures}{\mbox{[}32\mbox{]}}\end{DoxyParamCaption})}
+
+This function draws texture picker overlay 
+\begin{DoxyParams}{Parameters}
+{\em window} & Game window \\
+\hline
+{\em block\+Textures} & All block textures\\
+\hline
+\end{DoxyParams}

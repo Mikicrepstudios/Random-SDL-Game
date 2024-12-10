@@ -1,0 +1,80 @@
+\doxysection{settings.\+h}
+\hypertarget{settings_8h_source}{}\label{settings_8h_source}\index{source/headers/settings.h@{source/headers/settings.h}}
+\mbox{\hyperlink{settings_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}SDL.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}SDL\_ttf.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{block_8h}{block.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Already\ documented\ in\ game.h}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegame}{game}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgame_1_1Game}{Game}}\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgame_1_1Game_aed8177f5b620c19a6084bdafe727a68c}{cliInput}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Game_a025ef94afef853ca32df10e49a81323c}{curHoverX}}\ =\ 0;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Game_a6442b4762dac0fb48d7cd9b321b25bb5}{curHoverY}}\ =\ 0;}
+\DoxyCodeLine{00015\ \ \ \ \ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgame_1_1Settings}{Settings}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Player\ settings}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Settings_accde0402bc1db595886c2a8cd05f7b14}{curPreset}}\ =\ 0;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Settings_addbf1e8cf89d5212284aeb748218dcea}{blockColor}}\ =\ 1;\ \textcolor{comment}{//\ Updates\ every\ frame}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Settings_a834b102f2e9138b6255af469e4336757}{blockTextureId}}\ =\ 0;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Settings_a360c15911323ad7859547bd7dcc0cfd4}{bgColor}}\ =\ 1;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Settings_ab298b5430151f8905aa9bc2dd302a496}{playerColor}}\ =\ 6;\ \textcolor{comment}{//\ Write\ here\ to\ update}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bools}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgame_1_1Settings_a0698c791498835d5b27577e34e788739}{canPlayerPlace}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgame_1_1Settings_a27e2ba8f5a8c507d469ddbe74419c98d}{placeSolidBlocks}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Event\ settings}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceinventory}{inventory}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pickers}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Settings_a470b04a3ba560f9b8cf9dbaa6b367ccb}{colorPickerId}}\ =\ 0;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgame_1_1Settings_a444cef7a920057b38f55ceca0afa7d33}{colorPicker}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgame_1_1Settings_a133f70bdb53c20c9a05ba098b84fb181}{texturePicker}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dialogues}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Settings_ab7911b94a77741c93d9611c6de349f1e}{dialogueId}}\ =\ 0;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgame_1_1Settings_adabbaa6377bae8d1462dc62ffb5a1451}{dialogue}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cheats}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Settings_a0563e5af2c223a22d364ecf6b836574d}{cheatsId}}\ =\ 0;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacecheats}{cheats}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Addional\ settings}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgame_1_1Settings_a9ad9d95ef4fab7ebc579b0dd6e16d5b3}{gameInfo}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00047\ \ \ \ \ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgame_1_1Map}{Map}}\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Map_ae68e8677b9df3602abf9ca3a3df43588}{width}}\ =\ 250\ -\/\ 1;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Map_a7032cfd2fb59b08f7694e797b4f0f797}{height}}\ =\ 250\ -\/\ 1;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structBlock}{Block}}\ \mbox{\hyperlink{structgame_1_1Map_a97f5070ef66c233c2175815dbf522621}{map}}[250][250]\ =\ \{\};}
+\DoxyCodeLine{00053\ \ \ \ \ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgame_1_1Player}{Player}}\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pos}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Player_a7a4d221817f368bda19120c6c947426e}{x}}\ =\ 0;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Player_ab70d7cba07edefbd31189ccac87b3907}{y}}\ =\ 0;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Addional}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Player_aff34fafc9a2e544590e162896791dbac}{color}}\ =\ 6;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Player_a33cbb53abd8f1f236cf1113f625b2ca1}{speed}}\ =\ 1;}
+\DoxyCodeLine{00063\ \ \ \ \ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgame_1_1Camera}{Camera}}\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Visual}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Camera_aa4bf6bac508bfc7ffc97669d5eabb6dc}{scale}}\ =\ 50;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Camera_abbdd60df16edfca73911e75cd2b3dc79}{offSetX}}\ =\ 0;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Camera_a88180a4dad4c0a4c24ffc46a35ef8ece}{offSetY}}\ =\ 0;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Effects}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgame_1_1Camera_ad2c67679e91be7ad75c9907a3c16d3e8}{highlight}}\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Updates\ every\ frame}}
+\DoxyCodeLine{00073\ \ \ \ \ \};}
+\DoxyCodeLine{00074\ \}}
+
+\end{DoxyCode}

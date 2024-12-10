@@ -1,0 +1,66 @@
+\doxysection{dialogues Namespace Reference}
+\hypertarget{namespacedialogues}{}\label{namespacedialogues}\index{dialogues@{dialogues}}
+
+
+Namespace that contains all game dialogues.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structdialogues_1_1rects}{rects}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacedialogues_a1c8d34a85ffb835b75e184f27adf832b}{Confirm\+Dialogue\+Event}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structdialogues_1_1rects}{rects}} dialogues\+Rects)
+\item 
+bool \mbox{\hyperlink{namespacedialogues_a40b70daeeae0a9f6b0f3a58aa0b8713f}{Confirm\+Dialogue}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} settings, \mbox{\hyperlink{structdialogues_1_1rects}{rects}} dialogues\+Rects)
+\item 
+\mbox{\hyperlink{structdialogues_1_1rects}{rects}} \mbox{\hyperlink{namespacedialogues_a1609d0b80939619fdc9db877fe03f365}{Init\+Rects}} (core\+::\+MF\+\_\+\+Window \&window)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Namespace that contains all game dialogues. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacedialogues_a40b70daeeae0a9f6b0f3a58aa0b8713f}\index{dialogues@{dialogues}!ConfirmDialogue@{ConfirmDialogue}}
+\index{ConfirmDialogue@{ConfirmDialogue}!dialogues@{dialogues}}
+\doxysubsubsection{\texorpdfstring{ConfirmDialogue()}{ConfirmDialogue()}}
+{\footnotesize\ttfamily \label{namespacedialogues_a40b70daeeae0a9f6b0f3a58aa0b8713f} 
+bool dialogues\+::\+Confirm\+Dialogue (\begin{DoxyParamCaption}\item[{core\+::\+MF\+\_\+\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}}}]{settings}{, }\item[{\mbox{\hyperlink{structdialogues_1_1rects}{rects}}}]{dialogues\+Rects}{}\end{DoxyParamCaption})}
+
+This function draws dialgoue and closes when cancel is hovered 
+\begin{DoxyParams}{Parameters}
+{\em window} & Game window \\
+\hline
+{\em settings} & Game settings \\
+\hline
+{\em dialogues\+Rects} & All dialgoue rects\\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacedialogues_a1c8d34a85ffb835b75e184f27adf832b}\index{dialogues@{dialogues}!ConfirmDialogueEvent@{ConfirmDialogueEvent}}
+\index{ConfirmDialogueEvent@{ConfirmDialogueEvent}!dialogues@{dialogues}}
+\doxysubsubsection{\texorpdfstring{ConfirmDialogueEvent()}{ConfirmDialogueEvent()}}
+{\footnotesize\ttfamily \label{namespacedialogues_a1c8d34a85ffb835b75e184f27adf832b} 
+int dialogues\+::\+Confirm\+Dialogue\+Event (\begin{DoxyParamCaption}\item[{core\+::\+MF\+\_\+\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{structdialogues_1_1rects}{rects}}}]{dialogues\+Rects}{}\end{DoxyParamCaption})}
+
+This function checks when user presses confirm button in dialogue 
+\begin{DoxyParams}{Parameters}
+{\em window} & Game window \\
+\hline
+{\em dialogues\+Rects} & All dialgoue rects\\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacedialogues_a1609d0b80939619fdc9db877fe03f365}\index{dialogues@{dialogues}!InitRects@{InitRects}}
+\index{InitRects@{InitRects}!dialogues@{dialogues}}
+\doxysubsubsection{\texorpdfstring{InitRects()}{InitRects()}}
+{\footnotesize\ttfamily \label{namespacedialogues_a1609d0b80939619fdc9db877fe03f365} 
+\mbox{\hyperlink{structdialogues_1_1rects}{rects}} dialogues\+::\+Init\+Rects (\begin{DoxyParamCaption}\item[{core\+::\+MF\+\_\+\+Window \&}]{window}{}\end{DoxyParamCaption})}
+
+This function initilizes dialogue rects 
+\begin{DoxyParams}{Parameters}
+{\em window} & Game window\\
+\hline
+\end{DoxyParams}

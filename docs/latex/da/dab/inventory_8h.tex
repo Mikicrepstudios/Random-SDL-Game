@@ -1,0 +1,48 @@
+\doxysection{source/headers/inventory.h File Reference}
+\hypertarget{inventory_8h}{}\label{inventory_8h}\index{source/headers/inventory.h@{source/headers/inventory.h}}
+{\ttfamily \#include "{}SDL.\+h"{}}\newline
+{\ttfamily \#include "{}mf/core.\+h"{}}\newline
+{\ttfamily \#include "{}presets.\+h"{}}\newline
+{\ttfamily \#include "{}settings.\+h"{}}\newline
+{\ttfamily \#include "{}textures.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structinventory_1_1MenuRects}{inventory\+::\+Menu\+Rects}}
+\item 
+struct \mbox{\hyperlink{structinventory_1_1ColorRects}{inventory\+::\+Color\+Rects}}
+\item 
+struct \mbox{\hyperlink{structinventory_1_1DecalRects}{inventory\+::\+Decal\+Rects}}
+\item 
+struct \mbox{\hyperlink{structinventory_1_1GameplayRects}{inventory\+::\+Gameplay\+Rects}}
+\item 
+struct \mbox{\hyperlink{structinventory_1_1GameRects}{inventory\+::\+Game\+Rects}}
+\item 
+struct \mbox{\hyperlink{structinventory_1_1OtherRects}{inventory\+::\+Other\+Rects}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceinventory}{inventory}}
+\begin{DoxyCompactList}\small\item\em Namespace that contains all inventory related stuff. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structinventory_1_1MenuRects}{Menu\+Rects}} \mbox{\hyperlink{namespaceinventory_a2d88d5d0794e293073ed3bfa782f884a}{inventory\+::\+Init\+Menu\+Rects}} (core\+::\+MF\+\_\+\+Window \&window)
+\item 
+\mbox{\hyperlink{structinventory_1_1ColorRects}{Color\+Rects}} \mbox{\hyperlink{namespaceinventory_a43bac6c8d64e8c29163a46f5cf5eff57}{inventory\+::\+Init\+Color\+Rects}} (core\+::\+MF\+\_\+\+Window \&window)
+\item 
+\mbox{\hyperlink{structinventory_1_1DecalRects}{Decal\+Rects}} \mbox{\hyperlink{namespaceinventory_a006e56aeeb3c13e325d6ddb07fd94fa7}{inventory\+::\+Init\+Decal\+Rects}} (core\+::\+MF\+\_\+\+Window \&window)
+\item 
+\mbox{\hyperlink{structinventory_1_1GameplayRects}{Gameplay\+Rects}} \mbox{\hyperlink{namespaceinventory_afd52fce63059219e19485f21415228ce}{inventory\+::\+Init\+Gameplay\+Rects}} (core\+::\+MF\+\_\+\+Window \&window)
+\item 
+\mbox{\hyperlink{structinventory_1_1GameRects}{Game\+Rects}} \mbox{\hyperlink{namespaceinventory_a18f26be4886afa8e15006d57fdfb95f2}{inventory\+::\+Init\+Game\+Rects}} (core\+::\+MF\+\_\+\+Window \&window)
+\item 
+\mbox{\hyperlink{structinventory_1_1OtherRects}{Other\+Rects}} \mbox{\hyperlink{namespaceinventory_a737507f3a606b9c7c7cbdd1efa29725a}{inventory\+::\+Init\+Other\+Rects}} (core\+::\+MF\+\_\+\+Window \&window)
+\item 
+void \mbox{\hyperlink{namespaceinventory_a75bb575fdc96d085765be1378b0c44bd}{inventory\+::\+Event}} (SDL\+\_\+\+Event event, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings)
+\item 
+void \mbox{\hyperlink{namespaceinventory_af3a4ddfc14bf0cce9255798e5adfba8c}{inventory\+::\+Chooser}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings, \mbox{\hyperlink{structgame_1_1Player}{game\+::\+Player}} \&player, \mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} \&camera, \mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}} preset\mbox{[}10\mbox{]}, \mbox{\hyperlink{structinventory_1_1MenuRects}{inventory\+::\+Menu\+Rects}} \&menu\+Rects, \mbox{\hyperlink{structinventory_1_1ColorRects}{inventory\+::\+Color\+Rects}} \&color\+Rects, \mbox{\hyperlink{structinventory_1_1DecalRects}{inventory\+::\+Decal\+Rects}} \&decal\+Rects, \mbox{\hyperlink{structinventory_1_1GameplayRects}{inventory\+::\+Gameplay\+Rects}} \&gameplay\+Rects, \mbox{\hyperlink{structinventory_1_1GameRects}{inventory\+::\+Game\+Rects}} \&game\+Rects, \mbox{\hyperlink{structinventory_1_1OtherRects}{inventory\+::\+Other\+Rects}} \&other\+Rects)
+\item 
+void \mbox{\hyperlink{namespaceinventory_a96bcc42e0d4f5c1843abce1bc5aed1d0}{inventory\+::\+Overlay}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} settings, \mbox{\hyperlink{structinventory_1_1MenuRects}{inventory\+::\+Menu\+Rects}} \&menu\+Rects, \mbox{\hyperlink{structinventory_1_1ColorRects}{inventory\+::\+Color\+Rects}} \&color\+Rects, \mbox{\hyperlink{structinventory_1_1DecalRects}{inventory\+::\+Decal\+Rects}} \&decal\+Rects, \mbox{\hyperlink{structinventory_1_1GameplayRects}{inventory\+::\+Gameplay\+Rects}} \&gameplay\+Rects, \mbox{\hyperlink{structinventory_1_1GameRects}{inventory\+::\+Game\+Rects}} \&game\+Rects, \mbox{\hyperlink{structinventory_1_1OtherRects}{inventory\+::\+Other\+Rects}} \&other\+Rects, \mbox{\hyperlink{structtextures_1_1BlockTextures}{textures\+::\+Block\+Textures}} block\+Textures\mbox{[}32\mbox{]})
+\end{DoxyCompactItemize}
