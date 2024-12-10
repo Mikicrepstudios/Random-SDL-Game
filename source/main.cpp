@@ -28,7 +28,7 @@
 int main(int argc, char **argv) {
 	bool running = true;
     std::cout << "-------Mikicrep Framework-------" << std::endl
-              << "-------Ver: 1.3.0M--------------" << std::endl
+              << "-------Ver: 1.4.0---------------" << std::endl
               << "Copyright Mikicrep Studios 2024" << std::endl;
 	std::cout << "Random SDL Game" << std::endl
 			  << "Ver: DEV" << std::endl
@@ -102,9 +102,9 @@ int main(int argc, char **argv) {
 
 	while(running) {
 		// Main
-		SDL_GetMouseState(&window.mouseX, &window.mouseY);
-		game.curHoverX = window.mouseX / cam.scale;
-		game.curHoverY = window.mouseY / cam.scale;
+		SDL_GetMouseState(&window.mouse.x, &window.mouse.y);
+		game.curHoverX = window.mouse.x / cam.scale;
+		game.curHoverY = window.mouse.y / cam.scale;
 
 		// Update vars
 		logic::UpdateVars(settings, player, cam, preset);
@@ -114,9 +114,9 @@ int main(int argc, char **argv) {
 			window.event = event;
 			// Check does player hold mouse button
 			if(event.type == SDL_MOUSEBUTTONDOWN)
-				window.isMouseDown = true;
+				window.mouse.isDown = true;
 			else if(event.type == SDL_MOUSEBUTTONUP)
-				window.isMouseDown = false;
+				window.mouse.isDown = false;
 
 			if (event.type == SDL_WINDOWEVENT) {
                 if (event.window.event == SDL_WINDOWEVENT_RESIZED) {

@@ -22,7 +22,7 @@ namespace colorpicker {
 				// Disable color picker based on pickerId
 				settings.colorPicker = false;
 
-				if(logic::IsMouseTouching(window.mouseX, window.mouseY, curRect)) return curColor;
+				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, curRect)) return curColor;
 
 				curColor++;
 			}

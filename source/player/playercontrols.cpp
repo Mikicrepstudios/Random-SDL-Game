@@ -12,7 +12,7 @@ namespace mouse {
 	void Event(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]) {
 		if (game.curHoverX <= map.width && game.curHoverY <= map.height && !settings.inventory && map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].type != 1) {
 			if (!settings.cheats) {
-				if(window.isMouseDown) {
+				if(window.mouse.isDown) {
 					Uint32 mouseButtons = SDL_GetMouseState(NULL, NULL);
 					if (mouseButtons & SDL_BUTTON(SDL_BUTTON_LEFT)) {
 						map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].type = 2;
