@@ -6,22 +6,13 @@
 #include "textures.h"
 
 /**
- * @brief Namespace that contains all game events
- */
-namespace events {
-	void Camera(core::MF_Window &window, game::Settings settings, game::Camera &cam);
-}
-
-/**
  * @brief Namespace that contains all game core functions
  */
 namespace game {
-	void RenderMap(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera cam, textures::BlockTextures blockTextures[32]);
-}
+	// Essential stuff
+	void CameraControl(core::MF_Window &window, game::Settings settings, game::Camera &cam);
 
-/**
- * @brief Namespace that contains all game map realted stuff
- */
-namespace gamemap {
+	// Map related stuff
+	void RenderMap(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera cam, textures::BlockTextures blockTextures[32]);
 	void ClearMap(game::Map &map);
 }
