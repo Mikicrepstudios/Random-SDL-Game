@@ -3,7 +3,6 @@
 ### In progress:
 
 ### Very soon:
-- Colorpicker, texturepicker, overlay got textcolor var
 - Rework namespace naming
 
 ### Planned:
