@@ -4,6 +4,9 @@
 #include "presets.h"
 #include "settings.h"
 
+/**
+ * @brief Namespace that contains all functions that are related to managing files on disk
+ */
 namespace files {
 	void SaveMap(game::Map map);
 	void SaveSettings(game::Settings settings, game::Player player, game::Camera cam);
