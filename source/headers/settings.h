@@ -5,6 +5,7 @@
 
 #include "block.h"
 
+// Already documented in game.h
 namespace game {
     struct Game {
         bool cliInput = false;
