@@ -8,6 +8,14 @@
 
 namespace hud {
 	void GameInfo(core::MF_Window &window, game::Settings settings, game::Camera cam, game::Player player) {
+		/**
+		 * @brief This function draws GameInfo HUD
+		 * @param window Game window
+		 * @param settings Game settings
+		 * @param cam Game camera
+		 * @param player Game player
+		 */
+		
 		MF_Color color = {};
 		// If background is white then set text color to black otherwise its white
 		if(settings.bgColor == 32)
