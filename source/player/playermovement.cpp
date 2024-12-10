@@ -5,6 +5,13 @@
 
 namespace player {
 	void Movement(SDL_Event event, game::Map &map, game::Player &player) {
+		/**
+		 * @brief This function controls player movement
+		 * @param event SDL_Event
+		 * @param map Game map
+		 * @param player Game player
+		 */
+		
 		// Make copy for smaller ifs
 		Block curBlock = map.map[player.x][player.y];
 
