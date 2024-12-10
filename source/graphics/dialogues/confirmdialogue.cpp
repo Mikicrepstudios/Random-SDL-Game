@@ -6,7 +6,6 @@
 #include "mf/graphics.h"
 #include "mf/logic.h"
 
-#include "draw.h"
 #include "dialogues.h"
 
 namespace dialogues {
