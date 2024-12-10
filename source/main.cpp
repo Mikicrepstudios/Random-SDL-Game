@@ -13,7 +13,6 @@
 #include "controls.h"
 #include "commands.h"
 #include "dialogues.h"
-#include "draw.h"
 #include "files.h"
 #include "game.h"
 #include "hud.h"
