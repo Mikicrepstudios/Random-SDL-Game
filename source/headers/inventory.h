@@ -9,6 +9,9 @@
 #include "settings.h"
 #include "textures.h"
 
+/**
+ * @brief Namespace that contains all inventory related stuff
+ */
 namespace inventory {
     struct MenuRects {
         SDL_Rect previewRect = {};
