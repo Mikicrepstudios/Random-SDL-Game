@@ -7,6 +7,9 @@
 #include "presets.h"
 #include "settings.h"
 
+/**
+ * @brief Namespace that contains all in game commands
+ */
 namespace commands {
     void Executor(std::string command, core::MF_Window &window, game::Settings &settings, game::Map &map, game::Preset preset[10]);
 
