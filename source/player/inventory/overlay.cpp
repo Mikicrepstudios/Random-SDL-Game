@@ -4,7 +4,7 @@
 #include "mf/colors.h"
 #include "mf/graphics.h"
 
-#include "colorpicker.h"
+#include "gui.h"
 #include "inventory.h"
 #include "settings.h"
 #include "textures.h"
@@ -91,11 +91,11 @@ namespace inventory {
 
 			// Color pickers
 			if(settings.colorPicker && settings.colorPickerId == 1)
-				colorpicker::Overlay(window, settings);
+				gui::ColorPickerOverlay(window, settings);
 			else if(settings.colorPicker && settings.colorPickerId == 2)
-				colorpicker::Overlay(window, settings);
+				gui::ColorPickerOverlay(window, settings);
 			else if(settings.colorPicker && settings.colorPickerId == 3)
-				colorpicker::Overlay(window, settings);
+				gui::ColorPickerOverlay(window, settings);
 			}
 
 			if(settings.texturePicker)
