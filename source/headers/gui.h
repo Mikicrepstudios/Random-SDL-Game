@@ -8,6 +8,6 @@
 /**
  * @brief Namespace that contains all HUD related stuff
  */
-namespace hud {
+namespace gui {
     void GameInfo(core::MF_Window &window, game::Settings settings, game::Camera cam, game::Player player);
 }
