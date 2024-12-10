@@ -1,4 +1,6 @@
 ## Added:
+-- Code:
+- Documented whole source code
 
 ## Removed:
 -- Build 88
