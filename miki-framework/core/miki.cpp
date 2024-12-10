@@ -24,11 +24,14 @@ namespace core {
         draw::DrawTransRect(window.renderer, rect2, colors::indigo, 150);
         draw::DrawTransRect(window.renderer, rect3, colors::grassgreen, 150);
 
-        if(logic::IsMouseTouching(window.mouseX, window.mouseY, rect3))
+        if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, rect3))
             draw::DrawRect(window.renderer, {window.width - 50, window.height - 50, 50, 50}, colors::grassgreen);
-        else if(logic::IsMouseTouching(window.mouseX, window.mouseY, rect2))
+        else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, rect2))
             draw::DrawRect(window.renderer, {window.width - 50, window.height - 50, 50, 50}, colors::indigo);
-        else if(logic::IsMouseTouching(window.mouseX, window.mouseY, rect1))
+        else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, rect1))
             draw::DrawRect(window.renderer, {window.width - 50, window.height - 50, 50, 50}, colors::colorID[26]); // Color ID for red
+
+        SDL_Rect shakingRect = {150, 75, 50, 50};
+        draw::DrawShakingRect(window.renderer, shakingRect, colors::gray, 5);
     }
 }
