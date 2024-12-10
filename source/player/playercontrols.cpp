@@ -10,6 +10,10 @@
 
 namespace mouse {
 	void Event(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]) {
+		/**
+		 * @brief This function controls block placing
+		 */
+
 		if (game.curHoverX <= map.width && game.curHoverY <= map.height && !settings.inventory && map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].type != 1) {
 			if (!settings.cheats) {
 				if(window.mouse.isDown) {
@@ -37,6 +41,10 @@ namespace mouse {
 		}
 	}
 	void Overlay(core::MF_Window &window, game::Game game, game::Settings settings, game::Map map, game::Camera cam) {
+		/**
+		 * @brief This function shows which block are you hovering
+		 */
+		
 		int curHoverX = game.curHoverX;
 		int curHoverY = game.curHoverY;
 
