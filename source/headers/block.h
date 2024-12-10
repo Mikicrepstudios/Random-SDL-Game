@@ -7,6 +7,9 @@
 2 - block
 */
 
+/**
+ * @brief Struct for blocks
+ */
 struct Block {
 	// Look
 	int type = 0; // Check comments above
