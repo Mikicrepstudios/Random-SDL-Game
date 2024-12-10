@@ -3,7 +3,8 @@
 ### In progress:
 
 ### Very soon:
-- Handle errors in executor instead in every command
+- Colorpicker, texturepicker, overlay got textcolor var
+- Rework namespace naming
 
 ### Planned:
 - resize elements on window resize
@@ -22,9 +23,8 @@
 - add to place cmd texture argument
 - make debug thing that prints whole settings struct and maybe all others
 - Autosave
-- Colorpicker, texturepicker, overlay got textcolor var
 - Inv overlay got colorRGB vars
-- Rework namespace naming
+- Handle errors in executor instead in every command
 
 ### Thinking:
 - shadows
