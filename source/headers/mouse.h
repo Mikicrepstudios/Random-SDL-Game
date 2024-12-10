@@ -5,6 +5,9 @@
 #include "presets.h"
 #include "settings.h"
 
+/**
+ * @brief This namespace contains function for all mouse related stuff
+ */
 namespace mouse {
     // Function for placing blocks
     extern void Event(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]);
