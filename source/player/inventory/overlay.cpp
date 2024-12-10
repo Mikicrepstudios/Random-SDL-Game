@@ -14,9 +14,6 @@ namespace inventory {
 		/**
 		 * @brief This function draws inventory overlay
 		 */
-		
-		// Define variables
-		int colorR, colorG, colorB = 0;
 
 		if (settings.inventory) {
 			// Render bg
