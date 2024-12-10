@@ -2,7 +2,7 @@
 
 ## Removed:
 -- Build 88
-- Removed draw.cpp
+- Removed draw.cpp & draw.h
 
 ## Changed/Fixed:
 -- Build 87
