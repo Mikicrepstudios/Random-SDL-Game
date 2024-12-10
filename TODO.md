@@ -1,7 +1,6 @@
 ## TODO List
 
 ### In progress:
-- Docs
 
 ### Very soon:
 - Handle errors in executor instead in every command
