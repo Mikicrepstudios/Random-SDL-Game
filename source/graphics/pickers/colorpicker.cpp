@@ -59,7 +59,6 @@ namespace colorpicker {
 		 * @param settings Game settings
 		 */
 		
-		SDL_Color textColor = {255, 255, 255};
 		std::string text = "";
 		int curColor = 1;
 
