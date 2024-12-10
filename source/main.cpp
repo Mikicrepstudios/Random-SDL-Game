@@ -10,17 +10,12 @@
 
 #include "block.h"
 #include "cheats.h"
-#include "controls.h"
 #include "commands.h"
 #include "dialogues.h"
 #include "files.h"
 #include "game.h"
-#include "hud.h"
+#include "gui.h"
 #include "inventory.h"
-#include "logic.h"
-#include "mouse.h"
-#include "player.h"
-#include "presets.h"
 #include "settings.h"
 #include "textures.h"
 
@@ -93,7 +88,7 @@ int main(int argc, char **argv) {
 
 	if(debug) std::cout << "Init SDL stuff; Load save" << std::endl;
 
-	gamemap::ClearMap(map);
+	game::ClearMap(map);
 	files::LoadMap(map);
 	files::LoadSettings(settings, player, cam, preset);
 
@@ -106,7 +101,7 @@ int main(int argc, char **argv) {
 		game.curHoverY = window.mouse.y / cam.scale;
 
 		// Update vars
-		logic::UpdateVars(settings, player, cam, preset);
+		game::UpdateVars(settings, player, cam, preset);
 
 		// Event loop
 		while(SDL_PollEvent(&event) != 0) {
@@ -173,9 +168,9 @@ int main(int argc, char **argv) {
 					game.cliInput = true;
 
 			// Preset chooser
-			controls::PresetChooser(event, settings.curPreset);
+			game::PresetChooser(event, settings.curPreset);
 			// Player movement
-			player::Movement(event, map, player);
+			game::PlayerMovement(event, map, player);
 			// Inventory
 			inventory::Event(event, settings);
 
@@ -186,7 +181,7 @@ int main(int argc, char **argv) {
 			}
 
 			// Camera
-			events::Camera(window, settings, cam);
+			game::CameraControls(window, settings, cam);
 			}
 
 			// Dialogues : Yes
@@ -199,7 +194,7 @@ int main(int argc, char **argv) {
 							running = false;
 							break;
 						case 2:
-							gamemap::ClearMap(map);
+							game::ClearMap(map);
 							settings.dialogueId = 0;
 							settings.dialogue = false;
 							break;
@@ -223,7 +218,7 @@ int main(int argc, char **argv) {
 				if(cheatsResult == 1) settings.cheats = false;
 			}
 
-			if(settings.canPlayerPlace == true) mouse::Event(window, game, settings, map, cam, preset);
+			if(settings.canPlayerPlace == true) game::MouseEvent(window, game, settings, map, cam, preset);
 
 			if(settings.inventory) inventory::Chooser(window, settings, player, cam, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
 			}
@@ -245,10 +240,10 @@ int main(int argc, char **argv) {
 		// Overlays
 		inventory::Overlay(window, settings, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects, blockTextures);
 
-		mouse::Overlay(window, game, settings, map, cam);
+		game::MouseOverlay(window, game, settings, map, cam);
 
 		// Game info
-		if (settings.gameInfo) hud::GameInfo(window, settings, cam, player);
+		if (settings.gameInfo) gui::GameInfo(window, settings, cam, player);
 
 		// Dialogues : No
 		if(settings.dialogue && dialogues::ConfirmDialogue(window, settings, dialoguesRects)) {
