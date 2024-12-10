@@ -5,6 +5,11 @@
 
 namespace files {
 	void SaveMap(game::Map map) {
+		/**
+		 * @brief This function saves map to file(s)
+		 * @param map Game map
+		 */
+
 		// Open file
 		std::ofstream blocktypesFile("save/maptypes.msave");
 		std::ofstream blockcolorsFile("save/mapcolors.msave");
@@ -67,6 +72,11 @@ namespace files {
 	}
 
 	void LoadMap(game::Map &map) {
+		/**
+		 * @brief This function loads saved map
+		 * @param map Game map
+		 */
+		
 		// Open file
 		std::ifstream blocktypesFile("save/maptypes.msave");
 		std::ifstream blockcolorsFile("save/mapcolors.msave");
