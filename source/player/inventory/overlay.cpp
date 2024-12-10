@@ -11,6 +11,10 @@
 
 namespace inventory {
 	void Overlay(core::MF_Window &window, game::Settings settings, inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects, textures::BlockTextures blockTextures[32]) {
+		/**
+		 * @brief This function draws inventory overlay
+		 */
+		
 		// Define variables
 		int colorR, colorG, colorB = 0;
 
