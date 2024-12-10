@@ -8,6 +8,9 @@
 #include "settings.h"
 #include "textures.h"
 
+/**
+ * @brief Namespace that contains all stuff related to game textures
+ */
 namespace textures {
     struct BlockTextures {
         SDL_Texture* texture = {};
