@@ -230,7 +230,7 @@ int main(int argc, char **argv) {
 			}
 
 		// Set BG color to new color
-		draw::SetCol(window.renderer, settings.bgColor);
+		draw::SetDrawColor(window.renderer, colors::colorID[settings.bgColor - 1]);
 		SDL_RenderClear(window.renderer);
 		// ... or if there is custom bg
 		SDL_Rect backgroundRect = {0, 0, window.width, window.height};
@@ -260,7 +260,7 @@ int main(int argc, char **argv) {
 		// Cli Input
 		if(game.cliInput) {
 			std::string command = "";
-			draw::SetCol(window.renderer, settings.bgColor);
+			draw::SetDrawColor(window.renderer, colors::colorID[settings.bgColor - 1]);
 			draw::DrawRect(window.renderer, {0, 0, 25, 25}, colors::red);
 			SDL_RenderPresent(window.renderer);
 			std::getline(std::cin, command);
