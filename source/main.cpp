@@ -29,8 +29,8 @@ int main(int argc, char **argv) {
     std::cout << "-------Mikicrep Framework-------" << std::endl
               << "-------Ver: 1.4.0---------------" << std::endl
               << "Copyright Mikicrep Studios 2024" << std::endl;
-	std::cout << "Random SDL Game" << std::endl
-			  << "Ver: DEV" << std::endl
+	std::cout << "-------Random SDL Game----------" << std::endl
+			  << "-------Ver: D E V---------------" << std::endl
 			  << "Copyright Mikicrep Studios 2023-2024" << std::endl;
 
     // Main stuff
