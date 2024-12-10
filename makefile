@@ -54,7 +54,6 @@ windows32: $(SRCS)
 
 # Clean output directories
 clean:
-	rm -rf $(OUT_DIR)/*
 	rm -rf $(OBJ_DIR)/*
 
 # -fsanitize=address - memory thingie
