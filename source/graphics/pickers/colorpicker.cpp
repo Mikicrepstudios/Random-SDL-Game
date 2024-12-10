@@ -10,6 +10,12 @@
 
 namespace colorpicker {
 	int Event(core::MF_Window &window, game::Settings &settings) {
+		/**
+		 * @brief This function checks when and which color is clicked
+		 * @param window Game window
+		 * @param settings Game settings
+		 */
+
         // This will run on mouse click
 		int startposw = window.width / 2 - 500;
 		int startposh = window.height / 2 - 300;
@@ -47,6 +53,12 @@ namespace colorpicker {
 		return -69; // Nice
 	}
 	void Overlay(core::MF_Window &window, game::Settings settings) {
+		/**
+		 * @brief This function draws color picker overlay
+		 * @param window Game window
+		 * @param settings Game settings
+		 */
+		
 		SDL_Color textColor = {255, 255, 255};
 		std::string text = "";
 		int curColor = 1;
