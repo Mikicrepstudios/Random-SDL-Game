@@ -11,6 +11,12 @@
 
 namespace textures {
 	int PickerEvent(core::MF_Window &window, game::Settings &settings) {
+		/**
+		 * @brief This function checks when and which texture is selected from texture picker
+		 * @param window Game window
+		 * @param settings Game settings
+		 */
+
         // This will run on mouse click
 		int startposw = window.width / 2 - 500;
 		int startposh = window.height / 2 - 200;
@@ -34,6 +40,12 @@ namespace textures {
 		return settings.blockTextureId;
 	}
 	void PickerOverlay(core::MF_Window &window, textures::BlockTextures blockTextures[32]) {
+		/**
+		 * @brief This function draws texture picker overlay
+		 * @param window Game window
+		 * @param blockTextures All block textures
+		 */
+		
 		SDL_Color textColor = {255, 255, 255};
         int curTexture = 0;
 
