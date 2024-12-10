@@ -6,6 +6,13 @@
 
 namespace events {
 	void Camera(core::MF_Window &window, game::Settings settings, game::Camera &cam) {
+		/**
+		 * @brief This function controls camera movement and other related stuff
+		 * @param window Game window
+		 * @param settings Game settings
+		 * @param cam Game camera
+		 */
+		
 		if (!settings.inventory) {
 			if(window.event.key.keysym.sym == SDLK_UP && cam.offSetY != 0) {
 				cam.offSetY += 1;
