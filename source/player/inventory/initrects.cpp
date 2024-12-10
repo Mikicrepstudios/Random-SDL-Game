@@ -4,6 +4,11 @@
 
 namespace inventory {
 	MenuRects InitMenuRects(core::MF_Window &window) {
+		/**
+		 * @brief This function initilizes inventory rects
+		 * @param window Game window
+		 */
+
 		MenuRects rects = {};
 
 		rects.previewRect         = {window.width / 2 - 50,  50,                       100, 100};
@@ -19,6 +24,11 @@ namespace inventory {
 	}
 
 	ColorRects InitColorRects(core::MF_Window &window) {
+		/**
+		 * @brief This function initilizes inventory rects
+		 * @param window Game window
+		 */
+		
 		ColorRects rects = {};
 
 		rects.colorRect           = {50,                          50,                       80,  80 };
@@ -37,6 +47,11 @@ namespace inventory {
 	}
 
 	DecalRects InitDecalRects(core::MF_Window &window) {
+		/**
+		 * @brief This function initilizes inventory rects
+		 * @param window Game window
+		 */
+		
 		DecalRects rects = {};
 
 		rects.textureIdRect       = {window.width - 130,     50,                       80,  80 };
@@ -46,6 +61,11 @@ namespace inventory {
 		return rects;
 	}
 	GameplayRects InitGameplayRects(core::MF_Window &window) {
+		/**
+		 * @brief This function initilizes inventory rects
+		 * @param window Game window
+		 */
+		
 		GameplayRects rects = {};
 
 		rects.camTpRect           = {50,                          window.height - 160, 200, 50 };
@@ -54,6 +74,11 @@ namespace inventory {
 		return rects;
 	}
 	GameRects InitGameRects(core::MF_Window &window) {
+		/**
+		 * @brief This function initilizes inventory rects
+		 * @param window Game window
+		 */
+		
 		GameRects rects = {};
 
 		rects.saveRect            = {window.width - 460,     window.height - 160, 200, 50 };
@@ -64,6 +89,11 @@ namespace inventory {
 		return rects;
 	}
     OtherRects InitOtherRects(core::MF_Window &window) {
+		/**
+		 * @brief This function initilizes inventory rects
+		 * @param window Game window
+		 */
+		
 		// widthFactor and heightFactor // TODO //
 		/*float wFactor = sdlSettings.width / 1280;
 		float hFactor = sdlSettings.height / 800;*/
