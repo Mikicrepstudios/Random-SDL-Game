@@ -4,6 +4,9 @@
 
 #include "settings.h"
 
+/**
+ * @brief Namespace that contains all game dialogues
+ */
 namespace dialogues {
     struct rects {
         SDL_Rect backgroundRect = {};
