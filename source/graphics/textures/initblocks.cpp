@@ -7,6 +7,12 @@
 
 namespace textures {
     void initBlocks(core::MF_Window &window, BlockTextures blockTextures[32]) {
+        /**
+         * @brief This function loads all textures into specified variable
+         * @param window Game window
+         * @param blockTextures Variable that will get all textures loaded into
+         */
+        
         blockTextures[0].texture = nullptr;
         blockTextures[1].texture = core::LoadImg(window.renderer, "assets/textures/blocks/placeholder.png");
         blockTextures[2].texture = core::LoadImg(window.renderer, "assets/textures/blocks/bricks.png");
