@@ -46,7 +46,6 @@ namespace textures {
 		 * @param blockTextures All block textures
 		 */
 		
-		SDL_Color textColor = {255, 255, 255};
         int curTexture = 0;
 
 		// Draw bg
