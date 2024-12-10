@@ -2,7 +2,6 @@
 
 #include "mf/core.h"
 
-#include "presets.h"
 #include "settings.h"
 #include "textures.h"
 
@@ -10,6 +9,11 @@
  * @brief Namespace that contains all game core functions
  */
 namespace game {
+	// Structs
+	struct Preset {
+		int blockColor = 1; // Write here to update
+	};
+
 	// Core
     void UpdateVars(game::Settings &settings, game::Player &player, game::Camera &cam, game::Preset preset[10]);
 
