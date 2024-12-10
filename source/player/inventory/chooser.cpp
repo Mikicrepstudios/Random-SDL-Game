@@ -4,10 +4,10 @@
 #include "mf/logic.h"
 
 #include "cheats.h"
-#include "colorpicker.h"
 #include "files.h"
+#include "game.h"
+#include "gui.h"
 #include "inventory.h"
-#include "presets.h"
 #include "settings.h"
 #include "textures.h"
 
@@ -67,7 +67,7 @@ namespace inventory {
 					settings.colorPickerId = 1;
 				}
 				else if (settings.colorPicker && settings.colorPickerId == 1)
-					preset[settings.curPreset].blockColor = colorpicker::Event(window, settings);
+					preset[settings.curPreset].blockColor = gui::ColorPickerEvent(window, settings);
 
 				// BG Color
 				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, colorRects.bgColorRectb)) {
@@ -75,7 +75,7 @@ namespace inventory {
 					settings.colorPickerId = 2;
 				}
 				else if (settings.colorPicker && settings.colorPickerId == 2)
-					settings.bgColor = colorpicker::Event(window, settings);
+					settings.bgColor = gui::ColorPickerEvent(window, settings);
 
 				// Player Color
 				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, colorRects.playerColorRectb)) {
@@ -83,7 +83,7 @@ namespace inventory {
 					settings.colorPickerId = 3;
 				}
 				else if (settings.colorPicker && settings.colorPickerId == 3)
-					settings.playerColor = colorpicker::Event(window, settings);
+					settings.playerColor = gui::ColorPickerEvent(window, settings);
 			}
 
 			if(!settings.colorPicker) {
