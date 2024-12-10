@@ -17,12 +17,16 @@ namespace game {
 	// Core
     void UpdateVars(game::Settings &settings, game::Player &player, game::Camera &cam, game::Preset preset[10]);
 
-	// Game stuff
+	// High level game stuff
     void MouseEvent(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]);
     void MouseOverlay(core::MF_Window &window, game::Game game, game::Settings settings, game::Map map, game::Camera cam);
 	
+	// Medium level game stuff
 	void CameraControl(core::MF_Window &window, game::Settings settings, game::Camera &cam);
 	void PlayerMovement(SDL_Event event, game::Map &map, game::Player &player);
+
+	// Low level game stuff
+	void PresetChooser(SDL_Event event, int &preset);
 
 	// Map related stuff
 	void RenderMap(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera cam, textures::BlockTextures blockTextures[32]);
