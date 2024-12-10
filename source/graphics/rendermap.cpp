@@ -11,6 +11,15 @@
 
 namespace game {
 	void RenderMap(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera cam, textures::BlockTextures blockTextures[32]) {
+		/**
+		 * @brief This function renders all blocks
+		 * @param window Game window
+		 * @param settings Game settings
+		 * @param map Game map
+		 * @param cam Game camera
+		 * @param blockTextures Block textures
+		 */
+		
 		int maxXBlocks = window.width / cam.scale;
 		int maxYBlocks = window.height / cam.scale;
 		for(int x = 0; x <= maxXBlocks; x++) {
