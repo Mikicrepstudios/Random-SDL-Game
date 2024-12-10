@@ -2,6 +2,12 @@
 
 namespace controls {
 	void PresetChooser(SDL_Event event, int &preset) {
+		/**
+		 * @brief This function controls preset changing
+		 * @param event SDL_Event
+		 * @param preset Game presets
+		 */
+		
 		if(event.key.keysym.sym == SDLK_1) {
 			preset = 0;
 		}
