@@ -25,6 +25,7 @@
 - Autosave
 - Colorpicker, texturepicker, overlay got textcolor var
 - Inv overlay got colorRGB vars
+- Rework namespace naming
 
 ### Thinking:
 - shadows
