@@ -2,6 +2,7 @@
 
 #include "mf/core.h"
 
+#include "presets.h"
 #include "settings.h"
 #include "textures.h"
 
@@ -11,9 +12,10 @@
 namespace game {
 	// Core
     void UpdateVars(game::Settings &settings, game::Player &player, game::Camera &cam, game::Preset preset[10]);
-	
-	// Essential stuff
+
+	// Game stuff
 	void CameraControl(core::MF_Window &window, game::Settings settings, game::Camera &cam);
+	void PlayerMovement(SDL_Event event, game::Map &map, game::Player &player);
 
 	// Map related stuff
 	void RenderMap(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera cam, textures::BlockTextures blockTextures[32]);
