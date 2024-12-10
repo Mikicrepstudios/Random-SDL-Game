@@ -3,6 +3,14 @@
 
 namespace logic {
     void UpdateVars(game::Settings &settings, game::Player &player, game::Camera &cam, game::Preset preset[10]) {
+        /**
+         * @brief This function updates/links variables on every frame
+         * @param settings Game settings
+         * @param player Game player
+         * @param cam Game camera
+         * @param preset Game presets
+         */
+        
         settings.blockColor = preset[settings.curPreset].blockColor;
         player.color = settings.playerColor;
 
