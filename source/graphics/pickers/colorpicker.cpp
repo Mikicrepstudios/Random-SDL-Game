@@ -8,8 +8,8 @@
 
 #include "settings.h"
 
-namespace colorpicker {
-	int Event(core::MF_Window &window, game::Settings &settings) {
+namespace gui {
+	int ColorPickerEvent(core::MF_Window &window, game::Settings &settings) {
 		/**
 		 * @brief This function checks when and which color is clicked
 		 * @param window Game window
@@ -52,7 +52,7 @@ namespace colorpicker {
 
 		return -69; // Nice
 	}
-	void Overlay(core::MF_Window &window, game::Settings settings) {
+	void ColorPickerOverlay(core::MF_Window &window, game::Settings settings) {
 		/**
 		 * @brief This function draws color picker overlay
 		 * @param window Game window
