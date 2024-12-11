@@ -21,7 +21,6 @@
 - add to place cmd texture argument
 - make debug thing that prints whole settings struct and maybe all others
 - Autosave
-- Inv overlay got colorRGB vars
 - Handle errors in executor instead in every command
 
 ### Thinking:
