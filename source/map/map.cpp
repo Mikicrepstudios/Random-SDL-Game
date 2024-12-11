@@ -1,6 +1,6 @@
 #include "settings.h"
 
-namespace gamemap {
+namespace game {
 	void ClearMap(game::Map &map) {
 		/**
 		 * @brief This function clears map
