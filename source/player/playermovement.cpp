@@ -3,8 +3,8 @@
 #include "block.h"
 #include "settings.h"
 
-namespace player {
-	void Movement(SDL_Event event, game::Map &map, game::Player &player) {
+namespace game {
+	void PlayerMovement(SDL_Event event, game::Map &map, game::Player &player) {
 		/**
 		 * @brief This function controls player movement
 		 * @param event SDL_Event
