@@ -6,7 +6,6 @@ var searchData=
   ['map_3',['map',['../d8/df4/structgame_1_1Map.html#a97f5070ef66c233c2175815dbf522621',1,'game::Map']]],
   ['map_2ecpp_4',['map.cpp',['../d9/dd3/map_8cpp.html',1,'']]],
   ['menurects_5',['MenuRects',['../d4/d24/structinventory_1_1MenuRects.html',1,'inventory']]],
-  ['mouse_6',['mouse',['../d6/d4f/namespacemouse.html',1,'']]],
-  ['mouse_2eh_7',['mouse.h',['../dc/ded/mouse_8h.html',1,'']]],
-  ['movement_8',['Movement',['../d9/dbe/namespaceplayer.html#a5a448a452b890e75fccef46810913294',1,'player']]]
+  ['mouseevent_6',['MouseEvent',['../d3/d2c/namespacegame.html#a446d97d73617080474eb3f50413abff0',1,'game']]],
+  ['mouseoverlay_7',['MouseOverlay',['../d3/d2c/namespacegame.html#ac2b948eb9364a21c6abeeb23d4ed6101',1,'game']]]
 ];

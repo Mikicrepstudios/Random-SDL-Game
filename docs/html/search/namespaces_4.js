@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['game_0',['game',['../d3/d2c/namespacegame.html',1,'']]],
-  ['gamemap_1',['gamemap',['../d8/da1/namespacegamemap.html',1,'']]]
+  ['inventory_0',['inventory',['../d5/d2d/namespaceinventory.html',1,'']]]
 ];

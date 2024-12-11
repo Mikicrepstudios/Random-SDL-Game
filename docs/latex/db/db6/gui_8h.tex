@@ -1,9 +1,7 @@
-\doxysection{source/graphics/gameinfo.cpp File Reference}
-\hypertarget{gameinfo_8cpp}{}\label{gameinfo_8cpp}\index{source/graphics/gameinfo.cpp@{source/graphics/gameinfo.cpp}}
-{\ttfamily \#include $<$string$>$}\newline
+\doxysection{source/headers/gui.h File Reference}
+\hypertarget{gui_8h}{}\label{gui_8h}\index{source/headers/gui.h@{source/headers/gui.h}}
 {\ttfamily \#include "{}mf/core.\+h"{}}\newline
-{\ttfamily \#include "{}mf/colors.\+h"{}}\newline
-{\ttfamily \#include "{}mf/graphics.\+h"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
 {\ttfamily \#include "{}settings.\+h"{}}\newline
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
@@ -12,6 +10,10 @@ namespace \mbox{\hyperlink{namespacegui}{gui}}
 \begin{DoxyCompactList}\small\item\em Namespace that contains all HUD related stuff. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacegui_a45767ff28c052f876829a14d7c954efe}{gui\+::\+Color\+Picker\+Overlay}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} settings)
+\item 
+int \mbox{\hyperlink{namespacegui_a52e0bde495a50337a8f49ee5d030396e}{gui\+::\+Color\+Picker\+Event}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings)
 \item 
 void \mbox{\hyperlink{namespacegui_a432be1cc7db582b36d293e2ab2215945}{gui\+::\+Game\+Info}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} settings, \mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} cam, \mbox{\hyperlink{structgame_1_1Player}{game\+::\+Player}} player)
 \end{DoxyCompactItemize}

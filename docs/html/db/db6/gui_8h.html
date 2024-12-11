@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Mikicrep Framework: source/headers/files.h File Reference</title>
+<title>Mikicrep Framework: source/headers/gui.h File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -91,31 +91,29 @@ $(function(){ initResizable(false); });
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">files.h File Reference</div></div>
+  <div class="headertitle"><div class="title">gui.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="../../de/d40/block_8h_source.html">block.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d2/dd5/game_8h_source.html">game.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;mf/core.h&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../de/d60/settings_8h_source.html">settings.h</a>&quot;</code><br />
 </div>
-<p><a href="../../dd/d20/files_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="../../db/db6/gui_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d04/namespacefiles.html">files</a></td></tr>
-<tr class="memdesc:d6/d04/namespacefiles"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace that contains all functions that are related to managing files on disk. <br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc4/namespacegui.html">gui</a></td></tr>
+<tr class="memdesc:d7/dc4/namespacegui"><td class="mdescLeft">&#160;</td><td class="mdescRight">Namespace that contains all HUD related stuff. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af3e2670be390f1080bc75a1273836522" id="r_af3e2670be390f1080bc75a1273836522"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d04/namespacefiles.html#af3e2670be390f1080bc75a1273836522">files::SaveMap</a> (<a class="el" href="../../d8/df4/structgame_1_1Map.html">game::Map</a> map)</td></tr>
-<tr class="separator:af3e2670be390f1080bc75a1273836522"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c06fdf0ffbfb90b5fa90e490afce2c0" id="r_a4c06fdf0ffbfb90b5fa90e490afce2c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d04/namespacefiles.html#a4c06fdf0ffbfb90b5fa90e490afce2c0">files::SaveSettings</a> (<a class="el" href="../../db/d51/structgame_1_1Settings.html">game::Settings</a> settings, <a class="el" href="../../d0/ddf/structgame_1_1Player.html">game::Player</a> player, <a class="el" href="../../d8/dc9/structgame_1_1Camera.html">game::Camera</a> cam)</td></tr>
-<tr class="separator:a4c06fdf0ffbfb90b5fa90e490afce2c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fa844e5c341ebf3925b86d93b7f3c2a" id="r_a0fa844e5c341ebf3925b86d93b7f3c2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d04/namespacefiles.html#a0fa844e5c341ebf3925b86d93b7f3c2a">files::LoadMap</a> (<a class="el" href="../../d8/df4/structgame_1_1Map.html">game::Map</a> &amp;map)</td></tr>
-<tr class="separator:a0fa844e5c341ebf3925b86d93b7f3c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0f70e6763ce3d21c1c4a2446c4e71c7" id="r_aa0f70e6763ce3d21c1c4a2446c4e71c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d04/namespacefiles.html#aa0f70e6763ce3d21c1c4a2446c4e71c7">files::LoadSettings</a> (<a class="el" href="../../db/d51/structgame_1_1Settings.html">game::Settings</a> &amp;settings, <a class="el" href="../../d0/ddf/structgame_1_1Player.html">game::Player</a> &amp;player, <a class="el" href="../../d8/dc9/structgame_1_1Camera.html">game::Camera</a> &amp;cam, <a class="el" href="../../d4/d90/structgame_1_1Preset.html">game::Preset</a> preset[10])</td></tr>
-<tr class="separator:aa0f70e6763ce3d21c1c4a2446c4e71c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45767ff28c052f876829a14d7c954efe" id="r_a45767ff28c052f876829a14d7c954efe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc4/namespacegui.html#a45767ff28c052f876829a14d7c954efe">gui::ColorPickerOverlay</a> (core::MF_Window &amp;window, <a class="el" href="../../db/d51/structgame_1_1Settings.html">game::Settings</a> settings)</td></tr>
+<tr class="separator:a45767ff28c052f876829a14d7c954efe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52e0bde495a50337a8f49ee5d030396e" id="r_a52e0bde495a50337a8f49ee5d030396e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc4/namespacegui.html#a52e0bde495a50337a8f49ee5d030396e">gui::ColorPickerEvent</a> (core::MF_Window &amp;window, <a class="el" href="../../db/d51/structgame_1_1Settings.html">game::Settings</a> &amp;settings)</td></tr>
+<tr class="separator:a52e0bde495a50337a8f49ee5d030396e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a432be1cc7db582b36d293e2ab2215945" id="r_a432be1cc7db582b36d293e2ab2215945"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dc4/namespacegui.html#a432be1cc7db582b36d293e2ab2215945">gui::GameInfo</a> (core::MF_Window &amp;window, <a class="el" href="../../db/d51/structgame_1_1Settings.html">game::Settings</a> settings, <a class="el" href="../../d8/dc9/structgame_1_1Camera.html">game::Camera</a> cam, <a class="el" href="../../d0/ddf/structgame_1_1Player.html">game::Player</a> player)</td></tr>
+<tr class="separator:a432be1cc7db582b36d293e2ab2215945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

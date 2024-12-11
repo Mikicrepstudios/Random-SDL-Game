@@ -9,16 +9,29 @@
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{settings_8h}{settings.h}}"{}}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{textures_8h}{textures.h}}"{}}}
 \DoxyCodeLine{00007\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceevents}{events}}\ \{}
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceevents_a07ef9d49bf577e0828f4d93099fab1ba}{Camera}}(core::MF\_Window\ \&window,\ \mbox{\hyperlink{structgame_1_1Settings}{game::Settings}}\ settings,\ \mbox{\hyperlink{structgame_1_1Camera}{game::Camera}}\ \&cam);}
-\DoxyCodeLine{00013\ \}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegame}{game}}\ \{}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegame_ab04166050867aac54d1bc1535bcbd919}{RenderMap}}(core::MF\_Window\ \&window,\ \mbox{\hyperlink{structgame_1_1Settings}{game::Settings}}\ settings,\ \mbox{\hyperlink{structgame_1_1Map}{game::Map}}\ map,\ \mbox{\hyperlink{structgame_1_1Camera}{game::Camera}}\ cam,\ \mbox{\hyperlink{structtextures_1_1BlockTextures}{textures::BlockTextures}}\ blockTextures[32]);}
-\DoxyCodeLine{00020\ \}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegamemap}{gamemap}}\ \{}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegamemap_a13736464400d4b9ff5c814bc7b0b2256}{ClearMap}}(\mbox{\hyperlink{structgame_1_1Map}{game::Map}}\ \&map);}
-\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegame}{game}}\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{comment}{//\ Structs}}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgame_1_1Preset}{Preset}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structgame_1_1Preset_aa11763e5ae350541fd9f268b86e2be7a}{blockColor}}\ =\ 1;\ \textcolor{comment}{//\ Write\ here\ to\ update}}
+\DoxyCodeLine{00015\ \ \ \ \ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Core}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegame_affbf53b41b02b6f7c634bcb925eab972}{UpdateVars}}(\mbox{\hyperlink{structgame_1_1Settings}{game::Settings}}\ \&settings,\ \mbox{\hyperlink{structgame_1_1Player}{game::Player}}\ \&player,\ \mbox{\hyperlink{structgame_1_1Camera}{game::Camera}}\ \&cam,\ \mbox{\hyperlink{structgame_1_1Preset}{game::Preset}}\ preset[10]);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ High\ level\ game\ stuff}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegame_a446d97d73617080474eb3f50413abff0}{MouseEvent}}(core::MF\_Window\ \&window,\ \mbox{\hyperlink{structgame_1_1Game}{game::Game}}\ \mbox{\hyperlink{namespacegame}{game}},\ \mbox{\hyperlink{structgame_1_1Settings}{game::Settings}}\ \&settings,\ \mbox{\hyperlink{structgame_1_1Map}{game::Map}}\ \&map,\ \mbox{\hyperlink{structgame_1_1Camera}{game::Camera}}\ \&cam,\ \mbox{\hyperlink{structgame_1_1Preset}{game::Preset}}\ preset[10]);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegame_ac2b948eb9364a21c6abeeb23d4ed6101}{MouseOverlay}}(core::MF\_Window\ \&window,\ \mbox{\hyperlink{structgame_1_1Game}{game::Game}}\ \mbox{\hyperlink{namespacegame}{game}},\ \mbox{\hyperlink{structgame_1_1Settings}{game::Settings}}\ settings,\ \mbox{\hyperlink{structgame_1_1Map}{game::Map}}\ map,\ \mbox{\hyperlink{structgame_1_1Camera}{game::Camera}}\ cam);}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Medium\ level\ game\ stuff}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegame_a628e1f2bf2f88daf12986d4ac1b3f48e}{CameraControls}}(core::MF\_Window\ \&window,\ \mbox{\hyperlink{structgame_1_1Settings}{game::Settings}}\ settings,\ \mbox{\hyperlink{structgame_1_1Camera}{game::Camera}}\ \&cam);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegame_aba781f9fca57ffdbf46f60fa44291a9d}{PlayerMovement}}(SDL\_Event\ event,\ \mbox{\hyperlink{structgame_1_1Map}{game::Map}}\ \&map,\ \mbox{\hyperlink{structgame_1_1Player}{game::Player}}\ \&player);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Low\ level\ game\ stuff}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegame_a8a631dc10f259188ee4c8e967bf621d2}{PresetChooser}}(SDL\_Event\ event,\ \textcolor{keywordtype}{int}\ \&preset);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Map\ related\ stuff}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegame_ab04166050867aac54d1bc1535bcbd919}{RenderMap}}(core::MF\_Window\ \&window,\ \mbox{\hyperlink{structgame_1_1Settings}{game::Settings}}\ settings,\ \mbox{\hyperlink{structgame_1_1Map}{game::Map}}\ map,\ \mbox{\hyperlink{structgame_1_1Camera}{game::Camera}}\ cam,\ \mbox{\hyperlink{structtextures_1_1BlockTextures}{textures::BlockTextures}}\ blockTextures[32]);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacegame_a45922950e1a53294c947464f95e2a26b}{ClearMap}}(\mbox{\hyperlink{structgame_1_1Map}{game::Map}}\ \&map);}
+\DoxyCodeLine{00034\ \}}
 
 \end{DoxyCode}

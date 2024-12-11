@@ -6,8 +6,6 @@ var searchData=
   ['cheats_2eh_3',['cheats.h',['../d7/d60/cheats_8h.html',1,'']]],
   ['chooser_2ecpp_4',['chooser.cpp',['../d7/da7/chooser_8cpp.html',1,'']]],
   ['colorpicker_2ecpp_5',['colorpicker.cpp',['../d9/db5/colorpicker_8cpp.html',1,'']]],
-  ['colorpicker_2eh_6',['colorpicker.h',['../d1/ddc/colorpicker_8h.html',1,'']]],
-  ['commands_2eh_7',['commands.h',['../d5/d90/commands_8h.html',1,'']]],
-  ['confirmdialogue_2ecpp_8',['confirmdialogue.cpp',['../d8/d7c/confirmdialogue_8cpp.html',1,'']]],
-  ['controls_2eh_9',['controls.h',['../d8/d0c/controls_8h.html',1,'']]]
+  ['commands_2eh_6',['commands.h',['../d5/d90/commands_8h.html',1,'']]],
+  ['confirmdialogue_2ecpp_7',['confirmdialogue.cpp',['../d8/d7c/confirmdialogue_8cpp.html',1,'']]]
 ];

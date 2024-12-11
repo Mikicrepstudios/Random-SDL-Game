@@ -3,21 +3,32 @@
 {\ttfamily \#include "{}mf/core.\+h"{}}\newline
 {\ttfamily \#include "{}settings.\+h"{}}\newline
 {\ttfamily \#include "{}textures.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-namespace \mbox{\hyperlink{namespaceevents}{events}}
-\begin{DoxyCompactList}\small\item\em Namespace that contains all game events. \end{DoxyCompactList}\item 
 namespace \mbox{\hyperlink{namespacegame}{game}}
-\begin{DoxyCompactList}\small\item\em Namespace that contains all game core functions. \end{DoxyCompactList}\item 
-namespace \mbox{\hyperlink{namespacegamemap}{gamemap}}
-\begin{DoxyCompactList}\small\item\em Namespace that contains all game map realted stuff. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Namespace that contains all game core functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespaceevents_a07ef9d49bf577e0828f4d93099fab1ba}{events\+::\+Camera}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} settings, \mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} \&cam)
+void \mbox{\hyperlink{namespacegame_affbf53b41b02b6f7c634bcb925eab972}{game\+::\+Update\+Vars}} (\mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings, \mbox{\hyperlink{structgame_1_1Player}{game\+::\+Player}} \&player, \mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} \&cam, \mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}} preset\mbox{[}10\mbox{]})
+\item 
+void \mbox{\hyperlink{namespacegame_a446d97d73617080474eb3f50413abff0}{game\+::\+Mouse\+Event}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Game}{game\+::\+Game}} game, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings, \mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&map, \mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} \&cam, \mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}} preset\mbox{[}10\mbox{]})
+\item 
+void \mbox{\hyperlink{namespacegame_ac2b948eb9364a21c6abeeb23d4ed6101}{game\+::\+Mouse\+Overlay}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Game}{game\+::\+Game}} game, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} settings, \mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} map, \mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} cam)
+\item 
+void \mbox{\hyperlink{namespacegame_a628e1f2bf2f88daf12986d4ac1b3f48e}{game\+::\+Camera\+Controls}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} settings, \mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} \&cam)
+\item 
+void \mbox{\hyperlink{namespacegame_aba781f9fca57ffdbf46f60fa44291a9d}{game\+::\+Player\+Movement}} (SDL\+\_\+\+Event event, \mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&map, \mbox{\hyperlink{structgame_1_1Player}{game\+::\+Player}} \&player)
+\item 
+void \mbox{\hyperlink{namespacegame_a8a631dc10f259188ee4c8e967bf621d2}{game\+::\+Preset\+Chooser}} (SDL\+\_\+\+Event event, int \&preset)
 \item 
 void \mbox{\hyperlink{namespacegame_ab04166050867aac54d1bc1535bcbd919}{game\+::\+Render\+Map}} (core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} settings, \mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} map, \mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} cam, \mbox{\hyperlink{structtextures_1_1BlockTextures}{textures\+::\+Block\+Textures}} block\+Textures\mbox{[}32\mbox{]})
 \item 
-void \mbox{\hyperlink{namespacegamemap_a13736464400d4b9ff5c814bc7b0b2256}{gamemap\+::\+Clear\+Map}} (\mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&map)
+void \mbox{\hyperlink{namespacegame_a45922950e1a53294c947464f95e2a26b}{game\+::\+Clear\+Map}} (\mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&map)
 \end{DoxyCompactItemize}
