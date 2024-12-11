@@ -4,8 +4,8 @@
 
 #include "settings.h"
 
-namespace events {
-	void Camera(core::MF_Window &window, game::Settings settings, game::Camera &cam) {
+namespace game {
+	void CameraControls(core::MF_Window &window, game::Settings settings, game::Camera &cam) {
 		/**
 		 * @brief This function controls camera movement and other related stuff
 		 * @param window Game window
