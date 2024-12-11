@@ -8,8 +8,8 @@
 #include "game.h"
 #include "settings.h"
 
-namespace mouse {
-	void Event(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]) {
+namespace game {
+	void MouseEvent(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]) {
 		/**
 		 * @brief This function controls block placing
 		 */
@@ -40,7 +40,7 @@ namespace mouse {
 			}
 		}
 	}
-	void Overlay(core::MF_Window &window, game::Game game, game::Settings settings, game::Map map, game::Camera cam) {
+	void MouseOverlay(core::MF_Window &window, game::Game game, game::Settings settings, game::Map map, game::Camera cam) {
 		/**
 		 * @brief This function shows which block are you hovering
 		 */
