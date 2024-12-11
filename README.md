@@ -2,20 +2,13 @@
 #### Most random game I made where I just put most random features, made using [Mikicrep Framework](https://miki.macakom.net/projects/mf)
 - by Mikicrep
 
-### WINDOWS VERSION SOMEHOW BROKE, CONTACT ME IF YOU CAN HELP ME FIX IT
-
 You can use it also as pixelart editor if you want.
 
 [Project page](https://miki.macakom.net/projects/rsg)
 
 ## Compatibility
-- Supports **linux** and ~~**windows**~~ (shh linux is given bigger love)
+- Supports **linux** and **windows** (shh linux is given bigger love)
 - Made for **ultra** low-end devices
-
-## Running on Windows
-If you get game by default then it wont run at all on windows.
-
-You have to move all files from x86_64dll (for 64bit windows) or x86dll (for 32bit windows) folder to same place where is executable.
 
 ## Requirements
 For linux compiling:
@@ -60,7 +53,7 @@ Theese commands only works on arch based linux distros, for other ones you gotta
 *Compiling is recommended unless you get game from [releases](https://github.com/Mikicrepstudios/Random-SDL-Game/releases) page*
 
 ## Documentation
-Currently does not exist, will be [here](https://miki.macakom.net/projects/docs/rsg/index)
+You can find documentation [here](https://miki.macakom.net/projects/docs/rsg/index)
 
 ## Bug reporting && Suggestions && Contributing
 Please read [CONTRIBUTING.md](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
