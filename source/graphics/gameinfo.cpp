@@ -6,7 +6,7 @@
 
 #include "settings.h"
 
-namespace hud {
+namespace gui {
 	void GameInfo(core::MF_Window &window, game::Settings settings, game::Camera cam, game::Player player) {
 		/**
 		 * @brief This function draws GameInfo HUD
