@@ -3,7 +3,6 @@
 ### In progress:
 
 ### Very soon:
-- Rework namespace naming
 
 ### Planned:
 - resize elements on window resize
