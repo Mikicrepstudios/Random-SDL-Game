@@ -1,6 +1,6 @@
 #include "SDL.h"
 
-namespace controls {
+namespace game {
 	void PresetChooser(SDL_Event event, int &preset) {
 		/**
 		 * @brief This function controls preset changing
