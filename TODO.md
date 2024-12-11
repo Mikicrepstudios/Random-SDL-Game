@@ -35,6 +35,7 @@
 - move player color with colors // in save // in settings and add saving preset ability
 
 ### Explanations:
+- In progress - is currently being implemented
 - Very soon - priority, most likely coming next few updates
 - Planned   - will probably add it to this
 - Thinking  - 50/50, has chance to come to game
