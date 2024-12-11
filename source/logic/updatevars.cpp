@@ -1,7 +1,7 @@
 #include "game.h"
 #include "settings.h"
 
-namespace logic {
+namespace game {
     void UpdateVars(game::Settings &settings, game::Player &player, game::Camera &cam, game::Preset preset[10]) {
         /**
          * @brief This function updates/links variables on every frame
