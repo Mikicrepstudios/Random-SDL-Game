@@ -9,7 +9,7 @@
 #include "settings.h"
 
 namespace commands {
-    void Executor(std::string command, core::MF_Window &window, game::Settings &settings, game::Map &map, game::Preset preset[10]) {
+    void Executor(std::string command, core::MF_Window &window, game::Game &game, game::Settings &settings, game::Map &map, game::Preset preset[10]) {
         /**
          * @brief Function that is used to execute game commands
          * @param command Whole command including arguments
@@ -44,6 +44,7 @@ namespace commands {
         else if(commandId == "getblocktype") status = GetBlockType(args, argsCount, map);
         else if(commandId == "getblockcolor") status = GetBlockColor(args, argsCount, map);
         else if(commandId == "isblocksolid") status = IsBlockSolid(args, argsCount, map);
+        else if(commandId == "terminalmode") status = TerminalMode(args, argsCount, game.terminalmode);
 
         // Player
         else if(commandId == "setbgcolor") status = SetBGColor(args, argsCount, settings);

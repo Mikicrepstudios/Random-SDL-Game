@@ -11,7 +11,7 @@
  * @brief Namespace that contains all in game commands
  */
 namespace commands {
-    void Executor(std::string command, core::MF_Window &window, game::Settings &settings, game::Map &map, game::Preset preset[10]);
+    void Executor(std::string command, core::MF_Window &window, game::Game &game, game::Settings &settings, game::Map &map, game::Preset preset[10]);
 
     // Utils
     int Echo(std::string args);
@@ -19,6 +19,7 @@ namespace commands {
     int GetBlockType(std::string args, int argsCount, game::Map map);
     int GetBlockColor(std::string args, int argsCount, game::Map map);
     int IsBlockSolid(std::string args, int argsCount, game::Map map);
+    int TerminalMode(std::string args, int argsCount, bool &terminalmode);
 
     // Player
     int SetBGColor(std::string args, int argsCount, game::Settings &settings);
