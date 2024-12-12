@@ -8,6 +8,7 @@
 // Already documented in game.h
 namespace game {
     struct Game {
+        bool terminalmode = false;
         bool cliInput = false;
 
         int curHoverX = 0;

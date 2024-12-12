@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
 			  << "Copyright Mikicrep Studios 2023-2024" << std::endl;
 
     // Main stuff
-    const std::string title = "Mikicrep | Build 89"; // Latest release 2.0
+    const std::string title = "Mikicrep | Build 90"; // Latest release 2.0
     core::MF_Window window = {};
     SDL_Event event = {};
 	bool debug = false;
@@ -252,13 +252,13 @@ int main(int argc, char **argv) {
 		}
 
 		// Cli Input
-		if(game.cliInput) {
+		if(game.cliInput || game.terminalmode) {
 			std::string command = "";
 			draw::SetDrawColor(window.renderer, colors::colorID[settings.bgColor - 1]);
 			draw::DrawRect(window.renderer, {0, 0, 25, 25}, colors::red);
 			SDL_RenderPresent(window.renderer);
 			std::getline(std::cin, command);
-			commands::Executor(command, window, settings, map, preset);
+			commands::Executor(command, window, game, settings, map, preset);
 			game.cliInput = false;
 		}
 

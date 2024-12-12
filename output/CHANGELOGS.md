@@ -2,6 +2,9 @@
 -- Code:
 - Documented whole source code
 
+-- Build 90
+- Added terminalmode
+
 ## Removed:
 -- Build 88
 - Removed draw.cpp & draw.h
