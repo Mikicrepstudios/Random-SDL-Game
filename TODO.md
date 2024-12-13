@@ -10,7 +10,6 @@
 - Dialogues rects in dialogues cpp instead of main and inventory*
 - tp cam, tp player cmds
 - getcampos, getplayerpos, getplayercolor cmd
-- terminalmode
 - better saving (presets, colors, etc)
 - Switch instead of ifs in inventory::Overlay() color pickers
 - Colors in block textures
