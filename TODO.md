@@ -3,6 +3,7 @@
 ### In progress:
 
 ### Very soon:
+- Switch statement in events
 
 ### Planned:
 - resize elements on window resize
@@ -25,7 +26,6 @@
 
 ### Thinking:
 - shadows
-- Switch statement in events
 - Is mouse down check in seperate file
 - undo/redo
 (temponary memory to revert accidental clicks/missclicks, got idea for last placed block undo/redo, thinking abt bigger limit) | note for me: arrays?
