@@ -99,6 +99,11 @@ namespace inventory {
 		// widthFactor and heightFactor // TODO //
 		/*float wFactor = sdlSettings.width / 1280;
 		float hFactor = sdlSettings.height / 800;*/
+
+		/* Note for future me:
+			try in loop
+			use float
+		*/
 		std::cout << window.width / 1280 << " : " << window.height / 800 << std::endl;
 
 		OtherRects rects = {};
