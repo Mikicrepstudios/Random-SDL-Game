@@ -97,6 +97,11 @@ int main(int argc, char **argv) {
 	while(running) {
 		// Prepare next frame
         SDL_GetMouseState(&window.mouse.x, &window.mouse.y);
+		game.curHoverX = window.mouse.x / cam.scale;
+		game.curHoverY = window.mouse.y / cam.scale;
+
+		// Update vars
+		game::UpdateVars(settings, player, cam, preset);
 
         // Check for events
         while(SDL_PollEvent(&event) != 0) {
@@ -112,6 +117,17 @@ int main(int argc, char **argv) {
                     // Handle resizing window
                     window.width = event.window.data1;
                     window.height = event.window.data2;
+
+					// Update rects
+					dialoguesRects = dialogues::InitRects(window);
+
+					// Inv rects
+					inventoryMenuRects = inventory::InitMenuRects(window);
+					inventoryColorRects = inventory::InitColorRects(window);
+					inventoryDecalRects = inventory::InitDecalRects(window);
+					inventoryGameplayRects = inventory::InitGameplayRects(window);
+					inventoryGameRects = inventory::InitGameRects(window);
+					inventoryOtherRects = inventory::InitOtherRects(window);
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
@@ -128,8 +144,23 @@ int main(int argc, char **argv) {
                     switch(event.key.keysym.sym) {
                         case SDLK_ESCAPE:
                             // Quit game
-                            running = false;
+							if (!settings.inventory) {
+								settings.dialogueId = 1;
+								settings.dialogue = !settings.dialogue;
+							}
+
+							settings.colorPicker = false;
+							settings.inventory = false;
                             break;
+
+						case SDLK_F3:
+							settings.gameInfo = !settings.gameInfo;
+							break;
+
+						case SDLK_F9:
+							game.cliInput = true;
+							break;
+
                         case SDLK_F11:
                             // Window fullscreening
                             switch(window.fullscreen) {
@@ -142,137 +173,78 @@ int main(int argc, char **argv) {
                                     window.fullscreen = true;
                                     break;
                             }
+
+						case SDLK_q:
+							settings.cheatsId = 3;
+							settings.cheats = !settings.cheats;
+							break;
+
+
+						case SDLK_c:
+							settings.dialogueId = 2;
+							settings.dialogue = !settings.dialogue;
+							break;
+
+						default:
+							// Preset chooser
+							game::PresetChooser(event, settings.curPreset);
+
+							// Player movement
+							game::PlayerMovement(event, map, player);
+
+							// Inventory
+							inventory::Event(event, settings);
+
+							// Camera
+							game::CameraControls(window, settings, cam);
+							break;
                     }
-                    break;
+					break;
+				
+				default:
+					// Dialogues : Yes
+					int dialogueResult = dialogues::ConfirmDialogueEvent(window, dialoguesRects);
+					if(dialogueResult == 2)
+						switch(settings.dialogueId) {
+							case 1:
+								files::SaveMap(map);
+								files::SaveSettings(settings, player, cam);
+								running = false;
+								break;
+							case 2:
+								game::ClearMap(map);
+								settings.dialogueId = 0;
+								settings.dialogue = false;
+								break;
+						}
+					
+					else if(dialogueResult == 3)
+						if(settings.dialogueId == 1)
+							running = false;
+
+					// Cheats
+					if(settings.cheats) {
+						int cheatsResult = 0;
+
+						switch(settings.cheatsId) {
+							case 1:
+								cheatsResult = cheats::CamTp(window, game, settings, cam);
+								break;
+							case 2:
+								cheatsResult = cheats::PlayerTp(window, game, settings, map, cam, player);
+						}
+						
+						if(cheatsResult == 1) settings.cheats = false;
+					}
+
+					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, settings, map, cam, preset);
+
+					if(settings.inventory) inventory::Chooser(window, settings, player, cam, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
+
             }
         }
-		// Main
-		SDL_GetMouseState(&window.mouse.x, &window.mouse.y);
-		game.curHoverX = window.mouse.x / cam.scale;
-		game.curHoverY = window.mouse.y / cam.scale;
 
-		// Update vars
-		game::UpdateVars(settings, player, cam, preset);
-
-		// Event loop
-		while(SDL_PollEvent(&event) != 0) {
-			window.event = event;
-			// Check does player hold mouse button
-			if(event.type == SDL_MOUSEBUTTONDOWN)
-				window.mouse.isDown = true;
-			else if(event.type == SDL_MOUSEBUTTONUP)
-				window.mouse.isDown = false;
-
-			if (event.type == SDL_WINDOWEVENT) {
-                if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-                    window.width = event.window.data1;
-                    window.height = event.window.data2;
-
-					// Update rects
-					dialoguesRects = dialogues::InitRects(window);
-
-					// Inv rects
-					inventoryMenuRects = inventory::InitMenuRects(window);
-					inventoryColorRects = inventory::InitColorRects(window);
-					inventoryDecalRects = inventory::InitDecalRects(window);
-					inventoryGameplayRects = inventory::InitGameplayRects(window);
-					inventoryGameRects = inventory::InitGameRects(window);
-					inventoryOtherRects = inventory::InitOtherRects(window);
-                }
-			}
-
-			// Window
-			if(event.type == SDL_QUIT)
-				running = false;
-			if(event.type == SDL_KEYDOWN) {
-				if(event.key.keysym.sym == SDLK_ESCAPE) {
-					if (!settings.inventory) {
-						settings.dialogueId = 1;
-						settings.dialogue = !settings.dialogue;
-					}
-
-					settings.colorPicker = false;
-					settings.inventory = false;
-				}
-
-				if(event.key.keysym.sym == SDLK_F11) {
-					switch(window.fullscreen) {
-						case true:
-							SDL_SetWindowFullscreen(window.window, 0);
-							window.fullscreen = false;
-							break;
-						case false:
-							SDL_SetWindowFullscreen(window.window, SDL_WINDOW_FULLSCREEN);
-							window.fullscreen = true;
-							break;
-					}
-				}
-
-				if(event.key.keysym.sym == SDLK_q) {
-					settings.cheatsId = 3;
-					settings.cheats = !settings.cheats;
-				}
-				if(event.key.keysym.sym == SDLK_F3)
-					settings.gameInfo = !settings.gameInfo;
-
-				if(event.key.keysym.sym == SDLK_F9)
-					game.cliInput = true;
-
-			// Preset chooser
-			game::PresetChooser(event, settings.curPreset);
-			// Player movement
-			game::PlayerMovement(event, map, player);
-			// Inventory
-			inventory::Event(event, settings);
-
-			// Clear map
-			if(event.key.keysym.sym == SDLK_c) {
-				settings.dialogueId = 2;
-				settings.dialogue = !settings.dialogue;
-			}
-
-			// Camera
-			game::CameraControls(window, settings, cam);
-			}
-
-			// Dialogues : Yes
-			int dialogueResult = dialogues::ConfirmDialogueEvent(window, dialoguesRects);
-			if(dialogueResult == 2)
-					switch(settings.dialogueId) {
-						case 1:
-							files::SaveMap(map);
-							files::SaveSettings(settings, player, cam);
-							running = false;
-							break;
-						case 2:
-							game::ClearMap(map);
-							settings.dialogueId = 0;
-							settings.dialogue = false;
-							break;
-					}
-			else if(dialogueResult == 3)
-				if(settings.dialogueId == 1)
-					running = false;
-
-			// Cheats
-			if(settings.cheats) {
-				int cheatsResult = 0;
-
-				switch(settings.cheatsId) {
-					case 1:
-						cheatsResult = cheats::CamTp(window, game, settings, cam);
-						break;
-					case 2:
-						cheatsResult = cheats::PlayerTp(window, game, settings, map, cam, player);
-				}
-				
-				if(cheatsResult == 1) settings.cheats = false;
-			}
-
-			if(settings.canPlayerPlace == true) game::MouseEvent(window, game, settings, map, cam, preset);
-
-			if(settings.inventory) inventory::Chooser(window, settings, player, cam, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
-			}
+			
 
 		// Set BG color to new color
 		draw::SetDrawColor(window.renderer, colors::colorID[settings.bgColor - 1]);
