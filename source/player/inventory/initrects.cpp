@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "mf/core.h"
 
 #include "inventory.h"
@@ -97,6 +99,7 @@ namespace inventory {
 		// widthFactor and heightFactor // TODO //
 		/*float wFactor = sdlSettings.width / 1280;
 		float hFactor = sdlSettings.height / 800;*/
+		std::cout << window.width / 1280 << " : " << window.height / 800 << std::endl;
 
 		OtherRects rects = {};
 		// Name                     X Offset                      Y Offset                 Width Height
