@@ -22,7 +22,7 @@
 int main(int argc, char **argv) {
 	bool running = true;
     std::cout << "-------Mikicrep Framework-------"     << std::endl
-              << "-------Ver: 1.4.0---------------"     << std::endl
+              << "-------Ver: 1.4.0M--------------"     << std::endl
               << "Copyright Mikicrep Studios 2024"      << std::endl;
 	std::cout << "-------Random SDL Game----------"     << std::endl
 			  << "-------Ver: D E V---------------"     << std::endl
@@ -113,22 +113,26 @@ int main(int argc, char **argv) {
                     running = false;
                     break;
                 
-                case SDL_WINDOWEVENT_RESIZED:
-                    // Handle resizing window
-                    window.width = event.window.data1;
-                    window.height = event.window.data2;
+				case SDL_WINDOWEVENT:
+					switch(event.window.event) {
+						case SDL_WINDOWEVENT_RESIZED:
+							// Handle resizing window
+							window.width = event.window.data1;
+							window.height = event.window.data2;
 
-					// Update rects
-					dialoguesRects = dialogues::InitRects(window);
+							// Update rects
+							dialoguesRects = dialogues::InitRects(window);
 
-					// Inv rects
-					inventoryMenuRects = inventory::InitMenuRects(window);
-					inventoryColorRects = inventory::InitColorRects(window);
-					inventoryDecalRects = inventory::InitDecalRects(window);
-					inventoryGameplayRects = inventory::InitGameplayRects(window);
-					inventoryGameRects = inventory::InitGameRects(window);
-					inventoryOtherRects = inventory::InitOtherRects(window);
-                    break;
+							// Inv rects
+							inventoryMenuRects = inventory::InitMenuRects(window);
+							inventoryColorRects = inventory::InitColorRects(window);
+							inventoryDecalRects = inventory::InitDecalRects(window);
+							inventoryGameplayRects = inventory::InitGameplayRects(window);
+							inventoryGameRects = inventory::InitGameRects(window);
+							inventoryOtherRects = inventory::InitOtherRects(window);
+							break;
+					}
+					break;
 
                 case SDL_MOUSEBUTTONDOWN:
                     // Mouse button is held
