@@ -3,7 +3,6 @@
 ### In progress:
 
 ### Very soon:
-- Switch statement in events
 
 ### Planned:
 - resize elements on window resize
