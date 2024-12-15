@@ -34,6 +34,9 @@ int main(int argc, char **argv) {
     SDL_Event event = {};
 	bool debug = false;
 
+	// Extra vars
+	int dialogueResult = 0;
+
     // Create window
 	if(debug) std::cout << "Creating window" << std::endl;
     if(core::InitWindow(window, title, 1280, 800) == false) running = false;
@@ -138,6 +141,42 @@ int main(int argc, char **argv) {
                     // Mouse button is held
                     window.mouse.isDown = true;
 
+					// Dialogues : Yes
+					dialogueResult = dialogues::ConfirmDialogueEvent(window, dialoguesRects);
+					if(dialogueResult == 2)
+						switch(settings.dialogueId) {
+							case 1:
+								files::SaveMap(map);
+								files::SaveSettings(settings, player, cam);
+								running = false;
+								break;
+							case 2:
+								game::ClearMap(map);
+								settings.dialogueId = 0;
+								settings.dialogue = false;
+								break;
+						}
+					
+					else if(dialogueResult == 3 && settings.dialogueId == 1)
+							running = false;
+
+					// Cheats
+					if(settings.cheats) {
+						int cheatsResult = 0;
+
+						switch(settings.cheatsId) {
+							case 1:
+								cheatsResult = cheats::CamTp(window, game, settings, cam);
+								break;
+							case 2:
+								cheatsResult = cheats::PlayerTp(window, game, settings, map, cam, player);
+								break;
+						}
+						
+						if(cheatsResult == 1) settings.cheats = false;
+					}
+
+					// Inventory buttons click event
 					if(settings.inventory) inventory::Chooser(window, settings, player, cam, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
                     break;
                 case SDL_MOUSEBUTTONUP:
@@ -208,42 +247,8 @@ int main(int argc, char **argv) {
 					break;
 				
 				default:
-					// Dialogues : Yes
-					int dialogueResult = dialogues::ConfirmDialogueEvent(window, dialoguesRects);
-					if(dialogueResult == 2)
-						switch(settings.dialogueId) {
-							case 1:
-								files::SaveMap(map);
-								files::SaveSettings(settings, player, cam);
-								running = false;
-								break;
-							case 2:
-								game::ClearMap(map);
-								settings.dialogueId = 0;
-								settings.dialogue = false;
-								break;
-						}
-					
-					else if(dialogueResult == 3)
-						if(settings.dialogueId == 1)
-							running = false;
-
-					// Cheats
-					if(settings.cheats) {
-						int cheatsResult = 0;
-
-						switch(settings.cheatsId) {
-							case 1:
-								cheatsResult = cheats::CamTp(window, game, settings, cam);
-								break;
-							case 2:
-								cheatsResult = cheats::PlayerTp(window, game, settings, map, cam, player);
-						}
-						
-						if(cheatsResult == 1) settings.cheats = false;
-					}
-
 					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, settings, map, cam, preset);
+					break;
             }
         }
 
