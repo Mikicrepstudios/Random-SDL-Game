@@ -137,6 +137,8 @@ int main(int argc, char **argv) {
                 case SDL_MOUSEBUTTONDOWN:
                     // Mouse button is held
                     window.mouse.isDown = true;
+
+					if(settings.inventory) inventory::Chooser(window, settings, player, cam, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
                     break;
                 case SDL_MOUSEBUTTONUP:
                     // Mouse button is released
@@ -242,9 +244,6 @@ int main(int argc, char **argv) {
 					}
 
 					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, settings, map, cam, preset);
-
-					if(settings.inventory) inventory::Chooser(window, settings, player, cam, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
-
             }
         }
 
