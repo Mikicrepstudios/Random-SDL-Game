@@ -19,6 +19,9 @@
 -- Build 89
 - A lot of code refactoring
 
+-- Build 91
+- Events are now in switch statement
+
 ## Notes:
 
 
