@@ -17,14 +17,14 @@ namespace inventory {
 		
 		MenuRects rects = {};
 
-		rects.previewRect         = {window.width / 2 - 50,  50,                       100, 100};
-		rects.previewRectb        = {window.width / 2 - 55,  45,                       110, 110};
-		rects.previewTextRect     = {window.width / 2 - 50,  160,                      100, 40 };
+		rects.previewRect         = {window.width / 2 - 50, 50, 100, 100};
+		rects.previewRectb        = {window.width / 2 - 55, 45, 110, 110};
+		rects.previewTextRect     = {window.width / 2 - 50, 160, 100, 40 };
 
-		rects.bgGameplay          = {45,                          window.height - 215, 420, 170};
-		rects.gameplayTextRect    = {150,                         window.height - 210, 200, 50 };
-		rects.bgGame              = {window.width - 465,     window.height - 215, 420, 170};
-		rects.gameTextRect        = {window.width - 360,     window.height - 210, 200, 50 };
+		rects.bgGameplay          = {45, window.height - 215, 420, 170};
+		rects.gameplayTextRect    = {150, window.height - 210, 200, 50 };
+		rects.bgGame              = {window.width - 465, window.height - 215, 420, 170};
+		rects.gameTextRect        = {window.width - 360, window.height - 210, 200, 50 };
 
 		return rects;
 	}
