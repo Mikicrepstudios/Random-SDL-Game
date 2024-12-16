@@ -22,6 +22,7 @@
 - Autosave
 - Handle errors in executor instead in every command
 - Hover effect on choosers
+- Cast to int function
 
 ### Thinking:
 - shadows
