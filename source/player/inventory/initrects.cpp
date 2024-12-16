@@ -100,13 +100,11 @@ namespace inventory {
 		float wFactor = static_cast<float>(window.width) / 1280;
 		float hFactor = static_cast<float>(window.height) / 800;
 
-		float a = 12.2352;
-
 		/* Note for future me:
 			try in loop
 			use float
 		*/
-		std::cout << wFactor << " : " << hFactor << a << std::endl;
+		std::cout << wFactor << " : " << hFactor << std::endl;
 
 		OtherRects rects = {};
 		// Name                     X Offset                      Y Offset                 Width Height
