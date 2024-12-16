@@ -103,8 +103,8 @@ namespace inventory {
 		
 		GameRects rects = {};
 
-		rects.gameInfoRect        = {window.width - 250,     window.height - 160, 200, 50 };
-		rects.exitRect            = {window.width - 250,     window.height - 100, 200, 50 };
+		rects.gameInfoRect        = {static_cast<int>(window.width - 250 * wFactor), static_cast<int>(window.height - 160 * hFactor), static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor)};
+		rects.exitRect            = {static_cast<int>(window.width - 250 * wFactor), static_cast<int>(window.height - 100 * hFactor), static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor)};
 
 		return rects;
 	}
