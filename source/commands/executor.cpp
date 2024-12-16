@@ -64,6 +64,12 @@ namespace commands {
             case 1:
                 std::cout << "Error executing command" << std::endl;
                 break;
+            case 2:
+                std::cout << "Too few arguments" << std::endl;
+                break;
+            case 3:
+                std::cout << "Too many arguments" << std::endl;
+                break;
             case -69:
                 std::cout << "Something gone VERY wrong" << std::endl;
                 break;
