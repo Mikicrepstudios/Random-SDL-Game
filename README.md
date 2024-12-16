@@ -1,8 +1,8 @@
 # Random SDL Game
-#### Most random game I made where I just put most random features, made using [Mikicrep Framework](https://miki.macakom.net/projects/mf)
+#### Sandbox game where you place blocks, based on [Mikicrep Framework](https://miki.macakom.net/projects/mf)
 - by Mikicrep
 
-You can use it also as pixelart editor if you want.
+You can also make pixelart in it if you want.
 
 [Project page](https://miki.macakom.net/projects/rsg)
 
