@@ -55,12 +55,14 @@ namespace commands {
         else if(commandId == "destroy") status = Destroy(args, argsCount, map);
         else if(commandId == "place") status = Place(args, argsCount, settings, map);
         
-        // Handle errors
-        // If no command was found
+        // No command found
         else std::cout << "Error executing command : Not found" << std::endl;
 
-        // If command for any reason fails to run successfully write this
+        // Command must return its response status, handle them here
         switch(status) {
+            case 0:
+                // Command executed successfully
+                break;
             case 1:
                 std::cout << "Error executing command" << std::endl;
                 break;
