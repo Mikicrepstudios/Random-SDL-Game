@@ -11,6 +11,10 @@ namespace inventory {
 		 * @param window Game window
 		 */
 
+		// Variables used for scaling elements
+		float wFactor = static_cast<float>(window.width) / 1280;
+		float hFactor = static_cast<float>(window.height) / 800;
+		
 		MenuRects rects = {};
 
 		rects.previewRect         = {window.width / 2 - 50,  50,                       100, 100};
@@ -58,6 +62,10 @@ namespace inventory {
 		 * @param window Game window
 		 */
 		
+		// Variables used for scaling elements
+		float wFactor = static_cast<float>(window.width) / 1280;
+		float hFactor = static_cast<float>(window.height) / 800;
+		
 		DecalRects rects = {};
 
 		rects.textureIdRect       = {window.width - 130,     50,                       80,  80 };
@@ -72,6 +80,10 @@ namespace inventory {
 		 * @param window Game window
 		 */
 		
+		// Variables used for scaling elements
+		float wFactor = static_cast<float>(window.width) / 1280;
+		float hFactor = static_cast<float>(window.height) / 800;
+		
 		GameplayRects rects = {};
 
 		rects.camTpRect           = {50,                          window.height - 160, 200, 50 };
@@ -84,6 +96,10 @@ namespace inventory {
 		 * @brief This function initilizes inventory rects
 		 * @param window Game window
 		 */
+		
+		// Variables used for scaling elements
+		float wFactor = static_cast<float>(window.width) / 1280;
+		float hFactor = static_cast<float>(window.height) / 800;
 		
 		GameRects rects = {};
 
