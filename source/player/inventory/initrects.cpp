@@ -86,8 +86,8 @@ namespace inventory {
 		
 		GameplayRects rects = {};
 
-		rects.camTpRect           = {50,                          window.height - 160, 200, 50 };
-		rects.playerTpRect        = {50,                          window.height - 100, 200, 50 };
+		rects.camTpRect           = {50,                          window.height - 160, static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor)};
+		rects.playerTpRect        = {50,                          window.height - 100, static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor)};
 
 		return rects;
 	}
