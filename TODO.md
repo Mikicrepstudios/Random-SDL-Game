@@ -1,4 +1,5 @@
 ## TODO List
+### This list conatins stuff that I might add in game - Feel free to suggest stuff
 
 ### In progress:
 
