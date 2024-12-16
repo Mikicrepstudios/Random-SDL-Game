@@ -12,7 +12,6 @@
 - better saving (presets, colors, etc)
 - Switch instead of ifs in inventory::Overlay() color pickers
 - Colors in block textures
-- Fix variable names (uppercase words) in savemap.cpp
 - Make quick color picker pick block texture too
 - Add textureId to presets
 - setblocktexture, getblocktexture cmds
