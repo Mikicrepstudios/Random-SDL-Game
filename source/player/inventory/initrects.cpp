@@ -41,13 +41,13 @@ namespace inventory {
 		rects.colorRectb          = {45,                          45,                       static_cast<int>(90 * wFactor),  static_cast<int>(90 * hFactor) };
 		rects.colorTextRect       = {50,                          140,                      static_cast<int>(80 * wFactor),  static_cast<int>(40 * hFactor) };
 
-		rects.bgColorRect         = {155,                         50,                       80,  80 };
-		rects.bgColorRectb        = {150,                         45,                       90,  90 };
-		rects.bgColorTextRect     = {155,                         140,                      80,  40 };
+		rects.bgColorRect         = {155,                         50,                       static_cast<int>(80 * wFactor),  static_cast<int>(80 * hFactor) };
+		rects.bgColorRectb        = {150,                         45,                       static_cast<int>(90 * wFactor),  static_cast<int>(90 * hFactor) };
+		rects.bgColorTextRect     = {155,                         140,                      static_cast<int>(80 * wFactor),  static_cast<int>(40 * hFactor) };
 
-		rects.playerColorRect     = {50,                          200,                      80,  80 };
-		rects.playerColorRectb    = {45,                          195,                      90,  90 };
-		rects.playerColorTextRect = {50,                          290,                      80,  40 };
+		rects.playerColorRect     = {50,                          200,                      static_cast<int>(80 * wFactor),  static_cast<int>(80 * hFactor) };
+		rects.playerColorRectb    = {45,                          195,                      static_cast<int>(90 * wFactor),  static_cast<int>(90 * hFactor) };
+		rects.playerColorTextRect = {50,                          290,                      static_cast<int>(80 * wFactor),  static_cast<int>(40 * hFactor) };
 
 		return rects;
 	}
