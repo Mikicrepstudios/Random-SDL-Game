@@ -4,6 +4,19 @@
 ### In progress:
 
 ### Planned:
+- Core
+- - Fix crasing on big camera offset
+- - Colors for block textures
+- - Add textureId to presets
+- - Autosave - save after n of placed blocks OR n time (not decided)
+- - Hover effect on choosers
+- Code
+- - Switch instead of ifs in inventory::Overlay() color pickers
+- - Make quick color picker pick block texture too
+- - Debugging - Functions to print data from structs
+- - Cast to int function
+- Files
+- - Rework save system - Many files, use MF files functions
 - Commands
 - - Tp cam
 - - Tp player
@@ -13,18 +26,6 @@
 - - Setblocktexture
 - - Getblocktexture
 - - Remove color argument for place command
-
-- Check whats causing when camera goes way too much down it goes back to beggining but keeping offset
-- Dialogues rects in dialogues cpp instead of main and inventory*
-- better saving (presets, colors, etc)
-- Switch instead of ifs in inventory::Overlay() color pickers
-- Colors in block textures
-- Make quick color picker pick block texture too
-- Add textureId to presets
-- make debug thing that prints whole settings struct and maybe all others
-- Autosave
-- Hover effect on choosers
-- Cast to int function
 
 ### Thinking:
 - shadows
