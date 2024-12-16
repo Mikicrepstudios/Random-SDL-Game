@@ -27,6 +27,7 @@
 
 -- Build 92
 - Executor now uses switch statements
+- Executor now handles command results instead of commands invidually
 
 ## Notes:
 
