@@ -103,8 +103,6 @@ namespace inventory {
 		
 		GameRects rects = {};
 
-		rects.saveRect            = {window.width - 460,     window.height - 160, 200, 50 };
-		rects.loadRect            = {window.width - 460,     window.height - 100, 200, 50 };
 		rects.gameInfoRect        = {window.width - 250,     window.height - 160, 200, 50 };
 		rects.exitRect            = {window.width - 250,     window.height - 100, 200, 50 };
 
