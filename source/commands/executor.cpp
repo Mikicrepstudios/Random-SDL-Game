@@ -60,7 +60,13 @@ namespace commands {
         else std::cout << "Error executing command : Not found" << std::endl;
 
         // If command for any reason fails to run successfully write this
-        if(status == 1) std::cout << "Error executing command" << std::endl;
-        else if(status == -69) std::cout << "Something gone VERY wrong" << std::endl;
+        switch(status) {
+            case 1:
+                std::cout << "Error executing command" << std::endl;
+                break;
+            case -69:
+                std::cout << "Something gone VERY wrong" << std::endl;
+                break;
+        }
     }
 }
