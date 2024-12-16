@@ -6,6 +6,12 @@
 
 namespace commands {
     int TerminalMode(std::string args, int argsCount, bool &terminalmode) {
+        /**
+         * @brief This turns on terminal mode which locks game to terminal only, can be toggled off
+         * @param args Command arguments
+         * @param argsCount Amount of arguments
+         * @param terminalmode This tells if it is turned on or off
+         */
         if(argsCount == 0) {
             std::cout << "You need 1 argument [on/off]" << std::endl;
  
