@@ -97,6 +97,7 @@ namespace inventory {
 		 */
 		
 		// widthFactor and heightFactor // TODO //
+		// Variables used for scaling elements
 		float wFactor = static_cast<float>(window.width) / 1280;
 		float hFactor = static_cast<float>(window.height) / 800;
 
