@@ -29,6 +29,9 @@
 - Executor now uses switch statements
 - Executor now handles command results instead of commands invidually
 
+-- Build 93
+- Refactored some variable names
+
 ## Notes:
 
 
