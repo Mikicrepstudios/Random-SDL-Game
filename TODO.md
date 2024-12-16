@@ -18,7 +18,6 @@
 - add to place cmd texture argument
 - make debug thing that prints whole settings struct and maybe all others
 - Autosave
-- Handle errors in executor instead in every command
 - Hover effect on choosers
 - Cast to int function
 
