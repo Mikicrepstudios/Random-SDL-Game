@@ -9,7 +9,7 @@ namespace commands {
         if(argsCount == 0) {
             std::cout << "You need 1 argument [on/off]" << std::endl;
  
-            return 1;
+            return 4;
         }
         else if(argsCount == 1) {
             std::string* argsArray = new std::string[argsCount];
@@ -35,9 +35,7 @@ namespace commands {
             return 0;
         }
         else if(argsCount > 1) {
-            std::cout << "Too much arguments" << std::endl;
-
-            return 1;
+            return 3;
         }
 
         return -69;
