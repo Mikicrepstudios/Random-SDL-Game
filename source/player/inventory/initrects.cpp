@@ -130,13 +130,13 @@ namespace inventory {
 		
 
 
-        rects.solidRect           = {50,                          window.height - 355, 80,  80 };
-        rects.solidRectb          = {45,                          window.height - 360, 90,  90 };
-        rects.solidTextRect       = {50,                          window.height - 260, 80,  40 };
+        rects.solidRect           = {50,                          window.height - 355, static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor)};
+        rects.solidRectb          = {45,                          window.height - 360, static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor)};
+        rects.solidTextRect       = {50,                          window.height - 260, static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor)};
 
-		rects.presetRect          = {window.width / 2 - 85,  window.height - 160, 170, 115};
-		rects.presetTextRect      = {window.width / 2 - 40,  window.height - 160, 80,  115};
-		rects.presetTitleRect     = {window.width / 2 - 115, window.height - 215, 230, 50 };
+		rects.presetRect          = {window.width / 2 - 85,  window.height - 160, static_cast<int>(170 * wFactor), static_cast<int>(115 * hFactor)};
+		rects.presetTextRect      = {window.width / 2 - 40,  window.height - 160, static_cast<int>(80 * wFactor), static_cast<int>(115 * hFactor)};
+		rects.presetTitleRect     = {window.width / 2 - 115, window.height - 215, static_cast<int>(230 * wFactor), static_cast<int>(50 * hFactor)};
 		return rects;
 	}
 }
