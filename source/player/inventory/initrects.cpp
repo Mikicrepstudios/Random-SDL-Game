@@ -17,9 +17,9 @@ namespace inventory {
 		
 		MenuRects rects = {};
 
-		rects.previewRect         = {window.width / 2 - 50, 50, static_cast<int>(100 * wFactor), static_cast<int>(100 * hFactor)};
-		rects.previewRectb        = {window.width / 2 - 55, 45, static_cast<int>(110 * wFactor), static_cast<int>(110 * hFactor)};
-		rects.previewTextRect     = {window.width / 2 - 50, 160, static_cast<int>(100 * wFactor), static_cast<int>(40 * hFactor) };
+		rects.previewRect         = {window.width / 2 - 50, static_cast<int>(50 * hFactor), static_cast<int>(100 * wFactor), static_cast<int>(100 * hFactor)};
+		rects.previewRectb        = {window.width / 2 - 55, static_cast<int>(45 * hFactor), static_cast<int>(110 * wFactor), static_cast<int>(110 * hFactor)};
+		rects.previewTextRect     = {window.width / 2 - 50, static_cast<int>(160 * hFactor), static_cast<int>(100 * wFactor), static_cast<int>(40 * hFactor) };
 
 		rects.bgGameplay          = {45, window.height - 215, static_cast<int>(420 * wFactor), static_cast<int>(170 * hFactor)};
 		rects.gameplayTextRect    = {150, window.height - 210, static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor) };
