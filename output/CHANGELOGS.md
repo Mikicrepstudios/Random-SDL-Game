@@ -5,6 +5,9 @@
 -- Build 90
 - Added terminalmode
 
+-- Build 91
+- Inventory is now scaled based on resolution game is running
+
 ## Removed:
 -- Build 88
 - Removed draw.cpp & draw.h
