@@ -28,16 +28,13 @@
 - - Remove color argument for place command
 
 ### Thinking:
-- shadows
-- Is mouse down check in seperate file
-- undo/redo
-(temponary memory to revert accidental clicks/missclicks, got idea for last placed block undo/redo, thinking abt bigger limit) | note for me: arrays?
-- multiple save slots
-- Custom color pallete
-- move player color with colors // in save // in settings and add saving preset ability
+- Core
+- - Shadows
+- - Undo/Redo
+- - Multiple save slots
+- - Custom color pallete
 
 ### Explanations:
-- In progress - is currently being implemented
-- Very soon   - priority, most likely coming next few updates
-- Planned     - will probably add it to this
-- Thinking    - 50/50, has chance to come to game
+- In progress - Is currently being implemented
+- Planned     - Will probably implement
+- Thinking    - Has chance to be implemented
