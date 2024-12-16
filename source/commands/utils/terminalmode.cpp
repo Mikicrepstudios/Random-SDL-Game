@@ -12,6 +12,7 @@ namespace commands {
          * @param argsCount Amount of arguments
          * @param terminalmode This tells if it is turned on or off
          */
+        
         if(argsCount == 0) {
             std::cout << "You need 1 argument [on/off]" << std::endl;
  
