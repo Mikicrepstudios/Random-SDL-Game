@@ -30,12 +30,16 @@ namespace inventory {
 		 * @brief This function initilizes inventory rects
 		 * @param window Game window
 		 */
+
+		// Variables used for scaling elements
+		float wFactor = static_cast<float>(window.width) / 1280;
+		float hFactor = static_cast<float>(window.height) / 800;
 		
 		ColorRects rects = {};
 
-		rects.colorRect           = {50,                          50,                       80,  80 };
-		rects.colorRectb          = {45,                          45,                       90,  90 };
-		rects.colorTextRect       = {50,                          140,                      80,  40 };
+		rects.colorRect           = {50,                          50,                       static_cast<int>(80 * wFactor),  static_cast<int>(80 * hFactor) };
+		rects.colorRectb          = {45,                          45,                       static_cast<int>(90 * wFactor),  static_cast<int>(90 * hFactor) };
+		rects.colorTextRect       = {50,                          140,                      static_cast<int>(80 * wFactor),  static_cast<int>(40 * hFactor) };
 
 		rects.bgColorRect         = {155,                         50,                       80,  80 };
 		rects.bgColorRectb        = {150,                         45,                       90,  90 };
