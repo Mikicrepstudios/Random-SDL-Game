@@ -37,17 +37,17 @@ namespace inventory {
 		
 		ColorRects rects = {};
 
-		rects.colorRect           = {50, 50, static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor) };
-		rects.colorRectb          = {45, 45, static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor) };
-		rects.colorTextRect       = {50, 140, static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor) };
+		rects.colorRect           = {static_cast<int>(50 * wFactor), static_cast<int>(50 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor) };
+		rects.colorRectb          = {static_cast<int>(45 * wFactor), static_cast<int>(45 * hFactor), static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor) };
+		rects.colorTextRect       = {static_cast<int>(50 * wFactor), static_cast<int>(140 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor) };
 
-		rects.bgColorRect         = {155, 50, static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor) };
-		rects.bgColorRectb        = {150, 45, static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor) };
-		rects.bgColorTextRect     = {155, 140, static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor) };
+		rects.bgColorRect         = {static_cast<int>(155 * wFactor), static_cast<int>(50 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor) };
+		rects.bgColorRectb        = {static_cast<int>(150 * wFactor), static_cast<int>(45 * hFactor), static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor) };
+		rects.bgColorTextRect     = {static_cast<int>(155 * wFactor), static_cast<int>(140 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor) };
 
-		rects.playerColorRect     = {50, 200, static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor) };
-		rects.playerColorRectb    = {45, 195, static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor) };
-		rects.playerColorTextRect = {50, 290, static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor) };
+		rects.playerColorRect     = {static_cast<int>(50 * wFactor), static_cast<int>(200 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor) };
+		rects.playerColorRectb    = {static_cast<int>(45 * wFactor), static_cast<int>(195 * hFactor), static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor) };
+		rects.playerColorTextRect = {static_cast<int>(50 * wFactor), static_cast<int>(290 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor) };
 
 		return rects;
 	}
