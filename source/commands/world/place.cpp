@@ -15,9 +15,7 @@ namespace commands {
          */
         // Empty command
         if(argsCount == 0 || argsCount == 1) {
-            std::cout << "Not enough arguments" << std::endl;
-            
-            return 1;
+            return 2;
         }
 
         std::string* argsArray = new std::string[argsCount];
@@ -54,9 +52,7 @@ namespace commands {
         }
 
         if(argsCount > 3) {
-            std::cout << "Too many arguments" << std::endl;
-            
-            return 1;
+            return 3;
         }
 
         return -69;
