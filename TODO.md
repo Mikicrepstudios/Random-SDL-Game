@@ -4,17 +4,23 @@
 ### In progress:
 
 ### Planned:
+- Commands
+- - Tp cam
+- - Tp player
+- - Getcampos
+- - Getplayerpos
+- - Getplayercolor
+- - Setblocktexture
+- - Getblocktexture
+- - Remove color argument for place command
+
 - Check whats causing when camera goes way too much down it goes back to beggining but keeping offset
 - Dialogues rects in dialogues cpp instead of main and inventory*
-- tp cam, tp player cmds
-- getcampos, getplayerpos, getplayercolor cmd
 - better saving (presets, colors, etc)
 - Switch instead of ifs in inventory::Overlay() color pickers
 - Colors in block textures
 - Make quick color picker pick block texture too
 - Add textureId to presets
-- setblocktexture, getblocktexture cmds
-- add to place cmd texture argument
 - make debug thing that prints whole settings struct and maybe all others
 - Autosave
 - Hover effect on choosers
