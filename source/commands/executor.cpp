@@ -70,6 +70,9 @@ namespace commands {
             case 3:
                 std::cout << "Too many arguments" << std::endl;
                 break;
+            case 4:
+                // Command gave custom response
+                break;
             case -69:
                 std::cout << "Something gone VERY wrong" << std::endl;
                 break;
