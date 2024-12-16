@@ -68,9 +68,9 @@ namespace inventory {
 		
 		DecalRects rects = {};
 
-		rects.textureIdRect       = {window.width - 130,     50, static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor)};
-		rects.textureIdRectb      = {window.width - 135,     45, static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor)};
-		rects.textureIdTextRect   = {window.width - 130,     140, static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor)};
+		rects.textureIdRect       = {static_cast<int>(window.width - 130 * wFactor), static_cast<int>(50 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor)};
+		rects.textureIdRectb      = {static_cast<int>(window.width - 135 * wFactor), static_cast<int>(45 * hFactor), static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor)};
+		rects.textureIdTextRect   = {static_cast<int>(window.width - 130 * wFactor), static_cast<int>(140 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor)};
 
 		return rects;
 	}
