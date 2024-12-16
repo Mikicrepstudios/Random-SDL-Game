@@ -126,13 +126,13 @@ namespace inventory {
 		rects.textureColorRectb   = {window.width - 135,     45,                       90,  90 };
 		rects.textureColorTextRect= {window.width - 130,     140,                      80,  40 };*/
 
-        rects.solidRect           = {50,                          window.height - 355, static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor)};
-        rects.solidRectb          = {45,                          window.height - 360, static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor)};
-        rects.solidTextRect       = {50,                          window.height - 260, static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor)};
+        rects.solidRect           = {static_cast<int>(50 * wFactor), static_cast<int>(window.height - 355 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor)};
+        rects.solidRectb          = {static_cast<int>(45 * wFactor), static_cast<int>(window.height - 360 * hFactor), static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor)};
+        rects.solidTextRect       = {static_cast<int>(50 * wFactor), static_cast<int>(window.height - 260 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor)};
 
-		rects.presetRect          = {window.width / 2 - 85,  window.height - 160, static_cast<int>(170 * wFactor), static_cast<int>(115 * hFactor)};
-		rects.presetTextRect      = {window.width / 2 - 40,  window.height - 160, static_cast<int>(80 * wFactor), static_cast<int>(115 * hFactor)};
-		rects.presetTitleRect     = {window.width / 2 - 115, window.height - 215, static_cast<int>(230 * wFactor), static_cast<int>(50 * hFactor)};
+		rects.presetRect          = {static_cast<int>(window.width / 2 - 85 * wFactor), static_cast<int>(window.height - 160 * hFactor), static_cast<int>(170 * wFactor), static_cast<int>(115 * hFactor)};
+		rects.presetTextRect      = {static_cast<int>(window.width / 2 - 40 * wFactor), static_cast<int>(window.height - 160 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(115 * hFactor)};
+		rects.presetTitleRect     = {static_cast<int>(window.width / 2 - 115 * wFactor), static_cast<int>(window.height - 215 * hFactor), static_cast<int>(230 * wFactor), static_cast<int>(50 * hFactor)};
 		return rects;
 	}
 }
