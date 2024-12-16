@@ -8,7 +8,7 @@ Namespace that contains all in game commands.
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespacecommands_ad0bd97a9833c1c6eb170759c8d90950e}{Executor}} (std\+::string command, core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings, \mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&map, \mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}} preset\mbox{[}10\mbox{]})
+void \mbox{\hyperlink{namespacecommands_a54480bc1f81fd04bb2bab0e6e497762e}{Executor}} (std\+::string command, core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Game}{game\+::\+Game}} \&game, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings, \mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&map, \mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}} preset\mbox{[}10\mbox{]})
 \item 
 int \mbox{\hyperlink{namespacecommands_a9f9393c1f78811fb804e7b17a1f0eef5}{Set\+BGColor}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings)
 \item 
@@ -25,6 +25,8 @@ int \mbox{\hyperlink{namespacecommands_afea5a70e7d7a02def1b7de06845197dc}{Get\+B
 int \mbox{\hyperlink{namespacecommands_a6e5ba691bf400e7be20990c79037fa5e}{Get\+Block\+Type}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} map)
 \item 
 int \mbox{\hyperlink{namespacecommands_a34338cf5b6a77380d567d195bc86302a}{Is\+Block\+Solid}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} map)
+\item 
+int \mbox{\hyperlink{namespacecommands_a309f0bdd08964b575d9b20dc70e54c6a}{Terminal\+Mode}} (std\+::string args, int args\+Count, bool \&terminalmode)
 \item 
 int \mbox{\hyperlink{namespacecommands_a8b2e7ba1ebe8e40603869d08a730ba6a}{Destroy}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&map)
 \item 
@@ -62,11 +64,11 @@ Function for Echo command
 {\em args} & Text to print\\
 \hline
 \end{DoxyParams}
-\Hypertarget{namespacecommands_ad0bd97a9833c1c6eb170759c8d90950e}\index{commands@{commands}!Executor@{Executor}}
+\Hypertarget{namespacecommands_a54480bc1f81fd04bb2bab0e6e497762e}\index{commands@{commands}!Executor@{Executor}}
 \index{Executor@{Executor}!commands@{commands}}
 \doxysubsubsection{\texorpdfstring{Executor()}{Executor()}}
-{\footnotesize\ttfamily \label{namespacecommands_ad0bd97a9833c1c6eb170759c8d90950e} 
-void commands\+::\+Executor (\begin{DoxyParamCaption}\item[{std\+::string}]{command}{, }\item[{core\+::\+MF\+\_\+\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&}]{settings}{, }\item[{\mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&}]{map}{, }\item[{\mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}}}]{preset}{\mbox{[}10\mbox{]}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{namespacecommands_a54480bc1f81fd04bb2bab0e6e497762e} 
+void commands\+::\+Executor (\begin{DoxyParamCaption}\item[{std\+::string}]{command}{, }\item[{core\+::\+MF\+\_\+\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{structgame_1_1Game}{game\+::\+Game}} \&}]{game}{, }\item[{\mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&}]{settings}{, }\item[{\mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&}]{map}{, }\item[{\mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}}}]{preset}{\mbox{[}10\mbox{]}}\end{DoxyParamCaption})}
 
 Function that is used to execute game commands 
 \begin{DoxyParams}{Parameters}
@@ -197,5 +199,20 @@ Function for Set\+Player\+Color command
 {\em args\+Count} & Amount of command arguments \\
 \hline
 {\em settings} & Place where is player color located\\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacecommands_a309f0bdd08964b575d9b20dc70e54c6a}\index{commands@{commands}!TerminalMode@{TerminalMode}}
+\index{TerminalMode@{TerminalMode}!commands@{commands}}
+\doxysubsubsection{\texorpdfstring{TerminalMode()}{TerminalMode()}}
+{\footnotesize\ttfamily \label{namespacecommands_a309f0bdd08964b575d9b20dc70e54c6a} 
+int commands\+::\+Terminal\+Mode (\begin{DoxyParamCaption}\item[{std\+::string}]{args}{, }\item[{int}]{args\+Count}{, }\item[{bool \&}]{terminalmode}{}\end{DoxyParamCaption})}
+
+This turns on terminal mode which locks game to terminal only, can be toggled off 
+\begin{DoxyParams}{Parameters}
+{\em args} & Command arguments \\
+\hline
+{\em args\+Count} & Amount of arguments \\
+\hline
+{\em terminalmode} & This tells if it is turned on or off\\
 \hline
 \end{DoxyParams}
