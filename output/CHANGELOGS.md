@@ -25,6 +25,9 @@
 -- Build 91
 - Events are now in switch statement
 
+-- Build 92
+- Executor now uses switch statements
+
 ## Notes:
 
 
