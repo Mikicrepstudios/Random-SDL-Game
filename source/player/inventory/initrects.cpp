@@ -21,10 +21,10 @@ namespace inventory {
 		rects.previewRectb        = {window.width / 2 - 55, static_cast<int>(45 * hFactor), static_cast<int>(110 * wFactor), static_cast<int>(110 * hFactor)};
 		rects.previewTextRect     = {window.width / 2 - 50, static_cast<int>(160 * hFactor), static_cast<int>(100 * wFactor), static_cast<int>(40 * hFactor) };
 
-		rects.bgGameplay          = {45, window.height - 215, static_cast<int>(420 * wFactor), static_cast<int>(170 * hFactor)};
-		rects.gameplayTextRect    = {150, window.height - 210, static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor) };
-		rects.bgGame              = {window.width - 465, window.height - 215, static_cast<int>(420 * wFactor), static_cast<int>(170 * hFactor)};
-		rects.gameTextRect        = {window.width - 360, window.height - 210, static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor) };
+		rects.bgGameplay          = {static_cast<int>(45 * wFactor), static_cast<int>(window.height - 215 * hFactor), static_cast<int>(420 * wFactor), static_cast<int>(170 * hFactor)};
+		rects.gameplayTextRect    = {static_cast<int>(150 * wFactor), static_cast<int>(window.height - 210 * hFactor), static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor) };
+		rects.bgGame              = {static_cast<int>(window.width - 465 * wFactor), static_cast<int>(window.height - 215 * hFactor), static_cast<int>(420 * wFactor), static_cast<int>(170 * hFactor)};
+		rects.gameTextRect        = {static_cast<int>(window.width - 360 * wFactor), static_cast<int>(window.height - 210 * hFactor), static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor) };
 
 		return rects;
 	}
