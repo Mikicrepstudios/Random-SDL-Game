@@ -126,9 +126,6 @@ namespace inventory {
 		rects.textureColorRectb   = {window.width - 135,     45,                       90,  90 };
 		rects.textureColorTextRect= {window.width - 130,     140,                      80,  40 };*/
 
-		
-
-
         rects.solidRect           = {50,                          window.height - 355, static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor)};
         rects.solidRectb          = {45,                          window.height - 360, static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor)};
         rects.solidTextRect       = {50,                          window.height - 260, static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor)};
