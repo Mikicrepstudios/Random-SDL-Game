@@ -14,9 +14,7 @@ namespace commands {
          * @param settings Place where is BG color located
          */
         if(argsCount == 0) {
-            std::cout << "Not enough arguments" << std::endl;
-            
-            return 1;
+            return 2;
         }
 
         std::string* argsArray = new std::string[argsCount];
@@ -47,8 +45,7 @@ namespace commands {
         }
 
         if(argsCount > 1) {
-            std::cout << "Too much arguments" << std::endl;
-            return 1;
+            return 3;
         }
 
         return -69;
