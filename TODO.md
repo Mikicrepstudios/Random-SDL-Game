@@ -3,8 +3,6 @@
 
 ### In progress:
 
-### Very soon:
-
 ### Planned:
 - Check whats causing when camera goes way too much down it goes back to beggining but keeping offset
 - Dialogues rects in dialogues cpp instead of main and inventory*
