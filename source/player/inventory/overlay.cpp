@@ -82,15 +82,11 @@ namespace inventory {
 			draw::DrawText(window.renderer, window.font, gameRects.exitRect, "Exit", colors::white);
 
 			// Color pickers
-			if(settings.colorPicker && settings.colorPickerId == 1)
+			if(settings.colorPicker)
 				gui::ColorPickerOverlay(window, settings);
-			else if(settings.colorPicker && settings.colorPickerId == 2)
-				gui::ColorPickerOverlay(window, settings);
-			else if(settings.colorPicker && settings.colorPickerId == 3)
-				gui::ColorPickerOverlay(window, settings);
-			}
 
 			if(settings.texturePicker)
 				textures::PickerOverlay(window, blockTextures);
+		}
 	}
 }
