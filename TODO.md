@@ -11,7 +11,6 @@
 - - Autosave - save after n of placed blocks OR n time (not decided)
 - - Hover effect on choosers
 - Code
-- - Switch instead of ifs in inventory::Overlay() color pickers
 - - Make quick color picker pick block texture too
 - - Debugging - Functions to print data from structs
 - - Cast to int function
