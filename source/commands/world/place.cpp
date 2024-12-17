@@ -41,17 +41,7 @@ namespace commands {
             return 0;
         }
 
-        int blockColor = std::stoi(argsArray[2]);
-
-        if(argsCount == 3) {
-            map.map[x][y].type = 2;
-            map.map[x][y].color = blockColor;
-            std::cout << "Successfuly placed block" << std::endl;
-
-            return 0;
-        }
-
-        if(argsCount > 3) {
+        if(argsCount > 2) {
             return 3;
         }
 
