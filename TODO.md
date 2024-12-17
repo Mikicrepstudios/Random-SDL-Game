@@ -25,7 +25,6 @@
 - - Getplayercolor
 - - Setblocktexture
 - - Getblocktexture
-- - Remove color argument for place command
 
 ### Thinking:
 - Core
