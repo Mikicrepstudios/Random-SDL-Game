@@ -10,6 +10,8 @@
 - - Add textureId to presets
 - - Autosave - save after n of placed blocks OR n time (not decided)
 - - Hover effect on choosers
+- - Way to save and load while inside of game
+- - Include save folder into releases
 - Code
 - - Make quick color picker pick block texture too
 - - Debugging - Functions to print data from structs
