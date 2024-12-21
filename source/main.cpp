@@ -21,9 +21,7 @@
 
 int main(int argc, char **argv) {
 	bool running = true;
-    std::cout << "-------Mikicrep Framework-------"     << std::endl
-              << "-------Ver: 1.4.0M--------------"     << std::endl
-              << "Copyright Mikicrep Studios 2024"      << std::endl;
+    core::printver("1.5.0", 1); // Print Mikicrep Framework version
 	std::cout << "-------Random SDL Game----------"     << std::endl
 			  << "-------Ver: D E V---------------"     << std::endl
 			  << "Copyright Mikicrep Studios 2023-2024" << std::endl;
