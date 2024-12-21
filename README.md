@@ -55,7 +55,7 @@ Theese commands only work on arch based linux distros, for other ones you gotta 
 ## Documentation
 You can find documentation [here](https://miki.macakom.net/projects/docs/rsg/index)
 
-## Bug reporting && Suggestions && Contributing
+## Bug reporting && Suggesting && Contributing
 Please read [CONTRIBUTING.md](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
 
 ## Support us
