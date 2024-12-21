@@ -15,6 +15,7 @@
 - Code
 - - Make quick color picker pick block texture too
 - - Debugging - Functions to print data from structs
+- - In initrects use extra::castToInt() function
 - Files
 - - Rework save system - Many files, use MF files functions
 - Commands
