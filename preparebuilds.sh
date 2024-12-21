@@ -16,6 +16,7 @@ mkdir mfbuild
 cp output/app mfbuild
 cp output/mf mfbuild -r
 cp output/assets mfbuild -r
+cp output/save mfbuild -r
 
 cd releases
 7z a linux.zip ../mfbuild
@@ -28,6 +29,7 @@ mkdir mfbuild
 cp output/app-x86_64.exe mfbuild
 cp output/mf mfbuild -r
 cp output/assets mfbuild -r
+cp output/save mfbuild -r
 cp output/x86_64dll/* mfbuild
 
 cd releases
@@ -41,6 +43,7 @@ mkdir mfbuild
 cp output/app-x86.exe mfbuild
 cp output/mf mfbuild -r
 cp output/assets mfbuild -r
+cp output/save mfbuild -r
 cp output/x86dll/* mfbuild
 
 cd releases
