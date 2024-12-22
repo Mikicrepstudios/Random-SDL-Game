@@ -4,7 +4,7 @@
 
 You can also make pixelart in it if you want.
 
-[Project page](https://miki.macakom.net/projects/rsg)
+[More info in project page](https://miki.macakom.net/projects/rsg)
 
 ## Compatibility
 - Supports **linux** and **windows** (shh linux is given bigger love)
