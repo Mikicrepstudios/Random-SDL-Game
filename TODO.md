@@ -17,7 +17,7 @@
 - - Debugging - Functions to print data from structs
 - - In initrects use extra::castToInt() function
 - Files
-- - Rework save system - Many files, use MF files functions
+- - Rework save system - Files do not contain everything they should use only needed stuff, use MF files functions
 - Commands
 - - Tp cam
 - - Tp player
