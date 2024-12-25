@@ -13,7 +13,6 @@
 - - Way to save and load while inside of game
 - - Include save folder into releases
 - Code
-- - Make quick color picker pick block texture too
 - - Debugging - Functions to print data from structs
 - - In initrects use extra::castToInt() function
 - Files
