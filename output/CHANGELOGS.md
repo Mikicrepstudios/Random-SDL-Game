@@ -5,6 +5,8 @@
 - Core
 - - Added commands
 - - Added inventory scaling on resizing game window
+- Shortcuts
+- - Quick color picker [q] can now pick textures too
 
 ## Removed:
 
