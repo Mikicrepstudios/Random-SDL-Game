@@ -32,7 +32,7 @@ namespace game {
 					}
 				}
 			}
-			else if (window.event.type == SDL_MOUSEBUTTONDOWN && settings.cheats && settings.cheatsId == 3) {
+			else if (window.mouse.isDown && settings.cheats && settings.cheatsId == 3) {
 				if (map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].type == 2) {
 					preset[settings.curPreset].blockColor = map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].color;
 					settings.blockTextureId = map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].texture;
