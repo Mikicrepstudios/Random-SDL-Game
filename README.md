@@ -2,8 +2,6 @@
 #### Sandbox game where you place blocks, based on [Mikicrep Framework](https://miki.macakom.net/projects/mf)
 - by Mikicrep
 
-You can also make pixelart in it if you want.
-
 [More info in project page](https://miki.macakom.net/projects/rsg)
 
 ## Compatibility
