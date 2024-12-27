@@ -8,6 +8,8 @@
 #include "game.h"
 #include "settings.h"
 
+#include <iostream>
+
 namespace game {
 	void MouseEvent(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]) {
 		/**
@@ -49,7 +51,20 @@ namespace game {
 		int curHoverX = game.curHoverX;
 		int curHoverY = game.curHoverY;
 
-		if (curHoverX <= map.width && curHoverY <= map.height && map.map[curHoverX - cam.offSetX][curHoverY - cam.offSetY].type != 1 && !settings.inventory) {
+		// - because camera offset is negative number
+		if(curHoverX - cam.offSetX < map.width - 1) {
+			std::cout << "1";
+			if(curHoverY - cam.offSetY < map.height - 1) {
+				std::cout << "2";
+				if(map.map[curHoverX - cam.offSetX][curHoverY - cam.offSetY].type != 1) {
+					std::cout << "3";
+					if(!settings.inventory) {
+						std::cout << "4" << std::endl;
+					}
+				}
+			}
+		}
+		if (curHoverX - cam.offSetX < map.width - 1 && curHoverY - cam.offSetY < map.height - 1 && map.map[curHoverX - cam.offSetX][curHoverY - cam.offSetY].type != 1 && !settings.inventory) {
 			SDL_Rect mouseRect = {curHoverX * cam.scale, curHoverY * cam.scale, cam.scale, cam.scale};
 			if (cam.highlight == false) {
                 if (settings.bgColor == 32 || map.map[curHoverX - cam.offSetX][curHoverY - cam.offSetY].color == 32)
