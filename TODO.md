@@ -2,10 +2,11 @@
 ### This list conatins stuff that I might add in game - Feel free to [suggest stuff](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
 
 ### In progress:
+- Core
+- - Fix crasing on big camera offset
 
 ### Planned:
 - Core
-- - Fix crasing on big camera offset
 - - Make camera not be able to go off bounds
 - - Colors for block textures
 - - Add textureId to presets
