@@ -6,6 +6,7 @@
 ### Planned:
 - Core
 - - Fix crasing on big camera offset
+- - Make camera not be able to go off bounds
 - - Colors for block textures
 - - Add textureId to presets
 - - Autosave - save after n of placed blocks OR n time (not decided)
