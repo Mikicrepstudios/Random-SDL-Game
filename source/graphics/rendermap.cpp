@@ -24,7 +24,7 @@ namespace game {
 		int maxYBlocks = window.height / cam.scale;
 		for(int x = 0; x <= maxXBlocks; x++) {
 			for(int y = 0; y <= maxYBlocks; y++) {
-				if((cam.offSetX - window.width / cam.scale) > -map.width) {
+				if(x - cam.offSetX < map.width - 1 && y - cam.offSetY < map.height - 1) {
 					// Get current block id and define variables
 					int objectId = map.map[x - cam.offSetX][y - cam.offSetY].type;
 					int colorId = map.map[x - cam.offSetX][y - cam.offSetY].color;
