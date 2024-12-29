@@ -4,8 +4,6 @@
 
 #include "settings.h"
 
-#include <iostream>
-
 namespace game {
 	void CameraControls(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera &cam) {
 		/**
@@ -27,7 +25,6 @@ namespace game {
 				cam.offSetY -= 1;
 			}
 			else if(window.event.key.keysym.sym == SDLK_RIGHT && cam.offSetX > -(map.width - window.width / cam.scale)) {
-				std::cout << cam.offSetY << ", " << map.height - window.height / cam.scale << std::endl;
 				cam.offSetX -= 1;
 			}
 		}
