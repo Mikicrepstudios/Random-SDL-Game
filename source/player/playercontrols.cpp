@@ -16,6 +16,7 @@ namespace game {
 		 * @brief This function controls block placing
 		 */
 
+		// SOMEWHERE HERE IS BUG #1
 		if (game.curHoverX <= map.width && game.curHoverY <= map.height && !settings.inventory && map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].type != 1) {
 			if (!settings.cheats) {
 				if(window.mouse.isDown) {
