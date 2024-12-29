@@ -250,7 +250,7 @@ int main(int argc, char **argv) {
             }
         }
 
-		std::cout << game.curHoverX - cam.offSetX << std::endl; 
+		//std::cout << game.curHoverX - cam.offSetX << std::endl; 
 
 		// Set BG color to new color
 		draw::SetDrawColor(window.renderer, colors::colorID[settings.bgColor - 1]);
