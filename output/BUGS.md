@@ -3,6 +3,7 @@
 - [FIXED]  - Bug was fixed and should not reappear
 - [UNSURE] - Bug wasnt seen in a long time, maybe it is resolved? - If never happens again then it wil be marked as [FIXED]
 - [EXISTS] - Bug currently exists
+- [ABANDONED] - Bug will reamain or workaround is used to make it not happen again
 
 1: [EXISTS] Moving camera too much to the left crashes game
 - Explanation: Bug is caused by going off map
