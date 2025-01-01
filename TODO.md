@@ -9,8 +9,8 @@
 
 ### Planned:
 - Core
-- - Colors for block textures
 - - Add textureId to presets
+- - Colors for block textures
 - - Autosave - save after n of placed blocks OR n time (not decided)
 - - Hover effect on choosers
 - - Way to save and load while inside of game
