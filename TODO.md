@@ -3,7 +3,6 @@
 
 ### In progress:
 - Core
-- - Fix crasing on big camera offset
 - - Make camera not be able to go off bounds
 - - - Stuff left to do: camtp
 
