@@ -49,7 +49,7 @@ namespace game {
 			cam.scale = 50;
 
 			// Push camera back if it goes out of bounds
-			while(cam.offSetY < -(map.width - window.width / cam.scale)) {
+			while(cam.offSetX < -(map.width - window.width / cam.scale)) {
 				cam.offSetX += 1;
 			}
 			while(cam.offSetY < -(map.height - window.height / cam.scale)) {
