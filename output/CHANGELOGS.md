@@ -5,6 +5,7 @@
 - Core
 - - Added commands
 - - Added inventory scaling on resizing game window
+- - Now you can no longer go outside of map, game will force you to stay inside of it
 - Shortcuts
 - - Quick color picker [q] can now pick textures too
 
