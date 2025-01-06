@@ -2,9 +2,6 @@
 ### This list conatins stuff that I might add in game - Feel free to [suggest stuff](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
 
 ### In progress:
-- Core
-- - Make camera not be able to go off bounds
-- - - Stuff left to do: camtp
 
 ### Planned:
 - Core
