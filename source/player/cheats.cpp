@@ -6,7 +6,7 @@
 #include "settings.h"
 
 namespace cheats {
-	int CamTp(core::MF_Window &window, game::Game game, game::Settings &settings, game::Camera &cam) {
+	int CamTp(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map map, game::Camera &cam) {
 		/**
 		 * @brief This function executes Camera Teleport cheat
 		 * @param window Game window
@@ -18,6 +18,14 @@ namespace cheats {
 		if (window.event.type == SDL_MOUSEBUTTONDOWN) {
 			cam.offSetX -= game.curHoverX;
 			cam.offSetY -= game.curHoverY;
+
+			// Push camera back if it goes out of bounds
+			while(cam.offSetX < -(map.width - window.width / cam.scale)) {
+				cam.offSetX += 1;
+			}
+			while(cam.offSetY < -(map.height - window.height / cam.scale)) {
+				cam.offSetY += 1;
+			}
 
 			return 1;
 		}

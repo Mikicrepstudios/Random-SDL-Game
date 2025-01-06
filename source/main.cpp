@@ -164,7 +164,7 @@ int main(int argc, char **argv) {
 
 						switch(settings.cheatsId) {
 							case 1:
-								cheatsResult = cheats::CamTp(window, game, settings, cam);
+								cheatsResult = cheats::CamTp(window, game, settings, map, cam);
 								break;
 							case 2:
 								cheatsResult = cheats::PlayerTp(window, game, settings, map, cam, player);
