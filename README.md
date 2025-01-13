@@ -2,7 +2,7 @@
 #### Sandbox game where you place blocks, based on [Mikicrep Framework](https://miki.macakom.net/projects/mf)
 - by Mikicrep
 
-[More info in project page](https://miki.macakom.net/projects/rsg)
+[More information on the project page](https://miki.macakom.net/projects/rsg)
 
 ## Compatibility
 - Supports **linux** and **windows** (shh linux is given bigger love)
