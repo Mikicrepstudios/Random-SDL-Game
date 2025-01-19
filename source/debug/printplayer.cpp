@@ -4,9 +4,9 @@
 
 namespace debug {
     void PrintPlayer(game::Player player) {
-        std::cout << player.x << std::endl
-                  << player.y << std::endl
-                  << player.color << std::endl
-                  << player.speed << std::endl;
+        std::cout << "X: " << player.x << std::endl
+                  << "Y: " << player.y << std::endl
+                  << "Color: " << player.color << std::endl
+                  << "Speed: " << player.speed << std::endl;
     }
 }
