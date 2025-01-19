@@ -4,6 +4,7 @@
 
 namespace debug {
     void PrintSettings(game::Settings settings) {
+        std::cout << "DEBUG - SETTINGS" << std::endl;
         std::cout << "Cur preset: " << settings.curPreset << std::endl
                   << "Block color: " << settings.blockColor << std::endl
                   << "Block texture ID: " << settings.blockTextureId << std::endl
