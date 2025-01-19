@@ -5,7 +5,7 @@
 - [EXISTS] - Bug currently exists
 - [ABANDONED] - Bug will reamain or workaround is used to make it not happen again
 
-1: [EXISTS] Moving camera too much to the left crashes game
+1: [ABANDONED] Moving camera too much to the left crashes game
 - Explanation: Bug is caused by going off map
 - Update2: Fixed but now hovering over it crashes
 
