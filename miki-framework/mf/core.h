@@ -1,5 +1,6 @@
 #pragma once
 
+#include <functional>
 #include <string>
 #include "SDL.h"
 #include "SDL_ttf.h"
@@ -11,6 +12,14 @@ struct MF_Color {
     uint8_t r = 0;
     uint8_t g = 0;
     uint8_t b = 0;
+};
+
+/**
+ * @brief Main struct for Mikicrep Framework pixels
+ */
+struct MF_Pixel {
+    int x = 0;
+    int y = 0;
 };
 
 /**
@@ -46,8 +55,12 @@ namespace core {
     void Exit(MF_Window &window);
     void TimeCount(core::MF_Window &window);
 
+    // Timers
+    void AddTimer(Uint32 interval, std::function<void()> callback, bool repeat = true);
+    void UpdateTimers();
+
     // Addional stuff
-    void printver(std::string ver, int type);
+    void printver(int type);
     void SetWindowIcon(SDL_Window* window, std::string path);
     SDL_Texture* LoadImg(SDL_Renderer* renderer, std::string path);
 

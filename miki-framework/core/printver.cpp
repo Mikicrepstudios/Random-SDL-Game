@@ -2,7 +2,7 @@
 #include <string>
 
 namespace core {
-    void printver(std::string ver, int type) {
+    void printver(int type) {
         /**
          * @brief You MUST use this function when you use Mikicrep Framework, it gives us credits for framwork and prints version for easier support
          * @param ver MF Version
@@ -14,6 +14,8 @@ namespace core {
         2 - Modified release - Use this if you modify MF code to your needs
         3 - DEV version - This is used to tell that you are using version from beta channel
         */
+        std::string ver = "1.6.0";
+
         std::cout << "-------Mikicrep Framework-------" << std::endl;
 
         if(type == 1)
@@ -23,6 +25,6 @@ namespace core {
         else if(type == 3)
               std::cout << "-------Ver: D E V---------------" << std::endl;
 
-        std::cout << "Copyright Mikicrep Studios 2024" << std::endl;
+        std::cout << "Copyright Mikicrep Studios 2024-2025" << std::endl;
     }
 }
