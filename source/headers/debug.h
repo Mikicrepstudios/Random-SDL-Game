@@ -1,9 +1,9 @@
 #include "settings.h"
 
 namespace debug {
-    void printGame(game::Game game);
-    void printSettings(game::Settings settings);
-    void printMap(game::Map map);
-    void printPlayer(game::Player player);
-    void printCamera(game::Camera camera);
+    void PrintGame(game::Game game);
+    void PrintSettings(game::Settings settings);
+    void PrintMap(game::Map map);
+    void PrintPlayer(game::Player player);
+    void PrintCamera(game::Camera camera);
 }
