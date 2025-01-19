@@ -3,7 +3,7 @@
 #include "settings.h"
 
 namespace debug {
-    void printSettings(game::Settings settings) {
+    void PrintSettings(game::Settings settings) {
         std::cout << settings.curPreset << std::endl
                   << settings.blockColor << std::endl
                   << settings.blockTextureId << std::endl
