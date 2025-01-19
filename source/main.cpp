@@ -11,6 +11,7 @@
 #include "block.h"
 #include "cheats.h"
 #include "commands.h"
+#include "debug.h"
 #include "dialogues.h"
 #include "files.h"
 #include "game.h"
