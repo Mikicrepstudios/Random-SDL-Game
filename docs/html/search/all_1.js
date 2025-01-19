@@ -3,7 +3,7 @@ var searchData=
   ['camera_0',['Camera',['../d8/dc9/structgame_1_1Camera.html',1,'game']]],
   ['camera_2ecpp_1',['camera.cpp',['../d1/d6b/camera_8cpp.html',1,'']]],
   ['cameracontrols_2',['CameraControls',['../d3/d2c/namespacegame.html#a8dd7690595775b1cf056d067568321ec',1,'game']]],
-  ['camtp_3',['CamTp',['../df/dbb/namespacecheats.html#a076e67bf3c7971a9d8bd1a4e368c5107',1,'cheats']]],
+  ['camtp_3',['CamTp',['../df/dbb/namespacecheats.html#af3a464bac8746ad6b9c10f8416959578',1,'cheats']]],
   ['camtprect_4',['camTpRect',['../dc/d36/structinventory_1_1GameplayRects.html#a5b04f685d4614a7ed7773e557ec72c67',1,'inventory::GameplayRects']]],
   ['canplayerplace_5',['canPlayerPlace',['../db/d51/structgame_1_1Settings.html#a0698c791498835d5b27577e34e788739',1,'game::Settings']]],
   ['changepreset_2ecpp_6',['changepreset.cpp',['../d0/d99/changepreset_8cpp.html',1,'']]],
