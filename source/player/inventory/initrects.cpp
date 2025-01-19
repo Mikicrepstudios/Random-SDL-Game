@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "mf/core.h"
+#include "mf/extra.h"
 
 #include "inventory.h"
 
@@ -12,19 +13,19 @@ namespace inventory {
 		 */
 
 		// Variables used for scaling elements
-		float wFactor = static_cast<float>(window.width) / 1280;
-		float hFactor = static_cast<float>(window.height) / 800;
+		float wFactor = extra::castToFloat(window.width) / 1280;
+		float hFactor = extra::castToFloat(window.height) / 800;
 		
 		MenuRects rects = {};
 
-		rects.previewRect         = {window.width / 2 - 50, static_cast<int>(50 * hFactor), static_cast<int>(100 * wFactor), static_cast<int>(100 * hFactor)};
-		rects.previewRectb        = {window.width / 2 - 55, static_cast<int>(45 * hFactor), static_cast<int>(110 * wFactor), static_cast<int>(110 * hFactor)};
-		rects.previewTextRect     = {window.width / 2 - 50, static_cast<int>(160 * hFactor), static_cast<int>(100 * wFactor), static_cast<int>(40 * hFactor)};
+		rects.previewRect         = {window.width / 2 - 50, extra::castToInt(50 * hFactor), extra::castToInt(100 * wFactor), extra::castToInt(100 * hFactor)};
+		rects.previewRectb        = {window.width / 2 - 55, extra::castToInt(45 * hFactor), extra::castToInt(110 * wFactor), extra::castToInt(110 * hFactor)};
+		rects.previewTextRect     = {window.width / 2 - 50, extra::castToInt(160 * hFactor), extra::castToInt(100 * wFactor), extra::castToInt(40 * hFactor)};
 
-		rects.bgGameplay          = {static_cast<int>(45 * wFactor), static_cast<int>(window.height - 215 * hFactor), static_cast<int>(420 * wFactor), static_cast<int>(170 * hFactor)};
-		rects.gameplayTextRect    = {static_cast<int>(150 * wFactor), static_cast<int>(window.height - 210 * hFactor), static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor) };
-		rects.bgGame              = {static_cast<int>(window.width - 465 * wFactor), static_cast<int>(window.height - 215 * hFactor), static_cast<int>(420 * wFactor), static_cast<int>(170 * hFactor)};
-		rects.gameTextRect        = {static_cast<int>(window.width - 360 * wFactor), static_cast<int>(window.height - 210 * hFactor), static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor)};
+		rects.bgGameplay          = {extra::castToInt(45 * wFactor), extra::castToInt(window.height - 215 * hFactor), extra::castToInt(420 * wFactor), extra::castToInt(170 * hFactor)};
+		rects.gameplayTextRect    = {extra::castToInt(150 * wFactor), extra::castToInt(window.height - 210 * hFactor), extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor) };
+		rects.bgGame              = {extra::castToInt(window.width - 465 * wFactor), extra::castToInt(window.height - 215 * hFactor), extra::castToInt(420 * wFactor), extra::castToInt(170 * hFactor)};
+		rects.gameTextRect        = {extra::castToInt(window.width - 360 * wFactor), extra::castToInt(window.height - 210 * hFactor), extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
 
 		return rects;
 	}
@@ -41,17 +42,17 @@ namespace inventory {
 		
 		ColorRects rects = {};
 
-		rects.colorRect           = {static_cast<int>(50 * wFactor), static_cast<int>(50 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor)};
-		rects.colorRectb          = {static_cast<int>(45 * wFactor), static_cast<int>(45 * hFactor), static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor)};
-		rects.colorTextRect       = {static_cast<int>(50 * wFactor), static_cast<int>(140 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor)};
+		rects.colorRect           = {extra::castToInt(50 * wFactor), extra::castToInt(50 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(80 * hFactor)};
+		rects.colorRectb          = {extra::castToInt(45 * wFactor), extra::castToInt(45 * hFactor), extra::castToInt(90 * wFactor), extra::castToInt(90 * hFactor)};
+		rects.colorTextRect       = {extra::castToInt(50 * wFactor), extra::castToInt(140 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(40 * hFactor)};
 
-		rects.bgColorRect         = {static_cast<int>(155 * wFactor), static_cast<int>(50 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor)};
-		rects.bgColorRectb        = {static_cast<int>(150 * wFactor), static_cast<int>(45 * hFactor), static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor)};
-		rects.bgColorTextRect     = {static_cast<int>(155 * wFactor), static_cast<int>(140 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor)};
+		rects.bgColorRect         = {extra::castToInt(155 * wFactor), extra::castToInt(50 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(80 * hFactor)};
+		rects.bgColorRectb        = {extra::castToInt(150 * wFactor), extra::castToInt(45 * hFactor), extra::castToInt(90 * wFactor), extra::castToInt(90 * hFactor)};
+		rects.bgColorTextRect     = {extra::castToInt(155 * wFactor), extra::castToInt(140 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(40 * hFactor)};
 
-		rects.playerColorRect     = {static_cast<int>(50 * wFactor), static_cast<int>(200 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor)};
-		rects.playerColorRectb    = {static_cast<int>(45 * wFactor), static_cast<int>(195 * hFactor), static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor)};
-		rects.playerColorTextRect = {static_cast<int>(50 * wFactor), static_cast<int>(290 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor)};
+		rects.playerColorRect     = {extra::castToInt(50 * wFactor), extra::castToInt(200 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(80 * hFactor)};
+		rects.playerColorRectb    = {extra::castToInt(45 * wFactor), extra::castToInt(195 * hFactor), extra::castToInt(90 * wFactor), extra::castToInt(90 * hFactor)};
+		rects.playerColorTextRect = {extra::castToInt(50 * wFactor), extra::castToInt(290 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(40 * hFactor)};
 
 		return rects;
 	}
@@ -68,9 +69,9 @@ namespace inventory {
 		
 		DecalRects rects = {};
 
-		rects.textureIdRect       = {static_cast<int>(window.width - 130 * wFactor), static_cast<int>(50 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor)};
-		rects.textureIdRectb      = {static_cast<int>(window.width - 135 * wFactor), static_cast<int>(45 * hFactor), static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor)};
-		rects.textureIdTextRect   = {static_cast<int>(window.width - 130 * wFactor), static_cast<int>(140 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor)};
+		rects.textureIdRect       = {extra::castToInt(window.width - 130 * wFactor), extra::castToInt(50 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(80 * hFactor)};
+		rects.textureIdRectb      = {extra::castToInt(window.width - 135 * wFactor), extra::castToInt(45 * hFactor), extra::castToInt(90 * wFactor), extra::castToInt(90 * hFactor)};
+		rects.textureIdTextRect   = {extra::castToInt(window.width - 130 * wFactor), extra::castToInt(140 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(40 * hFactor)};
 
 		return rects;
 	}
@@ -86,8 +87,8 @@ namespace inventory {
 		
 		GameplayRects rects = {};
 
-		rects.camTpRect           = {static_cast<int>(50 * wFactor), static_cast<int>(window.height - 160 * hFactor), static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor)};
-		rects.playerTpRect        = {static_cast<int>(50 * wFactor), static_cast<int>(window.height - 100 * hFactor), static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor)};
+		rects.camTpRect           = {extra::castToInt(50 * wFactor), extra::castToInt(window.height - 160 * hFactor), extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
+		rects.playerTpRect        = {extra::castToInt(50 * wFactor), extra::castToInt(window.height - 100 * hFactor), extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
 
 		return rects;
 	}
@@ -103,8 +104,8 @@ namespace inventory {
 		
 		GameRects rects = {};
 
-		rects.gameInfoRect        = {static_cast<int>(window.width - 250 * wFactor), static_cast<int>(window.height - 160 * hFactor), static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor)};
-		rects.exitRect            = {static_cast<int>(window.width - 250 * wFactor), static_cast<int>(window.height - 100 * hFactor), static_cast<int>(200 * wFactor), static_cast<int>(50 * hFactor)};
+		rects.gameInfoRect        = {extra::castToInt(window.width - 250 * wFactor), extra::castToInt(window.height - 160 * hFactor), extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
+		rects.exitRect            = {extra::castToInt(window.width - 250 * wFactor), extra::castToInt(window.height - 100 * hFactor), extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
 
 		return rects;
 	}
@@ -126,13 +127,13 @@ namespace inventory {
 		rects.textureColorRectb   = {window.width - 135,     45,                       90,  90 };
 		rects.textureColorTextRect= {window.width - 130,     140,                      80,  40 };*/
 
-        rects.solidRect           = {static_cast<int>(50 * wFactor), static_cast<int>(window.height - 355 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(80 * hFactor)};
-        rects.solidRectb          = {static_cast<int>(45 * wFactor), static_cast<int>(window.height - 360 * hFactor), static_cast<int>(90 * wFactor), static_cast<int>(90 * hFactor)};
-        rects.solidTextRect       = {static_cast<int>(50 * wFactor), static_cast<int>(window.height - 260 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(40 * hFactor)};
+        rects.solidRect           = {extra::castToInt(50 * wFactor), extra::castToInt(window.height - 355 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(80 * hFactor)};
+        rects.solidRectb          = {extra::castToInt(45 * wFactor), extra::castToInt(window.height - 360 * hFactor), extra::castToInt(90 * wFactor), extra::castToInt(90 * hFactor)};
+        rects.solidTextRect       = {extra::castToInt(50 * wFactor), extra::castToInt(window.height - 260 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(40 * hFactor)};
 
-		rects.presetRect          = {static_cast<int>(window.width / 2 - 85 * wFactor), static_cast<int>(window.height - 160 * hFactor), static_cast<int>(170 * wFactor), static_cast<int>(115 * hFactor)};
-		rects.presetTextRect      = {static_cast<int>(window.width / 2 - 40 * wFactor), static_cast<int>(window.height - 160 * hFactor), static_cast<int>(80 * wFactor), static_cast<int>(115 * hFactor)};
-		rects.presetTitleRect     = {static_cast<int>(window.width / 2 - 115 * wFactor), static_cast<int>(window.height - 215 * hFactor), static_cast<int>(230 * wFactor), static_cast<int>(50 * hFactor)};
+		rects.presetRect          = {extra::castToInt(window.width / 2 - 85 * wFactor), extra::castToInt(window.height - 160 * hFactor), extra::castToInt(170 * wFactor), extra::castToInt(115 * hFactor)};
+		rects.presetTextRect      = {extra::castToInt(window.width / 2 - 40 * wFactor), extra::castToInt(window.height - 160 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(115 * hFactor)};
+		rects.presetTitleRect     = {extra::castToInt(window.width / 2 - 115 * wFactor), extra::castToInt(window.height - 215 * hFactor), extra::castToInt(230 * wFactor), extra::castToInt(50 * hFactor)};
 		return rects;
 	}
 }
