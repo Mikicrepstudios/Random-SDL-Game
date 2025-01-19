@@ -4,6 +4,10 @@
 
 namespace debug {
     void PrintSettings(game::Settings settings) {
+        /**
+         * @brief Prints all values from game::Settings struct
+         * @param settings Game settings
+         */
         std::cout << "DEBUG - SETTINGS" << std::endl;
         std::cout << "Cur preset: " << settings.curPreset << std::endl
                   << "Block color: " << settings.blockColor << std::endl
