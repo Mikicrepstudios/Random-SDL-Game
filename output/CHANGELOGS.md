@@ -13,4 +13,4 @@
 
 ## Changed:
 - Core
-- - Updated Mikicrep Framework to 1.5.0
+- - Updated Mikicrep Framework to 1.6.0
