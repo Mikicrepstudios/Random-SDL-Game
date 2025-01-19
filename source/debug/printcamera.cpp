@@ -4,9 +4,9 @@
 
 namespace debug {
     void PrintCamera(game::Camera cam) {
-        std::cout << cam.scale << std::endl
-                  << cam.offSetX << std::endl
-                  << cam.offSetY << std::endl
-                  << cam.highlight << std::endl;
+        std::cout << "Scale: " << cam.scale << std::endl
+                  << "OffsetX: " << cam.offSetX << std::endl
+                  << "OffsetY: " << cam.offSetY << std::endl
+                  << "Highlight: " << cam.highlight << std::endl;
     }
 }
