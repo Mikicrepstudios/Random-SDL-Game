@@ -2,6 +2,8 @@
 ### This list conatins stuff that I might add in game - Feel free to [suggest stuff](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
 
 ### In progress:
+- Code
+- - Debugging - Functions to print data from structs
 
 ### Planned:
 - Core
@@ -11,8 +13,6 @@
 - - Hover effect on choosers
 - - Way to save and load while inside of game
 - - Include save folder into releases
-- Code
-- - Debugging - Functions to print data from structs
 - Files
 - - Rework save system - Files do not contain everything they should use only needed stuff, use MF files functions
 - Commands
