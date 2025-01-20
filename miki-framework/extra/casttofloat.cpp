@@ -1,5 +1,5 @@
 namespace extra {
-    int castToFloat(int value) {
+    float castToFloat(int value) {
         /**
          * @brief This function converts float number to int
          * @param value Number to convert

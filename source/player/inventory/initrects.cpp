@@ -37,8 +37,8 @@ namespace inventory {
 		 */
 
 		// Variables used for scaling elements
-		float wFactor = static_cast<float>(window.width) / 1280;
-		float hFactor = static_cast<float>(window.height) / 800;
+		float wFactor = extra::castToFloat(window.width) / 1280;
+		float hFactor = extra::castToFloat(window.height) / 800;
 		
 		ColorRects rects = {};
 
@@ -64,8 +64,8 @@ namespace inventory {
 		 */
 		
 		// Variables used for scaling elements
-		float wFactor = static_cast<float>(window.width) / 1280;
-		float hFactor = static_cast<float>(window.height) / 800;
+		float wFactor = extra::castToFloat(window.width) / 1280;
+		float hFactor = extra::castToFloat(window.height) / 800;
 		
 		DecalRects rects = {};
 
@@ -82,8 +82,8 @@ namespace inventory {
 		 */
 		
 		// Variables used for scaling elements
-		float wFactor = static_cast<float>(window.width) / 1280;
-		float hFactor = static_cast<float>(window.height) / 800;
+		float wFactor = extra::castToFloat(window.width) / 1280;
+		float hFactor = extra::castToFloat(window.height) / 800;
 		
 		GameplayRects rects = {};
 
@@ -99,8 +99,8 @@ namespace inventory {
 		 */
 		
 		// Variables used for scaling elements
-		float wFactor = static_cast<float>(window.width) / 1280;
-		float hFactor = static_cast<float>(window.height) / 800;
+		float wFactor = extra::castToFloat(window.width) / 1280;
+		float hFactor = extra::castToFloat(window.height) / 800;
 		
 		GameRects rects = {};
 
@@ -116,8 +116,8 @@ namespace inventory {
 		 */
 		
 		// Variables used for scaling elements
-		float wFactor = static_cast<float>(window.width) / 1280;
-		float hFactor = static_cast<float>(window.height) / 800;
+		float wFactor = extra::castToFloat(window.width) / 1280;
+		float hFactor = extra::castToFloat(window.height) / 800;
 
 		OtherRects rects = {};
 		// Name                     X Offset                      Y Offset                 Width Height
