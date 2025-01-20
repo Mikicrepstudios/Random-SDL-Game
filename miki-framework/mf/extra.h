@@ -1,4 +1,4 @@
 namespace extra {
     int castToInt(float value);
-    int castToFloat(int value);
+    float castToFloat(int value);
 }
