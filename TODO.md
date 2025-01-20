@@ -11,6 +11,8 @@
 - - Hover effect on choosers
 - - Way to save and load while inside of game
 - - Include save folder into releases
+- Graphics
+- - Resize dialogues on window resize
 - Files
 - - Rework save system - Files do not contain everything they should use only needed stuff, use MF files functions
 - Commands
