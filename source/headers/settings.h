@@ -19,7 +19,7 @@ namespace game {
         // Player settings
 	    int curPreset = 0;
         int blockColor = 1; // Updates every frame
-        int blockTextureId = 0;
+        int blockTextureId = 0; // Updates every frame
         int bgColor = 1;
         int playerColor = 6; // Write here to update
 
