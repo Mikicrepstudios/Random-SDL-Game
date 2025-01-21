@@ -12,7 +12,7 @@ namespace game {
 	// Structs
 	struct Preset {
 		int blockColor = 1; // Write here to update
-		int textureId = 1; // Write here to update
+		int textureId = 0; // Write here to update
 	};
 
 	// Core

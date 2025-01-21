@@ -53,6 +53,7 @@ int main(int argc, char **argv) {
 	if(debug) std::cout << "Defining presets" << std::endl;
 	game::Preset preset[10] = {};
 	preset[0].blockColor = 2;
+	preset[0].textureId = 0;
 
 
 	// Prepare game
