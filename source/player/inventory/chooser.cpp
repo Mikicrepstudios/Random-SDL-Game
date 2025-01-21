@@ -80,7 +80,7 @@ namespace inventory {
 				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, decalRects.textureIdRectb))
 					settings.texturePicker = !settings.texturePicker;
 				else if (settings.texturePicker)
-					settings.blockTextureId = textures::PickerEvent(window, settings);
+					preset[settings.curPreset].textureId = textures::PickerEvent(window, settings);
 			}
 		}
 	}
