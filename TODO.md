@@ -2,10 +2,11 @@
 ### This list conatins stuff that I might add in game - Feel free to [suggest stuff](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
 
 ### In progress:
+- Core
+- - Add textureId to presets
 
 ### Planned:
 - Core
-- - Add textureId to presets
 - - Colors for block textures
 - - Autosave - save after n of placed blocks OR n time (not decided)
 - - Hover effect on choosers
