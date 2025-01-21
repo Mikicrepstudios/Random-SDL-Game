@@ -12,6 +12,7 @@ namespace game {
          */
         
         settings.blockColor = preset[settings.curPreset].blockColor;
+        settings.blockTextureId = preset[settings.curPreset].textureId;
         player.color = settings.playerColor;
 
         // Check canPlayerPlace by seeing are any submenus/events active
