@@ -19,7 +19,7 @@ For windows compiling:
 
 Also you must get `mingw-w64-sdl2` from AUR for windows compiling
 
-Theese commands only work on arch based linux distros, for other ones you gotta find corresponding packages
+> **Note:** These commands only work on Arch-based Linux distributions. For other distributions, you will need to find the corresponding packages.
 
 ## Compiling and running
 1. Clone this repo
