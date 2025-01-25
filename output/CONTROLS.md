@@ -30,6 +30,7 @@ Text. id - Block texture
 -- Bottom left side --
 Solid - Can player pass thru placed block
 
+-- Gameplay --
 
 ### Extra
 ESC - If there is already open UI it closes it otherwise it closes game
