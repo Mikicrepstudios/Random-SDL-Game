@@ -9,7 +9,6 @@
 - - Autosave - save after n of placed blocks OR n time (not decided)
 - - Hover effect on choosers
 - - Way to save and load while inside of game
-- - Include save folder into releases
 - Graphics
 - - Resize dialogues on window resize
 - Files
