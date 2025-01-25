@@ -39,7 +39,7 @@ Game Info - Opens game info (same as F3)
 Exit - Shows dialogue for exiting game
 
 ### Extra
-ESC - If there is already open UI it closes it otherwise it closes game
+ESC - Closes the currently open UI, or exits the game if no UI is open
 
 0-9 - Preset chooser
 
