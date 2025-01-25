@@ -25,11 +25,6 @@ Player - Player color
 
 Text. id - Block texture
 
-SAVE - saves .msave files
-
-LOAD - loads .msave files
-
-EXIT - closes game
 
 ### Extra
 ESC - If there is already open UI it closes it otherwise it closes game
