@@ -27,6 +27,8 @@ Player - Player color
 -- Right side --
 Text. id - Block texture
 
+-- Bottom left side --
+
 
 ### Extra
 ESC - If there is already open UI it closes it otherwise it closes game
