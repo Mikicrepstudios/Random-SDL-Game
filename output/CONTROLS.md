@@ -36,6 +36,7 @@ Player TP - Teleport player cheat
 
 -- Game --
 Game Info - Opens game info (same as F3)
+Exit - Shows dialogue for exiting game
 
 ### Extra
 ESC - If there is already open UI it closes it otherwise it closes game
