@@ -28,6 +28,7 @@ Player - Player color
 Text. id - Block texture
 
 -- Bottom left side --
+Solid - Can player pass thru placed block
 
 
 ### Extra
