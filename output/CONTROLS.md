@@ -35,6 +35,7 @@ Cam TP - Teleport camera cheat
 Player TP - Teleport player cheat
 
 -- Game --
+Game Info - Opens game info (same as F3)
 
 ### Extra
 ESC - If there is already open UI it closes it otherwise it closes game
