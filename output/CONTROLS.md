@@ -19,6 +19,7 @@ p - zoom reset
 ### Inventory
 *You can click preview above text to change its value
 
+-- Left side --
 Block - Block color
 BG - Background color
 Player - Player color
