@@ -20,7 +20,6 @@ p - zoom reset
 *You can click preview above text to change its value
 
 Block - Block color
-
 BG - Background color
 
 SAVE - saves .msave files
