@@ -21,6 +21,8 @@ p - zoom reset
 
 Block - Block color
 
+BG - Background color
+
 SAVE - saves .msave files
 
 LOAD - loads .msave files
