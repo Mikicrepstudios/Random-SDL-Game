@@ -21,6 +21,7 @@ p - zoom reset
 
 Block - Block color
 BG - Background color
+Player - Player color
 
 SAVE - saves .msave files
 
