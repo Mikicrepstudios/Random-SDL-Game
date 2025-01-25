@@ -23,6 +23,8 @@ Block - Block color
 BG - Background color
 Player - Player color
 
+Text. id - Block texture
+
 SAVE - saves .msave files
 
 LOAD - loads .msave files
