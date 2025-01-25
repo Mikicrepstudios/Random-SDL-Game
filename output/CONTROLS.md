@@ -24,6 +24,7 @@ Block - Block color
 BG - Background color
 Player - Player color
 
+-- Right side --
 Text. id - Block texture
 
 
