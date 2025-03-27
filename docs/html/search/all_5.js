@@ -17,6 +17,8 @@ var searchData=
   ['getblockcolor_2ecpp_14',['getblockcolor.cpp',['../d6/d3b/getblockcolor_8cpp.html',1,'']]],
   ['getblocktype_15',['GetBlockType',['../d5/df2/namespacecommands.html#a6e5ba691bf400e7be20990c79037fa5e',1,'commands']]],
   ['getblocktype_2ecpp_16',['getblocktype.cpp',['../db/d68/getblocktype_8cpp.html',1,'']]],
-  ['gui_17',['gui',['../d7/dc4/namespacegui.html',1,'']]],
-  ['gui_2eh_18',['gui.h',['../db/db6/gui_8h.html',1,'']]]
+  ['getcampos_17',['GetCamPos',['../d5/df2/namespacecommands.html#adcfde6a098c968d850eebad1a57443de',1,'commands']]],
+  ['getcampos_2ecpp_18',['getcampos.cpp',['../dd/dd7/getcampos_8cpp.html',1,'']]],
+  ['gui_19',['gui',['../d7/dc4/namespacegui.html',1,'']]],
+  ['gui_2eh_20',['gui.h',['../db/db6/gui_8h.html',1,'']]]
 ];
