@@ -52,6 +52,7 @@ namespace commands {
         // Player
         else if(commandId == "setbgcolor") status = SetBGColor(args, argsCount, settings);
         else if(commandId == "setblockcolor") status = SetBlockColor(args, argsCount, settings, preset);
+        else if(commandId == "setblocktexture") status = SetBlockTexture(args, argsCount, settings, preset);
         else if(commandId == "setplayercolor") status = SetPlayerColor(args, argsCount, settings);
         else if(commandId == "tpcam") status = TpCam(args, argsCount, cam);
         else if(commandId == "tpplayer") status = TpPlayer(args, argsCount, map, player);

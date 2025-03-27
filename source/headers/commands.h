@@ -27,6 +27,7 @@ namespace commands {
     // Player
     int SetBGColor(std::string args, int argsCount, game::Settings &settings);
     int SetBlockColor(std::string args, int argsCount, game::Settings &settings, game::Preset preset[10]);
+    int SetBlockTexture(std::string args, int argsCount, game::Settings &settings, game::Preset preset[10]);
     int SetPlayerColor(std::string args, int argsCount, game::Settings &settings);
     int TpCam(std::string args, int argsCount, game::Camera &cam);
     int TpPlayer(std::string args, int argsCount, game::Map &map, game::Player &player);
