@@ -289,7 +289,7 @@ int main(int argc, char **argv) {
 			draw::DrawRect(window.renderer, {0, 0, 25, 25}, colors::red);
 			SDL_RenderPresent(window.renderer);
 			std::getline(std::cin, command);
-			commands::Executor(command, window, game, settings, map, cam, preset);
+			commands::Executor(command, window, game, settings, map, player, cam, preset);
 			game.cliInput = false;
 		}
 
