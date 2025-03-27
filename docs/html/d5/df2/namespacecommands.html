@@ -115,8 +115,10 @@ Functions</h2></td></tr>
 <tr class="separator:afea5a70e7d7a02def1b7de06845197dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e5ba691bf400e7be20990c79037fa5e" id="r_a6e5ba691bf400e7be20990c79037fa5e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e5ba691bf400e7be20990c79037fa5e">GetBlockType</a> (std::string args, int argsCount, <a class="el" href="../../d8/df4/structgame_1_1Map.html">game::Map</a> map)</td></tr>
 <tr class="separator:a6e5ba691bf400e7be20990c79037fa5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcfde6a098c968d850eebad1a57443de" id="r_adcfde6a098c968d850eebad1a57443de"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcfde6a098c968d850eebad1a57443de">GetCamPos</a> (<a class="el" href="../../d8/dc9/structgame_1_1Camera.html">game::Camera</a> &amp;cam)</td></tr>
-<tr class="separator:adcfde6a098c968d850eebad1a57443de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f11bfcbca6d246e3e91b017bec992ad" id="r_a8f11bfcbca6d246e3e91b017bec992ad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f11bfcbca6d246e3e91b017bec992ad">GetCamPos</a> (<a class="el" href="../../d8/dc9/structgame_1_1Camera.html">game::Camera</a> cam)</td></tr>
+<tr class="separator:a8f11bfcbca6d246e3e91b017bec992ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4af42e925f1ed56bd28dc761f6429cdf" id="r_a4af42e925f1ed56bd28dc761f6429cdf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4af42e925f1ed56bd28dc761f6429cdf">GetPlayerPos</a> (<a class="el" href="../../d0/ddf/structgame_1_1Player.html">game::Player</a> player)</td></tr>
+<tr class="separator:a4af42e925f1ed56bd28dc761f6429cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34338cf5b6a77380d567d195bc86302a" id="r_a34338cf5b6a77380d567d195bc86302a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34338cf5b6a77380d567d195bc86302a">IsBlockSolid</a> (std::string args, int argsCount, <a class="el" href="../../d8/df4/structgame_1_1Map.html">game::Map</a> map)</td></tr>
 <tr class="separator:a34338cf5b6a77380d567d195bc86302a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a309f0bdd08964b575d9b20dc70e54c6a" id="r_a309f0bdd08964b575d9b20dc70e54c6a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a309f0bdd08964b575d9b20dc70e54c6a">TerminalMode</a> (std::string args, int argsCount, bool &amp;terminalmode)</td></tr>
@@ -338,8 +340,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adcfde6a098c968d850eebad1a57443de" name="adcfde6a098c968d850eebad1a57443de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcfde6a098c968d850eebad1a57443de">&#9670;&#160;</a></span>GetCamPos()</h2>
+<a id="a8f11bfcbca6d246e3e91b017bec992ad" name="a8f11bfcbca6d246e3e91b017bec992ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f11bfcbca6d246e3e91b017bec992ad">&#9670;&#160;</a></span>GetCamPos()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -347,7 +349,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int commands::GetCamPos </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d8/dc9/structgame_1_1Camera.html">game::Camera</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>cam</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d8/dc9/structgame_1_1Camera.html">game::Camera</a></td>          <td class="paramname"><span class="paramname"><em>cam</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -355,6 +357,29 @@ Functions</h2></td></tr>
 <p>Function for GetCamPos command </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">cam</td><td>Game camera</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4af42e925f1ed56bd28dc761f6429cdf" name="a4af42e925f1ed56bd28dc761f6429cdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4af42e925f1ed56bd28dc761f6429cdf">&#9670;&#160;</a></span>GetPlayerPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int commands::GetPlayerPos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d0/ddf/structgame_1_1Player.html">game::Player</a></td>          <td class="paramname"><span class="paramname"><em>player</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function for GetPlayerPos command </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Game player</td></tr>
   </table>
   </dd>
 </dl>
