@@ -23,13 +23,6 @@ namespace dialogues {
         rects.yesRect        = {extra::castToInt(window.width / 2 + 75 * wFactor),  extra::castToInt(window.height / 2 + 25 * hFactor),  extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
         rects.otherYesRect   = {extra::castToInt(window.width / 2 + 75 * wFactor),  extra::castToInt(window.height / 2 - 40 * hFactor),  extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
 
-        /*rects.backgroundRect = {window.width / 2 - 300, window.height / 2 - 100, extra::castToInt(600 * wFactor), extra::castToInt(200 * hFactor)};
-        rects.titleRect      = {window.width / 2 - 300, window.height / 2 - 100, extra::castToInt(600 * wFactor), extra::castToInt(50 * hFactor)};
-        rects.descRect       = {window.width / 2 - 275, window.height / 2 - 40,  extra::castToInt(550 * wFactor), extra::castToInt(25 * hFactor)};
-        rects.noRect         = {window.width / 2 - 275, window.height / 2 + 25,  extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
-        rects.yesRect        = {window.width / 2 + 75,  window.height / 2 + 25,  extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
-        rects.otherYesRect   = {window.width / 2 + 75,  window.height / 2 - 40,  extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};*/
-
         return rects;
     }
 }
