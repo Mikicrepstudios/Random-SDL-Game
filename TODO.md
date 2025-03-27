@@ -13,7 +13,6 @@
 - - Resize dialogues on window resize
 - Files
 - - Rework save system - Files do not contain everything they should use only needed stuff, use MF files functions
-- Commands
 
 ### Thinking:
 - Core
