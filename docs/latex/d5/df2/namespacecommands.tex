@@ -8,13 +8,15 @@ Namespace that contains all in game commands.
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespacecommands_a54480bc1f81fd04bb2bab0e6e497762e}{Executor}} (std\+::string command, core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Game}{game\+::\+Game}} \&game, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings, \mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&map, \mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}} preset\mbox{[}10\mbox{]})
+void \mbox{\hyperlink{namespacecommands_a6019e36e349dac312478f2aff4e664b0}{Executor}} (std\+::string command, core\+::\+MF\+\_\+\+Window \&window, \mbox{\hyperlink{structgame_1_1Game}{game\+::\+Game}} \&game, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings, \mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&map, \mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} \&cam, \mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}} preset\mbox{[}10\mbox{]})
 \item 
 int \mbox{\hyperlink{namespacecommands_a9f9393c1f78811fb804e7b17a1f0eef5}{Set\+BGColor}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings)
 \item 
 int \mbox{\hyperlink{namespacecommands_ad9551f11c93a4280efd328deb319fe83}{Set\+Block\+Color}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings, \mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}} preset\mbox{[}10\mbox{]})
 \item 
 int \mbox{\hyperlink{namespacecommands_a3f5c20970d2865172424c5a32784b4b9}{Set\+Player\+Color}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings)
+\item 
+int \mbox{\hyperlink{namespacecommands_a05bb033f8f59bf71d73e837bbc68d18a}{Tp\+Cam}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} \&cam)
 \item 
 int \mbox{\hyperlink{namespacecommands_af7290f198e812d8c2b74e4656c5e92b6}{Echo}} (std\+::string args)
 \item 
@@ -64,11 +66,11 @@ Function for Echo command
 {\em args} & Text to print\\
 \hline
 \end{DoxyParams}
-\Hypertarget{namespacecommands_a54480bc1f81fd04bb2bab0e6e497762e}\index{commands@{commands}!Executor@{Executor}}
+\Hypertarget{namespacecommands_a6019e36e349dac312478f2aff4e664b0}\index{commands@{commands}!Executor@{Executor}}
 \index{Executor@{Executor}!commands@{commands}}
 \doxysubsubsection{\texorpdfstring{Executor()}{Executor()}}
-{\footnotesize\ttfamily \label{namespacecommands_a54480bc1f81fd04bb2bab0e6e497762e} 
-void commands\+::\+Executor (\begin{DoxyParamCaption}\item[{std\+::string}]{command}{, }\item[{core\+::\+MF\+\_\+\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{structgame_1_1Game}{game\+::\+Game}} \&}]{game}{, }\item[{\mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&}]{settings}{, }\item[{\mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&}]{map}{, }\item[{\mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}}}]{preset}{\mbox{[}10\mbox{]}}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{namespacecommands_a6019e36e349dac312478f2aff4e664b0} 
+void commands\+::\+Executor (\begin{DoxyParamCaption}\item[{std\+::string}]{command}{, }\item[{core\+::\+MF\+\_\+\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{structgame_1_1Game}{game\+::\+Game}} \&}]{game}{, }\item[{\mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&}]{settings}{, }\item[{\mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}} \&}]{map}{, }\item[{\mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} \&}]{cam}{, }\item[{\mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}}}]{preset}{\mbox{[}10\mbox{]}}\end{DoxyParamCaption})}
 
 Function that is used to execute game commands 
 \begin{DoxyParams}{Parameters}
@@ -214,5 +216,20 @@ This turns on terminal mode which locks game to terminal only, can be toggled of
 {\em args\+Count} & Amount of arguments \\
 \hline
 {\em terminalmode} & This tells if it is turned on or off\\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacecommands_a05bb033f8f59bf71d73e837bbc68d18a}\index{commands@{commands}!TpCam@{TpCam}}
+\index{TpCam@{TpCam}!commands@{commands}}
+\doxysubsubsection{\texorpdfstring{TpCam()}{TpCam()}}
+{\footnotesize\ttfamily \label{namespacecommands_a05bb033f8f59bf71d73e837bbc68d18a} 
+int commands\+::\+Tp\+Cam (\begin{DoxyParamCaption}\item[{std\+::string}]{args}{, }\item[{int}]{args\+Count}{, }\item[{\mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} \&}]{cam}{}\end{DoxyParamCaption})}
+
+Function for Tp\+Cam command 
+\begin{DoxyParams}{Parameters}
+{\em args} & Command arguments \\
+\hline
+{\em args\+Count} & Amount of command arguments \\
+\hline
+{\em cam} & Game camera\\
 \hline
 \end{DoxyParams}
