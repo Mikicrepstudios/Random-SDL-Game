@@ -14,6 +14,8 @@ int \mbox{\hyperlink{namespacecommands_a9f9393c1f78811fb804e7b17a1f0eef5}{Set\+B
 \item 
 int \mbox{\hyperlink{namespacecommands_ad9551f11c93a4280efd328deb319fe83}{Set\+Block\+Color}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings, \mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}} preset\mbox{[}10\mbox{]})
 \item 
+int \mbox{\hyperlink{namespacecommands_acc76ee73cf2ac23892f1d6f66f971e79}{Set\+Block\+Texture}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings, \mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}} preset\mbox{[}10\mbox{]})
+\item 
 int \mbox{\hyperlink{namespacecommands_a3f5c20970d2865172424c5a32784b4b9}{Set\+Player\+Color}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&settings)
 \item 
 int \mbox{\hyperlink{namespacecommands_a05bb033f8f59bf71d73e837bbc68d18a}{Tp\+Cam}} (std\+::string args, int args\+Count, \mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}} \&cam)
@@ -226,7 +228,26 @@ Function for Set\+Block\+Color command
 \hline
 {\em args\+Count} & Amount of command arguments \\
 \hline
-{\em settings} & Game settings\\
+{\em settings} & Game settings \\
+\hline
+{\em preset} & Game presets\\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacecommands_acc76ee73cf2ac23892f1d6f66f971e79}\index{commands@{commands}!SetBlockTexture@{SetBlockTexture}}
+\index{SetBlockTexture@{SetBlockTexture}!commands@{commands}}
+\doxysubsubsection{\texorpdfstring{SetBlockTexture()}{SetBlockTexture()}}
+{\footnotesize\ttfamily \label{namespacecommands_acc76ee73cf2ac23892f1d6f66f971e79} 
+int commands\+::\+Set\+Block\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{args}{, }\item[{int}]{args\+Count}{, }\item[{\mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}} \&}]{settings}{, }\item[{\mbox{\hyperlink{structgame_1_1Preset}{game\+::\+Preset}}}]{preset}{\mbox{[}10\mbox{]}}\end{DoxyParamCaption})}
+
+Function for Set\+Block\+Texture command 
+\begin{DoxyParams}{Parameters}
+{\em args} & Command arguments \\
+\hline
+{\em args\+Count} & Amount of command arguments \\
+\hline
+{\em settings} & Game settings \\
+\hline
+{\em preset} & Game presets\\
 \hline
 \end{DoxyParams}
 \Hypertarget{namespacecommands_a3f5c20970d2865172424c5a32784b4b9}\index{commands@{commands}!SetPlayerColor@{SetPlayerColor}}
