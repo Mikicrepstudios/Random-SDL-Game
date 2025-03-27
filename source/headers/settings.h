@@ -59,7 +59,7 @@ namespace game {
         int y = 0;
 
         // Addional
-        int color = 6;
+        int color = 6; // Updates every frame
         int speed = 1;
     };
 
