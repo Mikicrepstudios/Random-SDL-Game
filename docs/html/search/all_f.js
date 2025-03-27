@@ -15,5 +15,7 @@ var searchData=
   ['titlerect_12',['titleRect',['../d1/d44/structdialogues_1_1rects.html#affe013bc92fdda84b29f0af0c4bd9156',1,'dialogues::rects']]],
   ['tpcam_13',['TpCam',['../d5/df2/namespacecommands.html#a05bb033f8f59bf71d73e837bbc68d18a',1,'commands']]],
   ['tpcam_2ecpp_14',['tpcam.cpp',['../d0/d53/tpcam_8cpp.html',1,'']]],
-  ['type_15',['type',['../df/d68/structBlock.html#a64ecd5e3cc8ce5a407829bcfc1d11789',1,'Block']]]
+  ['tpplayer_15',['TpPlayer',['../d5/df2/namespacecommands.html#a96dc822a4bc7fdcfef5d44945554c3f6',1,'commands']]],
+  ['tpplayer_2ecpp_16',['tpplayer.cpp',['../dd/d1c/tpplayer_8cpp.html',1,'']]],
+  ['type_17',['type',['../df/d68/structBlock.html#a64ecd5e3cc8ce5a407829bcfc1d11789',1,'Block']]]
 ];
