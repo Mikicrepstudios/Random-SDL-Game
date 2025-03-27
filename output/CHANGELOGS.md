@@ -6,6 +6,8 @@
 - - Added commands
 - - Added inventory scaling on resizing game window
 - - Now you can no longer go outside of map, game will force you to stay inside of it
+- Graphics
+- - Dialogues now resize dynamically to match window adjustments.
 - Shortcuts
 - - Quick color picker [q] can now pick textures too
 
