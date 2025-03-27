@@ -19,8 +19,10 @@ var searchData=
   ['getblocktype_2ecpp_16',['getblocktype.cpp',['../db/d68/getblocktype_8cpp.html',1,'']]],
   ['getcampos_17',['GetCamPos',['../d5/df2/namespacecommands.html#a8f11bfcbca6d246e3e91b017bec992ad',1,'commands']]],
   ['getcampos_2ecpp_18',['getcampos.cpp',['../dd/dd7/getcampos_8cpp.html',1,'']]],
-  ['getplayerpos_19',['GetPlayerPos',['../d5/df2/namespacecommands.html#a4af42e925f1ed56bd28dc761f6429cdf',1,'commands']]],
-  ['getplayerpos_2ecpp_20',['getplayerpos.cpp',['../d6/d4e/getplayerpos_8cpp.html',1,'']]],
-  ['gui_21',['gui',['../d7/dc4/namespacegui.html',1,'']]],
-  ['gui_2eh_22',['gui.h',['../db/db6/gui_8h.html',1,'']]]
+  ['getplayercolor_19',['GetPlayerColor',['../d5/df2/namespacecommands.html#a994b61de5ce2529a790dae9c166a91e0',1,'commands']]],
+  ['getplayercolor_2ecpp_20',['getplayercolor.cpp',['../d0/dd1/getplayercolor_8cpp.html',1,'']]],
+  ['getplayerpos_21',['GetPlayerPos',['../d5/df2/namespacecommands.html#a4af42e925f1ed56bd28dc761f6429cdf',1,'commands']]],
+  ['getplayerpos_2ecpp_22',['getplayerpos.cpp',['../d6/d4e/getplayerpos_8cpp.html',1,'']]],
+  ['gui_23',['gui',['../d7/dc4/namespacegui.html',1,'']]],
+  ['gui_2eh_24',['gui.h',['../db/db6/gui_8h.html',1,'']]]
 ];
