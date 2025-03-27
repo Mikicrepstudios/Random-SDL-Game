@@ -12,6 +12,7 @@ namespace commands {
          * @param args Command arguments
          * @param argsCount Amount of command arguments
          * @param settings Game settings
+         * @param preset Game presets
          */
         if(argsCount == 0) {
             return 2;
