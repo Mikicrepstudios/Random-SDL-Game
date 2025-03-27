@@ -19,6 +19,7 @@ namespace commands {
     int GetBlockType(std::string args, int argsCount, game::Map map);
     int GetBlockColor(std::string args, int argsCount, game::Map map);
     int GetCamPos(game::Camera cam);
+    int GetPlayerColor(game::Player player);
     int GetPlayerPos(game::Player player);
     int IsBlockSolid(std::string args, int argsCount, game::Map map);
     int TerminalMode(std::string args, int argsCount, bool &terminalmode);
