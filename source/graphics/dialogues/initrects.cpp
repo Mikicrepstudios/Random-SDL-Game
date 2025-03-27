@@ -18,7 +18,7 @@ namespace dialogues {
         // Name                    X Offset                     Y Offset                    Width Height
         rects.backgroundRect = {extra::castToInt(window.width / 2 - 300 * wFactor), extra::castToInt(window.height / 2 - 100 * hFactor), extra::castToInt(600 * wFactor), extra::castToInt(200 * hFactor)};
         rects.titleRect      = {extra::castToInt(window.width / 2 - 300 * wFactor), extra::castToInt(window.height / 2 - 100 * hFactor), extra::castToInt(600 * wFactor), extra::castToInt(50 * hFactor)};
-        rects.descRect       = {extra::castToInt(window.width / 2 - 275 * wFactor), extra::castToInt(window.height / 2 - 40 * hFactor),  extra::castToInt(550 * wFactor), extra::castToInt(25 * hFactor)};
+        rects.descRect       = {extra::castToInt(window.width / 2 - 275 * wFactor), extra::castToInt(window.height / 2 - 40 * hFactor),  extra::castToInt(550 * wFactor), extra::castToInt(35 * hFactor)};
         rects.noRect         = {extra::castToInt(window.width / 2 - 275 * wFactor), extra::castToInt(window.height / 2 + 25 * hFactor),  extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
         rects.yesRect        = {extra::castToInt(window.width / 2 + 75 * wFactor),  extra::castToInt(window.height / 2 + 25 * hFactor),  extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
         rects.otherYesRect   = {extra::castToInt(window.width / 2 + 75 * wFactor),  extra::castToInt(window.height / 2 - 40 * hFactor),  extra::castToInt(200 * wFactor), extra::castToInt(50 * hFactor)};
