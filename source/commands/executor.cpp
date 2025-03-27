@@ -43,6 +43,7 @@ namespace commands {
         else if(commandId == "getbgcolor") status = GetBGColor(settings.bgColor);
         else if(commandId == "getblocktype") status = GetBlockType(args, argsCount, map);
         else if(commandId == "getblockcolor") status = GetBlockColor(args, argsCount, map);
+        else if(commandId == "getblocktexture") status = GetBlockTexture(args, argsCount, map);
         else if(commandId == "getcampos") status = GetCamPos(cam);
         else if(commandId == "getplayercolor") status = GetPlayerColor(player);
         else if(commandId == "getplayerpos") status = GetPlayerPos(player);
