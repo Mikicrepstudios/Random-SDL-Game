@@ -11,7 +11,7 @@
  * @brief Namespace that contains all in game commands
  */
 namespace commands {
-    void Executor(std::string command, core::MF_Window &window, game::Game &game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]);
+    void Executor(std::string command, core::MF_Window &window, game::Game &game, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &cam, game::Preset preset[10]);
 
     // Utils
     int Echo(std::string args);
@@ -26,6 +26,7 @@ namespace commands {
     int SetBlockColor(std::string args, int argsCount, game::Settings &settings, game::Preset preset[10]);
     int SetPlayerColor(std::string args, int argsCount, game::Settings &settings);
     int TpCam(std::string args, int argsCount, game::Camera &cam);
+    int TpPlayer(std::string args, int argsCount, game::Map &map, game::Player &player);
 
     // World
     int Destroy(std::string args, int argsCount, game::Map &map);

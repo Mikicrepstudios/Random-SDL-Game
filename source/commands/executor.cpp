@@ -9,7 +9,7 @@
 #include "settings.h"
 
 namespace commands {
-    void Executor(std::string command, core::MF_Window &window, game::Game &game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]) {
+    void Executor(std::string command, core::MF_Window &window, game::Game &game, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &cam, game::Preset preset[10]) {
         /**
          * @brief Function that is used to execute game commands
          * @param command Whole command including arguments
@@ -51,6 +51,7 @@ namespace commands {
         else if(commandId == "setblockcolor") status = SetBlockColor(args, argsCount, settings, preset);
         else if(commandId == "setplayercolor") status = SetPlayerColor(args, argsCount, settings);
         else if(commandId == "tpcam") status = TpCam(args, argsCount, cam);
+        else if(commandId == "tpplayer") status = TpPlayer(args, argsCount, map, player);
 
         // World
         else if(commandId == "destroy") status = Destroy(args, argsCount, map);
