@@ -9,7 +9,7 @@
 #include "settings.h"
 
 namespace commands {
-    void Executor(std::string command, core::MF_Window &window, game::Game &game, game::Settings &settings, game::Map &map, game::Preset preset[10]) {
+    void Executor(std::string command, core::MF_Window &window, game::Game &game, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &cam, game::Preset preset[10]) {
         /**
          * @brief Function that is used to execute game commands
          * @param command Whole command including arguments
@@ -43,13 +43,20 @@ namespace commands {
         else if(commandId == "getbgcolor") status = GetBGColor(settings.bgColor);
         else if(commandId == "getblocktype") status = GetBlockType(args, argsCount, map);
         else if(commandId == "getblockcolor") status = GetBlockColor(args, argsCount, map);
+        else if(commandId == "getblocktexture") status = GetBlockTexture(args, argsCount, map);
+        else if(commandId == "getcampos") status = GetCamPos(cam);
+        else if(commandId == "getplayercolor") status = GetPlayerColor(player);
+        else if(commandId == "getplayerpos") status = GetPlayerPos(player);
         else if(commandId == "isblocksolid") status = IsBlockSolid(args, argsCount, map);
         else if(commandId == "terminalmode") status = TerminalMode(args, argsCount, game.terminalmode);
 
         // Player
         else if(commandId == "setbgcolor") status = SetBGColor(args, argsCount, settings);
         else if(commandId == "setblockcolor") status = SetBlockColor(args, argsCount, settings, preset);
+        else if(commandId == "setblocktexture") status = SetBlockTexture(args, argsCount, settings, preset);
         else if(commandId == "setplayercolor") status = SetPlayerColor(args, argsCount, settings);
+        else if(commandId == "tpcam") status = TpCam(args, argsCount, cam);
+        else if(commandId == "tpplayer") status = TpPlayer(args, argsCount, map, player);
 
         // World
         else if(commandId == "destroy") status = Destroy(args, argsCount, map);
