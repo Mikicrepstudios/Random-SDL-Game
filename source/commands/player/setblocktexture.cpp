@@ -6,9 +6,9 @@
 #include "settings.h"
 
 namespace commands {
-    int SetBlockColor(std::string args, int argsCount, game::Settings &settings, game::Preset preset[10]) {
+    int SetBlockTexture(std::string args, int argsCount, game::Settings &settings, game::Preset preset[10]) {
         /**
-         * @brief Function for SetBlockColor command
+         * @brief Function for SetBlockTexture command
          * @param args Command arguments
          * @param argsCount Amount of command arguments
          * @param settings Game settings
@@ -29,17 +29,17 @@ namespace commands {
             }
         }
 
-        int color = std::stoi(argsArray[0]);
+        int texture = std::stoi(argsArray[0]);
 
         // run
         if(argsCount == 1) {
-            if(color >= 1 && color <= 32) {
-                preset[settings.curPreset].blockColor = color;
+            if(texture >= 0 && texture <= 15) {
+                preset[settings.curPreset].textureId = texture;
 
                 return 0;
             }
             else {
-                std::cout << "Color must be between 1 and 32" << std::endl;
+                std::cout << "Texture must be between 0 and 15" << std::endl;
                 
                 return 1;
             }

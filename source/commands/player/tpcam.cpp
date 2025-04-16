@@ -2,17 +2,15 @@
 #include <string>
 #include <sstream>
 
-#include "game.h"
 #include "settings.h"
 
 namespace commands {
-    int SetBlockColor(std::string args, int argsCount, game::Settings &settings, game::Preset preset[10]) {
+    int TpCam(std::string args, int argsCount, game::Camera &cam) {
         /**
-         * @brief Function for SetBlockColor command
+         * @brief Function for TpCam command
          * @param args Command arguments
          * @param argsCount Amount of command arguments
-         * @param settings Game settings
-         * @param preset Game presets
+         * @param cam Game camera
          */
         if(argsCount == 0) {
             return 2;
@@ -29,23 +27,18 @@ namespace commands {
             }
         }
 
-        int color = std::stoi(argsArray[0]);
+        int x = std::stoi(argsArray[0]);
+        int y = std::stoi(argsArray[1]);
 
         // run
-        if(argsCount == 1) {
-            if(color >= 1 && color <= 32) {
-                preset[settings.curPreset].blockColor = color;
+        if(argsCount == 2) {
+            cam.offSetX = -x;
+            cam.offSetY = -y;
 
-                return 0;
-            }
-            else {
-                std::cout << "Color must be between 1 and 32" << std::endl;
-                
-                return 1;
-            }
+            return 0;
         }
 
-        if(argsCount > 1) {
+        if(argsCount > 2) {
             return 3;
         }
 
