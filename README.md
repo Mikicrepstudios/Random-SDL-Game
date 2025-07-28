@@ -11,7 +11,7 @@
 ## Requirements
 For linux compiling:
 
-```pacman -S --needed base-devel sdl2 sdl2_ttf sdl2_image```
+```pacman -S --needed base-devel sdl2 sdl2_ttf sdl2_image sdl2_mixer```
 
 For windows compiling:
 
