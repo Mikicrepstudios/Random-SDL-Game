@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <limits>
 
 #include "settings.h"
 
