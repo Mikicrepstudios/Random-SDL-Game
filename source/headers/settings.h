@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "SDL.h"
 #include "SDL_ttf.h"
 
@@ -48,9 +50,21 @@ namespace game {
     };
 
     struct Map {
-        int width = 250 - 1;
+        int width = 250 - 1; // Theese have to be one block less because arrays start with 0
         int height = 250 - 1;
-        Block map[250][250] = {};
+
+        std::vector<std::vector<Block>> map;
+
+        Map() {
+            // Resize to 250 rows
+            map.resize(width + 1);
+            // Resize each row to 250 columns
+            for (int i = 0; i <= width; i++) {
+                map[i].resize(height + 1);
+            }
+        }
+
+        //Block map[250][250] = {}; // Old agony
     };
 
     struct Player {
