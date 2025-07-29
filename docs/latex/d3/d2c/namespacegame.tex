@@ -44,6 +44,8 @@ void \mbox{\hyperlink{namespacegame_a45922950e1a53294c947464f95e2a26b}{Clear\+Ma
 \doxysubsection{Detailed Description}
 Namespace that contains all game core functions. 
 
+\label{doc-func-members}
+\Hypertarget{namespacegame_doc-func-members}
 \doxysubsection{Function Documentation}
 \Hypertarget{namespacegame_a8dd7690595775b1cf056d067568321ec}\index{game@{game}!CameraControls@{CameraControls}}
 \index{CameraControls@{CameraControls}!game@{game}}
@@ -117,17 +119,19 @@ This function controls preset changing
 {\footnotesize\ttfamily \label{namespacegame_ab04166050867aac54d1bc1535bcbd919} 
 void game\+::\+Render\+Map (\begin{DoxyParamCaption}\item[{core\+::\+MF\+\_\+\+Window \&}]{window}{, }\item[{\mbox{\hyperlink{structgame_1_1Settings}{game\+::\+Settings}}}]{settings}{, }\item[{\mbox{\hyperlink{structgame_1_1Map}{game\+::\+Map}}}]{map}{, }\item[{\mbox{\hyperlink{structgame_1_1Camera}{game\+::\+Camera}}}]{cam}{, }\item[{\mbox{\hyperlink{structtextures_1_1BlockTextures}{textures\+::\+Block\+Textures}}}]{block\+Textures}{\mbox{[}32\mbox{]}}\end{DoxyParamCaption})}
 
-This function renders all blocks 
+Renders all blocks visible on screen based on camera position and zoom.
+
+
 \begin{DoxyParams}{Parameters}
-{\em window} & \doxylink{structgame_1_1Game}{Game} window \\
+{\em window} & \doxylink{structgame_1_1Game}{Game} window with SDL renderer and window size info. \\
 \hline
-{\em settings} & \doxylink{structgame_1_1Game}{Game} settings \\
+{\em settings} & \doxylink{structgame_1_1Game}{Game} settings, including player color and other configs. \\
 \hline
-{\em map} & \doxylink{structgame_1_1Game}{Game} map \\
+{\em map} & 2D map of block data to render. \\
 \hline
-{\em cam} & \doxylink{structgame_1_1Game}{Game} camera \\
+{\em cam} & \doxylink{structgame_1_1Camera}{Camera} controlling zoom (scale) and offset in the world. \\
 \hline
-{\em block\+Textures} & \doxylink{structBlock}{Block} textures\\
+{\em block\+Textures} & Array of textures for each block type.\\
 \hline
 \end{DoxyParams}
 \Hypertarget{namespacegame_affbf53b41b02b6f7c634bcb925eab972}\index{game@{game}!UpdateVars@{UpdateVars}}
