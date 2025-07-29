@@ -12,12 +12,12 @@
 - - Different world map sizes?
 - Commands
 - Files
+- - Multiple save slots
+- Graphics
 
 ### Thinking:
-- Core
 - - Shadows
 - - Undo/Redo
-- - Multiple save slots
 - - Custom color pallete
 
 ### Explanations:
