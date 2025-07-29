@@ -2,6 +2,8 @@
 ### This list conatins stuff that I might add in game - Feel free to [suggest stuff](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
 
 ### In progress:
+- Files
+- - Rework save system - Files do not contain everything they should use only needed stuff, use MF files functions
 
 ### Planned:
 - Core
@@ -12,7 +14,6 @@
 - - Different world map sizes?
 - Commands
 - Files
-- - Rework save system - Files do not contain everything they should use only needed stuff, use MF files functions
 
 ### Thinking:
 - Core
