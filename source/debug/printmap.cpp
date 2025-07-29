@@ -9,7 +9,7 @@ namespace debug {
          * @param map Game map
          */
         std::cout << "DEBUG - MAP" << std::endl;
-        std::cout << "Width: " << map.width << std::endl
-                  << "Height: " << map.height << std::endl;
+        std::cout << "Width: " << map.width << " blocks" << std::endl
+                  << "Height: " << map.height << " blocks" << std::endl;
     }
 }
