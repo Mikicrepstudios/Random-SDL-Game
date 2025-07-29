@@ -83,7 +83,8 @@
         "future": "cpp",
         "ranges": "cpp",
         "shared_mutex": "cpp",
-        "typeindex": "cpp"
+        "typeindex": "cpp",
+        "queue": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
