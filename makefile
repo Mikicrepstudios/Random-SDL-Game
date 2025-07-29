@@ -1,3 +1,5 @@
+# Debug stuff with -g and -fsanitize=address in CXXFLAGS next to -Wall and -fsanitize=address in LDFLAGS at end, dont forget to do make fullclean before and after
+
 # Compiler and flags
 CXX := g++
 CXXFLAGS := -std=c++17 -Wall -I/usr/include/SDL2 -I./miki-framework/ -I./source/headers
