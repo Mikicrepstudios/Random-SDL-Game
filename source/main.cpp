@@ -92,8 +92,7 @@ int main(int argc, char **argv) {
 	if(debug) std::cout << "Init SDL stuff; Load save" << std::endl;
 
 	game::ClearMap(map);
-	files::LoadMap(map);
-	files::LoadSettings(settings, player, cam, preset);
+	files::LoadGame(map, settings, player, cam, "autosave");
 
 	if(debug) std::cout << "Start running loop" << std::endl;
 
@@ -146,8 +145,7 @@ int main(int argc, char **argv) {
 					if(dialogueResult == 2)
 						switch(settings.dialogueId) {
 							case 1:
-								files::SaveMap(map);
-								files::SaveSettings(settings, player, cam);
+								files::SaveGame(map, settings, player, cam, "autosave");
 								running = false;
 								break;
 							case 2:
