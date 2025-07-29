@@ -5,7 +5,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/output/sdlgaem",
+            "program": "${workspaceFolder}/output/app",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
