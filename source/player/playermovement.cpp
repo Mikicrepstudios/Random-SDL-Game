@@ -33,7 +33,7 @@ namespace game {
 
 			player.y += player.speed;
 		}
-		else if(event.key.keysym.sym == SDLK_d && player.x != map.width && map.map[player.x + player.speed][player.y].isSolid == false) {
+		else if(event.key.keysym.sym == SDLK_d && player.x != map.width - 1 && map.map[player.x + player.speed][player.y].isSolid == false) {
 			if(curBlock.color == 0) map.map[player.x][player.y].type = 0;
 			else map.map[player.x][player.y].type = 2;
 			

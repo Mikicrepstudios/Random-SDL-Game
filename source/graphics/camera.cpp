@@ -21,10 +21,10 @@ namespace game {
 				cam.offSetX += 1;
 			}
 			// - because offset is negative
-			else if(window.event.key.keysym.sym == SDLK_DOWN && cam.offSetY > -(map.height - window.height / cam.scale)) {
+			else if(window.event.key.keysym.sym == SDLK_DOWN && cam.offSetY > -((map.height - 1) - window.height / cam.scale)) {
 				cam.offSetY -= 1;
 			}
-			else if(window.event.key.keysym.sym == SDLK_RIGHT && cam.offSetX > -(map.width - window.width / cam.scale)) {
+			else if(window.event.key.keysym.sym == SDLK_RIGHT && cam.offSetX > -((map.width - 1) - window.width / cam.scale)) {
 				cam.offSetX -= 1;
 			}
 		}
@@ -33,10 +33,10 @@ namespace game {
 			cam.scale -= 1;
 
 			// Push camera back if it goes out of bounds
-			while(cam.offSetX < -(map.width - window.width / cam.scale)) {
+			while(cam.offSetX < -((map.width - 1) - window.width / cam.scale)) {
 				cam.offSetX += 1;
 			}
-			while(cam.offSetY < -(map.height - window.height / cam.scale)) {
+			while(cam.offSetY < -((map.height - 1) - window.height / cam.scale)) {
 				cam.offSetY += 1;
 			}
 		}
@@ -49,10 +49,10 @@ namespace game {
 			cam.scale = 50;
 
 			// Push camera back if it goes out of bounds
-			while(cam.offSetX < -(map.width - window.width / cam.scale)) {
+			while(cam.offSetX < -((map.width - 1) - window.width / cam.scale)) {
 				cam.offSetX += 1;
 			}
-			while(cam.offSetY < -(map.height - window.height / cam.scale)) {
+			while(cam.offSetY < -((map.height - 1) - window.height / cam.scale)) {
 				cam.offSetY += 1;
 			}
 		}

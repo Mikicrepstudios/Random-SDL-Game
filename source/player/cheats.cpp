@@ -20,10 +20,10 @@ namespace cheats {
 			cam.offSetY -= game.curHoverY;
 
 			// Push camera back if it goes out of bounds
-			while(cam.offSetX < -(map.width - window.width / cam.scale)) {
+			while(cam.offSetX < -((map.width - 1) - window.width / cam.scale)) {
 				cam.offSetX += 1;
 			}
-			while(cam.offSetY < -(map.height - window.height / cam.scale)) {
+			while(cam.offSetY < -((map.height - 1) - window.height / cam.scale)) {
 				cam.offSetY += 1;
 			}
 

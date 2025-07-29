@@ -12,34 +12,53 @@
 namespace game {
 	void RenderMap(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera cam, textures::BlockTextures blockTextures[32]) {
 		/**
-		 * @brief This function renders all blocks
-		 * @param window Game window
-		 * @param settings Game settings
-		 * @param map Game map
-		 * @param cam Game camera
-		 * @param blockTextures Block textures
+		 * @brief Renders all blocks visible on screen based on camera position and zoom.
+		 * 
+		 * @param window          Game window with SDL renderer and window size info.
+		 * @param settings        Game settings, including player color and other configs.
+		 * @param map             2D map of block data to render.
+		 * @param cam             Camera controlling zoom (scale) and offset in the world.
+		 * @param blockTextures   Array of textures for each block type.
 		 */
-		
-		int maxXBlocks = window.width / cam.scale;
-		int maxYBlocks = window.height / cam.scale;
-		for(int x = 0; x <= maxXBlocks; x++) {
-			for(int y = 0; y <= maxYBlocks; y++) {
-				if(x - cam.offSetX < map.width - 1 && y - cam.offSetY < map.height - 1) {
-					// Get current block id and define variables
-					int objectId = map.map[x - cam.offSetX][y - cam.offSetY].type;
-					int colorId = map.map[x - cam.offSetX][y - cam.offSetY].color;
-					int textureId = map.map[x - cam.offSetX][y - cam.offSetY].texture;
+		int maxXBlocks = window.width / cam.scale;   // Max number of blocks horizontally that can fit on screen
+		int maxYBlocks = window.height / cam.scale;  // Max number of blocks vertically that can fit on screen
 
-					// Get color data
-					if(objectId != 0) {
-						SDL_Rect curRect = {x * cam.scale, y * cam.scale, cam.scale, cam.scale};
+		for (int x = 0; x < maxXBlocks; x++) {
+			for (int y = 0; y < maxYBlocks; y++) {
+				// World-space coordinates (adjusted by camera offset)
+				int worldX = x - cam.offSetX;
+				int worldY = y - cam.offSetY;
+
+				// Skip out-of-bounds map access
+				if (worldX < 0 || worldY < 0 || worldX >= map.width || worldY >= map.height)
+					continue;
+
+				// Get block data at world position
+				int objectId = map.map[worldX][worldY].type;       // Type of block (0 = air, 1 = player, etc.)
+				int colorId  = map.map[worldX][worldY].color;      // Color index for the block (1-based)
+				int textureId = map.map[worldX][worldY].texture;   // Texture ID for this block
+
+				if (objectId != 0) {
+					// Define screen-space rectangle where the block should be rendered
+					SDL_Rect curRect = {
+						x * cam.scale,  // Screen X
+						y * cam.scale,  // Screen Y
+						cam.scale,      // Width
+						cam.scale       // Height
+					};
+
+					// Draw colored rectangle background
+					if (colorId > 0 && colorId <= 32) {
 						draw::DrawRect(window.renderer, curRect, colors::colorID[colorId - 1]);
-
-						if(textureId != 0)
-							SDL_RenderCopy(window.renderer, blockTextures[textureId].texture, NULL, &curRect);
-
-						if(objectId == 1) draw::DrawRect(window.renderer, curRect, colors::colorID[settings.playerColor - 1]);
 					}
+
+					// Draw texture overlay if available
+					if (textureId != 0)
+						SDL_RenderCopy(window.renderer, blockTextures[textureId].texture, NULL, &curRect);
+
+					// Special player rendering overlay
+					if (objectId == 1)
+						draw::DrawRect(window.renderer, curRect, colors::colorID[settings.playerColor - 1]);
 				}
 			}
 		}
