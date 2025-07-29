@@ -9,6 +9,7 @@
 - - Autosave - save after n of placed blocks OR n time (not decided)
 - - Hover effect on choosers
 - - Way to save and load while inside of game
+- - Different world map sizes?
 - Files
 - - Rework save system - Files do not contain everything they should use only needed stuff, use MF files functions
 
