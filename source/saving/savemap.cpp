@@ -19,8 +19,8 @@ namespace files {
 
 		// Save blocktype
 		if (blockTypesFile.is_open()) {
-			for (int x = 0; x <= map.width; x++) {
-				for (int y = 0; y <= map.height; y++) {
+			for (int x = 0; x < map.width; x++) {
+				for (int y = 0; y < map.height; y++) {
 					if (map.map[x][y].type != 1) blockTypesFile << map.map[x][y].type << " "; // Write blocks
 					else blockTypesFile << 0 << " "; // Do not write if player
 				}
@@ -32,8 +32,8 @@ namespace files {
 		}
 		// Save colors
 		if (blockColorsFile.is_open()) {
-			for (int x = 0; x <= map.width; x++) {
-				for (int y = 0; y <= map.height; y++) {
+			for (int x = 0; x < map.width; x++) {
+				for (int y = 0; y < map.height; y++) {
 					if (map.map[x][y].type != 1) blockColorsFile << map.map[x][y].color << " "; // Write blocks
 					else blockColorsFile << 0 << " "; // Do not write if player
 				}
@@ -45,8 +45,8 @@ namespace files {
 		}
 		// Save textures
 		if (blockTexturesFile.is_open()) {
-			for (int x = 0; x <= map.width; x++) {
-				for (int y = 0; y <= map.height; y++) {
+			for (int x = 0; x < map.width; x++) {
+				for (int y = 0; y < map.height; y++) {
 					if (map.map[x][y].type != 1) blockTexturesFile << map.map[x][y].texture << " "; // Write blocks
 					else blockTexturesFile << 0 << " "; // Do not write if player
 				}
@@ -59,8 +59,8 @@ namespace files {
 
 		// Save solidity
 		if (blockSolidsFile.is_open()) {
-			for (int x = 0; x <= map.width; x++) {
-				for (int y = 0; y <= map.height; y++) {
+			for (int x = 0; x < map.width; x++) {
+				for (int y = 0; y < map.height; y++) {
 					blockSolidsFile << map.map[x][y].isSolid << " "; // Write blocks
 				}
 
@@ -86,8 +86,8 @@ namespace files {
 
 		// Load blocktypes
 		if (blockTypesFile.is_open()) {
-			for (int x = 0; x <= map.width; x++) {
-				for (int y = 0; y <= map.height; y++) {
+			for (int x = 0; x < map.width; x++) {
+				for (int y = 0; y < map.height; y++) {
 					blockTypesFile >> map.map[x][y].type;
 				}
 			}
@@ -95,8 +95,8 @@ namespace files {
 		}
 		// Load colors
 		if (blockColorsFile.is_open()) {
-			for (int x = 0; x <= map.width; x++) {
-				for (int y = 0; y <= map.height; y++) {
+			for (int x = 0; x < map.width; x++) {
+				for (int y = 0; y < map.height; y++) {
 					blockColorsFile >> map.map[x][y].color;
 				}
 			}
@@ -104,8 +104,8 @@ namespace files {
 		}
 		// Load textures
 		if (blockTexturesFile.is_open()) {
-			for (int x = 0; x <= map.width; x++) {
-				for (int y = 0; y <= map.height; y++) {
+			for (int x = 0; x < map.width; x++) {
+				for (int y = 0; y < map.height; y++) {
 					blockTexturesFile >> map.map[x][y].texture;
 				}
 			}
@@ -114,8 +114,8 @@ namespace files {
 
 		// Load solids
 		if (blockSolidsFile.is_open()) {
-			for (int x = 0; x <= map.width; x++) {
-				for (int y = 0; y <= map.height; y++) {
+			for (int x = 0; x < map.width; x++) {
+				for (int y = 0; y < map.height; y++) {
 					blockSolidsFile >> map.map[x][y].isSolid;
 				}
 			}

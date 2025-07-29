@@ -17,7 +17,7 @@ namespace game {
 		 */
 
 		// SOMEWHERE HERE IS BUG #1
-		if (game.curHoverX <= map.width && game.curHoverY <= map.height && !settings.inventory && map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].type != 1) {
+		if (game.curHoverX < map.width && game.curHoverY <= map.height && !settings.inventory && map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].type != 1) {
 			if (!settings.cheats) {
 				if(window.mouse.isDown) {
 					Uint32 mouseButtons = SDL_GetMouseState(NULL, NULL);
@@ -53,7 +53,7 @@ namespace game {
 		int curHoverY = game.curHoverY;
 
 		// - because camera offset is negative number and map.width - 1 just to make sure that it wont crash
-		if (curHoverX - cam.offSetX < map.width - 1 && curHoverY - cam.offSetY < map.height - 1 && map.map[curHoverX - cam.offSetX][curHoverY - cam.offSetY].type != 1 && !settings.inventory) {
+		if (curHoverX - cam.offSetX < map.width && curHoverY - cam.offSetY < map.height - 1 && map.map[curHoverX - cam.offSetX][curHoverY - cam.offSetY].type != 1 && !settings.inventory) {
 			SDL_Rect mouseRect = {curHoverX * cam.scale, curHoverY * cam.scale, cam.scale, cam.scale};
 			if (cam.highlight == false) {
                 if (settings.bgColor == 32 || map.map[curHoverX - cam.offSetX][curHoverY - cam.offSetY].color == 32)
