@@ -10,6 +10,8 @@
 - - Hover effect on choosers
 - - Way to save and load while inside of game
 - - Different world map sizes?
+- Commands
+- - Add "width/height x **blocks**" to command
 - Files
 - - Rework save system - Files do not contain everything they should use only needed stuff, use MF files functions
 
