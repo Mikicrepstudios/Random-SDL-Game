@@ -1,0 +1,1 @@
+awk '/VmRSS/ {printf "Physical RAM used: %.2f MB\n", $2/1024}' /proc/$(pidof app)/status
