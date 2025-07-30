@@ -15,13 +15,13 @@ namespace game {
 		// Make copy for smaller ifs
 		Block curBlock = map.map[player.x][player.y];
 
-		if(event.key.keysym.sym == SDLK_w && map.map[player.x][player.y - player.speed].isSolid == false && player.y != 0) {
+		if(event.key.keysym.sym == SDLK_w && player.y != 0 && map.map[player.x][player.y - player.speed].isSolid == false) {
 			if(curBlock.color == 0) map.map[player.x][player.y].type = 0;
 			else map.map[player.x][player.y].type = 2;
 			
 			player.y -= player.speed;
 		}
-		else if(event.key.keysym.sym == SDLK_a && map.map[player.x - player.speed][player.y].isSolid == false && player.x != 0) {
+		else if(event.key.keysym.sym == SDLK_a && player.x != 0 && map.map[player.x - player.speed][player.y].isSolid == false) {
 			if(curBlock.color == 0) map.map[player.x][player.y].type = 0;
 			else map.map[player.x][player.y].type = 2;
 			
