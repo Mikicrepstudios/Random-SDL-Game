@@ -10,9 +10,9 @@ c - clear map
 ### Camera
 arrow keys - camera movement
 
-i - zoom in
+i or + - zoom in
 
-o - zoom out
+o or - - zoom out
 
 p - zoom reset
 
