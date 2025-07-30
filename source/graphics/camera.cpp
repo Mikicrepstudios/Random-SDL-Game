@@ -29,7 +29,7 @@ namespace game {
 			}
 		}
 		// Cam zoom out
-		if(window.event.key.keysym.sym == SDLK_o && cam.scale != 10) {
+		if((window.event.key.keysym.sym == SDLK_o || window.event.key.keysym.sym == SDLK_KP_MINUS) && cam.scale != 10) {
 			cam.scale -= 1;
 
 			// Push camera back if it goes out of bounds
@@ -41,7 +41,7 @@ namespace game {
 			}
 		}
 		// Cam zoom in
-		else if(window.event.key.keysym.sym == SDLK_i) {
+		else if(window.event.key.keysym.sym == SDLK_i || window.event.key.keysym.sym == SDLK_KP_PLUS){
 			cam.scale += 1;
 		}
 		// Reset zoom
