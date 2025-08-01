@@ -14,19 +14,14 @@ namespace game {
 		 */
 		
 		if (!settings.inventory) {
-			if(window.event.key.keysym.sym == SDLK_UP && cam.offSetY != 0) {
-				cam.offSetY += 1;
-			}
-			else if(window.event.key.keysym.sym == SDLK_LEFT && cam.offSetX != 0) {
-				cam.offSetX += 1;
-			}
-			// - because offset is negative
-			else if(window.event.key.keysym.sym == SDLK_DOWN && cam.offSetY > -((map.height - 1) - window.height / cam.scale)) {
+			if (window.event.key.keysym.sym == SDLK_UP && cam.offSetY > 0)
 				cam.offSetY -= 1;
-			}
-			else if(window.event.key.keysym.sym == SDLK_RIGHT && cam.offSetX > -((map.width - 1) - window.width / cam.scale)) {
+			else if (window.event.key.keysym.sym == SDLK_LEFT && cam.offSetX > 0)
 				cam.offSetX -= 1;
-			}
+			else if (window.event.key.keysym.sym == SDLK_DOWN && cam.offSetY < (map.height - 1) - window.height / cam.scale)
+				cam.offSetY += 1;
+			else if (window.event.key.keysym.sym == SDLK_RIGHT && cam.offSetX < (map.width - 1) - window.width / cam.scale)
+				cam.offSetX += 1;
 		}
 		// Cam zoom out
 		if((window.event.key.keysym.sym == SDLK_o || window.event.key.keysym.sym == SDLK_KP_MINUS) && cam.scale != 10) {
