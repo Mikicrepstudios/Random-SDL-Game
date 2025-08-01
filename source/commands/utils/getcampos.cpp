@@ -9,7 +9,7 @@ namespace commands {
          * @param cam Game camera
          */
         
-        std::cout << "Camera X: " << -cam.offSetX << " Camera Y: " << -cam.offSetY << std::endl;
+        std::cout << "Camera X: " << cam.offSetX << " Camera Y: " << cam.offSetY << std::endl;
 
         return 0;
     }

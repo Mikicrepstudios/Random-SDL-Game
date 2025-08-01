@@ -26,8 +26,8 @@ namespace game {
 		for (int x = 0; x < maxXBlocks; x++) {
 			for (int y = 0; y < maxYBlocks; y++) {
 				// World-space coordinates (adjusted by camera offset)
-				int worldX = x - cam.offSetX;
-				int worldY = y - cam.offSetY;
+				int worldX = x + cam.offSetX;
+				int worldY = y + cam.offSetY;
 
 				// Skip out-of-bounds map access
 				if (worldX < 0 || worldY < 0 || worldX >= map.width || worldY >= map.height)

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "SDL.h"
 
 #include "mf/core.h"
@@ -16,16 +17,28 @@ namespace cheats {
 		 */
 
 		if (window.event.type == SDL_MOUSEBUTTONDOWN) {
-			cam.offSetX -= game.curHoverX;
-			cam.offSetY -= game.curHoverY;
+			// Calculate max camera offsets based on map size and window size/scale
+			int maxX = (map.width - 1) - window.width / (cam.scale > 0 ? cam.scale : 1);
+			int maxY = (map.height - 1) - window.height / (cam.scale > 0 ? cam.scale : 1);
 
-			// Push camera back if it goes out of bounds
-			while(cam.offSetX < -((map.width - 1) - window.width / cam.scale)) {
-				cam.offSetX += 1;
-			}
-			while(cam.offSetY < -((map.height - 1) - window.height / cam.scale)) {
-				cam.offSetY += 1;
-			}
+			// Clamp the hover position to valid ranges so camera offset stays sane
+			int hoverX = game.curHoverX;
+			if (hoverX < 0) hoverX = 0;
+			else if (hoverX > maxX) hoverX = maxX;
+
+			int hoverY = game.curHoverY;
+			if (hoverY < 0) hoverY = 0;
+			else if (hoverY > maxY) hoverY = maxY;
+
+			// Add clamped hover positions to camera offset (teleport camera)
+			cam.offSetX += hoverX;
+			cam.offSetY += hoverY;
+
+			// Clamp camera offset to max allowed bounds
+			if (cam.offSetX > maxX) cam.offSetX = maxX;
+			if (cam.offSetY > maxY) cam.offSetY = maxY;
+
+			std::cout << "After clamp: offSetX = " << cam.offSetX << ", offSetY = " << cam.offSetY << std::endl;
 
 			return 1;
 		}
@@ -45,8 +58,8 @@ namespace cheats {
 		
 		if (window.event.type == SDL_MOUSEBUTTONDOWN) {
 			map.map[player.x][player.y].type = 0; // Remove current player so you dont have ghost player
-			player.x = -cam.offSetX + game.curHoverX;
-			player.y = -cam.offSetY + game.curHoverY;
+			player.x = cam.offSetX + game.curHoverX;
+			player.y = cam.offSetY + game.curHoverY;
 
 			return 1;
 		}

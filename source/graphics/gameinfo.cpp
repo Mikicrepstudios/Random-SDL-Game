@@ -32,8 +32,8 @@ namespace gui {
 			"Block color: " + std::to_string(settings.blockColor),
 			"BG color: " + std::to_string(settings.bgColor),
 			"", // Empty string for skipped line
-			"Cam X: " + std::to_string(abs(cam.offSetX)),
-			"Cam Y: " + std::to_string(abs(cam.offSetY)),
+			"Cam X: " + std::to_string(cam.offSetX),
+			"Cam Y: " + std::to_string(cam.offSetY),
 			"Camscale: " + std::to_string(cam.scale),
 			"", // Empty string for skipped line
 			"Player X: " + std::to_string(player.x),

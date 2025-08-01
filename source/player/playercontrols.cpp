@@ -17,29 +17,41 @@ namespace game {
 		 */
 
 		// SOMEWHERE HERE IS BUG #1
-		if (game.curHoverX < map.width && game.curHoverY < map.height && !settings.inventory && map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].type != 1) {
+		// Calculate map-relative coordinates by adding positive camera offset
+		int mapX = game.curHoverX + cam.offSetX;
+		int mapY = game.curHoverY + cam.offSetY;
+
+		// Bounds check to avoid crashing when mouse is outside map area
+		if (mapX >= 0 && mapX < map.width &&
+			mapY >= 0 && mapY < map.height &&
+			!settings.inventory &&                   // Don't place blocks if inventory is open
+			map.map[mapX][mapY].type != 1)          // Don't act on tiles of type 1 (e.g., solid or special)
+		{
 			if (!settings.cheats) {
-				if(window.mouse.isDown) {
+				if (window.mouse.isDown) {
 					Uint32 mouseButtons = SDL_GetMouseState(NULL, NULL);
+
 					if (mouseButtons & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-						map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].type = 2;
-						map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].color = settings.blockColor;
-						map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].texture = settings.blockTextureId;
-						map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].isSolid = settings.placeSolidBlocks;
+						// Place block with user-selected settings
+						map.map[mapX][mapY].type = 2;
+						map.map[mapX][mapY].color = settings.blockColor;
+						map.map[mapX][mapY].texture = settings.blockTextureId;
+						map.map[mapX][mapY].isSolid = settings.placeSolidBlocks;
 					}
 					else if (mouseButtons & SDL_BUTTON(SDL_BUTTON_RIGHT)) {
-						map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].type = 0;
-						map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].color = 0;
-						map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].texture = 0;
-						map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].isSolid = false;
+						// Remove block (reset tile to empty)
+						map.map[mapX][mapY].type = 0;
+						map.map[mapX][mapY].color = 0;
+						map.map[mapX][mapY].texture = 0;
+						map.map[mapX][mapY].isSolid = false;
 					}
 				}
 			}
 			else if (window.mouse.isDown && settings.cheats && settings.cheatsId == 3) {
-				if (map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].type == 2) {
-					preset[settings.curPreset].blockColor = map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].color;
-					preset[settings.curPreset].textureId = map.map[game.curHoverX - cam.offSetX][game.curHoverY - cam.offSetY].texture;
-					settings.cheats = false;
+				if (map.map[mapX][mapY].type == 2) {
+					preset[settings.curPreset].blockColor = map.map[mapX][mapY].color;
+					preset[settings.curPreset].textureId = map.map[mapX][mapY].texture;
+					settings.cheats = false;  // Exit cheat mode after copying
 				}
 			}
 		}
@@ -52,16 +64,23 @@ namespace game {
 		int curHoverX = game.curHoverX;
 		int curHoverY = game.curHoverY;
 
-		// - because camera offset is negative number and map.width - 1 just to make sure that it wont crash
-		if (curHoverX - cam.offSetX < map.width && curHoverY - cam.offSetY < map.height - 1 && map.map[curHoverX - cam.offSetX][curHoverY - cam.offSetY].type != 1 && !settings.inventory) {
+		int x = curHoverX + cam.offSetX; // subtract positive offset
+		int y = curHoverY + cam.offSetY; // subtract positive offset
+
+		// Check bounds including non-negativity and max limits
+		if (x >= 0 && x < map.width &&
+			y >= 0 && y < map.height &&
+			map.map[y][x].type != 1 &&
+			!settings.inventory)
+		{
 			SDL_Rect mouseRect = {curHoverX * cam.scale, curHoverY * cam.scale, cam.scale, cam.scale};
-			if (cam.highlight == false) {
-                if (settings.bgColor == 32 || map.map[curHoverX - cam.offSetX][curHoverY - cam.offSetY].color == 32)
+			
+			if (!cam.highlight) {
+				if (settings.bgColor == 32 || map.map[y][x].color == 32)
 					draw::DrawRect(window.renderer, mouseRect, colors::black);
 				else
 					draw::DrawRect(window.renderer, mouseRect, colors::white);
-			}
-			else {
+			} else {
 				if (settings.bgColor == 27)
 					draw::DrawRect(window.renderer, mouseRect, colors::darkred);
 				else

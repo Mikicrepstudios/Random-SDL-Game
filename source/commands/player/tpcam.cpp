@@ -32,8 +32,8 @@ namespace commands {
 
         // run
         if(argsCount == 2) {
-            cam.offSetX = -x;
-            cam.offSetY = -y;
+            cam.offSetX = x;
+            cam.offSetY = y;
 
             return 0;
         }
