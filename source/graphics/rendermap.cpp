@@ -20,8 +20,10 @@ namespace game {
 		 * @param cam             Camera controlling zoom (scale) and offset in the world.
 		 * @param blockTextures   Array of textures for each block type.
 		 */
-		int maxXBlocks = window.width / cam.scale;   // Max number of blocks horizontally that can fit on screen
-		int maxYBlocks = window.height / cam.scale;  // Max number of blocks vertically that can fit on screen
+		/*int maxXBlocks = window.width / cam.scale;   // Max number of blocks horizontally that can fit on screen
+		int maxYBlocks = window.height / cam.scale;  // Max number of blocks vertically that can fit on screen*/
+		int maxXBlocks = (window.width + cam.scale - 1) / cam.scale;  // ceil division
+		int maxYBlocks = (window.height + cam.scale - 1) / cam.scale; // ceil division
 
 		for (int x = 0; x < maxXBlocks; x++) {
 			for (int y = 0; y < maxYBlocks; y++) {
@@ -29,8 +31,7 @@ namespace game {
 				int worldX = x + cam.offSetX;
 				int worldY = y + cam.offSetY;
 
-				// Skip out-of-bounds map access
-				if (worldX < 0 || worldY < 0 || worldX >= map.width || worldY >= map.height)
+				// Skip out-of-bounds map accesso0
 					continue;
 
 				// Get block data at world position
