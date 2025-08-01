@@ -16,7 +16,7 @@ namespace game {
 		 * @brief This function controls block placing
 		 */
 
-		// SOMEWHERE HERE IS BUG #1
+		// SOMEWHERE HERE WAS* BUG #1
 		// Calculate map-relative coordinates by adding positive camera offset
 		int mapX = game.curHoverX + cam.offSetX;
 		int mapY = game.curHoverY + cam.offSetY;
