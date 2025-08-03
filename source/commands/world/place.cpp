@@ -36,6 +36,8 @@ namespace commands {
         if(argsCount == 2) {
             map.map[x][y].type = 2;
             map.map[x][y].color = settings.blockColor;
+            map.map[x][y].texture = settings.blockTextureId;
+            map.map[x][y].isSolid = settings.placeSolidBlocks;
             std::cout << "Successfuly placed block" << std::endl;
 
             return 0;
