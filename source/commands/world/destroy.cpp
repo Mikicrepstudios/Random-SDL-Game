@@ -35,6 +35,7 @@ namespace commands {
         if(argsCount == 2) {
             map.map[x][y].type = 0;
             map.map[x][y].color = 0;
+            map.map[x][y].texture = 0;
             std::cout << "Successfuly destroyed block" << std::endl;
 
             return 0;
