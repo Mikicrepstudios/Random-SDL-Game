@@ -30,11 +30,11 @@ namespace commands {
                 }
             }
 
-            if(argsArray[0] == "on") {
+            if(argsArray[0] == "on" || argsArray[0] == "true" || argsArray[0] == "1") {
                 terminalmode = true;
                 std::cout << "Terminal mode has been turned on successfully" << std::endl;
             }
-            if(argsArray[0] == "off") {
+            if(argsArray[0] == "off" || argsArray[0] == "false" || argsArray[0] == "0") {
                 terminalmode = false;
                 std::cout << "Terminal mode has been turned off successfully" << std::endl;
             }
