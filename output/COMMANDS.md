@@ -20,16 +20,16 @@ Example:
 
 ### Player commands
 **setbgcolor [colorid]**
-- This command sets background color of game to specified [colorid] (1-32)
+- This command sets background color of game to specified [colorid] (0-31)
 
 **setblockcolor [colorid]**
-- This command sets color of placed blocks to specified [colorid] (1-32)
+- This command sets color of placed blocks to specified [colorid] (0-31)
 
 **setblocktexture [textureid]**
-- This command sets texture of placed blocks to specified [textureid] (1-16)
+- This command sets texture of placed blocks to specified [textureid] (0-15)
 
 **setplayercolor [colorid]**
-- This command sets player color to specified [colorid] (1-32)
+- This command sets player color to specified [colorid] (0-31)
 
 **tpcam [x] [y]**
 - This command teleports camera to specified coordinates
