@@ -40,6 +40,10 @@ int main(int argc, char **argv) {
 	if(debug) std::cout << "Creating window" << std::endl;
     if(core::InitWindow(window, title, 1280, 800) == false) running = false;
 
+	// Do Main Menu
+	if(debug) std::cout << "Running Main Menu" << std::endl;
+	game::MainMenu(window, running);
+
 	// Structs
 	if(debug) std::cout << "Defining structs" << std::endl;
 	game::Game game = {};
