@@ -13,7 +13,7 @@ command-name [required] <optional>
 
 Arguments:
 - [required]    Required argument.
-- <optional>    Optional argument.
+- {optional}    Optional argument.
 
 Example:
 > echo [text]
