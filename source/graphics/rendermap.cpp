@@ -31,7 +31,8 @@ namespace game {
 				int worldX = x + cam.offSetX;
 				int worldY = y + cam.offSetY;
 
-				// Skip out-of-bounds map accesso0
+				// Skip out-of-bounds map access
+				if (worldX < 0 || worldY < 0 || worldX >= map.width || worldY >= map.height)
 					continue;
 
 				// Get block data at world position
