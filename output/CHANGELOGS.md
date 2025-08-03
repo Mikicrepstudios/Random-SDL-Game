@@ -8,6 +8,7 @@
 - - Added commands
 - - Added inventory scaling on resizing game window
 - - Now you can no longer go outside of map, game will force you to stay inside of it
+- - Added Main Menu screen
 - Files
 - - New save mechanism! (Backwards compatiblility, more future proof, multiple slots (in future))
 - Graphics
