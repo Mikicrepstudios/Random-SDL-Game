@@ -38,8 +38,6 @@ namespace cheats {
 			if (cam.offSetX > maxX) cam.offSetX = maxX;
 			if (cam.offSetY > maxY) cam.offSetY = maxY;
 
-			std::cout << "After clamp: offSetX = " << cam.offSetX << ", offSetY = " << cam.offSetY << std::endl;
-
 			return 1;
 		}
 
