@@ -36,6 +36,7 @@ namespace commands {
             map.map[x][y].type = 0;
             map.map[x][y].color = 0;
             map.map[x][y].texture = 0;
+            map.map[x][y].isSolid = false;
             std::cout << "Successfuly destroyed block" << std::endl;
 
             return 0;
