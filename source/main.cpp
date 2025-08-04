@@ -180,7 +180,10 @@ int main(int argc, char **argv) {
 
 					// Inventory buttons click event
 					if(settings.inventory) inventory::Chooser(window, settings, player, cam, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
-                    break;
+                    
+					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, settings, map, cam, preset); // For click placing
+
+					break;
                 case SDL_MOUSEBUTTONUP:
                     // Mouse button is released
                     window.mouse.isDown = false;
@@ -249,7 +252,7 @@ int main(int argc, char **argv) {
 					break;
 				
 				default:
-					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, settings, map, cam, preset);
+					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, settings, map, cam, preset); // For drag placing
 					break;
             }
         }
