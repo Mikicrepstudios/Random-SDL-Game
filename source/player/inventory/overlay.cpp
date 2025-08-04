@@ -22,17 +22,17 @@ namespace inventory {
 
 			// Color
 			draw::DrawRect(window.renderer, colorRects.colorRectb, colors::gray);
-			draw::DrawRect(window.renderer, colorRects.colorRect, colors::colorID[settings.blockColor - 1]);
+			draw::DrawButton(window.renderer, colorRects.colorRect, colors::colorID[settings.blockColor - 1], window.mouse.x, window.mouse.y);
 			draw::DrawText(window.renderer, window.font, colorRects.colorTextRect, "Block", colors::white);
 
 			// BG Color
 			draw::DrawRect(window.renderer, colorRects.bgColorRectb, colors::gray);
-			draw::DrawRect(window.renderer, colorRects.bgColorRect, colors::colorID[settings.bgColor - 1]);
+			draw::DrawButton(window.renderer, colorRects.bgColorRect, colors::colorID[settings.bgColor - 1], window.mouse.x, window.mouse.y);
 			draw::DrawText(window.renderer, window.font, colorRects.bgColorTextRect, "BG", colors::white);
 
 			// Player Color
 			draw::DrawRect(window.renderer, colorRects.playerColorRectb, colors::gray);
-			draw::DrawRect(window.renderer, colorRects.playerColorRect, colors::colorID[settings.playerColor - 1]);
+			draw::DrawButton(window.renderer, colorRects.playerColorRect, colors::colorID[settings.playerColor - 1], window.mouse.x, window.mouse.y);
 			draw::DrawText(window.renderer, window.font, colorRects.playerColorTextRect, "Player", colors::white);
 
 			// Preview
@@ -48,8 +48,8 @@ namespace inventory {
 
 			// Solid
 			draw::DrawRect(window.renderer, otherRects.solidRectb, colors::gray);
-			if(settings.placeSolidBlocks) draw::DrawRect(window.renderer, otherRects.solidRect, colors::lightgreen);
-			else draw::DrawRect(window.renderer, otherRects.solidRect, colors::red);
+			if(settings.placeSolidBlocks) draw::DrawButton(window.renderer, otherRects.solidRect, colors::lightgreen, window.mouse.x, window.mouse.y);
+			else draw::DrawButton(window.renderer, otherRects.solidRect, colors::red, window.mouse.x, window.mouse.y);
 			draw::DrawText(window.renderer, window.font, otherRects.solidTextRect, "Solid", colors::white);
 			
 			// Presets
