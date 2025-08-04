@@ -17,11 +17,12 @@
 - **Shortcuts**
     - Quick color picker (`q`) can now pick textures
 
+#### Removed
+- (No removals in this update)
+
 #### Changed
 - **Core**
     - Updated Mikicrep Framework to 1.6.0
+    - Fixed placing blocks only when dragging
 - **Graphics**
     - Inventory buttons now change color when hovered by the mouse
-
-#### Removed
-- (No removals in this update)
