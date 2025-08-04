@@ -47,7 +47,7 @@ namespace files {
 
     // Main LoadGame function: detects version & dispatches to specific loaders
     void LoadGame(game::Map& map, game::Settings& settings, game::Player& player, game::Camera& cam, const std::string& saveName) {
-        /*std::string folder = "saves/" + saveName;
+        std::string folder = "saves/" + saveName;
         std::ifstream file(folder + "/savegame.msave");
         if (!file.is_open()) {
             std::cerr << "Save file not found for slot: " << saveName << "\n";
@@ -74,9 +74,7 @@ namespace files {
         } else {
             std::cerr << "Unsupported save version: " << version << "\n";
             // Future versions here...
-        }*/
-
-        files::LoadLegacyMap(map);
+        }
     }
 
 }
