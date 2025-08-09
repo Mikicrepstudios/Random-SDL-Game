@@ -133,7 +133,7 @@ namespace inventory {
 
 		rects.presetRect          = {extra::castToInt(window.width / 2 - 85 * wFactor), extra::castToInt(window.height - 160 * hFactor), extra::castToInt(170 * wFactor), extra::castToInt(115 * hFactor)};
 		rects.presetTextRect      = {extra::castToInt(window.width / 2 - 40 * wFactor), extra::castToInt(window.height - 160 * hFactor), extra::castToInt(80 * wFactor), extra::castToInt(115 * hFactor)};
-		rects.presetTitleRect     = {extra::castToInt(window.width / 2 - 115 * wFactor), extra::castToInt(window.height - 215 * hFactor), extra::castToInt(230 * wFactor), extra::castToInt(50 * hFactor)};
+		rects.presetTitleRect     = {extra::castToInt(window.width / 2 - 85 * wFactor), extra::castToInt(window.height - 215 * hFactor), extra::castToInt(170 * wFactor), extra::castToInt(50 * hFactor)};
 		return rects;
 	}
 }
