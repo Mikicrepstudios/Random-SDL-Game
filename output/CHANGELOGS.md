@@ -11,9 +11,10 @@
 - **Files**
     - New save mechanism (backwards compatible, more future-proof, supports multiple slots in the future)
 - **Graphics**
-    - Inventory now scales when resizing the game window
-    - Dialogues dynamically resize with window adjustments
-    - Dialogue descriptions are now larger
+    - Inventory UI now scales smoothly with window resizing
+    - Dialogues automatically adjust size to fit window changes
+    - Dialogue descriptions feature increased font size for better readability
+    - Inventory text styling enhanced for improved readability and less stretching
 - **Shortcuts**
     - Quick color picker (`q`) can now pick textures
 
