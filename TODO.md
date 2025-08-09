@@ -4,6 +4,8 @@
 ### In progress:
 
 ### Planned:
+- Code
+- - Add in inventory initrects texts for cropped stuff like BG or Exit
 - Core
 - - Colors for block textures
 - - Autosave - save after n of placed blocks OR n time (not decided)
