@@ -13,7 +13,6 @@
 - **Graphics**
     - Inventory UI now scales smoothly with window resizing
     - Dialogues automatically adjust size to fit window changes
-    - Dialogue descriptions feature increased font size for better readability
     - Inventory text styling enhanced for improved readability and less stretching
 - **Shortcuts**
     - Quick color picker (`q`) can now pick textures
@@ -28,3 +27,4 @@
     - Fixed placing blocks only when dragging
 - **Graphics**
     - Inventory buttons now change color when hovered by the mouse
+    - Inventory descriptions feature increased font size for better readability
