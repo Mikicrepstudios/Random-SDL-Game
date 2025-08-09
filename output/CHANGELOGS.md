@@ -17,6 +17,7 @@
     - Inventory text styling enhanced for improved readability and less stretching
 - **Shortcuts**
     - Quick color picker (`q`) can now pick textures
+    - You can now zoom in and zoom out camera using numpad + and -
 
 #### Removed
 - (No removals in this update)
