@@ -70,13 +70,13 @@ namespace game {
 		// Check bounds including non-negativity and max limits
 		if (x >= 0 && x < map.width &&
 			y >= 0 && y < map.height &&
-			map.map[y][x].type != 1 &&
+			map.map[x][y].type != 1 &&
 			!settings.inventory)
 		{
 			SDL_Rect mouseRect = {curHoverX * cam.scale, curHoverY * cam.scale, cam.scale, cam.scale};
 			
 			if (!cam.highlight) {
-				if (settings.bgColor == 32 || map.map[y][x].color == 32)
+				if (settings.bgColor == 32 || map.map[x][y].color == 32)
 					draw::DrawRect(window.renderer, mouseRect, colors::black);
 				else
 					draw::DrawRect(window.renderer, mouseRect, colors::white);
