@@ -13,8 +13,13 @@ namespace game {
         while(runningmenu) {
             SDL_GetMouseState(&window.mouse.x, &window.mouse.y);
 
+            // Main rects
             SDL_Rect titleRect = {window.width / 2 - 300, window.height / 2 - 300, 600, 100};
             SDL_Rect playButtonRect = {window.width / 2 - 100, window.height / 2 + 20, 200, 100};
+
+            // Bottom text rects
+            SDL_Rect devRect = {0, window.height - 50, 250, 50};
+            SDL_Rect publisherRect = {window.width - 500, window.height - 50, 500, 50};
 
             // Handle events
             while(SDL_PollEvent(&window.event) != 0) {
@@ -54,6 +59,10 @@ namespace game {
 
             draw::DrawButton(window.renderer, playButtonRect, colors::colorID[12], window.mouse.x, window.mouse.y); // Draw play button
             draw::DrawText(window.renderer, window.font, playButtonRect, "Play", colors::colorID[31]); // Draw button text
+
+            // Draw bottom texts
+            draw::DrawText(window.renderer, window.font, devRect, "Dev: Mikicrep", colors::white);
+            draw::DrawText(window.renderer, window.font, publisherRect, "Publisher: Mikicrep Studios", colors::white);
 
             // Present the renderer
             SDL_RenderPresent(window.renderer);
