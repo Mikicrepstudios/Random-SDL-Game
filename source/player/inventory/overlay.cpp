@@ -10,30 +10,39 @@
 #include "textures.h"
 
 namespace inventory {
+	void DrawButtonINV(core::MF_Window &window, std::string text, MF_Color buttonColor, SDL_Rect buttonRect, SDL_Rect textRect) {
+		// Function that draws button and text inside of button
+		draw::DrawButton(window.renderer, buttonRect, buttonColor, window.mouse.x, window.mouse.y);
+		draw::DrawText(window.renderer, window.font, textRect, text.c_str(), colors::white);
+	}
+	void DrawButtonWithBGINV(core::MF_Window &window, std::string text, MF_Color buttonColor, SDL_Rect bgRect, SDL_Rect buttonRect, SDL_Rect textRect) {
+		// Function that draws background around button, button and text inside of button
+		draw::DrawRect(window.renderer, bgRect, colors::gray);
+		draw::DrawButton(window.renderer, buttonRect, buttonColor, window.mouse.x, window.mouse.y);
+		draw::DrawText(window.renderer, window.font, textRect, text.c_str(), colors::white);
+	}
+	void DrawTextureButtonWithBGINV(core::MF_Window &window, std::string text, SDL_Texture* texture, SDL_Rect bgRect, SDL_Rect buttonRect, SDL_Rect textRect) {
+		// Function that draws background around button, button with texture and text inside of button
+		draw::DrawRect(window.renderer, bgRect, colors::gray);
+		draw::DrawTextureRect(window.renderer, buttonRect, texture);
+		draw::DrawText(window.renderer, window.font, textRect, text.c_str(), colors::white);
+	}
+
 	void Overlay(core::MF_Window &window, game::Settings settings, inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects, textures::BlockTextures blockTextures[32]) {
 		/**
 		 * @brief This function draws inventory overlay
 		 */
+		// In some DrawButtonTextWithBG calls, textRect is modified to fit the text better
 
 		if (settings.inventory) {
 			// Render bg
 			SDL_Rect bgRect = {25, 25, window.width - 50, window.height - 50};
 			draw::DrawRect(window.renderer, bgRect, colors::darkgray);
 
-			// Color
-			draw::DrawRect(window.renderer, colorRects.colorRectb, colors::gray);
-			draw::DrawButton(window.renderer, colorRects.colorRect, colors::colorID[settings.blockColor - 1], window.mouse.x, window.mouse.y);
-			draw::DrawText(window.renderer, window.font, colorRects.colorTextRect, "Block", colors::white);
-
-			// BG Color
-			draw::DrawRect(window.renderer, colorRects.bgColorRectb, colors::gray);
-			draw::DrawButton(window.renderer, colorRects.bgColorRect, colors::colorID[settings.bgColor - 1], window.mouse.x, window.mouse.y);
-			draw::DrawText(window.renderer, window.font, {colorRects.bgColorTextRect.x + 10, colorRects.bgColorTextRect.y, colorRects.bgColorTextRect.w - 20, colorRects.bgColorTextRect.h}, "BG", colors::white);
-
-			// Player Color
-			draw::DrawRect(window.renderer, colorRects.playerColorRectb, colors::gray);
-			draw::DrawButton(window.renderer, colorRects.playerColorRect, colors::colorID[settings.playerColor - 1], window.mouse.x, window.mouse.y);
-			draw::DrawText(window.renderer, window.font, colorRects.playerColorTextRect, "Player", colors::white);
+			// Left side
+			DrawButtonWithBGINV(window, "Block", colors::colorID[settings.blockColor - 1], colorRects.colorRectb, colorRects.colorRect, colorRects.colorTextRect);
+			DrawButtonWithBGINV(window, "BG", colors::colorID[settings.bgColor - 1], colorRects.bgColorRectb, colorRects.bgColorRect, {colorRects.bgColorTextRect.x + 10, colorRects.bgColorTextRect.y, colorRects.bgColorTextRect.w - 20, colorRects.bgColorTextRect.h});
+			DrawButtonWithBGINV(window, "Player", colors::colorID[settings.playerColor - 1], colorRects.playerColorRectb, colorRects.playerColorRect, colorRects.playerColorTextRect);
 
 			// Preview
 			draw::DrawRect(window.renderer, menuRects.previewRectb, colors::gray);
@@ -41,10 +50,8 @@ namespace inventory {
 			draw::DrawTextureRect(window.renderer, menuRects.previewRect, blockTextures[settings.blockTextureId].texture);
 			draw::DrawText(window.renderer, window.font, menuRects.previewTextRect, "Preview", colors::white);
 
-			// Textures
-			draw::DrawRect(window.renderer, decalRects.textureIdRectb, colors::gray);
-			draw::DrawTextureRect(window.renderer, decalRects.textureIdRect, blockTextures[settings.blockTextureId].texture);
-			draw::DrawText(window.renderer, window.font, decalRects.textureIdTextRect, "Text. id", colors::white);
+			// Right side
+			DrawTextureButtonWithBGINV(window, "Text. id", blockTextures[settings.blockTextureId].texture, decalRects.textureIdRectb, decalRects.textureIdRect, decalRects.textureIdTextRect);
 
 			// Solid
 			draw::DrawRect(window.renderer, otherRects.solidRectb, colors::gray);
@@ -57,29 +64,19 @@ namespace inventory {
 			draw::DrawText(window.renderer, window.font, otherRects.presetTextRect, std::to_string(settings.curPreset + 1).c_str(), colors::white);
 			draw::DrawText(window.renderer, window.font, otherRects.presetTitleRect, "Presets", colors::white);
 
-			// Backgrounds
-			draw::DrawRect(window.renderer, menuRects.bgGameplay, colors::gray);
-			draw::DrawRect(window.renderer, menuRects.bgGame, colors::gray);
+			// Bottom left stuff
+			draw::DrawRect(window.renderer, menuRects.bgGameplay, colors::gray); // Background
+			draw::DrawText(window.renderer, window.font, menuRects.gameplayTextRect, "Gameplay", colors::white); // Title
 
-			// Titles
-			draw::DrawText(window.renderer, window.font, menuRects.gameplayTextRect, "Gameplay", colors::white);
-			draw::DrawText(window.renderer, window.font, {menuRects.gameTextRect.x + 25, menuRects.gameTextRect.y, menuRects.gameTextRect.w - 50, menuRects.gameTextRect.h}, "Game", colors::white);
+			DrawButtonINV(window, "Cam TP", colors::aqua, gameplayRects.camTpRect, gameplayRects.camTpRect);
+			DrawButtonINV(window, "Player TP", colors::aqua, gameplayRects.playerTpRect, gameplayRects.playerTpRect);
 
-			// Camtp button
-			draw::DrawButton(window.renderer, gameplayRects.camTpRect, colors::aqua, window.mouse.x, window.mouse.y);
-			draw::DrawText(window.renderer, window.font, gameplayRects.camTpRect, "Cam TP", colors::white);
+			// Bottom right stuff
+			draw::DrawRect(window.renderer, menuRects.bgGame, colors::gray); // Background
+			draw::DrawText(window.renderer, window.font, {menuRects.gameTextRect.x + 25, menuRects.gameTextRect.y, menuRects.gameTextRect.w - 50, menuRects.gameTextRect.h}, "Game", colors::white); // Title
+			DrawButtonINV(window, "Game Info", colors::darkgray, gameRects.gameInfoRect, gameRects.gameInfoRect);
+			DrawButtonINV(window, "Exit", colors::red, gameRects.exitRect, {gameRects.exitRect.x + 40, gameRects.exitRect.y, gameRects.exitRect.w - 80, gameRects.exitRect.h});
 
-			// Playertp button
-			draw::DrawButton(window.renderer, gameplayRects.playerTpRect, colors::aqua, window.mouse.x, window.mouse.y);
-			draw::DrawText(window.renderer, window.font, gameplayRects.playerTpRect, "Player TP", colors::white);
-
-			// Gameinfo button
-			draw::DrawButton(window.renderer, gameRects.gameInfoRect, colors::darkgray, window.mouse.x, window.mouse.y);
-			draw::DrawText(window.renderer, window.font, gameRects.gameInfoRect, "Game Info", colors::white);
-
-			// Exit button
-			draw::DrawButton(window.renderer, gameRects.exitRect, colors::red, window.mouse.x, window.mouse.y);
-			draw::DrawText(window.renderer, window.font, {gameRects.exitRect.x + 40, gameRects.exitRect.y, gameRects.exitRect.w - 80, gameRects.exitRect.h}, "Exit", colors::white);
 
 			// Color pickers
 			if(settings.colorPicker)
