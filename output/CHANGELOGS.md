@@ -13,7 +13,7 @@
 - **Graphics**
     - Inventory UI now scales smoothly with window resizing
     - Dialogues automatically adjust size to fit window changes
-    - Inventory text styling enhanced for improved readability and less stretching
+    - Dialogues descriptions are now larger
 - **Shortcuts**
     - Quick color picker (`q`) can now pick textures
     - You can now zoom in and zoom out camera using numpad + and -
@@ -27,4 +27,4 @@
     - Fixed placing blocks only when dragging
 - **Graphics**
     - Inventory buttons now change color when hovered by the mouse
-    - Inventory descriptions feature increased font size for better readability
+    - Inventory text styling enhanced for improved readability and less stretching
