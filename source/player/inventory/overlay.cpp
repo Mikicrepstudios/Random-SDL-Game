@@ -28,7 +28,7 @@ namespace inventory {
 			// BG Color
 			draw::DrawRect(window.renderer, colorRects.bgColorRectb, colors::gray);
 			draw::DrawButton(window.renderer, colorRects.bgColorRect, colors::colorID[settings.bgColor - 1], window.mouse.x, window.mouse.y);
-			draw::DrawText(window.renderer, window.font, colorRects.bgColorTextRect, "BG", colors::white);
+			draw::DrawText(window.renderer, window.font, {colorRects.bgColorTextRect.x + 10, colorRects.bgColorTextRect.y, colorRects.bgColorTextRect.w - 20, colorRects.bgColorTextRect.h}, "BG", colors::white);
 
 			// Player Color
 			draw::DrawRect(window.renderer, colorRects.playerColorRectb, colors::gray);
@@ -63,7 +63,7 @@ namespace inventory {
 
 			// Titles
 			draw::DrawText(window.renderer, window.font, menuRects.gameplayTextRect, "Gameplay", colors::white);
-			draw::DrawText(window.renderer, window.font, menuRects.gameTextRect, "Game", colors::white);
+			draw::DrawText(window.renderer, window.font, {menuRects.gameTextRect.x + 25, menuRects.gameTextRect.y, menuRects.gameTextRect.w - 50, menuRects.gameTextRect.h}, "Game", colors::white);
 
 			// Camtp button
 			draw::DrawButton(window.renderer, gameplayRects.camTpRect, colors::aqua, window.mouse.x, window.mouse.y);
@@ -79,7 +79,7 @@ namespace inventory {
 
 			// Exit button
 			draw::DrawButton(window.renderer, gameRects.exitRect, colors::red, window.mouse.x, window.mouse.y);
-			draw::DrawText(window.renderer, window.font, gameRects.exitRect, "Exit", colors::white);
+			draw::DrawText(window.renderer, window.font, {gameRects.exitRect.x + 40, gameRects.exitRect.y, gameRects.exitRect.w - 80, gameRects.exitRect.h}, "Exit", colors::white);
 
 			// Color pickers
 			if(settings.colorPicker)
