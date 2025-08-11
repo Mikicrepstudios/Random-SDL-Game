@@ -67,9 +67,9 @@ namespace game {
             draw::DrawText(window.renderer, window.font, titleRect, "Random SDL Game", colors::colorID[31]); // Draw title
 
             draw::DrawButton(window.renderer, newButtonRect, colors::aqua, window.mouse.x, window.mouse.y); // Draw play button
-            draw::DrawText(window.renderer, window.font, newButtonRect, "New", colors::colorID[31]); // Draw button text
+            draw::DrawText(window.renderer, window.font, newButtonRect, "New game", colors::colorID[31]); // Draw button text
             draw::DrawButton(window.renderer, loadButtonRect, colors::aqua, window.mouse.x, window.mouse.y); // Draw play button
-            draw::DrawText(window.renderer, window.font, loadButtonRect, "Load", colors::colorID[31]); // Draw button text
+            draw::DrawText(window.renderer, window.font, loadButtonRect, "Load game", colors::colorID[31]); // Draw button text
 
             // Draw bottom texts
             draw::DrawText(window.renderer, window.font, devRect, "Dev: Mikicrep", colors::white);
