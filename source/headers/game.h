@@ -17,7 +17,7 @@ namespace game {
 	};
 
 	// Core
-	void MainMenu(core::MF_Window &window, bool &running);
+	void MainMenu(core::MF_Window &window, game::Game &game, bool &running);
     void UpdateVars(game::Settings &settings, game::Player &player, game::Camera &cam, game::Preset preset[10]);
 
 	// High level game stuff

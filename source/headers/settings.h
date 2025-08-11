@@ -10,6 +10,9 @@
 // Already documented in game.h
 namespace game {
     struct Game {
+        // Menu vars
+        bool menuLoad = false; // Load game on start - changed in mainmenu.cpp
+
         bool terminalmode = false;
         bool cliInput = false;
 
