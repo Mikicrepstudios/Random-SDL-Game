@@ -13,7 +13,7 @@
 - **Graphics**
     - Inventory UI now scales smoothly with window resizing
     - Dialogues automatically adjust size to fit window changes
-    - Dialogues descriptions are now larger
+    - Dialogues descriptions are now more readable
 - **Shortcuts**
     - Quick color picker (`q`) can now pick textures
     - You can now zoom in and zoom out camera using numpad + and -
