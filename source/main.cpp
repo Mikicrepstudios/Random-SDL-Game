@@ -40,10 +40,6 @@ int main(int argc, char **argv) {
 	if(debug) std::cout << "Creating window" << std::endl;
     if(core::InitWindow(window, title, 1280, 800) == false) running = false;
 
-	// Do Main Menu
-	if(debug) std::cout << "Running Main Menu" << std::endl;
-	game::MainMenu(window, running);
-
 	// Structs
 	if(debug) std::cout << "Defining structs" << std::endl;
 	game::Game game = {};
@@ -52,6 +48,9 @@ int main(int argc, char **argv) {
 	game::Player player = {};
 	game::Camera cam = {};
 
+	// Do Main Menu
+	if(debug) std::cout << "Running Main Menu" << std::endl;
+	game::MainMenu(window, game, running);
 
 	// Preset stuff
 	if(debug) std::cout << "Defining presets" << std::endl;
@@ -93,10 +92,8 @@ int main(int argc, char **argv) {
 	SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(window.renderer, backgroundSurface);
 	SDL_FreeSurface(backgroundSurface);
 
-	if(debug) std::cout << "Init SDL stuff; Load save" << std::endl;
-
 	game::ClearMap(map);
-	files::LoadGame(map, settings, player, cam, "autosave");
+	if(game.menuLoad) files::LoadGame(map, settings, player, cam, "autosave");
 
 	if(debug) std::cout << "Start running loop" << std::endl;
 
