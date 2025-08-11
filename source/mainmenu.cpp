@@ -31,6 +31,15 @@ namespace game {
                         running = false;
                         runningmenu = false;
                         break;
+                    case SDL_WINDOWEVENT:
+                        switch(window.event.window.event) {
+                            case SDL_WINDOWEVENT_RESIZED:
+                                // Handle resizing window
+                                window.width = window.event.window.data1;
+                                window.height = window.event.window.data2;
+                                break;
+                        }
+                        break;
 
                     case SDL_KEYDOWN:
                         if(window.event.key.keysym.sym == SDLK_ESCAPE) {
