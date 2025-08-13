@@ -16,6 +16,7 @@
 - Files
 - - Multiple save slots
 - Graphics
+- - Change hover to be either transparent or just darker color of block
 
 ### Thinking:
 - - Shadows
