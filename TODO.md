@@ -7,6 +7,7 @@
 - Code
 - - Add in inventory initrects texts for cropped stuff like BG or Exit
 - - Seperate placing and destroying blocks into its own function and reference it in playercontrols.cpp and cheats like place and destroy
+- - After updating to newer MF version, add to changelogs that button hover effect is now weaker
 - Core
 - - Colors for block textures
 - - Autosave - save after n of placed blocks OR n time (not decided)
