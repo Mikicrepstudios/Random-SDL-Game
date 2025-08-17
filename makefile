@@ -2,7 +2,7 @@
 
 # Compiler and flags
 CXX := g++
-CXXFLAGS := -std=c++17 -Wall -g -I/usr/include/SDL2 -I./miki-framework/ -I./source/headers
+CXXFLAGS := -std=c++17 -Wall -I/usr/include/SDL2 -I./miki-framework/ -I./source/headers
 LDFLAGS := -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 # Paths
