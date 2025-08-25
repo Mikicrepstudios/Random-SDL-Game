@@ -13,16 +13,20 @@
 - - Autosave - save after n of placed blocks OR n time (not decided)
 - - Way to save and load while inside of game
 - - Different world map sizes?
+- - Blocks with gravity
 - Commands
 - Files
 - - Multiple save slots
 - Graphics
 - - Change hover to be either transparent or just darker color of block
+- - Hotbar drawn at bottom for block presets
+- - Replace "solid" flip flop switch to allow other kind of blocks too instead of it only, rename to "Block type"
 
 ### Thinking:
 - - Shadows
 - - Undo/Redo
 - - Custom color pallete
+- - Seperate build/play mode?
 
 ### Explanations:
 - In progress - Is currently being implemented
