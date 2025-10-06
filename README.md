@@ -8,45 +8,8 @@
 - Supports **linux** and **windows** (shh linux is given bigger love)
 - Made for **ultra** low-end devices
 
-## Requirements
-For linux compiling:
-
-```pacman -S --needed base-devel sdl2 sdl2_ttf sdl2_image sdl2_mixer```
-
-For windows compiling:
-
-```pacman -S --needed mingw-w64-gcc```
-
-Also you must get `mingw-w64-sdl2` from AUR for windows compiling
-
-> **Note:** These commands only work on Arch-based Linux distributions. For other distributions, you will need to find the corresponding packages.
-
 ## Compiling and running
-1. Clone this repo
-2. Open terminal and run `make`
-- You can move `output` folder out of repo folder and delete repo folder
-- You can delete .md and .dll files too but do not delete anything else
-- Game will open automatically after successful compilation
-### Windows x86_64 (64bit)
-1. Clone this repo
-2. Download `sdl2mingw.zip` [here](https://drive.google.com/drive/folders/1uVe7oKMzCTTUeMJuHL7vqK0O2FK_pIPs?usp=drive_link)
-3. Extract `sdl2mingw.zip` in root folder of repo (make sure you put folder not contents of folder)
-4. Open terminal and run `make windows`
-5. Move contents from `x86_64dll` folder to output folder
-- You can move `output` folder out of repo folder and delete repo folder
-- You can delete .md files too but do not delete anything else
-- Game will not open automatically after successful compilation
-- Works under [WINE](https://www.winehq.org/) too
-### Windows x86 (32bit)
-1. Clone this repo
-2. Download `sdl2mingw32.zip` [here](https://drive.google.com/drive/folders/1uVe7oKMzCTTUeMJuHL7vqK0O2FK_pIPs?usp=drive_link)
-3. Extract `sdl2mingw32.zip` in root folder of repo (make sure you put folder not contents of folder)
-4. Open terminal and run `make windows32`
-5. Move contents from `x86dll` folder to output folder
-- You can move `output` folder out of repo folder and delete repo folder
-- You can delete .md files too but do not delete anything else
-- Game will not open automatically after successful compilation
-- Works under [WINE](https://www.winehq.org/) too
+[Instructions here](https://github.com/Mikicrepstudios/Mikicrep-Framework/tree/main?tab=readme-ov-file#compiling)
 
 *Compiling is recommended unless you get game from [releases](https://github.com/Mikicrepstudios/Random-SDL-Game/releases) page*
 
