@@ -13,11 +13,10 @@ namespace game {
     void MainMenu(core::MF_Window &window, game::Game &game, bool &running) {
         bool runningmenu = true;
         bool saveslist = false;
-        //SDL_Event event = {};
 
+        // Get list of folders in saves folder
         std::vector<std::string> saves = files::lsDir("saves");
         int savesSize = saves.size();
-        for(int i = 0; i < savesSize; i++) std::cout << saves[i];
 
         while(runningmenu) {
             SDL_GetMouseState(&window.mouse.x, &window.mouse.y);
@@ -60,16 +59,28 @@ namespace game {
                     case SDL_MOUSEBUTTONDOWN:
                         if(window.event.button.button == SDL_BUTTON_LEFT) {
                             // Check if any button is clicked
-                            // New game
                             if(!saveslist) {
+                                // New game
                                 if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, newButtonRect)) {
                                     game.menuLoad = false; // Set menu load to false
                                     runningmenu = false;
                                 }
                                 // Load game
                                 else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, loadButtonRect)) {
-                                    saveslist = !saveslist;
+                                    saveslist = false;
                                 }
+                            }
+                            else {
+                                for(int i = 0; i < savesSize; i++) {
+                                    SDL_Rect curRect = {window.width / 2 - 300, window.height / 2 - (savesSize * 50) + (i * 100), 600, 100};
+
+                                    if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, curRect)) {
+                                        game.savePath = saves[i];
+                                        game.menuLoad = true;
+                                        continue;
+                                    }
+                                }
+                                saveslist = false;
                             }
                         }
                         break;

@@ -46,7 +46,6 @@ namespace files {
 
     // Main LoadGame function: detects version & dispatches to specific loaders
     void LoadGame(game::Map& map, game::Settings& settings, game::Player& player, game::Camera& cam, const std::string& savePath) {
-        std::string savePath = "saves/" + savePath;
         std::ifstream file(savePath + "/savegame.msave");
         if (!file.is_open()) {
             std::cerr << "Save file not found for slot: " << savePath << "\n";

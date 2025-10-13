@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include <vector>
 
 #include "SDL.h"
@@ -12,6 +13,7 @@ namespace game {
     struct Game {
         // Menu vars
         bool menuLoad = false; // Load game on start - changed in mainmenu.cpp
+        std::string savePath = "saves/autosave"; // Default autosave
 
         bool terminalmode = false;
         bool cliInput = false;
