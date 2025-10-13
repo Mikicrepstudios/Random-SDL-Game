@@ -67,7 +67,7 @@ namespace game {
                                 }
                                 // Load game
                                 else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, loadButtonRect)) {
-                                    saveslist = false;
+                                    saveslist = true;
                                 }
                             }
                             else {
@@ -77,6 +77,7 @@ namespace game {
                                     if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, curRect)) {
                                         game.savePath = saves[i];
                                         game.menuLoad = true;
+                                        runningmenu = false;
                                         continue;
                                     }
                                 }
