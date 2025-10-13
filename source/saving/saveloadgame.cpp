@@ -12,11 +12,10 @@
 namespace files {
     const int CURRENT_SAVE_VERSION = 1;
 
-    void SaveGame(const game::Map& map, const game::Settings& settings, const game::Player& player, const game::Camera& cam, const std::string& slotName) {
-        std::string folder = "saves/" + slotName;
-        std::filesystem::create_directories(folder); // Make sure folder exists
+    void SaveGame(const game::Map& map, const game::Settings& settings, const game::Player& player, const game::Camera& cam, const std::string& savePath) {
+        std::filesystem::create_directories(savePath); // Make sure savePath exists
 
-        std::ofstream file(folder + "/savegame.msave");
+        std::ofstream file(savePath + "/savegame.msave");
         if (!file.is_open()) {
             std::cerr << "Failed to open save file for writing!\n";
             return;
@@ -42,15 +41,15 @@ namespace files {
 
         file.close();
 
-        std::cout << "Game saved in slot: " << slotName << "\n";
+        std::cout << "Game saved in slot: " << savePath << "\n";
     }
 
     // Main LoadGame function: detects version & dispatches to specific loaders
-    void LoadGame(game::Map& map, game::Settings& settings, game::Player& player, game::Camera& cam, const std::string& saveName) {
-        std::string folder = "saves/" + saveName;
-        std::ifstream file(folder + "/savegame.msave");
+    void LoadGame(game::Map& map, game::Settings& settings, game::Player& player, game::Camera& cam, const std::string& savePath) {
+        std::string savePath = "saves/" + savePath;
+        std::ifstream file(savePath + "/savegame.msave");
         if (!file.is_open()) {
-            std::cerr << "Save file not found for slot: " << saveName << "\n";
+            std::cerr << "Save file not found for slot: " << savePath << "\n";
             return;
         }
 
@@ -70,7 +69,7 @@ namespace files {
 
         if (version == 1) {
             files::LoadGame_v1(map, settings, player, cam, file);
-            std::cout << "Game loaded (v1) from slot: " << saveName << "\n";
+            std::cout << "Game loaded (v1) from slot: " << savePath << "\n";
         } else {
             std::cerr << "Unsupported save version: " << version << "\n";
             // Future versions here...
