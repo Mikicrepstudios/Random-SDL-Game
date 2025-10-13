@@ -1,7 +1,9 @@
 #include <iostream>
+#include <string>
 
 #include "mf/core.h"
 #include "mf/colors.h"
+#include "mf/files.h"
 #include "mf/graphics.h"
 #include "mf/logic.h"
 
@@ -10,7 +12,12 @@
 namespace game {
     void MainMenu(core::MF_Window &window, game::Game &game, bool &running) {
         bool runningmenu = true;
+        bool saveslist = false;
         //SDL_Event event = {};
+
+        std::vector<std::string> saves = files::lsDir("saves");
+        int savesSize = saves.size();
+        for(int i = 0; i < savesSize; i++) std::cout << saves[i];
 
         while(runningmenu) {
             SDL_GetMouseState(&window.mouse.x, &window.mouse.y);
@@ -43,6 +50,8 @@ namespace game {
 
                     case SDL_KEYDOWN:
                         if(window.event.key.keysym.sym == SDLK_ESCAPE) {
+                            if(saveslist) {saveslist = !saveslist; continue;}
+
                             running = false;
                             runningmenu = false;
                         }
@@ -51,13 +60,16 @@ namespace game {
                     case SDL_MOUSEBUTTONDOWN:
                         if(window.event.button.button == SDL_BUTTON_LEFT) {
                             // Check if any button is clicked
-                            if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, newButtonRect)) {
-                                game.menuLoad = false; // Set menu load to false
-                                runningmenu = false;
-                            }
-                            else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, loadButtonRect)) {
-                                game.menuLoad = true; // Set menu load to true
-                                runningmenu = false;
+                            // New game
+                            if(!saveslist) {
+                                if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, newButtonRect)) {
+                                    game.menuLoad = false; // Set menu load to false
+                                    runningmenu = false;
+                                }
+                                // Load game
+                                else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, loadButtonRect)) {
+                                    saveslist = !saveslist;
+                                }
                             }
                         }
                         break;
@@ -83,6 +95,23 @@ namespace game {
             // Draw bottom texts
             draw::DrawText(window.renderer, window.font, devRect, "Dev: Mikicrep", colors::white);
             draw::DrawText(window.renderer, window.font, publisherRect, "Publisher: Mikicrep Studios", colors::white);
+
+            if(saveslist) {
+                SDL_Rect savesListBGRect = {window.width / 2 - 300, window.height / 2 - (savesSize * 50) - 100, 600, savesSize * 100 + 100}; // in height -100 and +100 are for title
+                draw::DrawRect(window.renderer, savesListBGRect, colors::aqua);
+
+                SDL_Rect titleSavesRect = {window.width / 2 - 300, window.height / 2 - (savesSize * 50) - 100, 600, 100};
+                draw::DrawText(window.renderer, window.font, titleSavesRect, "Select your save:", colors::white);
+
+                for(int i = 0; i < savesSize; i++) {
+                    SDL_Rect curRect = {window.width / 2 - 300, window.height / 2 - (savesSize * 50) + (i * 100), 600, 100};
+                    MF_Color curColor = colors::gray;
+                    if(i % 2) curColor = colors::darkgray;
+                    
+                    draw::DrawButton(window.renderer, curRect, curColor, window.mouse.x, window.mouse.y);
+                    draw::DrawText(window.renderer, window.font, curRect, saves[i].c_str(), colors::white);
+                }
+            }
 
             // Present the renderer
             SDL_RenderPresent(window.renderer);
