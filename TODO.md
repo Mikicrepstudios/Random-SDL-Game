@@ -2,6 +2,8 @@
 ### This list conatins stuff that I might add in game - Feel free to [suggest stuff](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
 
 ### In progress:
+- - Multiple save slots
+- - Save as some other slot than default
 
 ### Planned:
 - Code
@@ -16,7 +18,6 @@
 - - Blocks with gravity
 - Commands
 - Files
-- - Multiple save slots
 - Graphics
 - - Change hover to be either transparent or just darker color of block
 - - Hotbar drawn at bottom for block presets

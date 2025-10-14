@@ -146,7 +146,7 @@ int main(int argc, char **argv) {
 					if(dialogueResult == 2)
 						switch(settings.dialogueId) {
 							case 1:
-								files::SaveGame(map, settings, player, cam, game.savePath);
+								files::SaveGame(map, settings, player, cam, "saves/" + game.savePath);
 								running = false;
 								break;
 							case 2:
