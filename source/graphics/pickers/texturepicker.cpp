@@ -65,7 +65,8 @@ namespace textures {
 		for(int y = 1; y <= 2; y++) {
 			for(int x = 1; x <= 8; x++) {
 				SDL_Rect curRect = {startposw + (100 * x), startposh + (100 * y), 100, 100};
-				draw::DrawTextureRect(window.renderer, curRect, blockTextures[curTexture].texture);
+				if(x == 1 && y == 1) {} // Stops error from loading first (none) texture
+				else draw::DrawTextureRect(window.renderer, curRect, blockTextures[curTexture].texture);
 
 				curTexture++;
 			}
