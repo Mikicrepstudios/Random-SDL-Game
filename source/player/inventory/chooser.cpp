@@ -20,18 +20,18 @@ namespace inventory {
 		if (window.event.type == SDL_MOUSEBUTTONDOWN) {
 			if (!settings.colorPicker && !settings.texturePicker) { // Checks if any color picker is active
 				// Solid
-				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, otherRects.solidRectb))
+				if(logic::IsMouseTouching(window.mouse, otherRects.solidRectb))
 					settings.placeSolidBlocks = !settings.placeSolidBlocks;
 
 				// Gameplay
 				// Cam TP
-				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, gameplayRects.camTpRect)) {
+				if(logic::IsMouseTouching(window.mouse, gameplayRects.camTpRect)) {
 					settings.cheatsId = 1;
 					settings.cheats = true;
 					settings.inventory = false;
 				}
 				// Player TP
-				else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, gameplayRects.playerTpRect)) {
+				else if(logic::IsMouseTouching(window.mouse, gameplayRects.playerTpRect)) {
 					settings.cheatsId = 2;
 					settings.cheats = true;
 					settings.inventory = false;
@@ -39,10 +39,10 @@ namespace inventory {
 
 				// Game
 				// Game Info
-				else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, gameRects.gameInfoRect))
+				else if(logic::IsMouseTouching(window.mouse, gameRects.gameInfoRect))
 					settings.gameInfo = !settings.gameInfo;
 				// Exit
-				else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, gameRects.exitRect)) {
+				else if(logic::IsMouseTouching(window.mouse, gameRects.exitRect)) {
 					settings.inventory = false;
 					settings.dialogueId = 1;
 					settings.dialogue = true;
@@ -51,7 +51,7 @@ namespace inventory {
 
 			if(!settings.texturePicker) {
 				// Color
-				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, colorRects.colorRectb)) {
+				if(logic::IsMouseTouching(window.mouse, colorRects.colorRectb)) {
 					settings.colorPicker = !settings.colorPicker;
 					settings.colorPickerId = 1;
 				}
@@ -59,7 +59,7 @@ namespace inventory {
 					preset[settings.curPreset].blockColor = gui::ColorPickerEvent(window, settings);
 
 				// BG Color
-				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, colorRects.bgColorRectb)) {
+				if(logic::IsMouseTouching(window.mouse, colorRects.bgColorRectb)) {
 					settings.colorPicker = !settings.colorPicker;
 					settings.colorPickerId = 2;
 				}
@@ -67,7 +67,7 @@ namespace inventory {
 					settings.bgColor = gui::ColorPickerEvent(window, settings);
 
 				// Player Color
-				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, colorRects.playerColorRectb)) {
+				if(logic::IsMouseTouching(window.mouse, colorRects.playerColorRectb)) {
 					settings.colorPicker = !settings.colorPicker;
 					settings.colorPickerId = 3;
 				}
@@ -77,7 +77,7 @@ namespace inventory {
 
 			if(!settings.colorPicker) {
 				// Texture
-				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, decalRects.textureIdRectb))
+				if(logic::IsMouseTouching(window.mouse, decalRects.textureIdRectb))
 					settings.texturePicker = !settings.texturePicker;
 				else if (settings.texturePicker)
 					preset[settings.curPreset].textureId = textures::PickerEvent(window, settings);

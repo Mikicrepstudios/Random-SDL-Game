@@ -1,3 +1,4 @@
+#include <iostream>
 #include "SDL.h"
 
 #include "mf/colors.h"
@@ -11,6 +12,7 @@ namespace draw {
 		 * @param texture Texture for the rect, must be SDL_Texture*
 		 */
 
+		if(texture == NULL) {std::cout << "[MF] Error using texture, did you load it correctly?" << std::endl; return;}
 		SDL_RenderCopy(renderer, texture, NULL, &rect);
 	}
 }

@@ -17,8 +17,8 @@ namespace dialogues {
          */
 
         if (window.event.type == SDL_MOUSEBUTTONDOWN) {
-            if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, dialoguesRects.yesRect)) return 2;
-            else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, dialoguesRects.otherYesRect)) return 3; // Save and exit
+            if(logic::IsMouseTouching(window.mouse, dialoguesRects.yesRect)) return 2;
+            else if(logic::IsMouseTouching(window.mouse, dialoguesRects.otherYesRect)) return 3; // Save and exit
         }
 
         return 0;
@@ -49,8 +49,8 @@ namespace dialogues {
         draw::DrawText(window.renderer, window.font, dialoguesRects.titleRect, titleText, colors::white);
 
         // Draw buttons
-        draw::DrawButton(window.renderer, dialoguesRects.noRect, colors::red, window.mouse.x, window.mouse.y);
-        draw::DrawButton(window.renderer, dialoguesRects.yesRect, colors::lightgreen, window.mouse.x, window.mouse.y);
+        draw::DrawButton(window.renderer, dialoguesRects.noRect, colors::red, window.mouse);
+        draw::DrawButton(window.renderer, dialoguesRects.yesRect, colors::lightgreen, window.mouse);
 
         // Give buttons text
 
@@ -61,14 +61,14 @@ namespace dialogues {
         }
         else {
             // Draw addional button for saving
-            draw::DrawButton(window.renderer, dialoguesRects.otherYesRect, colors::red, window.mouse.x, window.mouse.y);
+            draw::DrawButton(window.renderer, dialoguesRects.otherYesRect, colors::red, window.mouse);
 
             draw::DrawText(window.renderer, window.font, dialoguesRects.noRect, "Cancel", colors::white);
             draw::DrawText(window.renderer, window.font, dialoguesRects.otherYesRect, "Exit without saving", colors::white);
             draw::DrawText(window.renderer, window.font, dialoguesRects.yesRect, "Exit with saving", colors::white);
         }
 
-        if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, dialoguesRects.noRect)) return true;
+        if(logic::IsMouseTouching(window.mouse, dialoguesRects.noRect)) return true;
 
         return false;
     }

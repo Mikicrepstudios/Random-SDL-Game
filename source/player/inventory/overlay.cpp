@@ -12,13 +12,13 @@
 namespace inventory {
 	void DrawButtonINV(core::MF_Window &window, std::string text, MF_Color buttonColor, SDL_Rect buttonRect, SDL_Rect textRect) {
 		// Function that draws button and text inside of button
-		draw::DrawButton(window.renderer, buttonRect, buttonColor, window.mouse.x, window.mouse.y);
+		draw::DrawButton(window.renderer, buttonRect, buttonColor, window.mouse);
 		draw::DrawText(window.renderer, window.font, textRect, text.c_str(), colors::white);
 	}
 	void DrawButtonWithBGINV(core::MF_Window &window, std::string text, MF_Color buttonColor, SDL_Rect bgRect, SDL_Rect buttonRect, SDL_Rect textRect) {
 		// Function that draws background around button, button and text inside of button
 		draw::DrawRect(window.renderer, bgRect, colors::gray);
-		draw::DrawButton(window.renderer, buttonRect, buttonColor, window.mouse.x, window.mouse.y);
+		draw::DrawButton(window.renderer, buttonRect, buttonColor, window.mouse);
 		draw::DrawText(window.renderer, window.font, textRect, text.c_str(), colors::white);
 	}
 	void DrawTextureButtonWithBGINV(core::MF_Window &window, std::string text, SDL_Texture* texture, SDL_Rect bgRect, SDL_Rect buttonRect, SDL_Rect textRect) {
@@ -55,8 +55,8 @@ namespace inventory {
 
 			// Solid
 			draw::DrawRect(window.renderer, otherRects.solidRectb, colors::gray);
-			if(settings.placeSolidBlocks) draw::DrawButton(window.renderer, otherRects.solidRect, colors::lightgreen, window.mouse.x, window.mouse.y);
-			else draw::DrawButton(window.renderer, otherRects.solidRect, colors::red, window.mouse.x, window.mouse.y);
+			if(settings.placeSolidBlocks) draw::DrawButton(window.renderer, otherRects.solidRect, colors::lightgreen, window.mouse);
+			else draw::DrawButton(window.renderer, otherRects.solidRect, colors::red, window.mouse);
 			draw::DrawText(window.renderer, window.font, otherRects.solidTextRect, "Solid", colors::white);
 			
 			// Presets

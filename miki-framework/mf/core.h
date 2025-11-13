@@ -38,6 +38,12 @@ namespace core {
             int y = 0;
         } mouse;
 
+        struct FpsAdv {
+            Uint32 frameCount = 0;
+            Uint32 lastTime = 0;
+            float realFPS = 0;
+        } fpsAdv; // FPS advanced, used for real fps counter
+
         SDL_Window* window = {};
         SDL_Renderer* renderer = {};
         SDL_Event event = {};
@@ -53,6 +59,7 @@ namespace core {
     // Big stuff
     bool InitWindow(core::MF_Window &window, std::string title, int width, int height);
     void Exit(MF_Window &window);
+    void PostWindowLogic(core::MF_Window &window);
     void TimeCount(core::MF_Window &window);
 
     // Timers
