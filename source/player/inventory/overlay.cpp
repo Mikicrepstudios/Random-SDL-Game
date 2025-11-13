@@ -21,10 +21,10 @@ namespace inventory {
 		draw::DrawButton(window.renderer, buttonRect, buttonColor, window.mouse);
 		draw::DrawText(window.renderer, window.font, textRect, text.c_str(), colors::white);
 	}
-	void DrawTextureButtonWithBGINV(core::MF_Window &window, std::string text, SDL_Texture* texture, SDL_Rect bgRect, SDL_Rect buttonRect, SDL_Rect textRect) {
+	void DrawTextureButtonWithBGINV(core::MF_Window &window, std::string text, SDL_Texture* texture, SDL_Rect bgRect, SDL_Rect buttonRect, SDL_Rect textRect, int blockTextureId) {
 		// Function that draws background around button, button with texture and text inside of button
 		draw::DrawRect(window.renderer, bgRect, colors::gray);
-		draw::DrawTextureRect(window.renderer, buttonRect, texture);
+		if(blockTextureId != 0) draw::DrawTextureRect(window.renderer, buttonRect, texture);
 		draw::DrawText(window.renderer, window.font, textRect, text.c_str(), colors::white);
 	}
 
@@ -47,11 +47,11 @@ namespace inventory {
 			// Preview
 			draw::DrawRect(window.renderer, menuRects.previewRectb, colors::gray);
 			draw::DrawRect(window.renderer, menuRects.previewRect, colors::colorID[settings.blockColor - 1]);
-			draw::DrawTextureRect(window.renderer, menuRects.previewRect, blockTextures[settings.blockTextureId].texture);
+			if(settings.blockTextureId != 0) draw::DrawTextureRect(window.renderer, menuRects.previewRect, blockTextures[settings.blockTextureId].texture);
 			draw::DrawText(window.renderer, window.font, menuRects.previewTextRect, "Preview", colors::white);
 
 			// Right side
-			DrawTextureButtonWithBGINV(window, "Text. id", blockTextures[settings.blockTextureId].texture, decalRects.textureIdRectb, decalRects.textureIdRect, decalRects.textureIdTextRect);
+			DrawTextureButtonWithBGINV(window, "Text. id", blockTextures[settings.blockTextureId].texture, decalRects.textureIdRectb, decalRects.textureIdRect, decalRects.textureIdTextRect, settings.blockTextureId);
 
 			// Solid
 			draw::DrawRect(window.renderer, otherRects.solidRectb, colors::gray);
