@@ -61,12 +61,12 @@ namespace game {
                             // Check if any button is clicked
                             if(!saveslist) {
                                 // New game
-                                if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, newButtonRect)) {
+                                if(logic::IsMouseTouching(window.mouse, newButtonRect)) {
                                     game.menuLoad = false; // Set menu load to false
                                     runningmenu = false;
                                 }
                                 // Load game
-                                else if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, loadButtonRect)) {
+                                else if(logic::IsMouseTouching(window.mouse, loadButtonRect)) {
                                     saveslist = true;
                                 }
                             }
@@ -74,7 +74,7 @@ namespace game {
                                 for(int i = 0; i < savesSize; i++) {
                                     SDL_Rect curRect = {window.width / 2 - 300, window.height / 2 - (savesSize * 50) + (i * 100), 600, 100};
 
-                                    if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, curRect)) {
+                                    if(logic::IsMouseTouching(window.mouse, curRect)) {
                                         game.savePath = saves[i];
                                         game.menuLoad = true;
                                         runningmenu = false;
@@ -99,9 +99,9 @@ namespace game {
             draw::DrawRect(window.renderer, titleRect, colors::colorID[1]);
             draw::DrawText(window.renderer, window.font, titleRect, "Random SDL Game", colors::colorID[31]); // Draw title
 
-            draw::DrawButton(window.renderer, newButtonRect, colors::aqua, window.mouse.x, window.mouse.y); // Draw play button
+            draw::DrawButton(window.renderer, newButtonRect, colors::aqua, window.mouse); // Draw play button
             draw::DrawText(window.renderer, window.font, newButtonRect, "New game", colors::colorID[31]); // Draw button text
-            draw::DrawButton(window.renderer, loadButtonRect, colors::aqua, window.mouse.x, window.mouse.y); // Draw play button
+            draw::DrawButton(window.renderer, loadButtonRect, colors::aqua, window.mouse); // Draw play button
             draw::DrawText(window.renderer, window.font, loadButtonRect, "Load game", colors::colorID[31]); // Draw button text
 
             // Draw bottom texts
@@ -120,7 +120,7 @@ namespace game {
                     MF_Color curColor = colors::gray;
                     if(i % 2) curColor = colors::darkgray;
                     
-                    draw::DrawButton(window.renderer, curRect, curColor, window.mouse.x, window.mouse.y);
+                    draw::DrawButton(window.renderer, curRect, curColor, window.mouse);
                     draw::DrawText(window.renderer, window.font, curRect, saves[i].c_str(), colors::white);
                 }
             }

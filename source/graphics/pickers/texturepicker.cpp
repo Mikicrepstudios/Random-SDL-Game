@@ -29,7 +29,7 @@ namespace textures {
                 // Disable picker
 				settings.texturePicker = false;
 
-				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, curRect)) return curTexture - 1; // Textures dont start from 1
+				if(logic::IsMouseTouching(window.mouse, curRect)) return curTexture - 1; // Textures dont start from 1
 
 				curTexture++;
 			}

@@ -12,9 +12,9 @@ namespace draw {
     // Core
 	void SetDrawColor(SDL_Renderer* renderer, MF_Color color);
 	void DrawPixel(SDL_Renderer* renderer, int x, int y);
-	void DrawLine(SDL_Renderer* renderer, MF_Pixel start, MF_Pixel end);
+	void DrawLine(SDL_Renderer* renderer, MF_Pixel start, MF_Pixel end, int thickness, MF_Color color);
 
-	void DrawButton(SDL_Renderer* renderer, SDL_Rect rect, MF_Color color, int mouseX, int mouseY);
+	void DrawButton(SDL_Renderer* renderer, SDL_Rect rect, MF_Color color, core::MF_Window::Mouse mouse);
 
 	// Rectangle
 	void DrawRect(SDL_Renderer* renderer, SDL_Rect rect, MF_Color color);

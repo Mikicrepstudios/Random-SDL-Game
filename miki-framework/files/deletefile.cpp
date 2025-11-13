@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <iostream>
 #include <string>
 
 namespace files {
@@ -9,7 +10,10 @@ namespace files {
          */
         
         if (std::remove(path.c_str()) == 0) return 0;
-        else return 1;
+        else {
+            std::cout << "[MF] Error deleting file: \"" << path << "\", do you have sufficient permissions?" << std::endl;
+            return 1;
+        }
 
         return -69; // Uh oh something happened
     }

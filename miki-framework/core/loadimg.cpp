@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 #include "SDL.h"
 #include "SDL_image.h"
@@ -15,6 +16,8 @@ namespace core {
         SDL_Surface* tmpSurface = IMG_Load(path.c_str());
         SDL_Texture* tmpTexture = SDL_CreateTextureFromSurface(renderer, tmpSurface);
         SDL_FreeSurface(tmpSurface);
+
+        if(tmpTexture == NULL) std::cout << "[MF] Error loading texture: \"" << path << "\", did you enter correct path?" << std::endl;
 
         return tmpTexture;
     }

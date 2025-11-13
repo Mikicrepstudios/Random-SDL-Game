@@ -22,7 +22,7 @@
 
 int main(int argc, char **argv) {
 	bool running = true;
-    core::printver(2); // Print Mikicrep Framework version
+    core::printver(1); // Print Mikicrep Framework version
 	std::cout << "-------Random SDL Game----------"     << std::endl
 			  << "-------Ver: D E V---------------"     << std::endl
 			  << "Copyright Mikicrep Studios 2023-2025" << std::endl;

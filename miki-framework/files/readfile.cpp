@@ -17,7 +17,7 @@ namespace files {
             file.close();
             return content;
         } else {
-            std::cerr << "Unable to open file: " << path << std::endl;
+            std::cout << "[MF] Error reading file: \"" << path << "\", did you enter correct path?" << std::endl;
         }
 
         return NULL;

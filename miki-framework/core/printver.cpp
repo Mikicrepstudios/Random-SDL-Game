@@ -14,7 +14,7 @@ namespace core {
         2 - Modified release - Use this if you modify MF code to your needs
         3 - DEV version - This is used to tell that you are using version from beta channel
         */
-        std::string ver = "1.6.0";
+        std::string ver = "1.7.0";
 
         std::cout << "-------Mikicrep Framework-------" << std::endl;
 
