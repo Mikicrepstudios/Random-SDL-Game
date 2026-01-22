@@ -11,6 +11,8 @@
 // Already documented in game.h
 namespace game {
     struct Game {
+        bool &running;
+
         // Menu vars
         bool menuLoad = false; // Load game on start - changed in mainmenu.cpp
         std::string savePath = "saves/autosave"; // Default autosave
@@ -20,6 +22,8 @@ namespace game {
 
         int curHoverX = 0;
         int curHoverY = 0;
+
+        Game(bool &r) : running(r) {};
     };
 
     struct Settings {
