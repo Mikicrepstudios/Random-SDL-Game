@@ -274,7 +274,7 @@ int main(int argc, char **argv) {
 		game::MouseOverlay(window, game, settings, map, cam);
 
 		// Game info
-		if (settings.gameInfo) gui::GameInfo(window, settings, cam, player);
+		if(settings.gameInfo) gui::GameInfo(window, settings, cam, player);
 
 		// Dialogues : No
 		/*if(settings.dialogue && dialogues::ConfirmDialogue(window, settings, dialoguesRects)) {
@@ -282,7 +282,7 @@ int main(int argc, char **argv) {
 			settings.dialogue = false;
 		}*/
 
-		dialogues::CallDialogue(window, game, settings, dialoguesRects);
+		dialogues::CallDialogue(window, game, settings, map, dialoguesRects);
 
 		// Cli Input
 		if(game.cliInput || game.terminalmode) {
