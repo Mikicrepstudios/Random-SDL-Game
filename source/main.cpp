@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
     core::printver(1); // Print Mikicrep Framework version
 	std::cout << "-------Random SDL Game----------"     << std::endl
 			  << "-------Ver: D E V---------------"     << std::endl
-			  << "Copyright Mikicrep Studios 2023-2025" << std::endl;
+			  << "Copyright Mikicrep Studios 2023-2026" << std::endl;
 
     // Main stuff
     const std::string title = "Mikicrep Framework"; // Latest release 2.0.1
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
 
 	// Structs
 	if(debug) std::cout << "Defining structs" << std::endl;
-	game::Game game = {};
+	game::Game game(running);
 	game::Settings settings = {};
 	game::Map map = {};
 	game::Player player = {};
@@ -281,6 +281,8 @@ int main(int argc, char **argv) {
 			settings.dialogueId = 0;
 			settings.dialogue = false;
 		}
+
+		dialogues::CallDialogue(window, game, settings, dialoguesRects);
 
 		// Cli Input
 		if(game.cliInput || game.terminalmode) {

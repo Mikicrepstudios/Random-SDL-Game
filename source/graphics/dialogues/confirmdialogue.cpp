@@ -13,7 +13,7 @@ namespace dialogues {
         /**
          * @brief This function checks when user presses confirm button in dialogue
          * @param window Game window
-         * @param dialoguesRects All dialgoue rects
+         * @param dialoguesRects All dialogue rects
          */
 
         if (window.event.type == SDL_MOUSEBUTTONDOWN) {
@@ -26,10 +26,10 @@ namespace dialogues {
 
     bool ConfirmDialogue(core::MF_Window &window, game::Settings settings, rects dialoguesRects) {
         /**
-         * @brief This function draws dialgoue and closes when cancel is hovered
+         * @brief This function draws dialogue and closes when cancel is hovered
          * @param window Game window
          * @param settings Game settings
-         * @param dialoguesRects All dialgoue rects
+         * @param dialoguesRects All dialogue rects
          */
 
         const char* titleText = "";
@@ -53,7 +53,6 @@ namespace dialogues {
         draw::DrawButton(window.renderer, dialoguesRects.yesRect, colors::lightgreen, window.mouse);
 
         // Give buttons text
-
         if(settings.dialogueId != 1) {
             draw::DrawText(window.renderer, window.font, dialoguesRects.noRect, "No", colors::white);
             draw::DrawText(window.renderer, window.font, dialoguesRects.yesRect, "Yes", colors::white);

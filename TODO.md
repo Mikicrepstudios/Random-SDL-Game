@@ -1,6 +1,9 @@
 ## TODO List
 ### This list conatins stuff that I might add in game - Feel free to [suggest stuff](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
 
+### Some stuff for me
+So rn i am trying to rewrite dialogues functions, i want to create main dialogue function that will call other dialogues like quit dialogue and save dialogue, after that i will write function for new save dialogue for choosing different filename
+
 ### In progress:
 - - Multiple save slots
 - - Save as some other slot than default
