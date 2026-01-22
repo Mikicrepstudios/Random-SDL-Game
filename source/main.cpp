@@ -142,7 +142,7 @@ int main(int argc, char **argv) {
                     window.mouse.isDown = true;
 
 					// Dialogues : Yes
-					dialogueResult = dialogues::ConfirmDialogueEvent(window, dialoguesRects);
+					/*dialogueResult = dialogues::ConfirmDialogueEvent(window, dialoguesRects);
 					if(dialogueResult == 2)
 						switch(settings.dialogueId) {
 							case 1:
@@ -157,7 +157,7 @@ int main(int argc, char **argv) {
 						}
 					
 					else if(dialogueResult == 3 && settings.dialogueId == 1)
-							running = false;
+							running = false;*/
 
 					// Cheats
 					if(settings.cheats) {
@@ -277,10 +277,10 @@ int main(int argc, char **argv) {
 		if (settings.gameInfo) gui::GameInfo(window, settings, cam, player);
 
 		// Dialogues : No
-		if(settings.dialogue && dialogues::ConfirmDialogue(window, settings, dialoguesRects)) {
+		/*if(settings.dialogue && dialogues::ConfirmDialogue(window, settings, dialoguesRects)) {
 			settings.dialogueId = 0;
 			settings.dialogue = false;
-		}
+		}*/
 
 		dialogues::CallDialogue(window, game, settings, dialoguesRects);
 
