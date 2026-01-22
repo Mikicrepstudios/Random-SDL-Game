@@ -23,10 +23,11 @@ namespace dialogues {
         draw::DrawText(window.renderer, window.font, dialoguesRects.otherYesRect, "Exit without saving", colors::white);
         draw::DrawText(window.renderer, window.font, dialoguesRects.yesRect, "Exit with saving", colors::white);
 
+        // Detect mouse clicks
         if(window.mouse.isDown) {
             if(logic::IsMouseTouching(window.mouse, dialoguesRects.noRect)) settings.dialogue = false;
             if(logic::IsMouseTouching(window.mouse, dialoguesRects.otherYesRect)) game.running = false;
-            // TODO add Exit with saving call save function
+            if(logic::IsMouseTouching(window.mouse, dialoguesRects.yesRect)) settings.dialogueId = 3;
         }
     }
 }
