@@ -5,7 +5,7 @@
 #include "settings.h"
 
 namespace commands {
-    int Place(std::string args, int argsCount, game::Settings settings, game::Map &map) {
+    int Place(std::string args, int argsCount, game::Game &game) {
         /**
          * @brief Function for Place command
          * @param args Command arguments
@@ -34,10 +34,10 @@ namespace commands {
 
         // place x y
         if(argsCount == 2) {
-            map.map[x][y].type = 2;
-            map.map[x][y].color = settings.blockColor;
-            map.map[x][y].texture = settings.blockTextureId;
-            map.map[x][y].isSolid = settings.placeSolidBlocks;
+            game.map.map[x][y].type = 2;
+            game.map.map[x][y].color = game.settings.blockColor;
+            game.map.map[x][y].texture = game.settings.blockTextureId;
+            game.map.map[x][y].isSolid = game.settings.placeSolidBlocks;
             std::cout << "Successfuly placed block" << std::endl;
 
             return 0;

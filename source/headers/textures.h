@@ -19,6 +19,6 @@ namespace textures {
     void initBlocks(core::MF_Window &window, BlockTextures blockTextures[32]);
 
     // Pickers
-    int PickerEvent(core::MF_Window &window, game::Settings &settings);
+    int PickerEvent(core::MF_Window &window, game::Game &game);
     void PickerOverlay(core::MF_Window &window, textures::BlockTextures blockTextures[32]);
 }

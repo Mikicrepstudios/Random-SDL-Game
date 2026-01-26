@@ -12,10 +12,12 @@
 #include "textures.h"
 
 namespace inventory {
-    void Chooser(core::MF_Window &window, game::Settings &settings, game::Player &player, game::Camera &camera, game::Preset preset[10], inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects) {
+    void Chooser(core::MF_Window &window, game::Game &game, game::Preset preset[10], inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects) {
 		/**
 		 * @brief This function on mouse click checks which option on inventory is clicked
 		 */
+
+		auto& settings = game.settings;
 		
 		if (window.event.type == SDL_MOUSEBUTTONDOWN) {
 			if (!settings.colorPicker && !settings.texturePicker) { // Checks if any color picker is active
@@ -56,7 +58,7 @@ namespace inventory {
 					settings.colorPickerId = 1;
 				}
 				else if (settings.colorPicker && settings.colorPickerId == 1)
-					preset[settings.curPreset].blockColor = gui::ColorPickerEvent(window, settings);
+					preset[settings.curPreset].blockColor = gui::ColorPickerEvent(window, game);
 
 				// BG Color
 				if(logic::IsMouseTouching(window.mouse, colorRects.bgColorRectb)) {
@@ -64,7 +66,7 @@ namespace inventory {
 					settings.colorPickerId = 2;
 				}
 				else if (settings.colorPicker && settings.colorPickerId == 2)
-					settings.bgColor = gui::ColorPickerEvent(window, settings);
+					settings.bgColor = gui::ColorPickerEvent(window, game);
 
 				// Player Color
 				if(logic::IsMouseTouching(window.mouse, colorRects.playerColorRectb)) {
@@ -72,7 +74,7 @@ namespace inventory {
 					settings.colorPickerId = 3;
 				}
 				else if (settings.colorPicker && settings.colorPickerId == 3)
-					settings.playerColor = gui::ColorPickerEvent(window, settings);
+					settings.playerColor = gui::ColorPickerEvent(window, game);
 			}
 
 			if(!settings.colorPicker) {
@@ -80,7 +82,7 @@ namespace inventory {
 				if(logic::IsMouseTouching(window.mouse, decalRects.textureIdRectb))
 					settings.texturePicker = !settings.texturePicker;
 				else if (settings.texturePicker)
-					preset[settings.curPreset].textureId = textures::PickerEvent(window, settings);
+					preset[settings.curPreset].textureId = textures::PickerEvent(window, game);
 			}
 		}
 	}

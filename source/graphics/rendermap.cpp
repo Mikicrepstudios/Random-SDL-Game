@@ -10,7 +10,7 @@
 #include "textures.h"
 
 namespace game {
-	void RenderMap(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera cam, textures::BlockTextures blockTextures[32]) {
+	void RenderMap(core::MF_Window &window, game::Game &game, textures::BlockTextures blockTextures[32]) {
 		/**
 		 * @brief Renders all blocks visible on screen based on camera position and zoom.
 		 * 
@@ -21,6 +21,9 @@ namespace game {
 		 * @param blockTextures   Array of textures for each block type.
 		 */
 		
+		auto& cam = game.cam;
+		auto& map = game.map;
+
 		// Calculate how many blocks fit on screen based on camera scale
 		int maxXBlocks = (window.width + cam.scale - 1) / cam.scale;
 		int maxYBlocks = (window.height + cam.scale - 1) / cam.scale;
@@ -60,7 +63,7 @@ namespace game {
 
 					// Special player rendering overlay
 					if (objectId == 1)
-						draw::DrawRect(window.renderer, curRect, colors::colorID[settings.playerColor - 1]);
+						draw::DrawRect(window.renderer, curRect, colors::colorID[game.settings.playerColor - 1]);
 				}
 			}
 		}
