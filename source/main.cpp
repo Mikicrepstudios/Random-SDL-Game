@@ -33,9 +33,6 @@ int main(int argc, char **argv) {
     SDL_Event event = {};
 	bool debug = false;
 
-	// Extra vars
-	//int dialogueResult = 0;
-
     // Create window
 	if(debug) std::cout << "Creating window" << std::endl;
     if(core::InitWindow(window, title, 1280, 800) == false) running = false;
@@ -140,24 +137,6 @@ int main(int argc, char **argv) {
                 case SDL_MOUSEBUTTONDOWN:
                     // Mouse button is held
                     window.mouse.isDown = true;
-
-					// Dialogues : Yes
-					/*dialogueResult = dialogues::ConfirmDialogueEvent(window, dialoguesRects);
-					if(dialogueResult == 2)
-						switch(settings.dialogueId) {
-							case 1:
-								files::SaveGame(map, settings, player, cam, "saves/" + game.savePath);
-								running = false;
-								break;
-							case 2:
-								game::ClearMap(map);
-								settings.dialogueId = 0;
-								settings.dialogue = false;
-								break;
-						}
-					
-					else if(dialogueResult == 3 && settings.dialogueId == 1)
-							running = false;*/
 
 					// Cheats
 					if(settings.cheats) {
@@ -296,12 +275,6 @@ int main(int argc, char **argv) {
 
 		// Game info
 		if(settings.gameInfo) gui::GameInfo(window, game);
-
-		// Dialogues : No
-		/*if(settings.dialogue && dialogues::ConfirmDialogue(window, settings, dialoguesRects)) {
-			settings.dialogueId = 0;
-			settings.dialogue = false;
-		}*/
 
 		dialogues::CallDialogue(window, game, dialoguesRects);
 
