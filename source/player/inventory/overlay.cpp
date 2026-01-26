@@ -28,11 +28,13 @@ namespace inventory {
 		draw::DrawText(window.renderer, window.font, textRect, text.c_str(), colors::white);
 	}
 
-	void Overlay(core::MF_Window &window, game::Settings settings, inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects, textures::BlockTextures blockTextures[32]) {
+	void Overlay(core::MF_Window &window, game::Game &game, inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects, textures::BlockTextures blockTextures[32]) {
 		/**
 		 * @brief This function draws inventory overlay
 		 */
 		// In some DrawButtonTextWithBG calls, textRect is modified to fit the text better
+
+		auto& settings = game.settings;
 
 		if (settings.inventory) {
 			// Render bg
@@ -80,7 +82,7 @@ namespace inventory {
 
 			// Color pickers
 			if(settings.colorPicker)
-				gui::ColorPickerOverlay(window, settings);
+				gui::ColorPickerOverlay(window, game);
 
 			if(settings.texturePicker)
 				textures::PickerOverlay(window, blockTextures);

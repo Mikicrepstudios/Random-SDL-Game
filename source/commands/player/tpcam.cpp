@@ -5,7 +5,7 @@
 #include "settings.h"
 
 namespace commands {
-    int TpCam(std::string args, int argsCount, game::Camera &cam) {
+    int TpCam(std::string args, int argsCount, game::Game &game) {
         /**
          * @brief Function for TpCam command
          * @param args Command arguments
@@ -32,8 +32,8 @@ namespace commands {
 
         // run
         if(argsCount == 2) {
-            cam.offSetX = x;
-            cam.offSetY = y;
+            game.cam.offSetX = x;
+            game.cam.offSetY = y;
 
             return 0;
         }

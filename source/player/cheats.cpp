@@ -7,7 +7,7 @@
 #include "settings.h"
 
 namespace cheats {
-	int CamTp(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map map, game::Camera &cam) {
+	int CamTp(core::MF_Window &window, game::Game &game) {
 		/**
 		 * @brief This function executes Camera Teleport cheat
 		 * @param window Game window
@@ -15,6 +15,9 @@ namespace cheats {
 		 * @param settings Game settings
 		 * @param cam Game camera
 		 */
+
+		auto& cam = game.cam;
+		auto& map = game.map;
 
 		if (window.event.type == SDL_MOUSEBUTTONDOWN) {
 			// Calculate max camera offsets based on map size and window size/scale
@@ -43,7 +46,7 @@ namespace cheats {
 
 		return 0;
 	}
-	int PlayerTp(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Player &player) {
+	int PlayerTp(core::MF_Window &window, game::Game &game) {
 		/**
 		 * @brief This function executes Player Teleport cheat
 		 * @param window Game window
@@ -53,6 +56,10 @@ namespace cheats {
 		 * @param cam Game camera
 		 * @param player Game player
 		 */
+
+		auto& cam = game.cam;
+		auto& map = game.map;
+		auto& player = game.player;
 		
 		if (window.event.type == SDL_MOUSEBUTTONDOWN) {
 			map.map[player.x][player.y].type = 0; // Remove current player so you dont have ghost player

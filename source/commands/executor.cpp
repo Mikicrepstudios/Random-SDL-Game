@@ -9,7 +9,7 @@
 #include "settings.h"
 
 namespace commands {
-    void Executor(std::string command, core::MF_Window &window, game::Game &game, game::Settings &settings, game::Map &map, game::Player &player, game::Camera &cam, game::Preset preset[10]) {
+    void Executor(std::string command, core::MF_Window &window, game::Game &game, game::Preset preset[10]) {
         /**
          * @brief Function that is used to execute game commands
          * @param command Whole command including arguments
@@ -40,27 +40,27 @@ namespace commands {
 
         // Utils
         if(commandId == "echo") status = Echo(args);
-        else if(commandId == "getbgcolor") status = GetBGColor(settings.bgColor);
-        else if(commandId == "getblocktype") status = GetBlockType(args, argsCount, map);
-        else if(commandId == "getblockcolor") status = GetBlockColor(args, argsCount, map);
-        else if(commandId == "getblocktexture") status = GetBlockTexture(args, argsCount, map);
-        else if(commandId == "getcampos") status = GetCamPos(cam);
-        else if(commandId == "getplayercolor") status = GetPlayerColor(player);
-        else if(commandId == "getplayerpos") status = GetPlayerPos(player);
-        else if(commandId == "isblocksolid") status = IsBlockSolid(args, argsCount, map);
+        else if(commandId == "getbgcolor") status = GetBGColor(game.settings.bgColor);
+        else if(commandId == "getblocktype") status = GetBlockType(args, argsCount, game);
+        else if(commandId == "getblockcolor") status = GetBlockColor(args, argsCount, game);
+        else if(commandId == "getblocktexture") status = GetBlockTexture(args, argsCount, game);
+        else if(commandId == "getcampos") status = GetCamPos(game);
+        else if(commandId == "getplayercolor") status = GetPlayerColor(game);
+        else if(commandId == "getplayerpos") status = GetPlayerPos(game);
+        else if(commandId == "isblocksolid") status = IsBlockSolid(args, argsCount, game);
         else if(commandId == "terminalmode") status = TerminalMode(args, argsCount, game.terminalmode);
 
         // Player
-        else if(commandId == "setbgcolor") status = SetBGColor(args, argsCount, settings);
-        else if(commandId == "setblockcolor") status = SetBlockColor(args, argsCount, settings, preset);
-        else if(commandId == "setblocktexture") status = SetBlockTexture(args, argsCount, settings, preset);
-        else if(commandId == "setplayercolor") status = SetPlayerColor(args, argsCount, settings);
-        else if(commandId == "tpcam") status = TpCam(args, argsCount, cam);
-        else if(commandId == "tpplayer") status = TpPlayer(args, argsCount, map, player);
+        else if(commandId == "setbgcolor") status = SetBGColor(args, argsCount, game);
+        else if(commandId == "setblockcolor") status = SetBlockColor(args, argsCount, game, preset);
+        else if(commandId == "setblocktexture") status = SetBlockTexture(args, argsCount, game, preset);
+        else if(commandId == "setplayercolor") status = SetPlayerColor(args, argsCount, game);
+        else if(commandId == "tpcam") status = TpCam(args, argsCount, game);
+        else if(commandId == "tpplayer") status = TpPlayer(args, argsCount, game);
 
         // World
-        else if(commandId == "destroy") status = Destroy(args, argsCount, map);
-        else if(commandId == "place") status = Place(args, argsCount, settings, map);
+        else if(commandId == "destroy") status = Destroy(args, argsCount, game);
+        else if(commandId == "place") status = Place(args, argsCount, game);
         
         // No command found
         else std::cout << "Error executing command : Not found" << std::endl;

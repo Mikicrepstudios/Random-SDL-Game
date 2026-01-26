@@ -1,4 +1,4 @@
-#include "SDL.h"
+/*#include "SDL.h"
 #include "SDL_ttf.h"
 
 #include "mf/core.h"
@@ -9,14 +9,14 @@
 #include "dialogues.h"
 
 namespace dialogues {
-	int ConfirmDialogueEvent(core::MF_Window &window, rects dialoguesRects) {
+	int ConfirmDialogueEvent(core::MF_Window &window, rects dialoguesRects) {*/
         /**
          * @brief This function checks when user presses confirm button in dialogue
          * @param window Game window
          * @param dialoguesRects All dialogue rects
          */
 
-        if (window.event.type == SDL_MOUSEBUTTONDOWN) {
+/*        if (window.event.type == SDL_MOUSEBUTTONDOWN) {
             if(logic::IsMouseTouching(window.mouse, dialoguesRects.yesRect)) return 2;
             else if(logic::IsMouseTouching(window.mouse, dialoguesRects.otherYesRect)) return 3; // Save and exit
         }
@@ -24,14 +24,14 @@ namespace dialogues {
         return 0;
 	}
 
-    bool ConfirmDialogue(core::MF_Window &window, game::Settings settings, rects dialoguesRects) {
+    bool ConfirmDialogue(core::MF_Window &window, game::Settings settings, rects dialoguesRects) {*/
         /**
          * @brief This function draws dialogue and closes when cancel is hovered
          * @param window Game window
          * @param settings Game settings
          * @param dialoguesRects All dialogue rects
          */
-
+/*
         const char* titleText = "";
         const char* descText = "You will loose any unsaved progress.";
 
@@ -71,4 +71,4 @@ namespace dialogues {
 
         return false;
     }
-}
+}*/

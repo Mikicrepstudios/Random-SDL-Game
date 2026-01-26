@@ -6,10 +6,11 @@
 #include "mf/logic.h"
 
 #include "dialogues.h"
+#include "files.h"
 #include "settings.h"
 
 namespace dialogues {
-    void SaveDialogue(core::MF_Window &window, game::Settings &settings, game::Game &game, rects dialoguesRects) {
+    void SaveDialogue(core::MF_Window &window, game::Game &game, rects dialoguesRects) {
         const char* titleText = "Enter save name";
 
         // Draw dialogue
@@ -27,8 +28,8 @@ namespace dialogues {
 
         // Detect mouse clicks
         if(window.mouse.isDown) {
-            if(logic::IsMouseTouching(window.mouse, dialoguesRects.noRect)) settings.dialogue = false;
-            if(logic::IsMouseTouching(window.mouse, dialoguesRects.yesRect)) files::SaveGame(map, settings, player, cam, "saves/" + game.savePath);
+            if(logic::IsMouseTouching(window.mouse, dialoguesRects.noRect)) game.settings.dialogue = false;
+            if(logic::IsMouseTouching(window.mouse, dialoguesRects.yesRect)) files::SaveGame(game);
         }
     }
 }

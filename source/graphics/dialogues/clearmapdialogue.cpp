@@ -7,7 +7,7 @@
 #include "game.h"
 
 namespace dialogues {
-    void ClearMapDialogue(core::MF_Window window, game::Settings &settings, game::Map &map, rects dialoguesRects) {
+    void ClearMapDialogue(core::MF_Window window, game::Game &game, rects dialoguesRects) {
         const char* titleText = "Are you sure you want to clear map?";
         const char* descText = "You will loose any unsaved progress.";
         
@@ -26,10 +26,10 @@ namespace dialogues {
         
         // Detect mouse clicks
         if(window.mouse.isDown) {
-            if(logic::IsMouseTouching(window.mouse, dialoguesRects.noRect)) settings.dialogue = false;
+            if(logic::IsMouseTouching(window.mouse, dialoguesRects.noRect)) game.settings.dialogue = false;
             if(logic::IsMouseTouching(window.mouse, dialoguesRects.yesRect)) {
-                game::ClearMap(map);
-                settings.dialogue = false;
+                game::ClearMap(game);
+                game.settings.dialogue = false;
             }
         }
     }

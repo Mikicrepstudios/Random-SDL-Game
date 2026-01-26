@@ -5,15 +5,18 @@
 #include "settings.h"
 
 namespace game {
-	void CameraControls(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera &cam) {
+	void CameraControls(core::MF_Window &window, game::Game &game) {
 		/**
 		 * @brief This function controls camera movement and other related stuff
 		 * @param window Game window
 		 * @param settings Game settings
 		 * @param cam Game camera
 		 */
+
+		auto& cam = game.cam;
+		auto& map = game.map;
 		
-		if (!settings.inventory) {
+		if (!game.settings.inventory) {
 			if (window.event.key.keysym.sym == SDLK_UP && cam.offSetY > 0)
 				cam.offSetY -= 1;
 			else if (window.event.key.keysym.sym == SDLK_LEFT && cam.offSetX > 0)

@@ -18,20 +18,20 @@ namespace game {
 
 	// Core
 	void MainMenu(core::MF_Window &window, game::Game &game, bool &running);
-    void UpdateVars(game::Settings &settings, game::Player &player, game::Camera &cam, game::Preset preset[10]);
+    void UpdateVars(game::Game &game, game::Preset preset[10]);
 
 	// High level game stuff
-    void MouseEvent(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]);
-    void MouseOverlay(core::MF_Window &window, game::Game game, game::Settings settings, game::Map map, game::Camera cam);
+    void MouseEvent(core::MF_Window &window, game::Game &game, game::Preset preset[10]);
+    void MouseOverlay(core::MF_Window &window, game::Game &game);
 	
 	// Medium level game stuff
-	void CameraControls(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera &cam);
-	void PlayerMovement(SDL_Event event, game::Map &map, game::Player &player);
+	void CameraControls(core::MF_Window &window, game::Game &game);
+	void PlayerMovement(SDL_Event event, game::Game &game);
 
 	// Low level game stuff
 	void PresetChooser(SDL_Event event, int &preset);
 
 	// Map related stuff
-	void RenderMap(core::MF_Window &window, game::Settings settings, game::Map map, game::Camera cam, textures::BlockTextures blockTextures[32]);
-	void ClearMap(game::Map &map);
+	void RenderMap(core::MF_Window &window, game::Game &game, textures::BlockTextures blockTextures[32]);
+	void ClearMap(game::Game &game);
 }

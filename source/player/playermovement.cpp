@@ -4,13 +4,16 @@
 #include "settings.h"
 
 namespace game {
-	void PlayerMovement(SDL_Event event, game::Map &map, game::Player &player) {
+	void PlayerMovement(SDL_Event event, game::Game &game) {
 		/**
 		 * @brief This function controls player movement
 		 * @param event SDL_Event
 		 * @param map Game map
 		 * @param player Game player
 		 */
+
+		auto& map = game.map;
+		auto& player = game.player;
 		
 		// Make copy for smaller ifs
 		Block curBlock = map.map[player.x][player.y];

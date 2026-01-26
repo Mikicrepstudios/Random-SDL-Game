@@ -5,7 +5,7 @@
 #include "settings.h"
 
 namespace commands {
-    int IsBlockSolid(std::string args, int argsCount, game::Map map) {
+    int IsBlockSolid(std::string args, int argsCount, game::Game &game) {
         /**
          * @brief Function for IsBlockSolid command
          * @param args Command arguments
@@ -32,7 +32,7 @@ namespace commands {
 
         // x y
         if(argsCount == 2) {
-            if(map.map[x][y].isSolid) std::cout << "Block is solid" << std::endl;
+            if(game.map.map[x][y].isSolid) std::cout << "Block is solid" << std::endl;
             else std::cout << "Block is not solid" << std::endl;
 
             return 0;
