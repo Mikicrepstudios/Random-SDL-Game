@@ -75,7 +75,14 @@ namespace game {
                                     SDL_Rect curRect = {window.width / 2 - 300, window.height / 2 - (savesSize * 50) + (i * 100), 600, 100};
 
                                     if(logic::IsMouseTouching(window.mouse, curRect)) {
-                                        game.savePath = saves[i];
+                                        // Remove first 6 characters ("saves/")
+                                        std::string path = saves[i];
+                                        if (path.find("saves/") == 0) {  // Check it starts with "saves/"
+                                            game.savePath = path.substr(6); // Remove saves/
+                                        } else {
+                                            game.savePath = path;  // Fallback
+                                        }
+                                        
                                         game.menuLoad = true;
                                         runningmenu = false;
                                         continue;
