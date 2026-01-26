@@ -73,13 +73,13 @@ namespace inventory {
     OtherRects InitOtherRects(core::MF_Window &window);
 
     // Handle pressing E
-    void Event(SDL_Event event, game::Settings &settings);
+    void Event(SDL_Event event, game::Game &game);
 
     // Handle mouse clicks
-	void Chooser(core::MF_Window &window, game::Settings &settings, game::Player &player, game::Camera &camera, game::Preset preset[10], inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects);
+	void Chooser(core::MF_Window &window, game::Game &game, game::Preset preset[10], inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects);
 
     // Draw UI
-    void Overlay(core::MF_Window &window, game::Settings settings, inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects, textures::BlockTextures blockTextures[32]);
+    void Overlay(core::MF_Window &window, game::Game &game, inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects, textures::BlockTextures blockTextures[32]);
 }
 
 #endif

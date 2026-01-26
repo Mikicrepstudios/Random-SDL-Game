@@ -8,8 +8,10 @@
 #include "mf/graphics.h"
 #include "mf/logic.h"
 
+std::string inputText = "";
+
 namespace core {
-    void miki(core::MF_Window window) {
+    void miki(core::MF_Window &window) {
         /**
          * @brief This will reamain undocumented, figure it yourself ;)
          */
@@ -52,5 +54,9 @@ namespace core {
         SDL_Rect realFPSCounterRect = {window.width - 250, window.height - 50, 250, 50};
         std::string fpsText = "FPS: " + std::to_string(window.fpsAdv.realFPS);
         draw::DrawText(window.renderer, window.font, realFPSCounterRect, fpsText.c_str(), colors::white);
+
+        // Draw input field
+        SDL_Rect inputRect = {275, 75, 200, 50};
+        draw::DrawInputRect(window, inputRect, colors::aqua, inputText);
     }
 }

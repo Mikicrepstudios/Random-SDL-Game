@@ -2,7 +2,7 @@
 #include "settings.h"
 
 namespace game {
-    void UpdateVars(game::Settings &settings, game::Player &player, game::Camera &cam, game::Preset preset[10]) {
+    void UpdateVars(game::Game &game, game::Preset preset[10]) {
         /**
          * @brief This function updates/links variables on every frame
          * @param settings Game settings
@@ -11,6 +11,10 @@ namespace game {
          * @param preset Game presets
          */
         
+        auto& settings = game.settings;
+        auto& cam = game.cam;
+        auto& player = game.player;
+
         settings.blockColor = preset[settings.curPreset].blockColor;
         settings.blockTextureId = preset[settings.curPreset].textureId;
         player.color = settings.playerColor;

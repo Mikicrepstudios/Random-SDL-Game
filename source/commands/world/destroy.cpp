@@ -5,7 +5,7 @@
 #include "settings.h"
 
 namespace commands {
-    int Destroy(std::string args, int argsCount, game::Map &map) {
+    int Destroy(std::string args, int argsCount, game::Game &game) {
         /**
          * @brief Function for Destroy command
          * @param args Command arguments
@@ -33,10 +33,10 @@ namespace commands {
 
         // destroy x y
         if(argsCount == 2) {
-            map.map[x][y].type = 0;
-            map.map[x][y].color = 0;
-            map.map[x][y].texture = 0;
-            map.map[x][y].isSolid = false;
+            game.map.map[x][y].type = 0;
+            game.map.map[x][y].color = 0;
+            game.map.map[x][y].texture = 0;
+            game.map.map[x][y].isSolid = false;
             std::cout << "Successfuly destroyed block" << std::endl;
 
             return 0;

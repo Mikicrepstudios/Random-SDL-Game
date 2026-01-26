@@ -5,7 +5,7 @@
 #include "settings.h"
 
 namespace commands {
-    int GetBlockColor(std::string args, int argsCount, game::Map map) {
+    int GetBlockColor(std::string args, int argsCount, game::Game &game) {
         /**
          * @brief Function for GetBlockColor command
          * @param args Command arguments
@@ -32,7 +32,7 @@ namespace commands {
 
         // x y
         if(argsCount == 2) {
-            std::cout << map.map[x][y].color << std::endl;
+            std::cout << game.map.map[x][y].color << std::endl;
 
             return 0;
         }

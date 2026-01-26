@@ -5,7 +5,7 @@
 #include "settings.h"
 
 namespace commands {
-    int GetBlockType(std::string args, int argsCount, game::Map map) {
+    int GetBlockType(std::string args, int argsCount, game::Game &game) {
         /**
          * @brief Function for GetBlockType command
          * @param args Command arguments
@@ -32,7 +32,7 @@ namespace commands {
 
         // x y
         if(argsCount == 2) {
-            int type = map.map[x][y].type;
+            int type = game.map.map[x][y].type;
 
             if(type == 0) std::cout << "Air" << std::endl;
             else if(type == 1) std::cout << "Player" << std::endl;

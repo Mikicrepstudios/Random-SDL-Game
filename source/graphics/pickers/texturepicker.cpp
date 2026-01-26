@@ -10,7 +10,7 @@
 #include "textures.h"
 
 namespace textures {
-	int PickerEvent(core::MF_Window &window, game::Settings &settings) {
+	int PickerEvent(core::MF_Window &window, game::Game &game) {
 		/**
 		 * @brief This function checks when and which texture is selected from texture picker
 		 * @param window Game window
@@ -27,7 +27,7 @@ namespace textures {
 				SDL_Rect curRect = {startposw + (100 * x), startposh + (100 * y), 100, 100};
 
                 // Disable picker
-				settings.texturePicker = false;
+				game.settings.texturePicker = false;
 
 				if(logic::IsMouseTouching(window.mouse, curRect)) return curTexture - 1; // Textures dont start from 1
 
@@ -36,8 +36,8 @@ namespace textures {
 		}
 
 		// Handle clicking outside
-		settings.texturePicker = false;
-		return settings.blockTextureId;
+		game.settings.texturePicker = false;
+		return game.settings.blockTextureId;
 	}
 	void PickerOverlay(core::MF_Window &window, textures::BlockTextures blockTextures[32]) {
 		/**

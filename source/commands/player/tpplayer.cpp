@@ -5,7 +5,7 @@
 #include "settings.h"
 
 namespace commands {
-    int TpPlayer(std::string args, int argsCount, game::Map &map, game::Player &player) {
+    int TpPlayer(std::string args, int argsCount, game::Game &game) {
         /**
          * @brief Function for TpPlayer command
          * @param args Command arguments
@@ -32,9 +32,9 @@ namespace commands {
 
         // run
         if(argsCount == 2) {
-            map.map[player.x][player.y].type = 0; // Delete old player from map
-            player.x = x;
-            player.y = y;
+            game.map.map[game.player.x][game.player.y].type = 0; // Delete old player from map
+            game.player.x = x;
+            game.player.y = y;
 
             return 0;
         }

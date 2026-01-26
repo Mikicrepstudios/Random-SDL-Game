@@ -6,7 +6,7 @@
 #include "settings.h"
 
 namespace commands {
-    int SetBlockTexture(std::string args, int argsCount, game::Settings &settings, game::Preset preset[10]) {
+    int SetBlockTexture(std::string args, int argsCount, game::Game &game, game::Preset preset[10]) {
         /**
          * @brief Function for SetBlockTexture command
          * @param args Command arguments
@@ -34,7 +34,7 @@ namespace commands {
         // run
         if(argsCount == 1) {
             if(texture >= 0 && texture <= 15) {
-                preset[settings.curPreset].textureId = texture;
+                preset[game.settings.curPreset].textureId = texture;
 
                 return 0;
             }
