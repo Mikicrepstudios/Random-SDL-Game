@@ -22,7 +22,7 @@
 
 int main(int argc, char **argv) {
 	bool running = true;
-    core::printver(1); // Print Mikicrep Framework version
+    core::printver(3); // Print Mikicrep Framework version
 	std::cout << "-------Random SDL Game----------"     << std::endl
 			  << "-------Ver: D E V---------------"     << std::endl
 			  << "Copyright Mikicrep Studios 2023-2026" << std::endl;
@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
 	bool debug = false;
 
 	// Extra vars
-	int dialogueResult = 0;
+	//int dialogueResult = 0;
 
     // Create window
 	if(debug) std::cout << "Creating window" << std::endl;
@@ -181,9 +181,14 @@ int main(int argc, char **argv) {
 					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, settings, map, cam, preset); // For click placing
 
 					break;
+
                 case SDL_MOUSEBUTTONUP:
                     // Mouse button is released
                     window.mouse.isDown = false;
+                    break;
+
+                case SDL_TEXTINPUT:
+                    if(window.typingVariable) window.typingVariable->append(event.text.text);
                     break;
 
                 case SDL_KEYDOWN:
@@ -191,6 +196,8 @@ int main(int argc, char **argv) {
                     switch(event.key.keysym.sym) {
                         case SDLK_ESCAPE:
                             // Quit game
+                            if(window.isTypingActive) {window.isTypingActive = false; window.typingVariable = nullptr; SDL_StopTextInput();}
+
 							if (!settings.inventory) {
 								settings.dialogueId = 1;
 								settings.dialogue = !settings.dialogue;
@@ -198,6 +205,16 @@ int main(int argc, char **argv) {
 
 							settings.colorPicker = false;
 							settings.inventory = false;
+                            break;
+
+                        case SDLK_BACKSPACE:
+                            // Next line is for input fields, if you want to add another thing to backspace, do it below if statement line
+                            if(window.isTypingActive && window.typingVariable && !window.typingVariable->empty()) window.typingVariable->pop_back();
+                            break;
+
+                        case SDLK_RETURN:
+                            // Next line is for input fields, if you want to add another thing to enter, do it below if statement line
+                            if(window.isTypingActive) {window.isTypingActive = false; window.typingVariable = nullptr; SDL_StopTextInput();}
                             break;
 
 						case SDLK_F3:
