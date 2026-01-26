@@ -3,12 +3,13 @@
 #include "mf/colors.h"
 #include "mf/core.h"
 #include "mf/graphics.h"
+#include "mf/logic.h"
 
 #include "dialogues.h"
 #include "settings.h"
 
 namespace dialogues {
-    void SaveDialogue(core::MF_Window &window, game::Game &game, rects dialoguesRects) {
+    void SaveDialogue(core::MF_Window &window, game::Settings &settings, game::Game &game, rects dialoguesRects) {
         const char* titleText = "Enter save name";
 
         // Draw dialogue
@@ -23,5 +24,11 @@ namespace dialogues {
         // Draw text
         draw::DrawText(window.renderer, window.font, dialoguesRects.noRect, "Cancel", colors::white);
         draw::DrawText(window.renderer, window.font, dialoguesRects.yesRect, "Confirm", colors::white);
+
+        // Detect mouse clicks
+        if(window.mouse.isDown) {
+            if(logic::IsMouseTouching(window.mouse, dialoguesRects.noRect)) settings.dialogue = false;
+            if(logic::IsMouseTouching(window.mouse, dialoguesRects.yesRect)) files::SaveGame(map, settings, player, cam, "saves/" + game.savePath);
+        }
     }
 }

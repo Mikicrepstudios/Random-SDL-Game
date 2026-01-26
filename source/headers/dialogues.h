@@ -21,7 +21,7 @@ namespace dialogues {
     // Functions needed for CallDialogue()
     void ClearMapDialogue(core::MF_Window window, game::Settings &settings, game::Map &map, rects dialoguesRects);
     void ConfirmExitDialogue(core::MF_Window window, game::Game &game, game::Settings &settings, rects dialoguesRects);
-    void SaveDialogue(core::MF_Window &window, game::Game &game, rects dialoguesRects);
+    void SaveDialogue(core::MF_Window &window, game::Settings &settings, game::Game &game, rects dialoguesRects);
 
 
     //int ConfirmDialogueEvent(core::MF_Window &window, rects dialoguesRects); // TODO: Destroy

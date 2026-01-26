@@ -15,7 +15,7 @@ namespace game {
 
         // Menu vars
         bool menuLoad = false; // Load game on start - changed in mainmenu.cpp
-        std::string savePath = "saves/autosave"; // Default autosave
+        std::string savePath = "default"; // Default save name
 
         bool terminalmode = false;
         bool cliInput = false;
