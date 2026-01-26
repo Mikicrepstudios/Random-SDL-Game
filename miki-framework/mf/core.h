@@ -32,6 +32,9 @@ namespace core {
         int height = 800;
         int fps = 60; // THIS IS NOT FPS COUNTER, IT IS MAXIMUM FPS
 
+        bool isTypingActive = false; // Is some text input field selected?
+        std::string *typingVariable = nullptr;
+
         struct Mouse {
             bool isDown = false; // On when mouse button is held, off when its released
             int x = 0;
@@ -72,5 +75,5 @@ namespace core {
     SDL_Texture* LoadImg(SDL_Renderer* renderer, std::string path);
 
     // 69 Chad function
-    void miki(core::MF_Window window); // Best function ever
+    void miki(core::MF_Window &window); // Best function ever
 }
