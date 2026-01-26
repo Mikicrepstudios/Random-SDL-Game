@@ -238,29 +238,33 @@ int main(int argc, char **argv) {
                                     break;
                             }
 
-						case SDLK_q:
-							settings.cheatsId = 3;
-							settings.cheats = !settings.cheats;
-							break;
-
-
-						case SDLK_c:
-							settings.dialogueId = 2;
-							settings.dialogue = !settings.dialogue;
-							break;
-
 						default:
-							// Preset chooser
-							game::PresetChooser(event, settings.curPreset);
+							if (!window.isTypingActive) {
+								// Preset chooser
+								game::PresetChooser(event, settings.curPreset);
 
-							// Player movement
-							game::PlayerMovement(event, map, player);
+								// Player movement
+								game::PlayerMovement(event, map, player);
 
-							// Inventory
-							inventory::Event(event, settings);
+								// Inventory
+								inventory::Event(event, settings);
 
-							// Camera
-							game::CameraControls(window, settings, map, cam);
+								// Camera
+								game::CameraControls(window, settings, map, cam);
+
+								switch(event.key.keysym.sym) {
+									case SDLK_q:
+										settings.cheatsId = 3;
+										settings.cheats = !settings.cheats;
+										break;
+
+									case SDLK_c:
+										settings.dialogueId = 2;
+										settings.dialogue = !settings.dialogue;
+										break;
+								}
+
+							}
 							break;
                     }
 					break;
