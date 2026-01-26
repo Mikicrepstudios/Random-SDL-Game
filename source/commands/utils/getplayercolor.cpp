@@ -3,13 +3,13 @@
 #include "settings.h"
 
 namespace commands {
-    int GetPlayerColor(game::Player player) {
+    int GetPlayerColor(game::Game &game) {
         /**
          * @brief Function for GetPlayerColor command
          * @param player Game player
          */
         
-        std::cout << "Player color: " << player.color << std::endl;
+        std::cout << "Player color: " << game.player.color << std::endl;
 
         return 0;
     }

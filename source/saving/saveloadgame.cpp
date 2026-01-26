@@ -12,10 +12,15 @@
 namespace files {
     const int CURRENT_SAVE_VERSION = 1;
 
-    void SaveGame(const game::Map& map, const game::Settings& settings, const game::Player& player, const game::Camera& cam, const std::string& savePath) {
-        std::filesystem::create_directories(savePath); // Make sure savePath exists
+    void SaveGame(const game::Game &game) {
+        auto& settings = game.settings;
+        auto& cam = game.cam;
+        auto& map = game.map;
+        auto& player = game.player;
 
-        std::ofstream file(savePath + "/savegame.msave");
+        std::filesystem::create_directories(game.savePath); // Make sure savePath exists
+
+        std::ofstream file(game.savePath + "/savegame.msave");
         if (!file.is_open()) {
             std::cerr << "Failed to open save file for writing!\n";
             return;
@@ -41,14 +46,14 @@ namespace files {
 
         file.close();
 
-        std::cout << "Game saved in slot: " << savePath << "\n";
+        std::cout << "Game saved in slot: " << game.savePath << "\n";
     }
 
     // Main LoadGame function: detects version & dispatches to specific loaders
-    void LoadGame(game::Map& map, game::Settings& settings, game::Player& player, game::Camera& cam, const std::string& savePath) {
-        std::ifstream file(savePath + "/savegame.msave");
+    void LoadGame(game::Game &game) {
+        std::ifstream file(game.savePath + "/savegame.msave");
         if (!file.is_open()) {
-            std::cerr << "Save file not found for slot: " << savePath << "\n";
+            std::cerr << "Save file not found for slot: " << game.savePath << "\n";
             return;
         }
 
@@ -67,8 +72,8 @@ namespace files {
         }
 
         if (version == 1) {
-            files::LoadGame_v1(map, settings, player, cam, file);
-            std::cout << "Game loaded (v1) from slot: " << savePath << "\n";
+            files::LoadGame_v1(game, file);
+            std::cout << "Game loaded (v1) from slot: " << game.savePath << "\n";
         } else {
             std::cerr << "Unsupported save version: " << version << "\n";
             // Future versions here...

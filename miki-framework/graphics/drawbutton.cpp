@@ -2,6 +2,7 @@
 
 #include "mf/core.h"
 #include "mf/colors.h"
+#include "mf/logic.h"
 
 namespace draw {
 	void DrawButton(SDL_Renderer* renderer, SDL_Rect rect, MF_Color color, core::MF_Window::Mouse mouse) {
@@ -14,8 +15,7 @@ namespace draw {
 		 */
 
 		// If mouse hovers button then darken it, if not then dont darken
-		if (mouse.x >= rect.x && mouse.x <= rect.x + rect.w &&
-			mouse.y >= rect.y && mouse.y <= rect.y + rect.h) {
+		if (logic::IsMouseTouching(mouse, rect)) {
 			color.r *= .65;
 			color.g *= .65;
 			color.b *= .65;

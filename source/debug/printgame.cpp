@@ -3,7 +3,7 @@
 #include "settings.h"
 
 namespace debug {
-    void PrintGame(game::Game game) {
+    void PrintGame(game::Game &game) {
         /**
          * @brief Prints all values from game::Game struct
          * @param game Core settings

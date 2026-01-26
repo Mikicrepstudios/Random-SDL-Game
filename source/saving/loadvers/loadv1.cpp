@@ -6,7 +6,12 @@
 
 namespace files {
     // Version 1 load function
-    void LoadGame_v1(game::Map& map, game::Settings& settings, game::Player& player, game::Camera& cam, std::ifstream& file) {
+    void LoadGame_v1(game::Game &game, std::ifstream& file) {
+        auto& settings = game.settings;
+        auto& cam = game.cam;
+        auto& map = game.map;
+        auto& player = game.player;
+
         std::string line;
         while (std::getline(file, line)) {
             if (line == "[MAP]") {

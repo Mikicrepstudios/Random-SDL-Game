@@ -22,7 +22,7 @@
 
 int main(int argc, char **argv) {
 	bool running = true;
-    core::printver(1); // Print Mikicrep Framework version
+    core::printver(3); // Print Mikicrep Framework version
 	std::cout << "-------Random SDL Game----------"     << std::endl
 			  << "-------Ver: D E V---------------"     << std::endl
 			  << "Copyright Mikicrep Studios 2023-2026" << std::endl;
@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
 	bool debug = false;
 
 	// Extra vars
-	int dialogueResult = 0;
+	//int dialogueResult = 0;
 
     // Create window
 	if(debug) std::cout << "Creating window" << std::endl;
@@ -43,10 +43,10 @@ int main(int argc, char **argv) {
 	// Structs
 	if(debug) std::cout << "Defining structs" << std::endl;
 	game::Game game(running);
-	game::Settings settings = {};
-	game::Map map = {};
-	game::Player player = {};
-	game::Camera cam = {};
+	auto& settings = game.settings;
+	auto& cam = game.cam;
+	auto& map = game.map;
+	auto& player = game.player;
 
 	// Do Main Menu
 	if(debug) std::cout << "Running Main Menu" << std::endl;
@@ -92,8 +92,8 @@ int main(int argc, char **argv) {
 	SDL_Texture* backgroundTexture = SDL_CreateTextureFromSurface(window.renderer, backgroundSurface);
 	SDL_FreeSurface(backgroundSurface);
 
-	game::ClearMap(map);
-	if(game.menuLoad) files::LoadGame(map, settings, player, cam, game.savePath);
+	game::ClearMap(game);
+	if(game.menuLoad) files::LoadGame(game);
 
 	if(debug) std::cout << "Start running loop" << std::endl;
 
@@ -104,7 +104,7 @@ int main(int argc, char **argv) {
 		game.curHoverY = window.mouse.y / cam.scale;
 
 		// Update vars
-		game::UpdateVars(settings, player, cam, preset);
+		game::UpdateVars(game, preset);
 
         // Check for events
         while(SDL_PollEvent(&event) != 0) {
@@ -165,10 +165,10 @@ int main(int argc, char **argv) {
 
 						switch(settings.cheatsId) {
 							case 1:
-								cheatsResult = cheats::CamTp(window, game, settings, map, cam);
+								cheatsResult = cheats::CamTp(window, game);
 								break;
 							case 2:
-								cheatsResult = cheats::PlayerTp(window, game, settings, map, cam, player);
+								cheatsResult = cheats::PlayerTp(window, game);
 								break;
 						}
 						
@@ -176,14 +176,19 @@ int main(int argc, char **argv) {
 					}
 
 					// Inventory buttons click event
-					if(settings.inventory) inventory::Chooser(window, settings, player, cam, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
+					if(settings.inventory) inventory::Chooser(window, game, preset, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects);
                     
-					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, settings, map, cam, preset); // For click placing
+					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, preset); // For click placing
 
 					break;
+
                 case SDL_MOUSEBUTTONUP:
                     // Mouse button is released
                     window.mouse.isDown = false;
+                    break;
+
+                case SDL_TEXTINPUT:
+                    if(window.typingVariable) window.typingVariable->append(event.text.text);
                     break;
 
                 case SDL_KEYDOWN:
@@ -191,6 +196,8 @@ int main(int argc, char **argv) {
                     switch(event.key.keysym.sym) {
                         case SDLK_ESCAPE:
                             // Quit game
+                            if(window.isTypingActive) {window.isTypingActive = false; window.typingVariable = nullptr; SDL_StopTextInput();}
+
 							if (!settings.inventory) {
 								settings.dialogueId = 1;
 								settings.dialogue = !settings.dialogue;
@@ -198,6 +205,16 @@ int main(int argc, char **argv) {
 
 							settings.colorPicker = false;
 							settings.inventory = false;
+                            break;
+
+                        case SDLK_BACKSPACE:
+                            // Next line is for input fields, if you want to add another thing to backspace, do it below if statement line
+                            if(window.isTypingActive && window.typingVariable && !window.typingVariable->empty()) window.typingVariable->pop_back();
+                            break;
+
+                        case SDLK_RETURN:
+                            // Next line is for input fields, if you want to add another thing to enter, do it below if statement line
+                            if(window.isTypingActive) {window.isTypingActive = false; window.typingVariable = nullptr; SDL_StopTextInput();}
                             break;
 
 						case SDLK_F3:
@@ -221,35 +238,39 @@ int main(int argc, char **argv) {
                                     break;
                             }
 
-						case SDLK_q:
-							settings.cheatsId = 3;
-							settings.cheats = !settings.cheats;
-							break;
-
-
-						case SDLK_c:
-							settings.dialogueId = 2;
-							settings.dialogue = !settings.dialogue;
-							break;
-
 						default:
-							// Preset chooser
-							game::PresetChooser(event, settings.curPreset);
+							if (!window.isTypingActive) {
+								// Preset chooser
+								game::PresetChooser(event, settings.curPreset);
 
-							// Player movement
-							game::PlayerMovement(event, map, player);
+								// Player movement
+								game::PlayerMovement(event, game);
 
-							// Inventory
-							inventory::Event(event, settings);
+								// Inventory
+								inventory::Event(event, game);
 
-							// Camera
-							game::CameraControls(window, settings, map, cam);
+								// Camera
+								game::CameraControls(window, game);
+
+								switch(event.key.keysym.sym) {
+									case SDLK_q:
+										settings.cheatsId = 3;
+										settings.cheats = !settings.cheats;
+										break;
+
+									case SDLK_c:
+										settings.dialogueId = 2;
+										settings.dialogue = !settings.dialogue;
+										break;
+								}
+
+							}
 							break;
                     }
 					break;
 				
 				default:
-					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, settings, map, cam, preset); // For drag placing
+					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, preset); // For drag placing
 					break;
             }
         }
@@ -266,15 +287,15 @@ int main(int argc, char **argv) {
 		map.map[player.x][player.y].type = 1;
 
 		// Draw map
-		game::RenderMap(window, settings, map, cam, blockTextures);
+		game::RenderMap(window, game, blockTextures);
 
 		// Overlays
-		inventory::Overlay(window, settings, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects, blockTextures);
+		inventory::Overlay(window, game, inventoryMenuRects, inventoryColorRects, inventoryDecalRects, inventoryGameplayRects, inventoryGameRects, inventoryOtherRects, blockTextures);
 
-		game::MouseOverlay(window, game, settings, map, cam);
+		game::MouseOverlay(window, game);
 
 		// Game info
-		if(settings.gameInfo) gui::GameInfo(window, settings, cam, player);
+		if(settings.gameInfo) gui::GameInfo(window, game);
 
 		// Dialogues : No
 		/*if(settings.dialogue && dialogues::ConfirmDialogue(window, settings, dialoguesRects)) {
@@ -282,7 +303,7 @@ int main(int argc, char **argv) {
 			settings.dialogue = false;
 		}*/
 
-		dialogues::CallDialogue(window, game, settings, map, dialoguesRects);
+		dialogues::CallDialogue(window, game, dialoguesRects);
 
 		// Cli Input
 		if(game.cliInput || game.terminalmode) {
@@ -291,7 +312,7 @@ int main(int argc, char **argv) {
 			draw::DrawRect(window.renderer, {0, 0, 25, 25}, colors::red);
 			SDL_RenderPresent(window.renderer);
 			std::getline(std::cin, command);
-			commands::Executor(command, window, game, settings, map, player, cam, preset);
+			commands::Executor(command, window, game, preset);
 			game.cliInput = false;
 		}
 

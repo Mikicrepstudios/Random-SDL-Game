@@ -11,10 +11,14 @@
 #include <iostream>
 
 namespace game {
-	void MouseEvent(core::MF_Window &window, game::Game game, game::Settings &settings, game::Map &map, game::Camera &cam, game::Preset preset[10]) {
+	void MouseEvent(core::MF_Window &window, game::Game &game, game::Preset preset[10]) {
 		/**
 		 * @brief This function controls block placing
 		 */
+
+		auto& settings = game.settings;
+		auto& cam = game.cam;
+		auto& map = game.map;
 
 		// SOMEWHERE HERE WAS* BUG #1
 		// Calculate map-relative coordinates by adding positive camera offset
@@ -56,10 +60,14 @@ namespace game {
 			}
 		}
 	}
-	void MouseOverlay(core::MF_Window &window, game::Game game, game::Settings settings, game::Map map, game::Camera cam) {
+	void MouseOverlay(core::MF_Window &window, game::Game &game) {
 		/**
 		 * @brief This function shows which block are you hovering
 		 */
+
+		auto& settings = game.settings;
+		auto& cam = game.cam;
+		auto& map = game.map;
 		
 		int curHoverX = game.curHoverX;
 		int curHoverY = game.curHoverY;
