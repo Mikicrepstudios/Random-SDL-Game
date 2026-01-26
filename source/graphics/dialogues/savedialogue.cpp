@@ -29,7 +29,7 @@ namespace dialogues {
         // Detect mouse clicks
         if(window.mouse.isDown) {
             if(logic::IsMouseTouching(window.mouse, dialoguesRects.noRect)) game.settings.dialogue = false;
-            if(logic::IsMouseTouching(window.mouse, dialoguesRects.yesRect)) files::SaveGame(game);
+            if(logic::IsMouseTouching(window.mouse, dialoguesRects.yesRect)) {files::SaveGame(game); game.running = false;}
         }
     }
 }

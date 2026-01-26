@@ -18,9 +18,9 @@ namespace files {
         auto& map = game.map;
         auto& player = game.player;
 
-        std::filesystem::create_directories(game.savePath); // Make sure savePath exists
+        std::filesystem::create_directories("saves/" + game.savePath); // Make sure savePath exists
 
-        std::ofstream file(game.savePath + "/savegame.msave");
+        std::ofstream file("saves/" + game.savePath + "/savegame.msave");
         if (!file.is_open()) {
             std::cerr << "Failed to open save file for writing!\n";
             return;
@@ -51,7 +51,7 @@ namespace files {
 
     // Main LoadGame function: detects version & dispatches to specific loaders
     void LoadGame(game::Game &game) {
-        std::ifstream file(game.savePath + "/savegame.msave");
+        std::ifstream file("saves/" + game.savePath + "/savegame.msave");
         if (!file.is_open()) {
             std::cerr << "Save file not found for slot: " << game.savePath << "\n";
             return;
