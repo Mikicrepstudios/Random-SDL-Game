@@ -19,9 +19,10 @@ namespace dialogues {
                 // Confirm clear map dialogue
                 ClearMapDialogue(window, settings, map, dialoguesRects);
                 break;
+            case 3:
+                // Enter save path dialogue
+                SaveDialogue(window, settings, game, dialoguesRects);
+                break;
         }
-
-        SaveDialogue(window, game, dialoguesRects);
-
     }
 }
