@@ -24,7 +24,7 @@ namespace dialogues {
         draw::DrawText(window.renderer, window.font, dialoguesRects.yesRect, "Exit with saving", colors::white);
 
         // Detect mouse clicks
-        if(window.mouse.isDown) {
+        if(window.mouse.isPressed) {
             if(logic::IsMouseTouching(window.mouse, dialoguesRects.noRect)) game.settings.dialogue = false;
             if(logic::IsMouseTouching(window.mouse, dialoguesRects.otherYesRect)) game.running = false;
             if(logic::IsMouseTouching(window.mouse, dialoguesRects.yesRect)) game.settings.dialogueId = 3;

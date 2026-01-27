@@ -4,6 +4,9 @@
 ### Some stuff for me
 ... also test windows support after that because it is cancer, last time i had save function inside of non main file it did stack overflow error
 
+how i can make it not instantly click other subdialogues when clicking dialogue? Currently it just checks window.mouse.isdown which is always true and if i try to disable it will be reenabled next frame
+
+
 ### In progress:
 - - Multiple save slots
 - - Save as some other slot than default

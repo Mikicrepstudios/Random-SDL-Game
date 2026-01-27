@@ -25,7 +25,7 @@ namespace dialogues {
         draw::DrawText(window.renderer, window.font, dialoguesRects.yesRect, "Yes", colors::white);
         
         // Detect mouse clicks
-        if(window.mouse.isDown) {
+        if(window.mouse.isPressed) {
             if(logic::IsMouseTouching(window.mouse, dialoguesRects.noRect)) game.settings.dialogue = false;
             if(logic::IsMouseTouching(window.mouse, dialoguesRects.yesRect)) {
                 game::ClearMap(game);
