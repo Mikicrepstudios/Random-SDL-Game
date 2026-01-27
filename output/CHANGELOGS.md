@@ -2,7 +2,8 @@
 ### New version just released
 
 #### Added
-- (No addions in this update)
+- **Core**
+    - Added support for multiple save slots
 
 #### Removed
 - (No removals in this update)
