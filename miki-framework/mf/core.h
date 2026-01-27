@@ -37,6 +37,10 @@ namespace core {
 
         struct Mouse {
             bool isDown = false; // On when mouse button is held, off when its released
+
+            bool wasDown = false;  // Required for isPressed
+            bool isPressed = false; // Only activated on frame when mouse button got clicked
+
             int x = 0;
             int y = 0;
         } mouse;
@@ -64,6 +68,10 @@ namespace core {
     void Exit(MF_Window &window);
     void PostWindowLogic(core::MF_Window &window);
     void TimeCount(core::MF_Window &window);
+
+    void BeginMouseFrame(core::MF_Window &window);
+    void HandleMouseEvent(core::MF_Window &window);
+    void EndMouseFrame(core::MF_Window &window);
 
     // Timers
     void AddTimer(Uint32 interval, std::function<void()> callback, bool repeat = true);

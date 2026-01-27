@@ -96,7 +96,7 @@ int main(int argc, char **argv) {
 
 	while(running) {
 		// Prepare next frame
-        SDL_GetMouseState(&window.mouse.x, &window.mouse.y);
+        core::BeginMouseFrame(window);
 		game.curHoverX = window.mouse.x / cam.scale;
 		game.curHoverY = window.mouse.y / cam.scale;
 
@@ -107,6 +107,11 @@ int main(int argc, char **argv) {
         while(SDL_PollEvent(&event) != 0) {
             // Handle window events
             window.event = event;
+            if(event.type == SDL_MOUSEBUTTONDOWN || 
+            event.type == SDL_MOUSEBUTTONUP) {
+                core::HandleMouseEvent(window);
+            }
+
             switch(event.type) {
                 case SDL_QUIT:
                     // Quit game
@@ -135,9 +140,6 @@ int main(int argc, char **argv) {
 					break;
 
                 case SDL_MOUSEBUTTONDOWN:
-                    // Mouse button is held
-                    window.mouse.isDown = true;
-
 					// Cheats
 					if(settings.cheats) {
 						int cheatsResult = 0;
@@ -160,12 +162,6 @@ int main(int argc, char **argv) {
 					if(settings.canPlayerPlace == true) game::MouseEvent(window, game, preset); // For click placing
 
 					break;
-
-                case SDL_MOUSEBUTTONUP:
-                    // Mouse button is released
-                    window.mouse.isDown = false;
-                    break;
-
                 case SDL_TEXTINPUT:
                     if(window.typingVariable) window.typingVariable->append(event.text.text);
                     break;
@@ -253,6 +249,7 @@ int main(int argc, char **argv) {
 					break;
             }
         }
+        core::EndMouseFrame(window);
 
 		// Set BG color to new color
 		draw::SetDrawColor(window.renderer, colors::colorID[settings.bgColor - 1]);

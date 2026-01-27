@@ -25,6 +25,6 @@ namespace core {
         else if(type == 3)
               std::cout << "-------Ver: D E V---------------" << std::endl;
 
-        std::cout << "Copyright Mikicrep Studios 2024-2025" << std::endl;
+        std::cout << "Copyright Mikicrep Studios 2024-2026" << std::endl;
     }
 }
