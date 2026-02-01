@@ -4,7 +4,15 @@
 ### Some stuff for me
 
 ### In progress:
-- Add save and load buttons in inventory
+
+### Planned:
+
+### Thinking:
+
+
+/* ARCHIVED
+### In progress:
+- - Remove saves/ in load game save selector
 
 ### Planned:
 - Code
@@ -29,6 +37,7 @@
 - - Undo/Redo
 - - Custom color pallete
 - - Seperate build/play mode?
+*/
 
 ### Explanations:
 - In progress - Is currently being implemented
