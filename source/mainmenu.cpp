@@ -92,6 +92,7 @@ void MainMenu(core::MF_Window &window, game::Game &game, bool &running) {
                   window.height / 2 - (savesSize * 50) + (i * 100), 600, 100};
 
               if (logic::IsMouseTouching(window.mouse, curRect)) {
+                game.savePath = saves[i].c_str();
                 game.menuLoad = true;
                 runningmenu = false;
                 continue;
