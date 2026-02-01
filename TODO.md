@@ -2,10 +2,9 @@
 ### This list conatins stuff that I might add in game - Feel free to [suggest stuff](https://github.com/Mikicrepstudios/Random-SDL-Game/blob/master/CONTRIBUTING.md)
 
 ### Some stuff for me
-... also test windows support after that because it is cancer, last time i had save function inside of non main file it did stack overflow error
 
 ### In progress:
-- - Remove saves/ in load game save selector
+- Add save and load buttons in inventory
 
 ### Planned:
 - Code
