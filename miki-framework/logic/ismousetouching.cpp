@@ -1,15 +1,16 @@
 #include "SDL2/SDL.h"
 
+#include "mf/core.h"
+
 namespace logic {
-    bool IsMouseTouching(int mouseX, int mouseY, SDL_Rect& rect) {
+    bool IsMouseTouching(core::MF_Window::Mouse mouse, SDL_Rect& rect) {
         /**
          * @brief This function compares mouse position and rect, and returns 1 if they are touching
-         * @param mouseX X axis of mouse
-         * @param mouseY Y axis of mouse
+         * @param mouse Window mouse
          * @param rect Second rect
          */
 
-        SDL_Rect mouseRect = {mouseX, mouseY, 1, 1};
+        SDL_Rect mouseRect = {mouse.x, mouse.y, 1, 1};
 
         return (mouseRect.x < rect.x + rect.w &&
                 mouseRect.x + mouseRect.w > rect.x &&

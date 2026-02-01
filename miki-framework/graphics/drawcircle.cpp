@@ -23,10 +23,10 @@ namespace draw {
 
         while (x <= y) {
             // Draw horizontal lines to fill the circle
-            DrawLine(renderer, {centerX - x, centerY + y}, {centerX + x, centerY + y});
-            DrawLine(renderer, {centerX - x, centerY - y}, {centerX + x, centerY - y});
-            DrawLine(renderer, {centerX - y, centerY + x}, {centerX + y, centerY + x});
-            DrawLine(renderer, {centerX - y, centerY - x}, {centerX + y, centerY - x});
+            DrawLine(renderer, {centerX - x, centerY + y}, {centerX + x, centerY + y}, 1, color);
+            DrawLine(renderer, {centerX - x, centerY - y}, {centerX + x, centerY - y}, 1, color);
+            DrawLine(renderer, {centerX - y, centerY + x}, {centerX + y, centerY + x}, 1, color);
+            DrawLine(renderer, {centerX - y, centerY - x}, {centerX + y, centerY - x}, 1, color);
 
             if (decision < 0) {
                 decision += 2 * x + 3;

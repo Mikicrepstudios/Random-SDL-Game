@@ -12,27 +12,29 @@
 namespace inventory {
 	void DrawButtonINV(core::MF_Window &window, std::string text, MF_Color buttonColor, SDL_Rect buttonRect, SDL_Rect textRect) {
 		// Function that draws button and text inside of button
-		draw::DrawButton(window.renderer, buttonRect, buttonColor, window.mouse.x, window.mouse.y);
+		draw::DrawButton(window.renderer, buttonRect, buttonColor, window.mouse);
 		draw::DrawText(window.renderer, window.font, textRect, text.c_str(), colors::white);
 	}
 	void DrawButtonWithBGINV(core::MF_Window &window, std::string text, MF_Color buttonColor, SDL_Rect bgRect, SDL_Rect buttonRect, SDL_Rect textRect) {
 		// Function that draws background around button, button and text inside of button
 		draw::DrawRect(window.renderer, bgRect, colors::gray);
-		draw::DrawButton(window.renderer, buttonRect, buttonColor, window.mouse.x, window.mouse.y);
+		draw::DrawButton(window.renderer, buttonRect, buttonColor, window.mouse);
 		draw::DrawText(window.renderer, window.font, textRect, text.c_str(), colors::white);
 	}
-	void DrawTextureButtonWithBGINV(core::MF_Window &window, std::string text, SDL_Texture* texture, SDL_Rect bgRect, SDL_Rect buttonRect, SDL_Rect textRect) {
+	void DrawTextureButtonWithBGINV(core::MF_Window &window, std::string text, SDL_Texture* texture, SDL_Rect bgRect, SDL_Rect buttonRect, SDL_Rect textRect, int blockTextureId) {
 		// Function that draws background around button, button with texture and text inside of button
 		draw::DrawRect(window.renderer, bgRect, colors::gray);
-		draw::DrawTextureRect(window.renderer, buttonRect, texture);
+		if(blockTextureId != 0) draw::DrawTextureRect(window.renderer, buttonRect, texture);
 		draw::DrawText(window.renderer, window.font, textRect, text.c_str(), colors::white);
 	}
 
-	void Overlay(core::MF_Window &window, game::Settings settings, inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects, textures::BlockTextures blockTextures[32]) {
+	void Overlay(core::MF_Window &window, game::Game &game, inventory::MenuRects &menuRects, inventory::ColorRects &colorRects, inventory::DecalRects &decalRects, inventory::GameplayRects &gameplayRects, inventory::GameRects &gameRects, inventory::OtherRects &otherRects, textures::BlockTextures blockTextures[32]) {
 		/**
 		 * @brief This function draws inventory overlay
 		 */
 		// In some DrawButtonTextWithBG calls, textRect is modified to fit the text better
+
+		auto& settings = game.settings;
 
 		if (settings.inventory) {
 			// Render bg
@@ -47,16 +49,16 @@ namespace inventory {
 			// Preview
 			draw::DrawRect(window.renderer, menuRects.previewRectb, colors::gray);
 			draw::DrawRect(window.renderer, menuRects.previewRect, colors::colorID[settings.blockColor - 1]);
-			draw::DrawTextureRect(window.renderer, menuRects.previewRect, blockTextures[settings.blockTextureId].texture);
+			if(settings.blockTextureId != 0) draw::DrawTextureRect(window.renderer, menuRects.previewRect, blockTextures[settings.blockTextureId].texture);
 			draw::DrawText(window.renderer, window.font, menuRects.previewTextRect, "Preview", colors::white);
 
 			// Right side
-			DrawTextureButtonWithBGINV(window, "Text. id", blockTextures[settings.blockTextureId].texture, decalRects.textureIdRectb, decalRects.textureIdRect, decalRects.textureIdTextRect);
+			DrawTextureButtonWithBGINV(window, "Text. id", blockTextures[settings.blockTextureId].texture, decalRects.textureIdRectb, decalRects.textureIdRect, decalRects.textureIdTextRect, settings.blockTextureId);
 
 			// Solid
 			draw::DrawRect(window.renderer, otherRects.solidRectb, colors::gray);
-			if(settings.placeSolidBlocks) draw::DrawButton(window.renderer, otherRects.solidRect, colors::lightgreen, window.mouse.x, window.mouse.y);
-			else draw::DrawButton(window.renderer, otherRects.solidRect, colors::red, window.mouse.x, window.mouse.y);
+			if(settings.placeSolidBlocks) draw::DrawButton(window.renderer, otherRects.solidRect, colors::lightgreen, window.mouse);
+			else draw::DrawButton(window.renderer, otherRects.solidRect, colors::red, window.mouse);
 			draw::DrawText(window.renderer, window.font, otherRects.solidTextRect, "Solid", colors::white);
 			
 			// Presets
@@ -80,7 +82,7 @@ namespace inventory {
 
 			// Color pickers
 			if(settings.colorPicker)
-				gui::ColorPickerOverlay(window, settings);
+				gui::ColorPickerOverlay(window, game);
 
 			if(settings.texturePicker)
 				textures::PickerOverlay(window, blockTextures);

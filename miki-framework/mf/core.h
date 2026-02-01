@@ -32,11 +32,24 @@ namespace core {
         int height = 800;
         int fps = 60; // THIS IS NOT FPS COUNTER, IT IS MAXIMUM FPS
 
+        bool isTypingActive = false; // Is some text input field selected?
+        std::string *typingVariable = nullptr;
+
         struct Mouse {
             bool isDown = false; // On when mouse button is held, off when its released
+
+            bool wasDown = false;  // Required for isPressed
+            bool isPressed = false; // Only activated on frame when mouse button got clicked
+
             int x = 0;
             int y = 0;
         } mouse;
+
+        struct FpsAdv {
+            Uint32 frameCount = 0;
+            Uint32 lastTime = 0;
+            float realFPS = 0;
+        } fpsAdv; // FPS advanced, used for real fps counter
 
         SDL_Window* window = {};
         SDL_Renderer* renderer = {};
@@ -53,7 +66,12 @@ namespace core {
     // Big stuff
     bool InitWindow(core::MF_Window &window, std::string title, int width, int height);
     void Exit(MF_Window &window);
+    void PostWindowLogic(core::MF_Window &window);
     void TimeCount(core::MF_Window &window);
+
+    void BeginMouseFrame(core::MF_Window &window);
+    void HandleMouseEvent(core::MF_Window &window);
+    void EndMouseFrame(core::MF_Window &window);
 
     // Timers
     void AddTimer(Uint32 interval, std::function<void()> callback, bool repeat = true);
@@ -65,5 +83,5 @@ namespace core {
     SDL_Texture* LoadImg(SDL_Renderer* renderer, std::string path);
 
     // 69 Chad function
-    void miki(core::MF_Window window); // Best function ever
+    void miki(core::MF_Window &window); // Best function ever
 }

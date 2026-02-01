@@ -10,7 +10,7 @@
 #include "textures.h"
 
 namespace textures {
-	int PickerEvent(core::MF_Window &window, game::Settings &settings) {
+	int PickerEvent(core::MF_Window &window, game::Game &game) {
 		/**
 		 * @brief This function checks when and which texture is selected from texture picker
 		 * @param window Game window
@@ -27,17 +27,17 @@ namespace textures {
 				SDL_Rect curRect = {startposw + (100 * x), startposh + (100 * y), 100, 100};
 
                 // Disable picker
-				settings.texturePicker = false;
+				game.settings.texturePicker = false;
 
-				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, curRect)) return curTexture - 1; // Textures dont start from 1
+				if(logic::IsMouseTouching(window.mouse, curRect)) return curTexture - 1; // Textures dont start from 1
 
 				curTexture++;
 			}
 		}
 
 		// Handle clicking outside
-		settings.texturePicker = false;
-		return settings.blockTextureId;
+		game.settings.texturePicker = false;
+		return game.settings.blockTextureId;
 	}
 	void PickerOverlay(core::MF_Window &window, textures::BlockTextures blockTextures[32]) {
 		/**
@@ -65,7 +65,8 @@ namespace textures {
 		for(int y = 1; y <= 2; y++) {
 			for(int x = 1; x <= 8; x++) {
 				SDL_Rect curRect = {startposw + (100 * x), startposh + (100 * y), 100, 100};
-				draw::DrawTextureRect(window.renderer, curRect, blockTextures[curTexture].texture);
+				if(x == 1 && y == 1) {} // Stops error from loading first (none) texture
+				else draw::DrawTextureRect(window.renderer, curRect, blockTextures[curTexture].texture);
 
 				curTexture++;
 			}

@@ -84,6 +84,8 @@ namespace core {
 
         SDL_SetRenderDrawBlendMode(window.renderer, SDL_BLENDMODE_BLEND); // Transparency
 
+        window.fpsAdv.lastTime = SDL_GetTicks();
+
         return true;
     }
 }

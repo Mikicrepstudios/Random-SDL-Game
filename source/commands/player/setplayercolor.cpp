@@ -6,7 +6,7 @@
 #include "settings.h"
 
 namespace commands {
-    int SetPlayerColor(std::string args, int argsCount, game::Settings &settings) {
+    int SetPlayerColor(std::string args, int argsCount, game::Game &game) {
         /**
          * @brief Function for SetPlayerColor command
          * @param args Command arguments
@@ -33,7 +33,7 @@ namespace commands {
         // run
         if(argsCount == 1) {
             if(color >= 1 && color <= 32) {
-                settings.playerColor = color;
+                game.settings.playerColor = color;
 
                 return 0;
             }
