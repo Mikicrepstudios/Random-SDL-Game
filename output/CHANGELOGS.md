@@ -1,30 +1,17 @@
-## [[2.1.0] Random SDL Game](https://miki.macakom.net/projects/rsg)
+## [[2.2.0] Random SDL Game](https://miki.macakom.net/projects/rsg)
 ### New version just released
-
-> **Note:** Old save files are **not** compatible with this version.
 
 #### Added
 - **Core**
-    - Command system implemented
-    - Camera is now restricted to stay within the map boundaries
-    - Main Menu screen added
-- **Files**
-    - New save mechanism (backwards compatible, more future-proof, supports multiple slots in the future)
-- **Graphics**
-    - Inventory UI now scales smoothly with window resizing
-    - Dialogues automatically adjust size to fit window changes
-    - Dialogues descriptions are now more readable
-- **Shortcuts**
-    - Quick color picker (`q`) can now pick textures
-    - You can now zoom in and zoom out camera using numpad + and -
+    - Added support for multiple save slots
 
 #### Removed
 - (No removals in this update)
 
 #### Changed
-- **Core**
-    - Updated Mikicrep Framework to 1.6.0
-    - Fixed placing blocks only when dragging
-- **Graphics**
-    - Inventory buttons now change color when hovered by the mouse
-    - Inventory text styling enhanced for improved readability and less stretching
+- **Dialogues**
+    - You now have to click "No" button in dialogues instead of hovering over it
+
+#### Code changes
+- Dialogues got fully rewritten, now new ones can be added pretty easily, removed a lot of dialogue related lines in main.cpp and reduced amount of functions needed to be called in order for them to work
+- Now every single struct in settings.h is moved inside of game.h struct, that allows it to easily access everything in only one function argument

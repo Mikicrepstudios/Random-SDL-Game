@@ -8,9 +8,9 @@
  * @brief Namespace that contains all functions that are related to managing files on disk
  */
 namespace files {
-	void LoadGame_v1(game::Map& map, game::Settings& settings, game::Player& player, game::Camera& cam, std::ifstream& file);
-	void LoadLegacyMap(game::Map &map); // Unused, but kept for legacy support
+	void LoadGame_v1(game::Game &game, std::ifstream& file);
+	void LoadLegacyMap(game::Game &game); // Unused, but kept for legacy support
 
-	void SaveGame(const game::Map& map, const game::Settings& settings, const game::Player& player, const game::Camera& cam, const std::string& slotName);
-	void LoadGame(game::Map& map, game::Settings& settings, game::Player& player, game::Camera& cam, const std::string& saveName);
+	void SaveGame(const game::Game &game);
+	void LoadGame(game::Game &game);
 }	

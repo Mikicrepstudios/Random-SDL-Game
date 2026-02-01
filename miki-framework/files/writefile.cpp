@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 #include <string>
 
 namespace files {
@@ -10,6 +11,7 @@ namespace files {
          */
         
         std::ofstream file(path);
+        if(!file.is_open()) {std::cout << "[MF] Error loading file: \"" << path << "\", did you enter correct path?" << std::endl; return;}
         file << content;
         file.close();
     }

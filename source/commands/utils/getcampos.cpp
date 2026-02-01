@@ -3,13 +3,13 @@
 #include "settings.h"
 
 namespace commands {
-    int GetCamPos(game::Camera cam) {
+    int GetCamPos(game::Game &game) {
         /**
          * @brief Function for GetCamPos command
          * @param cam Game camera
          */
         
-        std::cout << "Camera X: " << cam.offSetX << " Camera Y: " << cam.offSetY << std::endl;
+        std::cout << "Camera X: " << game.cam.offSetX << " Camera Y: " << game.cam.offSetY << std::endl;
 
         return 0;
     }

@@ -9,12 +9,14 @@
 #include "settings.h"
 
 namespace gui {
-	int ColorPickerEvent(core::MF_Window &window, game::Settings &settings) {
+	int ColorPickerEvent(core::MF_Window &window, game::Game &game) {
 		/**
 		 * @brief This function checks when and which color is clicked
 		 * @param window Game window
 		 * @param settings Game settings
 		 */
+
+		auto& settings = game.settings;
 
         // This will run on mouse click
 		int startposw = window.width / 2 - 500;
@@ -28,7 +30,7 @@ namespace gui {
 				// Disable color picker based on pickerId
 				settings.colorPicker = false;
 
-				if(logic::IsMouseTouching(window.mouse.x, window.mouse.y, curRect)) return curColor;
+				if(logic::IsMouseTouching(window.mouse, curRect)) return curColor;
 
 				curColor++;
 			}
@@ -52,12 +54,14 @@ namespace gui {
 
 		return -69; // Nice
 	}
-	void ColorPickerOverlay(core::MF_Window &window, game::Settings settings) {
+	void ColorPickerOverlay(core::MF_Window &window, game::Game &game) {
 		/**
 		 * @brief This function draws color picker overlay
 		 * @param window Game window
 		 * @param settings Game settings
 		 */
+
+		auto& settings = game.settings;
 		
 		std::string text = "";
 		int curColor = 1;
