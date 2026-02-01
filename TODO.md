@@ -6,6 +6,8 @@
 ### In progress:
 
 ### Planned:
+- Create random spawning trees
+- Add inventory currencies
 
 ### Thinking:
 
