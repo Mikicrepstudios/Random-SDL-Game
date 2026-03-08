@@ -17,6 +17,7 @@
 #include "game.h"
 #include "gui.h"
 #include "inventory.h"
+#include "map.h"
 #include "settings.h"
 #include "textures.h"
 
@@ -98,7 +99,7 @@ int main(int argc, char **argv) {
       SDL_CreateTextureFromSurface(window.renderer, backgroundSurface);
   SDL_FreeSurface(backgroundSurface);
 
-  game::ClearMap(game);
+  map::GenerateMap(game);
   if (game.menuLoad)
     files::LoadGame(game);
 
