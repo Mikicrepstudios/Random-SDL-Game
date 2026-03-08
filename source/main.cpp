@@ -49,6 +49,10 @@ int main(int argc, char **argv) {
   auto &map = game.map;
   auto &player = game.player;
 
+  // TMP
+  map.width = 50;
+  map.height = 50;
+
   // Do Main Menu
   if (debug)
     std::cout << "Running Main Menu" << std::endl;

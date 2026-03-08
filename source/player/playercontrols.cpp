@@ -6,82 +6,66 @@
 
 #include "block.h"
 #include "game.h"
+#include "map.h"
 #include "settings.h"
 
 #include <iostream>
 
 namespace game {
+void HandleLeftClick(game::Game &game, int mapX, int mapY) {
+  auto &settings = game.settings;
+  auto &map = game.map;
+
+  if (!settings.cheats)
+    map::PlaceBlock(game, mapX, mapY);
+}
+
+void HandleRightClick(game::Game &game, int mapX, int mapY) {
+  auto &settings = game.settings;
+
+  if (!settings.cheats)
+    map::DestroyBlock(game, mapX, mapY);
+  else
+    settings.cheats = false;
+}
+
 void MouseEvent(core::MF_Window &window, game::Game &game) {
   /**
    * @brief This function controls block placing and destroying using mouse
    */
 
   auto &settings = game.settings;
+  auto &cam = game.cam;
+  auto &map = game.map;
 
-  if (window.mouse.isDown && !settings.inventory && !settings.cheats)
-    if ()
+  // Calculate map-relative coordinates by adding positive camera offset
+  int mapX = game.curHoverX + cam.offSetX;
+  int mapY = game.curHoverY + cam.offSetY;
+
+  if (window.mouse.isDown && !settings.inventory &&
+      map.map[mapX][mapY].type != 1) // Check for most basic stuff
+    if (mapX >= 0 && mapX < map.width && mapY >= 0 &&
+        mapY < map.height) { // Dont allow to go out of bounds
+      if (window.mouse.leftButtonPressed)
+        HandleLeftClick(game, mapX, mapY);
+
+      if (window.mouse.rightButtonPressed)
+        HandleRightClick(game, mapX, mapY);
+    }
 }
 } // namespace game
 
 // TMP for cleanup
-// namespace game {
-//	void MouseEvent(core::MF_Window &window, game::Game &game, game::Preset
-// preset[10]) {
-/**
- * @brief This function controls block placing
- */
+// Q Color picker and stuff (unimplemented) (needs also preset[10])
+/*else if (window.mouse.isDown && settings.cheats && settings.cheatsId == 3) {
+if (map.map[mapX][mapY].type == 2) {
+preset[settings.curPreset].blockColor =
+map.map[mapX][mapY].color; preset[settings.curPreset].textureId =
+map.map[mapX][mapY].texture; settings.cheats = false;
+}
+}*/
+// void MouseOverlay(core::MF_Window &window, game::Game &game) {
 
-/*		auto& settings = game.settings;
-                auto& cam = game.cam;
-                auto& map = game.map;
-
-                // SOMEWHERE HERE WAS* BUG #1
-                // Calculate map-relative coordinates by adding positive camera
-   offset int mapX = game.curHoverX + cam.offSetX; int mapY = game.curHoverY +
-   cam.offSetY;
-
-                // Bounds check to avoid crashing when mouse is outside map area
-                if (mapX >= 0 && mapX < map.width &&
-                        mapY >= 0 && mapY < map.height &&
-                        !settings.inventory &&                   // Don't place
-   blocks if inventory is open map.map[mapX][mapY].type != 1)          // Don't
-   act on tiles of type 1 (e.g., solid or special)
-                {
-                        if (!settings.cheats) {
-                                if (window.mouse.isDown) {
-                                        Uint32 mouseButtons =
-   SDL_GetMouseState(NULL, NULL);
-
-                                        if (mouseButtons &
-   SDL_BUTTON(SDL_BUTTON_LEFT)) {
-                                                // Place block with
-   user-selected settings map.map[mapX][mapY].type = 2;
-                                                map.map[mapX][mapY].color =
-   settings.blockColor; map.map[mapX][mapY].texture = settings.blockTextureId;
-                                                map.map[mapX][mapY].isSolid =
-   settings.placeSolidBlocks;
-                                        }
-                                        else if (mouseButtons &
-   SDL_BUTTON(SDL_BUTTON_RIGHT)) {
-                                                // Remove block (reset tile to
-   empty) map.map[mapX][mapY].type = 0; map.map[mapX][mapY].color = 0;
-                                                map.map[mapX][mapY].texture = 0;
-                                                map.map[mapX][mapY].isSolid =
-   false;
-                                        }
-                                }
-                        }
-                        else if (window.mouse.isDown && settings.cheats &&
-   settings.cheatsId == 3) { if (map.map[mapX][mapY].type == 2) {
-                                        preset[settings.curPreset].blockColor =
-   map.map[mapX][mapY].color; preset[settings.curPreset].textureId =
-   map.map[mapX][mapY].texture; settings.cheats = false;  // Exit cheat mode
-   after copying
-                                }
-                        }
-                }
-        }
-        void MouseOverlay(core::MF_Window &window, game::Game &game) {*/
 /**
  * @brief This function shows which block are you hovering
  */
@@ -108,11 +92,11 @@ cam.scale, cam.scale};
         if (!cam.highlight) {
                 if (settings.bgColor == 32 || map.map[x][y].color == 32)
                         draw::DrawRect(window.renderer, mouseRect,
-colors::black); else draw::DrawRect(window.renderer, mouseRect, colors::white);
-        } else {
-                if (settings.bgColor == 27)
+colors::black); else draw::DrawRect(window.renderer, mouseRect,
+colors::white); } else { if (settings.bgColor == 27)
                         draw::DrawRect(window.renderer, mouseRect,
-colors::darkred); else draw::DrawRect(window.renderer, mouseRect, colors::red);
+colors::darkred); else draw::DrawRect(window.renderer, mouseRect,
+colors::red);
         }
 }
 }

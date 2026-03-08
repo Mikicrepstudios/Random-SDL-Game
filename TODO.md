@@ -4,9 +4,9 @@
 ### Some stuff for me
 
 ### In progress:
+- So right now i "finished" placing blocks in playercontrols.cpp, now i have to implement mouseoverlay again
 
 ### Planned:
-- Create random spawning trees
 - Add inventory currencies
 
 ### Thinking:
