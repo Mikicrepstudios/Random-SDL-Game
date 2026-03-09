@@ -104,6 +104,7 @@ int main(int argc, char **argv) {
   SDL_FreeSurface(backgroundSurface);
 
   map::GenerateMap(game);
+  inventory::ClearInventory(game);
   if (game.menuLoad)
     files::LoadGame(game);
 

@@ -7,27 +7,41 @@
 
 #include "block.h"
 #include "game.h"
+#include "inventory.h"
 #include "map.h"
 #include "settings.h"
-
-#include <iostream>
 
 namespace game {
 void HandleLeftClick(game::Game &game, int mapX, int mapY) {
   auto &settings = game.settings;
   auto &map = game.map;
+  auto &player = game.player;
+  auto &inventory = player.inventory;
 
-  if (!settings.cheats)
-    map::PlaceBlock(game, mapX, mapY);
+  if (!settings.cheats) {
+    if (map.map[mapX][mapY].type == 0) { // Affect only air
+      game::Game::Player::InventorySlot &invSlot =
+          inventory[player.curInventorySlot];
+      if (invSlot.id != 0 && invSlot.amount != 0) { // Dont use empty slot
+        inventory::RemoveItem(game, invSlot.id, 1);
+      }
+      map::PlaceBlock(game, mapX, mapY);
+    }
+  }
 }
 
 void HandleRightClick(game::Game &game, int mapX, int mapY) {
   auto &settings = game.settings;
+  auto &map = game.map;
+  auto &player = game.player;
+  auto &inventory = player.inventory;
 
   if (!settings.cheats)
-    map::DestroyBlock(game, mapX, mapY);
-  else
-    settings.cheats = false;
+    if (map.map[mapX][mapY].type != 0) { // Dont affect air
+      inventory::AddItem(game, map.map[mapX][mapY].type, 1);
+      map::DestroyBlock(game, mapX, mapY);
+    } else
+      settings.cheats = false;
 }
 
 void MouseEvent(core::MF_Window &window, game::Game &game) {

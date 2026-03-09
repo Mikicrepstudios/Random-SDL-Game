@@ -25,7 +25,7 @@ struct Game {
 
   struct Settings {
     // Player settings
-    int curPreset = 0;
+    int curPreset = 0;      // FLAG
     int blockColor = 1;     // Updates every frame
     int blockTextureId = 0; // Updates every frame
     int bgColor = 1;
@@ -83,11 +83,13 @@ struct Game {
     int color = 6; // Updates every frame
     int speed = 1;
 
-    struct Inventory {
+    struct InventorySlot {
       int id = 0;     // Item ID
       int amount = 0; // Amount of specific item
     } inventory[10];
+
     const int inventorySize = 10;
+    int curInventorySlot = 0;
   } player;
 
   struct Camera {

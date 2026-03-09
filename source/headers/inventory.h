@@ -94,6 +94,7 @@ void Overlay(core::MF_Window &window, game::Game &game,
 // Hell nah stuff above this is legacy.... TODO for deletion!!!
 
 // Basic actions
+void ClearInventory(game::Game &game);
 void AddItem(game::Game &game, int id, int amount);
 void RemoveItem(game::Game &game, int id, int amount);
 } // namespace inventory

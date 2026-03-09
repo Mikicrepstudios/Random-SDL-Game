@@ -5,6 +5,7 @@
 
 ### In progress:
 - Implemented basic inventory, now I gotta implement playercontrols to use it. Destroying block has to give item to inventory and placing has to take it from player, if no items then dont place at all
+- Follow up to ^^^, i kinda "implemented" it but it does not work at all. next time i code i gotta debug what is even happening anymore...
 
 ### Planned:
 - Inventory hotbar at bottom which shows all items and thier amount and id and current selected
