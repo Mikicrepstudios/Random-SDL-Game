@@ -17,7 +17,7 @@ void GenerateMap(game::Game &game) {
 
     game.map.map[woodX][woodY].type = 11;
     game.map.map[woodX][woodY].color = 17;
-    game.map.map[woodX][woodY].texture = 0;
+    game.map.map[woodX][woodY].texture = 5;
     game.map.map[woodX][woodY].isSolid = 1;
   }
 }

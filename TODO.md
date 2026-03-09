@@ -4,10 +4,11 @@
 ### Some stuff for me
 
 ### In progress:
-- So right now i "finished" placing blocks in playercontrols.cpp, now i have to implement mouseoverlay again
+- Implemented basic inventory, now I gotta implement playercontrols to use it. Destroying block has to give item to inventory and placing has to take it from player, if no items then dont place at all
 
 ### Planned:
-- Add inventory currencies
+- Inventory hotbar at bottom which shows all items and thier amount and id and current selected
+- Allow camera to move anywhere but place small line for world bounds
 
 ### Thinking:
 

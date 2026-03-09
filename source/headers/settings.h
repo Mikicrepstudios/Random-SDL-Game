@@ -86,7 +86,8 @@ struct Game {
     struct Inventory {
       int id = 0;     // Item ID
       int amount = 0; // Amount of specific item
-    } inventory[32];
+    } inventory[10];
+    const int inventorySize = 10;
   } player;
 
   struct Camera {
