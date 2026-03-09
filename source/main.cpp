@@ -181,7 +181,7 @@ int main(int argc, char **argv) {
                              inventoryOtherRects);
 
         if (settings.canPlayerPlace == true)
-          game::MouseEvent(window, game, preset); // For click placing
+          game::MouseEvent(window, game); // For click placing
 
         break;
       case SDL_TEXTINPUT:
@@ -280,7 +280,7 @@ int main(int argc, char **argv) {
 
       default:
         if (settings.canPlayerPlace == true)
-          game::MouseEvent(window, game, preset); // For drag placing
+          game::MouseEvent(window, game); // For drag placing
         break;
       }
     }

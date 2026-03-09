@@ -3,6 +3,7 @@
 #include "mf/colors.h"
 #include "mf/core.h"
 #include "mf/graphics.h"
+#include "mf/logic.h"
 
 #include "block.h"
 #include "game.h"
@@ -53,6 +54,47 @@ void MouseEvent(core::MF_Window &window, game::Game &game) {
         HandleRightClick(game, mapX, mapY);
     }
 }
+
+void MouseOverlay(core::MF_Window &window, game::Game &game) {
+  /**
+   * @brief This function shows which block are you hovering
+   */
+
+  auto &settings = game.settings;
+  auto &cam = game.cam;
+  auto &map = game.map;
+
+  int &curHoverX = game.curHoverX;
+  int &curHoverY = game.curHoverY;
+
+  int x = curHoverX + cam.offSetX;
+  int y = curHoverY + cam.offSetY;
+
+  // Check for bounds and basic stuff
+  if (x >= 0 && x < map.width && y >= 0 && y < map.height &&
+      map.map[x][y].type != 1 && !settings.inventory) {
+    SDL_Rect mouseRect = {curHoverX * cam.scale, curHoverY * cam.scale,
+                          cam.scale, cam.scale};
+
+    if (!cam.highlight) {
+      if (!map.map[x][y].type == 0) {
+        if (settings.bgColor == 32 || map.map[x][y].color == 32)
+          draw::DrawRect(window.renderer, mouseRect, colors::black);
+        else
+          draw::DrawRect(
+              window.renderer, mouseRect,
+              logic::ScaleColor(colors::colorID[map.map[x][y].color], 1.2));
+      } else
+        draw::DrawRect(window.renderer, mouseRect,
+                       colors::white); // White overlay for air
+    } else {
+      if (settings.bgColor == 27)
+        draw::DrawRect(window.renderer, mouseRect, colors::darkred);
+      else
+        draw::DrawRect(window.renderer, mouseRect, colors::red);
+    } // TODO: Color tint when highlight
+  }
+}
 } // namespace game
 
 // TMP for cleanup
@@ -62,42 +104,5 @@ if (map.map[mapX][mapY].type == 2) {
 preset[settings.curPreset].blockColor =
 map.map[mapX][mapY].color; preset[settings.curPreset].textureId =
 map.map[mapX][mapY].texture; settings.cheats = false;
-}
-}*/
-// void MouseOverlay(core::MF_Window &window, game::Game &game) {
-
-/**
- * @brief This function shows which block are you hovering
- */
-
-/*auto& settings = game.settings;
-auto& cam = game.cam;
-auto& map = game.map;
-
-int curHoverX = game.curHoverX;
-int curHoverY = game.curHoverY;
-
-int x = curHoverX + cam.offSetX; // subtract positive offset
-int y = curHoverY + cam.offSetY; // subtract positive offset
-
-// Check bounds including non-negativity and max limits
-if (x >= 0 && x < map.width &&
-        y >= 0 && y < map.height &&
-        map.map[x][y].type != 1 &&
-        !settings.inventory)
-{
-        SDL_Rect mouseRect = {curHoverX * cam.scale, curHoverY * cam.scale,
-cam.scale, cam.scale};
-
-        if (!cam.highlight) {
-                if (settings.bgColor == 32 || map.map[x][y].color == 32)
-                        draw::DrawRect(window.renderer, mouseRect,
-colors::black); else draw::DrawRect(window.renderer, mouseRect,
-colors::white); } else { if (settings.bgColor == 27)
-                        draw::DrawRect(window.renderer, mouseRect,
-colors::darkred); else draw::DrawRect(window.renderer, mouseRect,
-colors::red);
-        }
-}
 }
 }*/

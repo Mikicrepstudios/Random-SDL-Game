@@ -20,8 +20,7 @@ void MainMenu(core::MF_Window &window, game::Game &game, bool &running);
 void UpdateVars(game::Game &game, game::Preset preset[10]);
 
 // High level game stuff
-void MouseEvent(core::MF_Window &window, game::Game &game,
-                game::Preset preset[10]);
+void MouseEvent(core::MF_Window &window, game::Game &game);
 void MouseOverlay(core::MF_Window &window, game::Game &game);
 
 // Medium level game stuff

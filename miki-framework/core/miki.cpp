@@ -1,9 +1,9 @@
+#include "SDL.h"
 #include <iostream>
 #include <string>
-#include "SDL.h"
 
-#include "mf/core.h"
 #include "mf/colors.h"
+#include "mf/core.h"
 #include "mf/files.h"
 #include "mf/graphics.h"
 #include "mf/logic.h"
@@ -11,52 +11,75 @@
 std::string inputText = "";
 
 namespace core {
-    void miki(core::MF_Window &window) {
-        /**
-         * @brief This will reamain undocumented, figure it yourself ;)
-         */
+void miki(core::MF_Window &window) {
+  /**
+   * @brief This will reamain undocumented, figure it yourself ;)
+   */
 
-        // Draw text and underline
-        draw::DrawText(window.renderer, window.font, {window.width / 2 - 400, 0, 800, 50}, "Mikicrep Framework is working", colors::white);
-        MF_Pixel TextUnderLineS = {window.width / 2 - 400, 50};
-        MF_Pixel TextUnderLineE = {window.width / 2 + 400, 50};
-        draw::DrawLine(window.renderer, TextUnderLineS, TextUnderLineE, 2, colors::red);
-    
-        // RGB rects
-        SDL_Rect rect1 = {50, 50, 50, 50};
-        SDL_Rect rect2 = {75, 50, 50, 50};
-        SDL_Rect rect3 = {62, 75, 50, 50};
+  // Draw text and underline
+  draw::DrawText(window.renderer, window.font,
+                 {window.width / 2 - 400, 0, 800, 50},
+                 "Mikicrep Framework is working", colors::white);
+  MF_Pixel TextUnderLineS = {window.width / 2 - 400, 50};
+  MF_Pixel TextUnderLineE = {window.width / 2 + 400, 50};
+  draw::DrawLine(window.renderer, TextUnderLineS, TextUnderLineE, 2,
+                 colors::red);
 
-        draw::DrawTransRect(window.renderer, rect1, colors::colorID[26], 255); // Color ID for red
-        draw::DrawTransRect(window.renderer, rect2, colors::indigo, 150);
-        draw::DrawTransRect(window.renderer, rect3, colors::grassgreen, 150);
+  // RGB rects
+  SDL_Rect rect1 = {50, 50, 50, 50};
+  SDL_Rect rect2 = {75, 50, 50, 50};
+  SDL_Rect rect3 = {62, 75, 50, 50};
 
-        if(logic::IsMouseTouching(window.mouse, rect3))
-            draw::DrawRect(window.renderer, {window.width - 50, window.height - 50, 50, 50}, colors::grassgreen);
-        else if(logic::IsMouseTouching(window.mouse, rect2))
-            draw::DrawRect(window.renderer, {window.width - 50, window.height - 50, 50, 50}, colors::indigo);
-        else if(logic::IsMouseTouching(window.mouse, rect1))
-            draw::DrawRect(window.renderer, {window.width - 50, window.height - 50, 50, 50}, colors::colorID[26]); // Color ID for red
+  draw::DrawTransRect(window.renderer, rect1, colors::colorID[26],
+                      255); // Color ID for red
+  draw::DrawTransRect(window.renderer, rect2, colors::indigo, 150);
+  draw::DrawTransRect(window.renderer, rect3, colors::grassgreen, 150);
 
-        // Button
-        SDL_Rect buttonRect = {50, 150, 90, 30};
-        draw::DrawButton(window.renderer, buttonRect, colors::lightgreen, window.mouse);
+  if (logic::IsMouseTouching(window.mouse, rect3))
+    draw::DrawRect(window.renderer,
+                   {window.width - 50, window.height - 50, 50, 50},
+                   colors::grassgreen);
+  else if (logic::IsMouseTouching(window.mouse, rect2))
+    draw::DrawRect(window.renderer,
+                   {window.width - 50, window.height - 50, 50, 50},
+                   colors::indigo);
+  else if (logic::IsMouseTouching(window.mouse, rect1))
+    draw::DrawRect(window.renderer,
+                   {window.width - 50, window.height - 50, 50, 50},
+                   colors::colorID[26]); // Color ID for red
 
-        // Shaking rect
-        SDL_Rect shakingRect = {150, 75, 50, 50};
-        draw::DrawShakingRect(window.renderer, shakingRect, colors::gray, 5);
+  // Button
+  SDL_Rect buttonRect = {50, 150, 90, 30};
+  draw::DrawButton(window.renderer, buttonRect, colors::lightgreen,
+                   window.mouse);
 
-        // Draw logo
-        SDL_Rect bordercircle = {window.width - 125, 25, 100, 100};
-        draw::DrawCircleBorder(window.renderer, bordercircle, colors::red);
+  // Shaking rect
+  SDL_Rect shakingRect = {150, 75, 50, 50};
+  draw::DrawShakingRect(window.renderer, shakingRect, colors::gray, 5);
 
-        // Draw real fps
-        SDL_Rect realFPSCounterRect = {window.width - 250, window.height - 50, 250, 50};
-        std::string fpsText = "FPS: " + std::to_string(window.fpsAdv.realFPS);
-        draw::DrawText(window.renderer, window.font, realFPSCounterRect, fpsText.c_str(), colors::white);
+  // Draw logo
+  SDL_Rect bordercircle = {window.width - 125, 25, 100, 100};
+  draw::DrawCircleBorder(window.renderer, bordercircle, colors::red);
 
-        // Draw input field
-        SDL_Rect inputRect = {275, 75, 200, 50};
-        draw::DrawInputRect(window, inputRect, colors::aqua, inputText);
-    }
+  // Draw real fps
+  SDL_Rect realFPSCounterRect = {window.width - 250, window.height - 50, 250,
+                                 50};
+  std::string fpsText = "FPS: " + std::to_string(window.fpsAdv.realFPS);
+  draw::DrawText(window.renderer, window.font, realFPSCounterRect,
+                 fpsText.c_str(), colors::white);
+
+  // Draw input field
+  SDL_Rect inputRect = {275, 75, 200, 50};
+  draw::DrawInputRect(window, inputRect, colors::aqua, inputText);
+
+  // Darken and lighten colors
+  SDL_Rect darkenRect = {50, 200, 50, 50};
+  SDL_Rect normalcolorRect = {100, 200, 50, 50};
+  SDL_Rect lightenRect = {150, 200, 50, 50};
+  draw::DrawRect(window.renderer, darkenRect,
+                 logic::ScaleColor(colors::grassgreen, 0.65));
+  draw::DrawRect(window.renderer, normalcolorRect, colors::grassgreen);
+  draw::DrawRect(window.renderer, lightenRect,
+                 logic::ScaleColor(colors::grassgreen, 1.2));
 }
+} // namespace core
