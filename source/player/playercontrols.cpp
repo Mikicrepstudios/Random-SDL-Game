@@ -43,16 +43,16 @@ void MouseEvent(core::MF_Window &window, game::Game &game) {
   int mapX = game.curHoverX + cam.offSetX;
   int mapY = game.curHoverY + cam.offSetY;
 
-  if (window.mouse.isDown && !settings.inventory &&
-      map.map[mapX][mapY].type != 1) // Check for most basic stuff
-    if (mapX >= 0 && mapX < map.width && mapY >= 0 &&
-        mapY < map.height) { // Dont allow to go out of bounds
+  if (window.mouse.isDown && mapX >= 0 && mapX < map.width && mapY >= 0 &&
+      mapY < map.height) { // Dont allow to go out of bounds
+    if (!settings.inventory &&
+        map.map[mapX][mapY].type != 1) // Check for most basic stuff
       if (window.mouse.leftButtonPressed)
         HandleLeftClick(game, mapX, mapY);
 
-      if (window.mouse.rightButtonPressed)
-        HandleRightClick(game, mapX, mapY);
-    }
+    if (window.mouse.rightButtonPressed)
+      HandleRightClick(game, mapX, mapY);
+  }
 }
 
 void MouseOverlay(core::MF_Window &window, game::Game &game) {
