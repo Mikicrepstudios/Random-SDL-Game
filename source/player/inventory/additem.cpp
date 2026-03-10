@@ -1,5 +1,7 @@
 #include "settings.h"
 
+#include <iostream>
+
 namespace inventory {
 void AddItem(game::Game &game, int id, int amount) {
   auto &inventory = game.player.inventory;
@@ -7,9 +9,10 @@ void AddItem(game::Game &game, int id, int amount) {
 
   // Try to stack
   for (int i = 0; i < inventorySize; i++) {
-    if (inventory[i].id == id)
+    if (inventory[i].id == id) {
       inventory[i].amount += amount;
-    return;
+      return;
+    }
   }
 
   // Try to find empty slot
