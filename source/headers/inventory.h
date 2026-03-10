@@ -97,6 +97,9 @@ void Overlay(core::MF_Window &window, game::Game &game,
 void ClearInventory(game::Game &game);
 void AddItem(game::Game &game, int id, int amount);
 void RemoveItem(game::Game &game, int id, int amount);
+
+// Rendering
+void DrawHotbar(core::MF_Window &window, game::Game &game);
 } // namespace inventory
 
 #endif

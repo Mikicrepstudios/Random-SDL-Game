@@ -53,6 +53,11 @@ struct Game {
 
     // Addional settings
     bool gameInfo = false;
+    float uiScale = 1;
+
+    // Variables used for scaling elements
+    float wSFactor = 1;
+    float hSFactor = 1;
   } settings;
 
   struct Map {

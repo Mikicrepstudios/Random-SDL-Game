@@ -6,6 +6,7 @@
 
 #include "mf/colors.h"
 #include "mf/core.h"
+#include "mf/extra.h"
 #include "mf/graphics.h"
 
 #include "block.h"
@@ -141,6 +142,10 @@ int main(int argc, char **argv) {
           // Handle resizing window
           window.width = event.window.data1;
           window.height = event.window.data2;
+
+          // Update factors for scaling
+          settings.wSFactor = extra::castToFloat(window.width) / 1280;
+          settings.hSFactor = extra::castToFloat(window.height) / 800;
 
           // Update rects
           dialoguesRects = dialogues::InitRects(window);
@@ -300,6 +305,7 @@ int main(int argc, char **argv) {
 
     // Draw map
     game::RenderMap(window, game, blockTextures);
+    inventory::DrawHotbar(window, game);
 
     // Overlays
     inventory::Overlay(window, game, inventoryMenuRects, inventoryColorRects,

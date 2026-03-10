@@ -16,9 +16,9 @@ void HandleLeftClick(game::Game &game, int mapX, int mapY) {
   auto &settings = game.settings;
   auto &map = game.map;
   auto &player = game.player;
-  auto &inventory = player.inventory;
+  auto &inventory = game.player.inventory;
 
-  if (!settings.cheats) {
+  if (!settings.cheats) {                // Placing blocks
     if (map.map[mapX][mapY].type == 0) { // Affect only air
       game::Game::Player::InventorySlot &invSlot =
           inventory[player.curInventorySlot];
@@ -33,10 +33,9 @@ void HandleLeftClick(game::Game &game, int mapX, int mapY) {
 void HandleRightClick(game::Game &game, int mapX, int mapY) {
   auto &settings = game.settings;
   auto &map = game.map;
-  auto &player = game.player;
-  auto &inventory = player.inventory;
+  auto &inventory = game.player.inventory;
 
-  if (!settings.cheats)
+  if (!settings.cheats)                  // Destroying blocks
     if (map.map[mapX][mapY].type != 0) { // Dont affect air
       inventory::AddItem(game, map.map[mapX][mapY].type, 1);
       map::DestroyBlock(game, mapX, mapY);

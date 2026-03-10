@@ -4,11 +4,12 @@
 ### Some stuff for me
 
 ### In progress:
-- Implemented basic inventory, now I gotta implement playercontrols to use it. Destroying block has to give item to inventory and placing has to take it from player, if no items then dont place at all
-- Follow up to ^^^, i kinda "implemented" it but it does not work at all. next time i code i gotta debug what is even happening anymore...
+- Inventory hotbar at left which shows all items and thier amount and id and current selected
 
 ### Planned:
-- Inventory hotbar at bottom which shows all items and thier amount and id and current selected
+- Inventory slot switcher
+- Item list and properties
+- Placing blocks places selected inventory item
 - Allow camera to move anywhere but place small line for world bounds
 
 ### Thinking:
