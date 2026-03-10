@@ -4,10 +4,11 @@
 ### Some stuff for me
 
 ### In progress:
-- Inventory hotbar at left which shows all items and thier amount and id and current selected
 
 ### Planned:
 - Inventory slot switcher
+- Inventory hotbar show current selected slot
+- Inventory hotbar item previews
 - Item list and properties
 - Placing blocks places selected inventory item
 - Allow camera to move anywhere but place small line for world bounds
