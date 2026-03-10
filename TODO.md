@@ -6,8 +6,6 @@
 ### In progress:
 
 ### Planned:
-- Inventory slot switcher
-- Inventory hotbar show current selected slot
 - Inventory hotbar item previews
 - Item list and properties
 - Placing blocks places selected inventory item

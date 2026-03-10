@@ -27,9 +27,6 @@ void MouseOverlay(core::MF_Window &window, game::Game &game);
 void CameraControls(core::MF_Window &window, game::Game &game);
 void PlayerMovement(SDL_Event event, game::Game &game);
 
-// Low level game stuff
-void PresetChooser(SDL_Event event, int &preset);
-
 // Map related stuff
 void RenderMap(core::MF_Window &window, game::Game &game,
                textures::BlockTextures blockTextures[32]);

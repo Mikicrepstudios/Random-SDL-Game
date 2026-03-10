@@ -257,7 +257,7 @@ int main(int argc, char **argv) {
         default:
           if (!window.isTypingActive) {
             // Preset chooser
-            game::PresetChooser(event, settings.curPreset);
+            inventory::HotbarSlotChooser(window, game);
 
             // Player movement
             game::PlayerMovement(event, game);

@@ -19,7 +19,15 @@ void DrawHotbar(core::MF_Window &window, game::Game &game) {
           bSize,
       (iSize + 2 * bSize) * settings.uiScale * settings.wSFactor,
       ((10 * (iSize + bSize)) * settings.uiScale * settings.hSFactor) + bSize};
-  draw::DrawRect(window.renderer, hotbarBGrect, colors::darkgray);
+  draw::DrawRect(window.renderer, hotbarBGrect, colors::darkgray); // Draw bg
+
+  SDL_Rect selHotbarRect = {
+      0,
+      window.height / 2 -
+          ((10 * (iSize + bSize)) * settings.uiScale * settings.hSFactor / 2) +
+          game.player.curInventorySlot * (iSize + bSize) - bSize,
+      iSize + 2 * bSize, iSize + 2 * bSize};
+  draw::DrawRect(window.renderer, selHotbarRect, colors::lightgray);
 
   SDL_Rect curRect = {};
   SDL_Rect curSmallRect = {};
@@ -29,8 +37,8 @@ void DrawHotbar(core::MF_Window &window, game::Game &game) {
         window.height / 2 -
         ((10 * (iSize + bSize)) * settings.uiScale * settings.hSFactor / 2) +
         i * (iSize + bSize),
-    curRect.w = 50;
-    curRect.h = 50;
+    curRect.w = iSize;
+    curRect.h = iSize;
 
     // Draw black bg
     draw::DrawRect(window.renderer, curRect,
