@@ -72,15 +72,6 @@ int main(int argc, char **argv) {
     std::cout << "Start preparing game : Initilizing structs" << std::endl;
   dialogues::rects dialoguesRects = dialogues::InitRects(window);
 
-  // Inv rects
-  inventory::MenuRects inventoryMenuRects = inventory::InitMenuRects(window);
-  inventory::ColorRects inventoryColorRects = inventory::InitColorRects(window);
-  inventory::DecalRects inventoryDecalRects = inventory::InitDecalRects(window);
-  inventory::GameplayRects inventoryGameplayRects =
-      inventory::InitGameplayRects(window);
-  inventory::GameRects inventoryGameRects = inventory::InitGameRects(window);
-  inventory::OtherRects inventoryOtherRects = inventory::InitOtherRects(window);
-
   // Textures
   if (debug)
     std::cout << "Init textures" << std::endl;
@@ -149,14 +140,6 @@ int main(int argc, char **argv) {
 
           // Update rects
           dialoguesRects = dialogues::InitRects(window);
-
-          // Inv rects
-          inventoryMenuRects = inventory::InitMenuRects(window);
-          inventoryColorRects = inventory::InitColorRects(window);
-          inventoryDecalRects = inventory::InitDecalRects(window);
-          inventoryGameplayRects = inventory::InitGameplayRects(window);
-          inventoryGameRects = inventory::InitGameRects(window);
-          inventoryOtherRects = inventory::InitOtherRects(window);
           break;
         }
         break;
@@ -178,13 +161,6 @@ int main(int argc, char **argv) {
           if (cheatsResult == 1)
             settings.cheats = false;
         }
-
-        // Inventory buttons click event
-        if (settings.inventory)
-          inventory::Chooser(window, game, preset, inventoryMenuRects,
-                             inventoryColorRects, inventoryDecalRects,
-                             inventoryGameplayRects, inventoryGameRects,
-                             inventoryOtherRects);
 
         if (settings.canPlayerPlace == true)
           game::MouseEvent(window, game); // For click placing
@@ -262,9 +238,6 @@ int main(int argc, char **argv) {
             // Player movement
             game::PlayerMovement(event, game);
 
-            // Inventory
-            inventory::Event(event, game);
-
             // Camera
             game::CameraControls(window, game);
 
@@ -306,11 +279,6 @@ int main(int argc, char **argv) {
     // Draw map
     game::RenderMap(window, game, blockTextures);
     inventory::DrawHotbar(window, game);
-
-    // Overlays
-    inventory::Overlay(window, game, inventoryMenuRects, inventoryColorRects,
-                       inventoryDecalRects, inventoryGameplayRects,
-                       inventoryGameRects, inventoryOtherRects, blockTextures);
 
     game::MouseOverlay(window, game);
 
