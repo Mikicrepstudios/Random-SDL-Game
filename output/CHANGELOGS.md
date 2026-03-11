@@ -4,9 +4,11 @@
 #### Added
 - **Core**
     - Added support for multiple save slots
+    - Hotbar slots
 
 #### Removed
-- (No removals in this update)
+- **Core**
+    - Old inventory
 
 #### Changed
 - **Graphics**

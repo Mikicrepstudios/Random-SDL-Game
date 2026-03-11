@@ -3,7 +3,7 @@
 ### Player
 wasd - movement
 
-e - open inventory
+0-9 - Hotbar slot selectorw
 
 c - clear map
 
@@ -40,8 +40,6 @@ Exit - Shows dialogue for exiting game
 
 ### Extra
 ESC - Closes the currently open UI, or exits the game if no UI is open
-
-0-9 - Preset chooser
 
 F3 - Opens game info
 

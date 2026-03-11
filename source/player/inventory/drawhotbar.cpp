@@ -27,7 +27,8 @@ void DrawHotbar(core::MF_Window &window, game::Game &game) {
           ((10 * (iSize + bSize)) * settings.uiScale * settings.hSFactor / 2) +
           game.player.curInventorySlot * (iSize + bSize) - bSize,
       iSize + 2 * bSize, iSize + 2 * bSize};
-  draw::DrawRect(window.renderer, selHotbarRect, colors::lightgray);
+  draw::DrawRect(window.renderer, selHotbarRect,
+                 colors::lightgray); // Highlight selected slot
 
   SDL_Rect curRect = {};
   SDL_Rect curSmallRect = {};
