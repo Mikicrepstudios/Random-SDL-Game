@@ -2,10 +2,13 @@
 #include "mf/core.h"
 #include "mf/graphics.h"
 
+#include "graphics.h"
 #include "inventory.h"
+#include "textures.h"
 
 namespace inventory {
-void DrawHotbar(core::MF_Window &window, game::Game &game) {
+void DrawHotbar(core::MF_Window &window, game::Game &game,
+                textures::BlockTextures blockTextures[32]) {
   auto &settings = game.settings;
   auto &inventory = game.player.inventory;
 
@@ -52,8 +55,9 @@ void DrawHotbar(core::MF_Window &window, game::Game &game) {
       curSmallRect.h = iSize / 3;
 
       // Draw item
-      draw::DrawText(window.renderer, window.font, curRect,
-                     std::to_string(inventory[i].id).c_str(), colors::gray);
+      graphics::DrawBlock(window, game.database.items[inventory[i].id], curRect,
+                          blockTextures);
+
       // Draw amount
       draw::DrawText(window.renderer, window.font, curSmallRect,
                      std::to_string(inventory[i].amount).c_str(),

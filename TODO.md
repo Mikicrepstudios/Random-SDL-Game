@@ -6,9 +6,9 @@
 ### In progress:
 
 ### Planned:
-- Inventory hotbar item previews
 - Placing blocks places selected inventory item
 - Allow camera to move anywhere but place small line for world bounds
+- Get rid of textures::BlockTextures and replace with database
 
 ### Thinking:
 

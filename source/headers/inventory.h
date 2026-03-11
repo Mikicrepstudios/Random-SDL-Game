@@ -19,7 +19,8 @@ void AddItem(game::Game &game, int id, int amount);
 void RemoveItem(game::Game &game, int id, int amount);
 
 // Rendering
-void DrawHotbar(core::MF_Window &window, game::Game &game);
+void DrawHotbar(core::MF_Window &window, game::Game &game,
+                textures::BlockTextures blockTextures[32]);
 
 // Extra
 void HotbarSlotChooser(core::MF_Window &window, game::Game &game);
