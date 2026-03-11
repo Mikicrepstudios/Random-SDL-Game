@@ -23,8 +23,8 @@ void HandleLeftClick(game::Game &game, int mapX, int mapY) {
       game::Game::Player::InventorySlot &invSlot =
           inventory[player.curInventorySlot];
       if (invSlot.id != 0 && invSlot.amount != 0) { // Dont use empty slot
+        map::PlaceBlock(game, game.database.items[invSlot.id], mapX, mapY);
         inventory::RemoveItem(game, invSlot.id, 1);
-        map::PlaceBlock(game, mapX, mapY);
       }
     }
   }

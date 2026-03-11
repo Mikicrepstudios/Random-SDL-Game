@@ -11,7 +11,7 @@
 
 #include "block.h"
 #include "cheats.h"
-#include "commands.h"
+#include "database.h"
 #include "debug.h"
 #include "dialogues.h"
 #include "files.h"
@@ -50,10 +50,6 @@ int main(int argc, char **argv) {
   auto &map = game.map;
   auto &player = game.player;
 
-  // TMP
-  map.width = 50;
-  map.height = 50;
-
   // Do Main Menu
   if (debug)
     std::cout << "Running Main Menu" << std::endl;
@@ -80,6 +76,11 @@ int main(int argc, char **argv) {
 
   if (debug)
     std::cout << "Init icon.png" << std::endl;
+
+  // Init database
+  if (debug)
+    std::cout << "Init database" << std::endl;
+  Database::InitItems(game);
 
   // Adding icon to window
   SDL_Surface *iconSurface = IMG_Load("icon.png");
@@ -287,18 +288,6 @@ int main(int argc, char **argv) {
       gui::GameInfo(window, game);
 
     dialogues::CallDialogue(window, game, dialoguesRects);
-
-    // Cli Input
-    if (game.cliInput || game.terminalmode) {
-      std::string command = "";
-      draw::SetDrawColor(window.renderer,
-                         colors::colorID[settings.bgColor - 1]);
-      draw::DrawRect(window.renderer, {0, 0, 25, 25}, colors::red);
-      SDL_RenderPresent(window.renderer);
-      std::getline(std::cin, command);
-      commands::Executor(command, window, game, preset);
-      game.cliInput = false;
-    }
 
     // Show results
     SDL_RenderPresent(window.renderer);

@@ -11,9 +11,9 @@ void GenerateMap(game::Game &game) {
 
   map::ClearMap(game);
 
-  for (int i = 0; i <= 50; i++) {
-    woodX = logic::GenRanNum(0, game.map.width);
-    woodY = logic::GenRanNum(0, game.map.height);
+  for (int i = 0; i < 50; i++) {
+    woodX = logic::GenRanNum(0, game.map.width - 1);
+    woodY = logic::GenRanNum(0, game.map.height - 1);
 
     game.map.map[woodX][woodY].type = 11;
     game.map.map[woodX][woodY].color = 17;

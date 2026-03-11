@@ -61,16 +61,15 @@ struct Game {
   } settings;
 
   struct Map {
-    int width =
-        250; // Theese have to be one block less because arrays start with 0
-    int height = 250;
+    int width = 50;
+    int height = 50;
 
     std::vector<std::vector<Block>> map;
 
     Map() {
-      // Resize to 250 rows
+      // Resize to width rows
       map.resize(width);
-      // Resize each row to 250 columns
+      // Resize each row to height columns
       for (int i = 0; i < width; i++) {
         map[i].resize(height);
       }
@@ -106,6 +105,18 @@ struct Game {
     // Effects
     bool highlight = false; // Updates every frame
   } cam;
+
+  struct Database {
+    struct Items {
+      const char *name = "";
+      int id = 0;
+
+      int color = 0;
+      int texture = 0;
+
+      bool isSolid = true;
+    } items[32];
+  } database;
 
   Game(bool &r) : running(r) {};
 };

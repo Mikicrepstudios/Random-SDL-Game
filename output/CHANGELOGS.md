@@ -9,6 +9,7 @@
 #### Removed
 - **Core**
     - Old inventory
+    - Commands
 
 #### Changed
 - **Graphics**
@@ -20,3 +21,4 @@
 - Dialogues got fully rewritten, now new ones can be added pretty easily, removed a lot of dialogue related lines in main.cpp and reduced amount of functions needed to be called in order for them to work
 - Now every single struct in settings.h is moved inside of game.h struct, that allows it to easily access everything in only one function argument
 - Mouse controls and mouse overlay got fully rewritten
+- Added item database
