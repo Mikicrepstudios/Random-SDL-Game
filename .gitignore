@@ -3,3 +3,5 @@ sdl2mingw32
 
 output/x86_64dll
 output/x86dll
+
+output/app*
