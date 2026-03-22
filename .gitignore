@@ -1,8 +1,6 @@
-sdl2mingw
-sdl2mingw32
+sdl2mingw*
 
-output/x86_64dll
-output/x86dll
+output/*dll*
 
 output/objects
 output/app*
