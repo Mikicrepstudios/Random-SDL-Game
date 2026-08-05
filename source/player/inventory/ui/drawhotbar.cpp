@@ -40,7 +40,7 @@ void DrawHotbar(core::MF_Window &window, game::Game &game,
     curRect.y =
         window.height / 2 -
         ((10 * (iSize + bSize)) * settings.uiScale * settings.hSFactor / 2) +
-        i * (iSize + bSize),
+        i * (iSize + bSize);
     curRect.w = iSize;
     curRect.h = iSize;
 

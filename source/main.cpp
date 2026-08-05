@@ -243,6 +243,7 @@ int main(int argc, char **argv) {
             game::CameraControls(window, game);
 
             switch (event.key.keysym.sym) {
+              //
             case SDLK_q:
               settings.cheatsId = 3;
               settings.cheats = !settings.cheats;
@@ -251,6 +252,11 @@ int main(int argc, char **argv) {
             case SDLK_c:
               settings.dialogueId = 2;
               settings.dialogue = !settings.dialogue;
+              break;
+              // above this is future problem
+
+            case SDLK_TAB:
+              settings.inventory = !settings.inventory;
               break;
             }
           }
@@ -280,6 +286,7 @@ int main(int argc, char **argv) {
     // Draw map
     game::RenderMap(window, game, blockTextures);
     inventory::DrawHotbar(window, game, blockTextures);
+    inventory::DrawInventory(window, settings);
 
     game::MouseOverlay(window, game);
 

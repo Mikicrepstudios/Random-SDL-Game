@@ -6,7 +6,7 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/source/headers",
                 "/usr/include/SDL2",
-                "/home/mikicrep/Desktop/Mikicrep-Framework/miki-framework"
+                "${workspaceFolder}/miki-framework"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
