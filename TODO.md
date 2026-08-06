@@ -8,6 +8,8 @@
 ### Planned:
 - Get rid of textures::BlockTextures and replace with database
 - Make P reset camera position too
+- Add a proper GameState enum: MENU, PLAYING, PAUSED, INVENTORY, DIALOGUE
+- Replace raw int block/item IDs with enums or structs like enum BlockType { AIR, PLAYER, WOOD, STONE }, maybe same for item IDS (?)
 
 ### Thinking:
 
