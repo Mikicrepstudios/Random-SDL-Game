@@ -285,6 +285,7 @@ int main(int argc, char **argv) {
 
     // Draw map
     game::RenderMap(window, game, blockTextures);
+    game::RenderWorldBorders(window, game);
     inventory::DrawHotbar(window, game, blockTextures);
     inventory::DrawInventory(window, settings);
 

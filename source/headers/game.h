@@ -30,4 +30,5 @@ void PlayerMovement(SDL_Event event, game::Game &game);
 // Map related stuff
 void RenderMap(core::MF_Window &window, game::Game &game,
                textures::BlockTextures blockTextures[32]);
+void RenderWorldBorders(core::MF_Window &window, game::Game &game);
 } // namespace game
