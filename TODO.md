@@ -8,6 +8,7 @@
 ### Planned:
 - Allow camera to move anywhere but place small line for world bounds
 - Get rid of textures::BlockTextures and replace with database
+- Make P reset camera position too
 
 ### Thinking:
 
