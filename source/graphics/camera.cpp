@@ -31,14 +31,6 @@ void CameraControls(core::MF_Window &window, game::Game &game) {
        window.event.key.keysym.sym == SDLK_KP_MINUS) &&
       cam.scale != 10) {
     cam.scale -= 1;
-
-    // Push camera back if it goes out of bounds
-    /*while (cam.offSetX < -((map.width - 1) - window.width / cam.scale)) {
-      cam.offSetX += 1;
-    }
-    while (cam.offSetY < -((map.height - 1) - window.height / cam.scale)) {
-      cam.offSetY += 1;
-    }*/
   }
   // Cam zoom in
   else if (window.event.key.keysym.sym == SDLK_i ||
@@ -48,14 +40,8 @@ void CameraControls(core::MF_Window &window, game::Game &game) {
   // Reset zoom
   else if (window.event.key.keysym.sym == SDLK_p) {
     cam.scale = 50;
-
-    // Push camera back if it goes out of bounds
-    while (cam.offSetX < -((map.width - 1) - window.width / cam.scale)) {
-      cam.offSetX += 1;
-    }
-    while (cam.offSetY < -((map.height - 1) - window.height / cam.scale)) {
-      cam.offSetY += 1;
-    }
+    cam.offSetX = 0;
+    cam.offSetY = 0;
   }
 }
 } // namespace game
