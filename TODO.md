@@ -4,8 +4,6 @@
 ### Some stuff for me
 
 ### In progress:
-- Create inventory items database
-- Seperate blocks and inventory items, inventory item should contain variable block which will be block id which will corespond to block that will be placed on use of inventory item, if its NULL then item isnt placeable
 
 ### Planned:
 - Add a proper GameState enum: MENU, PLAYING, PAUSED, INVENTORY, DIALOGUE

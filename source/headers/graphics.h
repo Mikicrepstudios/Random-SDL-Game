@@ -4,6 +4,6 @@
 #include "textures.h"
 
 namespace graphics {
-void DrawBlock(core::MF_Window &window, game::Game::Database::Items &block,
+void DrawBlock(core::MF_Window &window, game::Game::Database::Blocks &block,
                SDL_Rect rect, textures::BlockTextures blockTextures[32]);
 }

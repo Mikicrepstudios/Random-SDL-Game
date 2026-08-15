@@ -80,6 +80,7 @@ int main(int argc, char **argv) {
   // Init database
   if (debug)
     std::cout << "Init database" << std::endl;
+  Database::InitBlocks(game);
   Database::InitItems(game);
 
   // Adding icon to window

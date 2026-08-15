@@ -6,8 +6,9 @@
 #include "textures.h"
 
 namespace graphics {
-void DrawBlock(core::MF_Window &window, game::Game::Database::Items &block,
+void DrawBlock(core::MF_Window &window, game::Game::Database::Blocks &block,
                SDL_Rect rect, textures::BlockTextures blockTextures[32]) {
+  // IMPLEMENT HERE BLOCK DRAWING WITH INVENTORY ID STUFF
   draw::DrawRect(window.renderer, rect, colors::colorID[block.color - 1]);
 
   if (block.texture != 0)

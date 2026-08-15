@@ -107,14 +107,21 @@ struct Game {
   } cam;
 
   struct Database {
-    struct Items {
+    struct Blocks {
       const char *name = "";
       int id = 0;
 
       int color = 0;
       int texture = 0;
+      int droppedItem = 0; // If NULL then when destroyed drops nothing
 
       bool isSolid = true;
+    } blocks[32];
+    struct Items {
+      const char *name = "";
+      int itemID = 0;
+      int type = 0;
+      int blockID = 0; // If NULL then it cant be placed
     } items[32];
   } database;
 

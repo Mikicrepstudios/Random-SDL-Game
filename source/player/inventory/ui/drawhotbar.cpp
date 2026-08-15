@@ -55,8 +55,14 @@ void DrawHotbar(core::MF_Window &window, game::Game &game,
       curSmallRect.h = iSize / 3;
 
       // Draw item
-      graphics::DrawBlock(window, game.database.items[inventory[i].id], curRect,
-                          blockTextures);
+      if (game.database.items[inventory->id].type == 1)
+        graphics::DrawBlock(
+            window,
+            game.database.blocks[game.database.items[inventory->id].blockID],
+            curRect, blockTextures);
+      else
+        draw::DrawRect(window.renderer, curRect,
+                       colors::aqua); // Replace this with drawing actual item
 
       // Draw amount
       draw::DrawText(window.renderer, window.font, curSmallRect,

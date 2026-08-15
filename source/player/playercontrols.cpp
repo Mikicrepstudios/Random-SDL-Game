@@ -22,8 +22,11 @@ void HandleLeftClick(game::Game &game, int mapX, int mapY) {
     if (map.map[mapX][mapY].type == 0) { // Affect only air
       game::Game::Player::InventorySlot &invSlot =
           inventory[player.curInventorySlot];
-      if (invSlot.id != 0 && invSlot.amount != 0) { // Dont use empty slot
-        map::PlaceBlock(game, game.database.items[invSlot.id], mapX, mapY);
+      if (invSlot.id != 0 && invSlot.amount != 0 &&
+          game.database.items[invSlot.id].type == 1) { // Dont use empty slot
+        map::PlaceBlock(
+            game, game.database.blocks[game.database.items[invSlot.id].blockID],
+            mapX, mapY);
         inventory::RemoveItem(game, invSlot.id, 1);
       }
     }
@@ -37,7 +40,10 @@ void HandleRightClick(game::Game &game, int mapX, int mapY) {
 
   if (!settings.cheats)                  // Destroying blocks
     if (map.map[mapX][mapY].type != 0) { // Dont affect air
-      inventory::AddItem(game, map.map[mapX][mapY].type, 1);
+      if (game.database.blocks[map.map[mapX][mapY].type].droppedItem != NULL)
+        inventory::AddItem(
+            game, game.database.blocks[map.map[mapX][mapY].type].droppedItem,
+            1);
       map::DestroyBlock(game, mapX, mapY);
     } else
       settings.cheats = false;
