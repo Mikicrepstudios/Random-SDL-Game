@@ -14,7 +14,6 @@ void CameraControls(core::MF_Window &window, game::Game &game) {
    */
 
   auto &cam = game.cam;
-  auto &map = game.map;
 
   if (!game.settings.inventory) {
     if (window.event.key.keysym.sym == SDLK_UP)
