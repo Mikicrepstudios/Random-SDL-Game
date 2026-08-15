@@ -4,9 +4,10 @@
 ### Some stuff for me
 
 ### In progress:
+- Create inventory items database
+- Seperate blocks and inventory items, inventory item should contain variable block which will be block id which will corespond to block that will be placed on use of inventory item, if its NULL then item isnt placeable
 
 ### Planned:
-- Get rid of textures::BlockTextures and replace with database
 - Add a proper GameState enum: MENU, PLAYING, PAUSED, INVENTORY, DIALOGUE
 - Replace raw int block/item IDs with enums or structs like enum BlockType { AIR, PLAYER, WOOD, STONE }, maybe same for item IDS (?)
 
