@@ -12,24 +12,21 @@ void DrawHotbar(core::MF_Window &window, game::Game &game,
   auto &settings = game.settings;
   auto &inventory = game.player.inventory;
 
-  const int iSize = 50; // Item size
-  const int bSize = 5;  // Border size
+  const float avgScale = (settings.hSFactor + settings.wSFactor) /
+                         2.0f; // consistent per-window scale
+  const int iSize = static_cast<int>(50.0f * settings.uiScale * avgScale);
+  const int bSize = static_cast<int>(5.0f * settings.uiScale * avgScale);
+  const int slotStride = iSize + bSize;
+  const int hotbarWidth = iSize + 2 * bSize;
+  const int hotbarHeight = 10 * slotStride;
+  const int hotbarTop = window.height / 2 - hotbarHeight / 2;
 
-  SDL_Rect hotbarBGrect = {
-      0,
-      window.height / 2 -
-          ((10 * (iSize + bSize)) * settings.uiScale * settings.hSFactor / 2) -
-          bSize,
-      (iSize + 2 * bSize) * settings.uiScale * settings.wSFactor,
-      ((10 * (iSize + bSize)) * settings.uiScale * settings.hSFactor) + bSize};
+  SDL_Rect hotbarBGrect = {0, hotbarTop, hotbarWidth, hotbarHeight};
   draw::DrawRect(window.renderer, hotbarBGrect, colors::darkgray); // Draw bg
 
   SDL_Rect selHotbarRect = {
-      0,
-      window.height / 2 -
-          ((10 * (iSize + bSize)) * settings.uiScale * settings.hSFactor / 2) +
-          game.player.curInventorySlot * (iSize + bSize) - bSize,
-      iSize + 2 * bSize, iSize + 2 * bSize};
+      0, hotbarTop + game.player.curInventorySlot * slotStride - bSize,
+      hotbarWidth, hotbarWidth};
   draw::DrawRect(window.renderer, selHotbarRect,
                  colors::lightgray); // Highlight selected slot
 
@@ -37,10 +34,7 @@ void DrawHotbar(core::MF_Window &window, game::Game &game,
   SDL_Rect curSmallRect = {};
   for (int i = 0; i < 10; i++) {
     curRect.x = bSize;
-    curRect.y =
-        window.height / 2 -
-        ((10 * (iSize + bSize)) * settings.uiScale * settings.hSFactor / 2) +
-        i * (iSize + bSize);
+    curRect.y = hotbarTop + i * slotStride;
     curRect.w = iSize;
     curRect.h = iSize;
 
