@@ -12,10 +12,9 @@ void DrawHotbar(core::MF_Window &window, game::Game &game,
   auto &settings = game.settings;
   auto &inventory = game.player.inventory;
 
-  const float avgScale = (settings.hSFactor + settings.wSFactor) /
-                         2.0f; // consistent per-window scale
-  const int iSize = static_cast<int>(50.0f * settings.uiScale * avgScale);
-  const int bSize = static_cast<int>(5.0f * settings.uiScale * avgScale);
+  const float scale = (settings.hSFactor + settings.wSFactor) / 2.0f;
+  const int iSize = static_cast<int>(50.0f * settings.uiScale * scale);
+  const int bSize = static_cast<int>(5.0f * settings.uiScale * scale);
   const int slotStride = iSize + bSize;
   const int hotbarWidth = iSize + 2 * bSize;
   const int hotbarHeight = 10 * slotStride;
